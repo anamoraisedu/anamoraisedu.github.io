@@ -1,0 +1,748 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ana Claudia Morais — Pedagoga | Atendimento online, reforço e acolhimento</title>
+<meta name="description" content="Ana Claudia Morais, pedagoga formada pela Unicamp em Itatiba–SP. Atendimento pedagógico online, aulas de reforço para Educação Infantil e Fundamental I e serviços de acolhimento com práticas inclusivas, metodologias ativas e Comunicação Não Violenta.">
+<meta name="author" content="Ana Claudia Morais Alves">
+<link rel="canonical" href="https://anamoraisedu.github.io/">
+
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:title" content="Ana Claudia Morais — Pedagoga">
+<meta property="og:description" content="Atendimento online, aulas de reforço e acolhimento pedagógico. Práticas inclusivas e centradas no desenvolvimento integral de cada estudante.">
+<meta property="og:image" content="https://anamoraisedu.github.io/assets/ana.jpg">
+<meta property="og:url" content="https://anamoraisedu.github.io/">
+
+<!-- Favicon: honey monogram -->
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='16' fill='%23E3A63A'/><text x='32' y='45' font-family='Georgia,serif' font-size='38' font-weight='700' text-anchor='middle' fill='%23fff8ea'>A</text></svg>">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..700;1,9..144,400..600&family=Nunito+Sans:ital,wght@0,300..800;1,400..600&display=swap" rel="stylesheet">
+
+<!-- Prevent flash-of-unstyled-content only when motion is allowed -->
+<script>
+  if (!(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches)) {
+    document.documentElement.classList.add('anim');
+  }
+</script>
+
+<style>
+  :root{
+    --paper:#FBF6EC;
+    --paper-2:#F4E9D4;
+    --card:#FFFDF7;
+    --ink:#2C2114;
+    --ink-soft:#6E5C44;
+    --line:#E7D8BC;
+    --honey:#E3A63A;
+    --honey-2:#C1841C;
+    --clay:#CB6242;
+    --clay-2:#AC4C2E;
+    --sage:#7C9A6E;
+    --sage-2:#5E7B52;
+    --shadow: 0 18px 50px -24px rgba(74,52,20,.45);
+    --shadow-sm: 0 8px 24px -14px rgba(74,52,20,.35);
+    --radius: 26px;
+    --maxw: 1180px;
+    --ease: cubic-bezier(.22,.61,.36,1);
+  }
+
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  @media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto} }
+
+  body{
+    margin:0;
+    font-family:"Nunito Sans", system-ui, sans-serif;
+    color:var(--ink);
+    background:var(--paper);
+    font-size:clamp(1rem, .96rem + .3vw, 1.12rem);
+    line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  /* warm grain overlay */
+  body::before{
+    content:"";
+    position:fixed; inset:0; z-index:0; pointer-events:none;
+    opacity:.5; mix-blend-mode:multiply;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.045'/%3E%3C/svg%3E");
+  }
+
+  h1,h2,h3,h4{font-family:"Fraunces", Georgia, serif; font-weight:560; line-height:1.08; letter-spacing:-.01em; margin:0;}
+  p{margin:0}
+  a{color:inherit; text-decoration:none}
+  img{max-width:100%; display:block}
+  ::selection{background:var(--honey); color:#fff}
+
+  .wrap{width:min(100% - 2.6rem, var(--maxw)); margin-inline:auto; position:relative; z-index:1}
+
+  /* inline-block (not flex) so long eyebrow text wraps naturally on mobile */
+  .eyebrow{
+    display:inline-block;
+    font-family:"Nunito Sans"; font-weight:700;
+    font-size:.78rem; letter-spacing:.16em; text-transform:uppercase;
+    color:var(--clay-2); line-height:1.5;
+  }
+  .eyebrow::before{content:""; display:inline-block; width:26px; height:2px; background:var(--honey); border-radius:2px; vertical-align:middle; margin-right:.55rem; margin-bottom:.16em}
+
+  .lead{color:var(--ink-soft); font-size:clamp(1.05rem,1rem + .4vw,1.28rem); line-height:1.6}
+
+  /* ---------- buttons ---------- */
+  .btn{
+    --bg:var(--clay); --fg:#fff8ee;
+    display:inline-flex; align-items:center; gap:.6rem;
+    padding:.92rem 1.5rem; border-radius:100px;
+    font-weight:700; font-size:1rem; cursor:pointer;
+    background:var(--bg); color:var(--fg);
+    border:1.5px solid transparent;
+    transition:transform .35s var(--ease), box-shadow .35s var(--ease), background .3s ease;
+    box-shadow:var(--shadow-sm);
+    will-change:transform;
+  }
+  .btn:hover{transform:translateY(-3px); box-shadow:0 22px 40px -18px rgba(171,76,46,.6); background:var(--clay-2)}
+  .btn svg{width:20px;height:20px}
+  .btn.ghost{--bg:transparent; --fg:var(--ink); border-color:var(--line); box-shadow:none}
+  .btn.ghost:hover{background:#fff; border-color:var(--honey); box-shadow:var(--shadow-sm)}
+  .btn.honey{--bg:var(--honey); --fg:#3a2a10}
+  .btn.honey:hover{background:var(--honey-2)}
+  :focus-visible{outline:3px solid var(--sage); outline-offset:3px; border-radius:8px}
+
+  /* ---------- nav ---------- */
+  .nav{
+    position:sticky; top:0; z-index:60;
+    transition:background .4s ease, box-shadow .4s ease, backdrop-filter .4s ease;
+  }
+  .nav.scrolled{ background:rgba(251,246,236,.82); backdrop-filter:blur(12px); box-shadow:0 1px 0 var(--line); }
+  .nav-inner{display:flex; align-items:center; justify-content:space-between; gap:1rem; padding:.85rem 0}
+  .brand{display:flex; align-items:center; gap:.7rem; font-family:"Fraunces"; font-weight:600; font-size:1.18rem}
+  .brand .mono{
+    width:42px;height:42px;border-radius:13px; flex:none;
+    display:grid;place-items:center;color:#fff8ea;font-weight:700;font-size:1.3rem;
+    background:linear-gradient(150deg,var(--honey),var(--clay)); box-shadow:var(--shadow-sm);
+  }
+  .brand small{display:block; font-family:"Nunito Sans"; font-weight:600; font-size:.72rem; letter-spacing:.04em; color:var(--ink-soft); margin-top:-3px}
+  .nav-links{display:flex; align-items:center; gap:.35rem}
+  .nav-links a{padding:.5rem .85rem; border-radius:100px; font-weight:600; font-size:.96rem; color:var(--ink-soft); transition:color .25s, background .25s}
+  .nav-links a:hover{color:var(--ink); background:#fff}
+  .nav-cta{display:flex; align-items:center; gap:.6rem}
+  .nav-toggle{display:none; background:none; border:1.5px solid var(--line); border-radius:12px; width:46px;height:44px; cursor:pointer; align-items:center; justify-content:center}
+  .nav-toggle span{display:block; width:20px; height:2px; background:var(--ink); position:relative}
+  .nav-toggle span::before,.nav-toggle span::after{content:""; position:absolute; left:0; width:20px; height:2px; background:var(--ink)}
+  .nav-toggle span::before{top:-6px} .nav-toggle span::after{top:6px}
+
+  /* ---------- hero ---------- */
+  .hero{position:relative; padding:clamp(2rem,5vw,4.5rem) 0 clamp(3rem,6vw,5rem)}
+  .hero-grid{display:grid; grid-template-columns:1.08fr .92fr; gap:clamp(2rem,5vw,4rem); align-items:center}
+  /* Sized so each hardcoded line ("Uma educação que" = 7.27em, the widest)
+     fits on one line at every width — incl. the tight 2-col band near 960px. */
+  .hero-title{font-size:clamp(2rem, 1.14rem + 4.56vw, 4.25rem); margin:1.1rem 0 1.4rem}
+  .hero-title .line-mask{display:block; overflow:hidden; padding-block:.04em}
+  .hero-title .line{display:block}
+  .hero-title em{font-style:italic; color:var(--clay); font-weight:500}
+  .u-word{position:relative; white-space:nowrap; color:var(--honey-2)}
+  .u-word svg{position:absolute; left:-2%; bottom:-.24em; width:104%; height:.4em; overflow:visible}
+  .u-word path{fill:none; stroke:var(--honey); stroke-width:8; stroke-linecap:round}
+  .hero .lead{max-width:34ch}
+  .hero-actions{display:flex; flex-wrap:wrap; gap:.85rem; margin:1.8rem 0 1.4rem}
+  .trust{display:flex; align-items:center; gap:.6rem; color:var(--ink-soft); font-weight:600; font-size:.95rem}
+  .trust svg{width:19px;height:19px;color:var(--sage-2);flex:none}
+
+  .hero-figure{position:relative; justify-self:center; width:min(100%,430px)}
+  .photo-frame{
+    position:relative; z-index:2;
+    border-radius:50% 50% 46% 46%/ 44% 44% 52% 52%;
+    overflow:hidden; aspect-ratio:83/100;
+    border:8px solid #fff; box-shadow:var(--shadow);
+    background:var(--paper-2);
+  }
+  .photo-frame img{width:100%;height:100%;object-fit:cover; object-position:center 18%}
+  .blob{position:absolute; z-index:1; border-radius:50%; filter:blur(2px)}
+  .blob.b1{width:78%; aspect-ratio:1; right:-14%; top:-9%; background:radial-gradient(circle at 35% 35%,#F6D48A,#E3A63A); opacity:.55; filter:blur(6px)}
+  .blob.b2{width:52%; aspect-ratio:1; left:-16%; bottom:2%; background:radial-gradient(circle at 40% 40%,#E7A98F,#CB6242); opacity:.42; filter:blur(8px)}
+  .chip-float{
+    position:absolute; z-index:3; background:var(--card);
+    border:1px solid var(--line); border-radius:100px;
+    padding:.55rem .95rem; font-weight:700; font-size:.86rem;
+    box-shadow:var(--shadow-sm); display:flex; align-items:center; gap:.5rem; white-space:nowrap;
+  }
+  .chip-float .dot{width:9px;height:9px;border-radius:50%}
+  .cf1{top:8%; left:-8%} .cf1 .dot{background:var(--sage)}
+  .cf2{top:44%; right:-11%} .cf2 .dot{background:var(--clay)}
+  .cf3{bottom:6%; left:-4%} .cf3 .dot{background:var(--honey)}
+
+  .scrollcue{display:flex; align-items:center; gap:.6rem; margin-top:2.6rem; color:var(--ink-soft); font-size:.82rem; letter-spacing:.14em; text-transform:uppercase; font-weight:700}
+  .scrollcue .mouse{width:22px;height:34px;border:2px solid var(--ink-soft);border-radius:12px;position:relative;flex:none}
+  .scrollcue .mouse::after{content:"";position:absolute;left:50%;top:6px;width:3px;height:6px;border-radius:3px;background:var(--ink-soft);transform:translateX(-50%);animation:wheel 1.6s var(--ease) infinite}
+  @keyframes wheel{0%{opacity:0;transform:translate(-50%,-3px)}40%{opacity:1}80%,100%{opacity:0;transform:translate(-50%,7px)}}
+  @media (prefers-reduced-motion: reduce){.scrollcue .mouse::after{animation:none}}
+
+  /* ---------- stats band ---------- */
+  .stats{background:linear-gradient(180deg,var(--paper),var(--paper-2)); border-block:1px solid var(--line); margin-top:1rem}
+  .stats-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:1.5rem; padding:clamp(2rem,4vw,3.2rem) 0}
+  .stat{text-align:center; padding:.5rem}
+  .stat .num{font-family:"Fraunces"; font-weight:600; font-size:clamp(2.6rem,2rem + 3vw,4rem); color:var(--clay); line-height:1; display:block}
+  .stat .lbl{color:var(--ink-soft); font-weight:600; margin-top:.5rem}
+  .stat + .stat{border-left:1px solid var(--line)}
+
+  /* ---------- section scaffolding ---------- */
+  section{position:relative}
+  .section{padding:clamp(3.4rem,7vw,6.5rem) 0}
+  .section-head{max-width:640px; margin-bottom:clamp(2rem,4vw,3rem)}
+  .section-head h2{font-size:clamp(2rem,1.6rem + 2.4vw,3.1rem); margin:.9rem 0 .8rem}
+
+  /* ---------- sobre ---------- */
+  .sobre-grid{display:grid; grid-template-columns:1.25fr .85fr; gap:clamp(1.8rem,4vw,3.4rem); align-items:start}
+  .sobre-body p + p{margin-top:1.1rem}
+  .sig{font-family:"Fraunces"; font-style:italic; font-size:1.5rem; color:var(--clay); margin-top:1.4rem}
+  .chips{display:flex; flex-wrap:wrap; gap:.6rem; margin-top:1.6rem}
+  .tag{display:inline-flex; align-items:center; gap:.45rem; padding:.5rem .9rem; border-radius:100px; background:#fff; border:1px solid var(--line); font-weight:700; font-size:.88rem; color:var(--ink)}
+  .tag svg{width:16px;height:16px;color:var(--sage-2)}
+
+  .facts{background:var(--card); border:1px solid var(--line); border-radius:var(--radius); padding:clamp(1.4rem,3vw,2rem); box-shadow:var(--shadow-sm)}
+  .facts h3{font-family:"Nunito Sans"; font-weight:800; font-size:.78rem; letter-spacing:.14em; text-transform:uppercase; color:var(--clay-2); margin:1.5rem 0 .6rem}
+  .facts h3:first-child{margin-top:0}
+  .facts .fact{display:flex; gap:.7rem; padding:.35rem 0}
+  .facts .fact .k{font-weight:700}
+  .facts .fact small{display:block; color:var(--ink-soft); font-weight:600}
+  .facts .mk{color:var(--honey-2); flex:none; margin-top:.15rem}
+  .facts ul{margin:.2rem 0 0; padding:0; list-style:none; color:var(--ink-soft); font-weight:600}
+  .facts ul li{position:relative; padding-left:1.1rem; margin:.28rem 0}
+  .facts ul li::before{content:""; position:absolute; left:0; top:.62em; width:6px;height:6px;border-radius:50%; background:var(--sage)}
+
+  /* ---------- serviços ---------- */
+  .servicos{background:var(--paper-2); border-block:1px solid var(--line)}
+  .cards{display:grid; grid-template-columns:repeat(3,1fr); gap:1.5rem}
+  .card{
+    background:var(--card); border:1px solid var(--line); border-radius:var(--radius);
+    padding:clamp(1.6rem,3vw,2.1rem); display:flex; flex-direction:column; gap:.9rem;
+    transition:transform .4s var(--ease), box-shadow .4s var(--ease), border-color .3s;
+    position:relative; overflow:hidden;
+  }
+  .card::after{content:""; position:absolute; inset:0 0 auto 0; height:5px; background:var(--accent, var(--honey)); transform:scaleX(0); transform-origin:left; transition:transform .45s var(--ease)}
+  .card:hover{transform:translateY(-8px); box-shadow:var(--shadow); border-color:transparent}
+  .card:hover::after{transform:scaleX(1)}
+  .card .ico{
+    width:60px;height:60px;border-radius:18px; display:grid;place-items:center; flex:none;
+    background:color-mix(in srgb, var(--accent) 16%, #fff); color:var(--accent-ink,var(--honey-2));
+  }
+  .card .ico svg{width:30px;height:30px}
+  .card h3{font-size:1.42rem}
+  .card p{color:var(--ink-soft)}
+  .card .who{margin-top:auto; padding-top:.6rem; font-size:.86rem; font-weight:700; color:var(--ink); display:flex; align-items:center; gap:.45rem}
+  .card .who svg{width:16px;height:16px;color:var(--accent-ink,var(--honey-2))}
+  .card .more{font-weight:800; font-size:.92rem; color:var(--accent-ink,var(--honey-2)); display:inline-flex; align-items:center; gap:.4rem; transition:gap .3s}
+  .card:hover .more{gap:.7rem}
+  .card.s1{--accent:var(--sage); --accent-ink:var(--sage-2)}
+  .card.s2{--accent:var(--honey); --accent-ink:var(--honey-2)}
+  .card.s3{--accent:var(--clay); --accent-ink:var(--clay-2)}
+
+  /* ---------- método ---------- */
+  .metodo-grid{display:grid; grid-template-columns:.95fr 1.05fr; gap:clamp(2rem,4vw,3.6rem); align-items:center}
+  .quote{font-family:"Fraunces"; font-weight:500; font-size:clamp(1.5rem,1.2rem + 1.6vw,2.35rem); line-height:1.25; color:var(--ink)}
+  .quote .mk{color:var(--honey); font-size:1.4em; line-height:0; vertical-align:-.15em; margin-right:.1em}
+  .principles{display:grid; gap:1rem}
+  .principle{display:flex; gap:1rem; padding:1.1rem 1.2rem; background:var(--card); border:1px solid var(--line); border-radius:20px; box-shadow:var(--shadow-sm)}
+  .principle .pn{width:44px;height:44px;flex:none;border-radius:13px;display:grid;place-items:center;background:color-mix(in srgb,var(--sage) 18%,#fff);color:var(--sage-2)}
+  .principle .pn svg{width:23px;height:23px}
+  .principle h4{font-family:"Nunito Sans"; font-weight:800; font-size:1.05rem; margin-bottom:.15rem}
+  .principle p{color:var(--ink-soft); font-size:.96rem; line-height:1.5}
+
+  /* ---------- trajetória ---------- */
+  .traj{background:var(--paper-2); border-block:1px solid var(--line)}
+  .timeline{display:grid; gap:1.1rem; position:relative}
+  .tl-item{
+    display:grid; grid-template-columns:7.5rem 1fr; gap:1.2rem;
+    background:var(--card); border:1px solid var(--line); border-radius:20px;
+    padding:1.2rem 1.4rem; box-shadow:var(--shadow-sm);
+  }
+  .tl-item .when{font-family:"Fraunces"; font-weight:600; color:var(--clay); font-size:1rem; white-space:nowrap; padding-top:.15rem}
+  .tl-item h4{font-family:"Nunito Sans"; font-weight:800; font-size:1.12rem}
+  .tl-item .org{color:var(--honey-2); font-weight:700; font-size:.92rem; margin:.1rem 0 .35rem}
+  .tl-item p{color:var(--ink-soft); font-size:.95rem; line-height:1.5}
+
+  /* ---------- contato ---------- */
+  .contato{position:relative; overflow:hidden}
+  .contato-card{
+    position:relative; background:linear-gradient(155deg,#3a2c18,#5a4222); color:#fbeed3;
+    border-radius:clamp(24px,4vw,40px); padding:clamp(2.2rem,5vw,4.2rem);
+    box-shadow:var(--shadow); overflow:hidden;
+  }
+  .contato-card::before{content:""; position:absolute; width:420px;height:420px; right:-120px; top:-160px; border-radius:50%; background:radial-gradient(circle,#E3A63A,transparent 68%); opacity:.5}
+  .contato-card::after{content:""; position:absolute; width:340px;height:340px; left:-120px; bottom:-160px; border-radius:50%; background:radial-gradient(circle,#CB6242,transparent 68%); opacity:.42}
+  .contato-inner{position:relative; z-index:2; display:grid; grid-template-columns:1.1fr .9fr; gap:clamp(1.6rem,4vw,3rem); align-items:center}
+  .contato h2{color:#fff; font-size:clamp(2rem,1.6rem + 2.4vw,3.2rem)}
+  .contato .lead{color:#f0dcb8}
+  .contato-actions{display:flex; flex-wrap:wrap; gap:.85rem; margin-top:1.8rem}
+  .contlist{display:grid; gap:.7rem}
+  .contlist a{display:flex; align-items:center; gap:.9rem; padding:.85rem 1.1rem; background:rgba(255,255,255,.07); border:1px solid rgba(255,255,255,.14); border-radius:16px; font-weight:600; transition:background .3s, transform .3s}
+  .contlist a:hover{background:rgba(255,255,255,.13); transform:translateX(4px)}
+  .contlist .ci{width:40px;height:40px;flex:none;border-radius:12px;display:grid;place-items:center;background:rgba(227,166,58,.22);color:#F6D48A}
+  .contlist .ci svg{width:20px;height:20px}
+  .contlist small{display:block; color:#c9b590; font-weight:600; font-size:.78rem}
+
+  /* ---------- footer ---------- */
+  footer{padding:2.6rem 0 3rem; border-top:1px solid var(--line)}
+  .foot{display:flex; flex-wrap:wrap; justify-content:space-between; align-items:center; gap:1rem}
+  .foot .brand small{color:var(--ink-soft)}
+  .foot-note{color:var(--ink-soft); font-size:.86rem}
+  .foot-links{display:flex; gap:1.2rem; flex-wrap:wrap; font-weight:600; font-size:.92rem}
+  .foot-links a{color:var(--ink-soft)} .foot-links a:hover{color:var(--ink)}
+
+  /* ---------- floating whatsapp ---------- */
+  .wa-float{
+    position:fixed; right:20px; bottom:20px; z-index:70;
+    width:60px;height:60px;border-radius:50%; display:grid;place-items:center;
+    background:#25D366; color:#fff; box-shadow:0 14px 30px -8px rgba(37,211,102,.6);
+    transform:translateY(120px) scale(.7); opacity:0; transition:transform .5s var(--ease), opacity .4s, box-shadow .3s;
+  }
+  .wa-float.show{transform:translateY(0) scale(1); opacity:1}
+  .wa-float:hover{transform:translateY(-4px) scale(1.05)}
+  .wa-float svg{width:32px;height:32px}
+
+  /* ---------- reveal (only when .anim) ---------- */
+  .anim [data-reveal],
+  .anim [data-item]{opacity:0; transform:translateY(30px)}
+  /* Hide the headline via visibility (NOT a transform) so GSAP reads a clean
+     identity transform. Animating yPercent over a CSS translateY(%) leaves a
+     residual px offset that keeps the line clipped by its mask. */
+  .anim .hero-title{visibility:hidden}
+  .anim [data-hero]{opacity:0}
+  .anim .chip-float{opacity:0}
+  .anim .u-word path{stroke-dasharray:1; stroke-dashoffset:1}
+
+  /* ---------- responsive ---------- */
+  @media (max-width:960px){
+    .hero-grid{grid-template-columns:1fr; gap:2.5rem}
+    .hero-figure{order:-1; width:min(78%,360px)}
+    .hero .lead{max-width:52ch}
+    .sobre-grid,.metodo-grid,.contato-inner{grid-template-columns:1fr}
+    .cards{grid-template-columns:1fr 1fr}
+    /* mobile menu */
+    .nav-toggle{display:flex}
+    .nav-links{
+      display:none; position:absolute; top:100%; left:0; right:0;
+      flex-direction:column; align-items:stretch; gap:.2rem;
+      background:var(--paper); border-bottom:1px solid var(--line); padding:.8rem 1.3rem 1.2rem; box-shadow:var(--shadow-sm);
+    }
+    .nav-links.open{display:flex}
+    .nav-links a{padding:.75rem .6rem}
+  }
+  @media (max-width:680px){
+    .nav .btn.desktop{display:none}
+    /* keep the floating chips fully inside the photo (never past the viewport) */
+    .hero-figure{width:min(84%,340px)}
+    .chip-float{font-size:.72rem; padding:.42rem .7rem}
+    .cf1{left:2%; top:3%} .cf2{display:none} .cf3{left:2%; bottom:3%}
+    .hero .eyebrow{display:block; font-size:.66rem; letter-spacing:.08em}
+    .cards{grid-template-columns:1fr}
+    .stats-grid{grid-template-columns:1fr}
+    .stat + .stat{border-left:none; border-top:1px solid var(--line); padding-top:1.4rem}
+    .tl-item{grid-template-columns:1fr; gap:.4rem}
+    .tl-item .when{padding-top:0}
+  }
+</style>
+</head>
+<body>
+
+<!-- ============ NAV ============ -->
+<header class="nav" id="nav">
+  <div class="wrap nav-inner">
+    <a href="#inicio" class="brand" aria-label="Ana Claudia Morais — início">
+      <span class="mono" aria-hidden="true">A</span>
+      <span>Ana Claudia Morais<small>Pedagoga · Unicamp</small></span>
+    </a>
+    <nav class="nav-links" id="menu" aria-label="Navegação principal">
+      <a href="#sobre">Sobre</a>
+      <a href="#servicos">Serviços</a>
+      <a href="#metodo">Como trabalho</a>
+      <a href="#trajetoria">Trajetória</a>
+      <a href="#contato">Contato</a>
+    </nav>
+    <div class="nav-cta">
+      <a class="btn desktop" href="https://wa.me/5519994139785?text=Ol%C3%A1%2C%20Ana!%20Vim%20pelo%20seu%20site%20e%20gostaria%20de%20saber%20mais%20sobre%20seus%20atendimentos." target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.5 14.4c-.3-.15-1.7-.84-1.96-.94-.26-.1-.45-.15-.64.15-.19.29-.74.94-.9 1.13-.17.19-.33.22-.62.07-.29-.15-1.22-.45-2.33-1.43-.86-.77-1.44-1.72-1.6-2.01-.17-.29-.02-.45.13-.6.13-.13.29-.34.44-.51.15-.17.19-.29.29-.48.1-.19.05-.36-.02-.51-.07-.15-.64-1.55-.88-2.12-.23-.55-.47-.48-.64-.49h-.55c-.19 0-.5.07-.76.36-.26.29-1 .98-1 2.38s1.02 2.76 1.17 2.95c.15.19 2.02 3.08 4.9 4.32.68.29 1.22.47 1.63.6.69.22 1.31.19 1.8.11.55-.08 1.7-.69 1.94-1.36.24-.67.24-1.24.17-1.36-.07-.12-.26-.19-.55-.34z"/><path d="M12 2C6.48 2 2 6.48 2 12c0 1.77.46 3.43 1.27 4.88L2 22l5.25-1.38A9.94 9.94 0 0 0 12 22c5.52 0 10-4.48 10-10S17.52 2 12 2zm0 18.2c-1.6 0-3.1-.43-4.38-1.18l-.31-.18-3.12.82.83-3.04-.2-.32A8.16 8.16 0 0 1 3.8 12 8.2 8.2 0 1 1 12 20.2z"/></svg>
+        Agendar conversa
+      </a>
+      <button class="nav-toggle" id="navToggle" aria-label="Abrir menu" aria-expanded="false" aria-controls="menu"><span></span></button>
+    </div>
+  </div>
+</header>
+
+<main>
+<!-- ============ HERO ============ -->
+<section class="hero" id="inicio">
+  <div class="wrap hero-grid">
+    <div class="hero-copy">
+      <span class="eyebrow" data-hero>Pedagoga · Educação Infantil e Fundamental I</span>
+      <h1 class="hero-title">
+        <span class="line-mask"><span class="line">Uma educação que</span></span>
+        <span class="line-mask"><span class="line"><em>acolhe</em>, ensina e</span></span>
+        <span class="line-mask"><span class="line"><span class="u-word">transforma<svg viewBox="0 0 300 20" preserveAspectRatio="none" aria-hidden="true"><path pathLength="1" d="M3 13 C 60 5, 110 5, 150 10 S 250 16, 297 7"/></svg></span>.</span></span>
+      </h1>
+      <p class="lead" data-hero>Atendimento pedagógico online, aulas de reforço e serviços de acolhimento para crianças, adolescentes e famílias — com práticas inclusivas, metodologias ativas e escuta centrada no desenvolvimento integral de cada estudante.</p>
+      <div class="hero-actions" data-hero>
+        <a class="btn" href="https://wa.me/5519994139785?text=Ol%C3%A1%2C%20Ana!%20Vim%20pelo%20seu%20site%20e%20gostaria%20de%20saber%20mais%20sobre%20seus%20atendimentos." target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C6.48 2 2 6.48 2 12c0 1.77.46 3.43 1.27 4.88L2 22l5.25-1.38A9.94 9.94 0 0 0 12 22c5.52 0 10-4.48 10-10S17.52 2 12 2zm0 18.2c-1.6 0-3.1-.43-4.38-1.18l-.31-.18-3.12.82.83-3.04-.2-.32A8.16 8.16 0 0 1 3.8 12 8.2 8.2 0 1 1 12 20.2zm5.5-5.8c-.3-.15-1.7-.84-1.96-.94-.26-.1-.45-.15-.64.15-.19.29-.74.94-.9 1.13-.17.19-.33.22-.62.07-.29-.15-1.22-.45-2.33-1.43-.86-.77-1.44-1.72-1.6-2.01-.17-.29-.02-.45.13-.6.13-.13.29-.34.44-.51.15-.17.19-.29.29-.48.1-.19.05-.36-.02-.51-.07-.15-.64-1.55-.88-2.12-.23-.55-.47-.48-.64-.49h-.55c-.19 0-.5.07-.76.36-.26.29-1 .98-1 2.38s1.02 2.76 1.17 2.95c.15.19 2.02 3.08 4.9 4.32.68.29 1.22.47 1.63.6.69.22 1.31.19 1.8.11.55-.08 1.7-.69 1.94-1.36.24-.67.24-1.24.17-1.36-.07-.12-.26-.19-.55-.34z"/></svg>
+          Agendar uma conversa
+        </a>
+        <a class="btn ghost" href="#servicos">Conhecer os serviços</a>
+      </div>
+      <div class="trust" data-hero>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3 2 8l10 5 10-5-10-5z"/><path d="M6 10v5c0 1 2.7 3 6 3s6-2 6-3v-5"/></svg>
+        Formada pela Unicamp · Itatiba–SP e atendimento online
+      </div>
+    </div>
+
+    <div class="hero-figure">
+      <span class="blob b1" data-float="1" aria-hidden="true"></span>
+      <span class="blob b2" data-float="2" aria-hidden="true"></span>
+      <div class="photo-frame" data-hero>
+        <img src="assets/ana.jpg" alt="Ana Claudia Morais Alves, pedagoga, sorrindo ao ar livre" width="454" height="605">
+      </div>
+      <span class="chip-float cf1" data-float="3"><span class="dot"></span>TEA &amp; dislexia</span>
+      <span class="chip-float cf2" data-float="4"><span class="dot"></span>Comunicação Não Violenta</span>
+      <span class="chip-float cf3" data-float="5"><span class="dot"></span>Metodologias ativas</span>
+    </div>
+  </div>
+  <div class="wrap"><div class="scrollcue" data-hero><span class="mouse"></span>Role para conhecer</div></div>
+</section>
+
+<!-- ============ STATS ============ -->
+<section class="stats" aria-label="Números">
+  <div class="wrap stats-grid">
+    <div class="stat" data-item><span class="num" data-count="140" data-suffix="+">140+</span><span class="lbl">jovens e crianças acompanhados</span></div>
+    <div class="stat" data-item><span class="num" data-count="8" data-suffix="+">8+</span><span class="lbl">anos dedicados à educação</span></div>
+    <div class="stat" data-item><span class="num" data-count="2" data-suffix="">2</span><span class="lbl">pós-graduações em andamento</span></div>
+  </div>
+</section>
+
+<!-- ============ SOBRE ============ -->
+<section class="section" id="sobre">
+  <div class="wrap sobre-grid">
+    <div class="sobre-body">
+      <span class="eyebrow" data-reveal>Prazer, sou a Ana</span>
+      <div class="section-head" style="margin-bottom:1.4rem">
+        <h2 data-reveal>Educar é acolher e caminhar<br>junto com cada estudante.</h2>
+      </div>
+      <p data-reveal>Sou pedagoga formada pela <strong>Universidade Estadual de Campinas (Unicamp)</strong>, com atuação na Educação Infantil, no Ensino Fundamental I e na formação de adolescentes e jovens aprendizes. Ao longo desses anos, construí práticas pedagógicas <strong>inclusivas</strong>, acompanhei a aprendizagem de perto e cuidei do relacionamento com as famílias.</p>
+      <p data-reveal>Atualmente curso pós-graduação em <strong>Psicopedagogia</strong> e em <strong>Gestão de Pessoas e Psicologia Organizacional</strong>. Acredito em uma educação acolhedora, inovadora e centrada no desenvolvimento integral — onde cada criança aprende no seu tempo, com confiança e protagonismo.</p>
+      <div class="chips" data-reveal>
+        <span class="tag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Práticas inclusivas</span>
+        <span class="tag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Escuta e acolhimento</span>
+        <span class="tag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Metodologias ativas</span>
+        <span class="tag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Parceria com as famílias</span>
+      </div>
+      <p class="sig" data-reveal>— Ana Claudia Morais Alves</p>
+    </div>
+
+    <aside class="facts" data-reveal aria-label="Formação e qualificações">
+      <h3>Formação</h3>
+      <div class="fact"><svg class="mk" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10 12 5 2 10l10 5 10-5z"/><path d="M6 12v5c0 1 2.7 3 6 3s6-2 6-3v-5"/></svg><div><span class="k">Licenciatura em Pedagogia</span><small>Universidade Estadual de Campinas — Unicamp</small></div></div>
+
+      <h3>Pós-graduação · em andamento</h3>
+      <ul>
+        <li>Psicopedagogia</li>
+        <li>Gestão de Pessoas e Psicologia Organizacional</li>
+      </ul>
+
+      <h3>Formação complementar</h3>
+      <ul>
+        <li>Pensamento Computacional para os Anos Iniciais (AVAMEC/MEC)</li>
+        <li>Ferramentas Digitais na Prática para Professores</li>
+        <li>Comunicação Não Violenta (CNV)</li>
+      </ul>
+
+      <h3>Idiomas</h3>
+      <ul>
+        <li>Português — nativo</li>
+        <li>Inglês — intermediário</li>
+      </ul>
+    </aside>
+  </div>
+</section>
+
+<!-- ============ SERVIÇOS ============ -->
+<section class="section servicos" id="servicos">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow" data-reveal>Como posso ajudar</span>
+      <h2 data-reveal>Serviços pensados para cada momento da aprendizagem</h2>
+      <p class="lead" data-reveal>Atendimento individual e humano, presencial em Itatiba–SP ou online para todo o Brasil.</p>
+    </div>
+    <div class="cards" data-stagger>
+      <article class="card s1" data-item>
+        <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="13" rx="2.5"/><path d="M8 21h8M12 17v4"/><path d="M12 8.2c1.4-1.6 4-.6 4 1.3 0 1.8-2.6 3-4 4-1.4-1-4-2.2-4-4 0-1.9 2.6-2.9 4-1.3z"/></svg></span>
+        <h3>Atendimento Online</h3>
+        <p>Acompanhamento pedagógico e psicopedagógico a distância, em encontros individuais por vídeo. Planos de aprendizagem personalizados e orientação para famílias — onde você estiver.</p>
+        <span class="who"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 2 8l10 5 10-5-10-5z"/></svg>Crianças, adolescentes e famílias</span>
+        <a class="more" href="https://wa.me/5519994139785?text=Ol%C3%A1%2C%20Ana!%20Tenho%20interesse%20no%20atendimento%20online." target="_blank" rel="noopener">Quero saber mais →</a>
+      </article>
+
+      <article class="card s2" data-item>
+        <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 5.5A2.5 2.5 0 0 1 5.5 4H11v15H5.5A2.5 2.5 0 0 0 3 21.5z"/><path d="M21 5.5A2.5 2.5 0 0 0 18.5 4H13v15h5.5a2.5 2.5 0 0 1 2.5 1.5z"/><path d="M16 2.5 17.4 4 16 5.5"/></svg></span>
+        <h3>Aulas de Reforço</h3>
+        <p>Reforço escolar para a Educação Infantil e o Ensino Fundamental I. Apoio nas tarefas, metodologias ativas e estratégias que despertam a autonomia e o prazer de aprender.</p>
+        <span class="who"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 2 8l10 5 10-5-10-5z"/></svg>Educação Infantil ao 5º ano</span>
+        <a class="more" href="https://wa.me/5519994139785?text=Ol%C3%A1%2C%20Ana!%20Tenho%20interesse%20nas%20aulas%20de%20refor%C3%A7o." target="_blank" rel="noopener">Quero saber mais →</a>
+      </article>
+
+      <article class="card s3" data-item>
+        <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20s-6.5-4.3-8.8-8.2C1.7 9 2.8 5.8 5.8 5.2c1.9-.4 3.5.7 4.2 2 .7-1.3 2.3-2.4 4.2-2 3 .6 4.1 3.8 2.6 6.6C18.5 15.7 12 20 12 20z"/></svg></span>
+        <h3>Serviços de Acolhimento</h3>
+        <p>Escuta atenta e acolhedora para crianças e estudantes, incluindo acompanhamento de <strong>TEA</strong> e <strong>dislexia</strong>. Um espaço seguro, guiado pela Comunicação Não Violenta, para aprender com confiança.</p>
+        <span class="who"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 2 8l10 5 10-5-10-5z"/></svg>Apoio a estudantes e famílias</span>
+        <a class="more" href="https://wa.me/5519994139785?text=Ol%C3%A1%2C%20Ana!%20Gostaria%20de%20saber%20mais%20sobre%20os%20servi%C3%A7os%20de%20acolhimento." target="_blank" rel="noopener">Quero saber mais →</a>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ MÉTODO ============ -->
+<section class="section" id="metodo">
+  <div class="wrap metodo-grid">
+    <div>
+      <span class="eyebrow" data-reveal>Como eu trabalho</span>
+      <p class="quote" data-reveal style="margin-top:1rem"><span class="mk">“</span>Práticas pedagógicas acolhedoras, inovadoras e centradas no desenvolvimento integral de cada estudante.<span class="mk">”</span></p>
+    </div>
+    <div class="principles" data-stagger>
+      <div class="principle" data-item>
+        <span class="pn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-3.3 3.6-6 8-6s8 2.7 8 6"/></svg></span>
+        <div><h4>Olhar individual e inclusivo</h4><p>Cada estudante tem seu ritmo. Adapto estratégias para necessidades específicas, como TEA e dislexia.</p></div>
+      </div>
+      <div class="principle" data-item>
+        <span class="pn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.4 8.4 0 0 1-8.5 8.5 8.9 8.9 0 0 1-4-1L3 20l1-5.5a8.4 8.4 0 0 1-1-4A8.4 8.4 0 0 1 11.5 2 8.5 8.5 0 0 1 21 11.5z"/></svg></span>
+        <div><h4>Escuta e Comunicação Não Violenta</h4><p>Um ambiente seguro, de confiança e diálogo, onde aprender também é se sentir acolhido.</p></div>
+      </div>
+      <div class="principle" data-item>
+        <span class="pn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v4M5 5l2.5 2.5M2 12h4M19 5l-2.5 2.5M22 12h-4"/><circle cx="12" cy="15" r="5"/></svg></span>
+        <div><h4>Metodologias ativas</h4><p>Aprendizagem colaborativa e protagonismo estudantil, para transformar tarefa em descoberta.</p></div>
+      </div>
+      <div class="principle" data-item>
+        <span class="pn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9.5" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13A4 4 0 0 1 16 11"/></svg></span>
+        <div><h4>Parceria com as famílias</h4><p>Relatórios e acompanhamento próximos, para que família e escola caminhem na mesma direção.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TRAJETÓRIA ============ -->
+<section class="section traj" id="trajetoria">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow" data-reveal>Trajetória</span>
+      <h2 data-reveal>Experiência que sustenta o cuidado</h2>
+      <p class="lead" data-reveal>Da Educação Infantil à formação de jovens aprendizes, em escolas, projetos sociais e na universidade.</p>
+    </div>
+    <div class="timeline" data-stagger>
+      <div class="tl-item" data-item>
+        <span class="when">2026 · Atual</span>
+        <div>
+          <h4>Instrutora de Aprendizagem</h4>
+          <div class="org">CIEE — Centro de Integração Empresa-Escola</div>
+          <p>Formação teórica de aproximadamente 140 jovens aprendizes, com aulas de competências socioemocionais, ética profissional e projetos pedagógicos, além de relatórios e acompanhamento junto às famílias e empresas.</p>
+        </div>
+      </div>
+      <div class="tl-item" data-item>
+        <span class="when">2025</span>
+        <div>
+          <h4>Estagiária em Pesquisa e Produção de Conteúdo Educativo</h4>
+          <div class="org">Centro de Memória da Unicamp</div>
+          <p>Pesquisa histórica e documental, produção de materiais educativos e do podcast <em>Histórias Negras</em>, em projetos de extensão universitária.</p>
+        </div>
+      </div>
+      <div class="tl-item" data-item>
+        <span class="when">2024 · 2025</span>
+        <div>
+          <h4>Instrutora Pedagógica</h4>
+          <div class="org">Colégio Renovatus — Rede Decisão</div>
+          <p>Turmas do 3º ao 5º ano no contraturno, aprendizagem colaborativa, metodologias ativas e acompanhamento de estudantes com TEA e dislexia.</p>
+        </div>
+      </div>
+      <div class="tl-item" data-item>
+        <span class="when">2022 · 2023</span>
+        <div>
+          <h4>Estágio em Educação Infantil</h4>
+          <div class="org">Colégio Rio Branco</div>
+          <p>Turmas regulares e de contraturno (Infantil II ao IV), acompanhamento da rotina, do desenvolvimento da autonomia e apoio a projetos pedagógicos.</p>
+        </div>
+      </div>
+      <div class="tl-item" data-item>
+        <span class="when">2016 · 2023</span>
+        <div>
+          <h4>Coordenadora de Extensão</h4>
+          <div class="org">Cursinho Popular Herbert de Souza</div>
+          <p>Coordenação de professores e bolsistas da Unicamp, gestão de projetos de extensão e parcerias comunitárias, e implantação de cursinho popular no Assentamento Marielle Vive.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CONTATO ============ -->
+<section class="section contato" id="contato">
+  <div class="wrap">
+    <div class="contato-card" data-reveal>
+      <div class="contato-inner">
+        <div>
+          <span class="eyebrow" style="color:#F6D48A">Vamos conversar?</span>
+          <h2 style="margin:.9rem 0 .9rem">Conte-me sobre o seu pequeno estudante.</h2>
+          <p class="lead">Me chame no WhatsApp para uma conversa sem compromisso. Juntos, encontramos o melhor caminho de aprendizagem — com acolhimento e cuidado.</p>
+          <div class="contato-actions">
+            <a class="btn honey" href="https://wa.me/5519994139785?text=Ol%C3%A1%2C%20Ana!%20Vim%20pelo%20seu%20site%20e%20gostaria%20de%20saber%20mais%20sobre%20seus%20atendimentos." target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C6.48 2 2 6.48 2 12c0 1.77.46 3.43 1.27 4.88L2 22l5.25-1.38A9.94 9.94 0 0 0 12 22c5.52 0 10-4.48 10-10S17.52 2 12 2zm0 18.2c-1.6 0-3.1-.43-4.38-1.18l-.31-.18-3.12.82.83-3.04-.2-.32A8.16 8.16 0 0 1 3.8 12 8.2 8.2 0 1 1 12 20.2zm5.5-5.8c-.3-.15-1.7-.84-1.96-.94-.26-.1-.45-.15-.64.15-.19.29-.74.94-.9 1.13-.17.19-.33.22-.62.07-.29-.15-1.22-.45-2.33-1.43-.86-.77-1.44-1.72-1.6-2.01-.17-.29-.02-.45.13-.6.13-.13.29-.34.44-.51.15-.17.19-.29.29-.48.1-.19.05-.36-.02-.51-.07-.15-.64-1.55-.88-2.12-.23-.55-.47-.48-.64-.49h-.55c-.19 0-.5.07-.76.36-.26.29-1 .98-1 2.38s1.02 2.76 1.17 2.95c.15.19 2.02 3.08 4.9 4.32.68.29 1.22.47 1.63.6.69.22 1.31.19 1.8.11.55-.08 1.7-.69 1.94-1.36.24-.67.24-1.24.17-1.36-.07-.12-.26-.19-.55-.34z"/></svg>
+              Chamar no WhatsApp
+            </a>
+          </div>
+        </div>
+        <div class="contlist">
+          <a href="https://wa.me/5519994139785" target="_blank" rel="noopener">
+            <span class="ci"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2 4.2 2 2 0 0 1 4 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.6a16 16 0 0 0 6 6l1.1-1.1a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg></span>
+            <div>WhatsApp / Telefone<small>(19) 99413-9785</small></div>
+          </a>
+          <a href="mailto:Anamoraisalves93@gmail.com?subject=Contato%20pelo%20site">
+            <span class="ci"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 6-10 7L2 6"/></svg></span>
+            <div>E-mail<small>Anamoraisalves93@gmail.com</small></div>
+          </a>
+          <a href="https://www.linkedin.com/in/ana-claudia-moraisalves-420373364" target="_blank" rel="noopener">
+            <span class="ci"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9h4v12H3zM9 9h3.8v1.7h.05c.53-1 1.8-2 3.7-2 4 0 4.7 2.6 4.7 6V21h-4v-5.3c0-1.3 0-2.9-1.8-2.9s-2 1.4-2 2.8V21H9z"/></svg></span>
+            <div>LinkedIn<small>Ana Claudia Morais Alves</small></div>
+          </a>
+          <a href="https://www.google.com/maps/search/Itatiba+São+Paulo" target="_blank" rel="noopener">
+            <span class="ci"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg></span>
+            <div>Atendimento<small>Itatiba–SP · presencial e online</small></div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="wrap foot">
+    <a href="#inicio" class="brand">
+      <span class="mono" aria-hidden="true">A</span>
+      <span>Ana Claudia Morais<small>Pedagoga · Educação com acolhimento</small></span>
+    </a>
+    <nav class="foot-links" aria-label="Rodapé">
+      <a href="#sobre">Sobre</a>
+      <a href="#servicos">Serviços</a>
+      <a href="#trajetoria">Trajetória</a>
+      <a href="#contato">Contato</a>
+    </nav>
+    <p class="foot-note">© <span id="year">2026</span> Ana Claudia Morais Alves · Itatiba–SP</p>
+  </div>
+</footer>
+
+<a class="wa-float" id="waFloat" href="https://wa.me/5519994139785?text=Ol%C3%A1%2C%20Ana!%20Vim%20pelo%20seu%20site%20e%20gostaria%20de%20saber%20mais%20sobre%20seus%20atendimentos." target="_blank" rel="noopener" aria-label="Falar no WhatsApp">
+  <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C6.48 2 2 6.48 2 12c0 1.77.46 3.43 1.27 4.88L2 22l5.25-1.38A9.94 9.94 0 0 0 12 22c5.52 0 10-4.48 10-10S17.52 2 12 2zm0 18.2c-1.6 0-3.1-.43-4.38-1.18l-.31-.18-3.12.82.83-3.04-.2-.32A8.16 8.16 0 0 1 3.8 12 8.2 8.2 0 1 1 12 20.2zm5.5-5.8c-.3-.15-1.7-.84-1.96-.94-.26-.1-.45-.15-.64.15-.19.29-.74.94-.9 1.13-.17.19-.33.22-.62.07-.29-.15-1.22-.45-2.33-1.43-.86-.77-1.44-1.72-1.6-2.01-.17-.29-.02-.45.13-.6.13-.13.29-.34.44-.51.15-.17.19-.29.29-.48.1-.19.05-.36-.02-.51-.07-.15-.64-1.55-.88-2.12-.23-.55-.47-.48-.64-.49h-.55c-.19 0-.5.07-.76.36-.26.29-1 .98-1 2.38s1.02 2.76 1.17 2.95c.15.19 2.02 3.08 4.9 4.32.68.29 1.22.47 1.63.6.69.22 1.31.19 1.8.11.55-.08 1.7-.69 1.94-1.36.24-.67.24-1.24.17-1.36-.07-.12-.26-.19-.55-.34z"/></svg>
+</a>
+
+<!-- ============ SCRIPTS ============ -->
+<script src="assets/vendor/gsap.min.js"></script>
+<script src="assets/vendor/ScrollTrigger.min.js"></script>
+<script>
+(function(){
+  "use strict";
+
+  /* ---- year ---- */
+  var yEl = document.getElementById('year');
+  if (yEl) yEl.textContent = new Date().getFullYear();
+
+  /* ---- nav: scrolled state + mobile toggle ---- */
+  var nav = document.getElementById('nav');
+  var toggle = document.getElementById('navToggle');
+  var menu = document.getElementById('menu');
+  var onScroll = function(){ nav.classList.toggle('scrolled', window.scrollY > 20); };
+  onScroll(); window.addEventListener('scroll', onScroll, {passive:true});
+  if (toggle){
+    toggle.addEventListener('click', function(){
+      var open = menu.classList.toggle('open');
+      toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+    menu.addEventListener('click', function(e){
+      if (e.target.tagName === 'A'){ menu.classList.remove('open'); toggle.setAttribute('aria-expanded','false'); }
+    });
+  }
+
+  /* ---- floating WhatsApp after some scroll ---- */
+  var wa = document.getElementById('waFloat');
+  var waToggle = function(){ if(wa) wa.classList.toggle('show', window.scrollY > 560); };
+  waToggle(); window.addEventListener('scroll', waToggle, {passive:true});
+
+  /* Fail-safe: if GSAP didn't load for any reason, reveal all content
+     (which is hidden only under the .anim class) and stop here. */
+  var docEl = document.documentElement;
+  if (typeof gsap === 'undefined') { docEl.classList.remove('anim'); return; }
+  if (typeof ScrollTrigger !== 'undefined') gsap.registerPlugin(ScrollTrigger);
+  /* Apply frame-delta fully instead of clamping it. Prevents the hero timeline
+     from stalling (elements stuck hidden) if the tab loads in the background. */
+  gsap.ticker.lagSmoothing(0);
+
+  /* All motion lives inside matchMedia so prefers-reduced-motion users get a
+     fully visible, static page (elements are only hidden via CSS under .anim). */
+  var mm = gsap.matchMedia();
+
+  mm.add('(prefers-reduced-motion: no-preference)', function(){
+
+    /* ----- hero entrance ----- */
+    var tl = gsap.timeline({ defaults:{ ease:'power3.out' } });
+    tl.set('.hero-title', { autoAlpha:1 })
+      .fromTo('.hero-title .line', { yPercent:115 }, { yPercent:0, duration:1, stagger:0.12 })
+      .fromTo('.u-word path', { strokeDashoffset:1 }, { strokeDashoffset:0, duration:0.9, ease:'power2.inOut' }, '-=0.4')
+      .fromTo('.hero [data-hero]:not(.photo-frame)', { autoAlpha:0, y:22 }, { autoAlpha:1, y:0, duration:0.8, stagger:0.12 }, '-=1')
+      .fromTo('.photo-frame', { autoAlpha:0, scale:0.92, y:24 }, { autoAlpha:1, scale:1, y:0, duration:1.1, ease:'power2.out' }, '-=1.1')
+      .fromTo('.chip-float', { autoAlpha:0, scale:0.6 }, { autoAlpha:1, scale:1, duration:0.6, stagger:0.12, ease:'back.out(1.7)' }, '-=0.5');
+
+    /* ----- gentle floating decor ----- */
+    gsap.utils.toArray('[data-float]').forEach(function(el, i){
+      gsap.to(el, {
+        y: (i % 2 ? 16 : -16),
+        x: (i % 3 ? 6 : -6),
+        rotation: (i % 2 ? 2 : -2),
+        duration: 3 + (i % 4) * 0.5,
+        ease:'sine.inOut', repeat:-1, yoyo:true, delay: i * 0.15
+      });
+    });
+
+    /* ----- single-element reveals ----- */
+    gsap.utils.toArray('[data-reveal]').forEach(function(el){
+      gsap.to(el, {
+        autoAlpha:1, y:0, duration:0.9, ease:'power3.out',
+        scrollTrigger:{ trigger:el, start:'top 86%' }
+      });
+    });
+
+    /* ----- staggered group reveals ----- */
+    gsap.utils.toArray('[data-stagger]').forEach(function(group){
+      gsap.to(group.querySelectorAll('[data-item]'), {
+        autoAlpha:1, y:0, duration:0.8, ease:'power3.out', stagger:0.12,
+        scrollTrigger:{ trigger:group, start:'top 82%' }
+      });
+    });
+
+    /* ----- count-up stats ----- */
+    gsap.utils.toArray('[data-count]').forEach(function(el){
+      var end = parseFloat(el.getAttribute('data-count'));
+      var suffix = el.getAttribute('data-suffix') || '';
+      el.textContent = '0' + suffix;
+      var obj = { v: 0 };
+      gsap.to(obj, {
+        v: end, duration:1.6, ease:'power1.out',
+        scrollTrigger:{ trigger:el, start:'top 90%', once:true },
+        onUpdate:function(){ el.textContent = Math.round(obj.v) + suffix; }
+      });
+    });
+
+    return function(){ /* matchMedia auto-reverts tweens & triggers */ };
+  });
+})();
+</script>
+</body>
+</html>

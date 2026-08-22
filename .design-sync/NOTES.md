@@ -1,13 +1,31 @@
 # design-sync notes — anamoraisedu.github.io
 
 This repo is a **static one-page site** (single `index.html` with inlined CSS/JS, no package.json,
-no React, no Storybook). It is synced to claude.ai/design as a **tokens-only design system**:
-stylesheet + fonts, zero components. First sync: 2026-08-21, into project
+no React, no Storybook). It is synced to claude.ai/design as: the stylesheet + fonts, **plus the page's blocks as React
+components** (Nav, Hero, Stats, Sobre, Servicos, Metodo, Trajetoria, Contato, Footer, WhatsAppFloat,
+HomePage — 11, zero props) so the page can be iterated on in Claude Design. First sync 2026-08-21
+(tokens-only), components added the same day, into project
 `fc87db2f-7aff-4b17-8492-82ac5e84166b` ("anamoraisedu.github.io").
 
-## How the package is faked
-- `.design-sync/pkg/` is a tiny npm-shaped package the converter can consume: `package.json`
-  (name `ana-morais-site-styles`), an empty `index.js` entry, and `styles.css` + `fonts/`.
+## How the package is generated
+- `.design-sync/pkg/` is an npm-shaped package the converter consumes: `package.json`
+  (name `ana-morais-site-styles`, main `index.jsx`, types `index.d.ts`), `styles.css` + `fonts/`,
+  and **generated** `src/<Name>.jsx`, `src/assets.js`, `index.jsx`, `index.d.ts`, `docs/<Name>.md`.
+- **HTML → JSX is mechanical** (extract.mjs): `<body>` is split into its top-level elements
+  (sections inside `<main>` are split too), each mapped to a component name via `NAME_BY_KEY`
+  (id → class → tag). **A new top-level block in index.html fails the script until it's added to
+  `NAME_BY_KEY` + `DESCRIPTION`** — by design. Attribute mapping: class→className, for→htmlFor,
+  hyphenated SVG attrs → camelCase, `style="…"` → object, `assets/ana.jpg` → `ANA_PHOTO` data URI
+  (any other `assets/` reference fails loudly). `data-reveal/item/hero/float/count/suffix` (GSAP
+  hooks) are stripped. Newlines between inline text and a tag become `{" "}` so spacing matches HTML.
+  `WhatsAppFloat` gets `.show` added (the page's JS adds it after load).
+- `docs/<Name>.md` carries `category: Site` (→ `components/site/`) and the block's JSX source, so the
+  design agent can fork a block. `guidelinesGlob: []` keeps those docs out of `guidelines/`.
+- `.design-sync/node_modules` is a symlink → `../.ds-sync/node_modules` (gitignored; recreate per
+  clone) so ts-morph finds `@types/react` when parsing `index.d.ts`.
+- Previews (`.design-sync/previews/<Name>.tsx`) are one `Default` cell each. `WhatsAppFloat`'s wraps
+  the FAB in a `transform`ed box so `position:fixed` resolves inside the card. All cards are
+  `cardMode: single` with a per-block viewport (cfg.overrides).
 - `styles.css` is **generated** by `node .design-sync/extract.mjs` (= `cfg.buildCmd`) from the
   `<style>` block of `index.html`. It strips the block between the CSS comments
   `/* ---------- reveal (only when .anim) ---------- */` and `/* ---------- responsive ---------- */`
@@ -40,16 +58,16 @@ DS_CHROMIUM_PATH=/usr/bin/google-chrome node .ds-sync/resync.mjs --config .desig
   system Chrome (or `npx playwright install chromium` inside .ds-sync).
 
 ## Known warns (expected, don't chase)
-- `[DTS_REACT] @types/react not found` — the check looks relative to the package dir, not
-  `--node-modules`. Irrelevant: zero components, no .d.ts to parse.
-- `[ZERO_MATCH] no component exports — treating as tokens-only DS` — that IS the design.
+- `[DTS_REACT]` only appears if the `.design-sync/node_modules` symlink is missing — recreate it.
 - `_ds_bundle.css fonts: … 4 dead @font-face block(s) dropped` — they're relocated to
   `fonts/fonts.css`, which `styles.css` imports.
 - validate `tokens: 21 defined, 20 referenced` — includes the per-element locals
   (`--bg`/`--fg` on .btn, `--accent`/`--accent-ink` on .card); one is only set, never read.
 
 ## Verification done
-- `package-validate.mjs` exits 0 (render check ran with 0 previews, as expected for tokens-only).
+- `package-validate.mjs` exits 0; render check 11/11 clean; every cell graded `good` on the absolute
+  rubric from `_screenshots/review/` (the blocks are the site's own markup, so "plausible" is trivially
+  met — the check is fonts/tokens/layout completeness).
 - Manual fidelity check: a sample page composing nav/section-head/cards/tags/buttons/quote/
   timeline/contato-card against `ds-bundle/styles.css` was screenshotted in headless Chrome and
   matched the live site (fonts load from `fonts/`). Re-do this after any index.html CSS change —
@@ -68,4 +86,7 @@ DS_CHROMIUM_PATH=/usr/bin/google-chrome node .ds-sync/resync.mjs --config .desig
   in index.html, re-run the name check (grep each backticked `.class`/`--token` in
   `ds-bundle/_ds_bundle.css`) and fix the header — a stale name there makes the design agent emit
   unstyled markup.
-- No `_ds_sync.json` render hashes exist (0 components); the anchor only tracks `styleSha`.
+- The bundle inlines the 210 KB photo as a data URI (~316 KB bundle). If the photo changes, the
+  bundle changes — expected.
+- `extract.mjs` parses HTML with regexes. It is exact for THIS page (well-formed, no inline handlers,
+  no `<` in text). If index.html grows inline `onclick=` or unusual markup, check the JSX output.

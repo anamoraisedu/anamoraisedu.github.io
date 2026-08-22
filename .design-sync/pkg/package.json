@@ -1,7 +1,8 @@
 {
   "name": "ana-morais-site-styles",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "private": true,
-  "description": "Tokens-only design-system package for claude.ai/design, generated from ../../index.html by ../extract.mjs",
-  "main": "index.js"
+  "description": "Design-system package for claude.ai/design, generated from ../../index.html by ../extract.mjs: the site's tokens, fonts, and its page blocks as React components",
+  "main": "index.jsx",
+  "types": "index.d.ts"
 }

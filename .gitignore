@@ -5,3 +5,7 @@ ds-bundle/
 .design-sync/learnings/
 .design-sync/node_modules
 .design-sync/pkg/styles.css
+.design-sync/pkg/src/
+.design-sync/pkg/docs/
+.design-sync/pkg/index.jsx
+.design-sync/pkg/index.d.ts

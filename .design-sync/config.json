@@ -3,7 +3,54 @@
   "shape": "package",
   "pkg": "ana-morais-site-styles",
   "globalName": "AnaMoraisSiteStyles",
-  "entry": ".design-sync/pkg/index.js",
+  "entry": ".design-sync/pkg/index.jsx",
   "buildCmd": "node .design-sync/extract.mjs",
-  "readmeHeader": ".design-sync/conventions.md"
+  "readmeHeader": ".design-sync/conventions.md",
+  "overrides": {
+    "Nav": {
+      "cardMode": "single",
+      "viewport": "1280x120"
+    },
+    "Hero": {
+      "cardMode": "single",
+      "viewport": "1280x820"
+    },
+    "Stats": {
+      "cardMode": "single",
+      "viewport": "1280x260"
+    },
+    "Sobre": {
+      "cardMode": "single",
+      "viewport": "1280x900"
+    },
+    "Servicos": {
+      "cardMode": "single",
+      "viewport": "1280x760"
+    },
+    "Metodo": {
+      "cardMode": "single",
+      "viewport": "1280x760"
+    },
+    "Trajetoria": {
+      "cardMode": "single",
+      "viewport": "1280x900"
+    },
+    "Contato": {
+      "cardMode": "single",
+      "viewport": "1280x760"
+    },
+    "Footer": {
+      "cardMode": "single",
+      "viewport": "1280x160"
+    },
+    "WhatsAppFloat": {
+      "cardMode": "single",
+      "viewport": "400x200"
+    },
+    "HomePage": {
+      "cardMode": "single",
+      "viewport": "1280x1600"
+    }
+  },
+  "guidelinesGlob": []
 }

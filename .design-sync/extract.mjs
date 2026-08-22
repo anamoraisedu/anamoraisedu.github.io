@@ -1,15 +1,17 @@
 #!/usr/bin/env node
-// Builds the tokens-only design-system package under .design-sync/pkg/ from
-// the site's single source of truth, index.html:
-//   • pkg/styles.css  ← the page's <style> block, minus the GSAP-gated
-//                       ".anim …" reveal rules (inert without the page script
-//                       and misleading to a design agent), prefixed with
-//                       @font-face rules pointing at pkg/fonts/.
-//   • pkg/fonts/*.woff2 ← Google Fonts latin subsets for the families the
-//                       page loads. Downloaded ONLY when a file is missing
-//                       (the files are committed, so a normal run is offline).
+// Builds the design-system package under .design-sync/pkg/ from the site's
+// single source of truth, index.html. Nothing here is hand-written twice:
+//   • pkg/styles.css   ← the page's <style> block, minus the GSAP-gated ".anim …"
+//                        reveal rules, prefixed with @font-face rules for pkg/fonts/.
+//   • pkg/fonts/*.woff2 ← Google Fonts latin subsets (downloaded only when missing).
+//   • pkg/src/<Name>.jsx ← one React component per top-level block of <body>
+//                        (Nav, Hero, …, Footer, WhatsAppFloat) + HomePage composing
+//                        them: the page's own markup converted 1:1 to JSX.
+//   • pkg/src/assets.js ← the profile photo as a data URI (ANA_PHOTO).
+//   • pkg/index.jsx, pkg/index.d.ts ← the package entry + type contract.
+//   • pkg/docs/<Name>.md ← per-component doc (group + the JSX source to fork).
 // Run from the repo root: node .design-sync/extract.mjs
-import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';
+import { existsSync, mkdirSync, readFileSync, readdirSync, rmSync, writeFileSync } from 'node:fs';
 import { dirname, join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
@@ -17,55 +19,46 @@ const HERE = dirname(fileURLToPath(import.meta.url));
 const REPO = resolve(HERE, '..');
 const PKG = join(HERE, 'pkg');
 const FONTS_DIR = join(PKG, 'fonts');
+const SRC_DIR = join(PKG, 'src');
+const DOCS_DIR = join(PKG, 'docs');
+const fail = (msg) => { console.error(`[extract] ${msg}`); process.exit(1); };
 
 // Families the page loads (mirrors the Google Fonts <link> in index.html).
-// Weight ranges are the variable-font axes requested there.
 const FONTS = [
   { family: 'Fraunces', style: 'normal', weight: '400 700', file: 'fraunces-normal-latin.woff2' },
   { family: 'Fraunces', style: 'italic', weight: '400 600', file: 'fraunces-italic-latin.woff2' },
   { family: 'Nunito Sans', style: 'normal', weight: '300 800', file: 'nunito-sans-normal-latin.woff2' },
   { family: 'Nunito Sans', style: 'italic', weight: '400 600', file: 'nunito-sans-italic-latin.woff2' },
 ];
-// A modern-browser UA makes Google return woff2 variable fonts per subset.
 const UA = 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120 Safari/537.36';
 
 const html = readFileSync(join(REPO, 'index.html'), 'utf8');
 
 // ── 1. page CSS ────────────────────────────────────────────────────────────
 const styleBlocks = [...html.matchAll(/<style>([\s\S]*?)<\/style>/g)];
-if (styleBlocks.length !== 1) {
-  console.error(`[extract] expected exactly one <style> block in index.html, found ${styleBlocks.length}`);
-  process.exit(1);
-}
+if (styleBlocks.length !== 1) fail(`expected exactly one <style> block in index.html, found ${styleBlocks.length}`);
 let css = styleBlocks[0][1];
 const REVEAL_START = '/* ---------- reveal (only when .anim) ---------- */';
 const REVEAL_END = '/* ---------- responsive ---------- */';
 const a = css.indexOf(REVEAL_START), b = css.indexOf(REVEAL_END);
-if (a < 0 || b < 0 || b < a) {
-  console.error('[extract] reveal-block markers not found in index.html CSS — update REVEAL_START/REVEAL_END in extract.mjs');
-  process.exit(1);
-}
+if (a < 0 || b < 0 || b < a) fail('reveal-block markers not found in index.html CSS — update REVEAL_START/REVEAL_END');
 css = css.slice(0, a) + css.slice(b);
-// Dedent the two-space indentation the <style> block carries.
 css = css.split('\n').map((l) => l.replace(/^  /, '')).join('\n').trim() + '\n';
 
 // ── 2. fonts ───────────────────────────────────────────────────────────────
 const missing = FONTS.filter((f) => !existsSync(join(FONTS_DIR, f.file)));
 if (missing.length) {
   const link = html.match(/href="(https:\/\/fonts\.googleapis\.com\/css2\?[^"]+)"/)?.[1]?.replace(/&amp;/g, '&');
-  if (!link) { console.error('[extract] Google Fonts <link> not found in index.html'); process.exit(1); }
+  if (!link) fail('Google Fonts <link> not found in index.html');
   console.error(`[extract] ${missing.length} font file(s) missing — fetching from Google Fonts`);
   const gcss = await (await fetch(link, { headers: { 'User-Agent': UA } })).text();
-  // Blocks are preceded by a "/* <subset> */" comment; keep the latin ones.
   const blocks = [...gcss.matchAll(/\/\* (\w[\w-]*) \*\/\s*@font-face\s*\{([^}]+)\}/g)]
-    .filter((m) => m[1] === 'latin')
-    .map((m) => m[2]);
+    .filter((m) => m[1] === 'latin').map((m) => m[2]);
   mkdirSync(FONTS_DIR, { recursive: true });
   for (const f of missing) {
-    const body = blocks.find((bd) =>
-      bd.includes(`font-family: '${f.family}'`) && bd.includes(`font-style: ${f.style}`));
+    const body = blocks.find((bd) => bd.includes(`font-family: '${f.family}'`) && bd.includes(`font-style: ${f.style}`));
     const url = body?.match(/url\(([^)]+\.woff2)\)/)?.[1];
-    if (!url) { console.error(`[extract] no latin woff2 for ${f.family} ${f.style} in Google CSS`); process.exit(1); }
+    if (!url) fail(`no latin woff2 for ${f.family} ${f.style} in Google CSS`);
     const buf = Buffer.from(await (await fetch(url, { headers: { 'User-Agent': UA } })).arrayBuffer());
     writeFileSync(join(FONTS_DIR, f.file), buf);
     console.error(`  fonts/${f.file} (${(buf.length / 1024).toFixed(0)} KB)`);
@@ -74,15 +67,197 @@ if (missing.length) {
 const fontFaces = FONTS.map((f) =>
   `@font-face{font-family:"${f.family}";font-style:${f.style};font-weight:${f.weight};font-display:swap;src:url("./fonts/${f.file}") format("woff2")}`,
 ).join('\n');
-
-// ── 3. write ───────────────────────────────────────────────────────────────
-const out = [
+writeFileSync(join(PKG, 'styles.css'), [
   '/* GENERATED by .design-sync/extract.mjs from index.html — do not edit; edit index.html and re-run. */',
-  '',
-  '/* ---------- fonts (Fraunces = display serif, Nunito Sans = body) ---------- */',
-  fontFaces,
-  '',
-  css,
-].join('\n');
-writeFileSync(join(PKG, 'styles.css'), out);
-console.error(`[extract] pkg/styles.css written (${(out.length / 1024).toFixed(0)} KB)`);
+  '', '/* ---------- fonts (Fraunces = display serif, Nunito Sans = body) ---------- */', fontFaces, '', css,
+].join('\n'));
+console.error('[extract] pkg/styles.css written');
+
+// ── 3. body → blocks ───────────────────────────────────────────────────────
+const body = html.match(/<body>([\s\S]*?)<\/body>/)?.[1];
+if (!body) fail('<body> not found');
+const VOID = new Set(['img', 'br', 'hr', 'input', 'meta', 'link', 'source', 'wbr']);
+const TAG_RX = /<(\/?)([a-zA-Z][\w-]*)((?:\s+[^\s=>/]+(?:=(?:"[^"]*"|'[^']*'|[^\s>]+))?)*)\s*(\/?)>/g;
+// Split `markup` into its top-level elements (comments/scripts/text skipped).
+function topLevel(markup) {
+  const out = [];
+  let depth = 0, start = -1;
+  const clean = markup.replace(/<!--[\s\S]*?-->/g, '').replace(/<script[\s\S]*?<\/script>/g, '');
+  for (const m of clean.matchAll(TAG_RX)) {
+    const [whole, close, tag, , self] = m;
+    const isVoid = VOID.has(tag.toLowerCase()) || !!self;
+    if (!close) {
+      if (depth === 0) start = m.index;
+      if (!isVoid) depth++;
+      if (isVoid && depth === 0) { out.push(clean.slice(start, m.index + whole.length)); start = -1; }
+    } else {
+      depth--;
+      if (depth < 0) fail(`unbalanced </${tag}>`);
+      if (depth === 0) { out.push(clean.slice(start, m.index + whole.length)); start = -1; }
+    }
+  }
+  if (depth !== 0) fail('unbalanced markup in <body>');
+  return out;
+}
+// Which block becomes which component. Keyed by the opening tag's id, else class, else tag.
+const NAME_BY_KEY = {
+  'id:nav': 'Nav', 'id:inicio': 'Hero', 'class:stats': 'Stats', 'id:sobre': 'Sobre', 'id:servicos': 'Servicos',
+  'id:metodo': 'Metodo', 'id:trajetoria': 'Trajetoria', 'id:contato': 'Contato', 'tag:footer': 'Footer',
+  'id:waFloat': 'WhatsAppFloat',
+};
+const DESCRIPTION = {
+  Nav: 'Barra de navegação sticky: monograma + nome, links de âncora e CTA "Agendar conversa".',
+  Hero: 'Abertura da home: eyebrow, título Fraunces com palavra sublinhada, lead, ações, selo de confiança e a foto da Ana com chips flutuantes.',
+  Stats: 'Faixa de números (3 estatísticas) sobre fundo paper-2.',
+  Sobre: 'Seção "Sobre": texto biográfico, assinatura italic, chips de tags e painel .facts com formação/idiomas.',
+  Servicos: 'Seção "Serviços": três cards (s1 sage / s2 honey / s3 clay) com ícone, texto, público e link.',
+  Metodo: 'Seção "Método": pull-quote grande + lista de princípios com ícone.',
+  Trajetoria: 'Seção "Trajetória": timeline de experiências (.tl-item).',
+  Contato: 'Seção "Contato": card escuro com título, lead, ações e lista de canais (WhatsApp, e-mail, LinkedIn).',
+  Footer: 'Rodapé: marca, links e nota.',
+  WhatsAppFloat: 'Botão flutuante fixo do WhatsApp (renderizado já visível: classe .show aplicada).',
+  HomePage: 'A home completa, na ordem do site: Nav, Hero, Stats, Sobre, Servicos, Metodo, Trajetoria, Contato, Footer, WhatsAppFloat.',
+};
+const keyOf = (block) => {
+  const open = block.match(TAG_RX)?.[0] ?? '';
+  const id = open.match(/\sid="([^"]+)"/)?.[1];
+  const cls = open.match(/\sclass="([^"]+)"/)?.[1]?.split(/\s+/)[0];
+  const tag = open.match(/^<([a-zA-Z][\w-]*)/)[1].toLowerCase();
+  return (id && NAME_BY_KEY[`id:${id}`] && `id:${id}`) || (cls && NAME_BY_KEY[`class:${cls}`] && `class:${cls}`) || `tag:${tag}`;
+};
+const blocks = [];
+for (const blk of topLevel(body)) {
+  if (/^<main\b/.test(blk)) {
+    const inner = blk.replace(/^<main[^>]*>/, '').replace(/<\/main>\s*$/, '');
+    for (const s of topLevel(inner)) blocks.push({ block: s, inMain: true });
+  } else blocks.push({ block: blk, inMain: false });
+}
+const components = blocks.map(({ block, inMain }) => {
+  const name = NAME_BY_KEY[keyOf(block)];
+  if (!name) fail(`unmapped top-level block: ${block.slice(0, 60)}… — add it to NAME_BY_KEY`);
+  return { name, block, inMain };
+});
+const seen = new Set();
+for (const c of components) { if (seen.has(c.name)) fail(`duplicate block for ${c.name}`); seen.add(c.name); }
+
+// ── 4. HTML → JSX ──────────────────────────────────────────────────────────
+const camel = (s) => s.replace(/-([a-z])/g, (_, ch) => ch.toUpperCase());
+const ATTR_RENAME = { class: 'className', for: 'htmlFor', tabindex: 'tabIndex' };
+const DROP_ATTRS = /^data-(reveal|item|hero|float|count|suffix)$/; // GSAP animation hooks only
+function jsxAttrs(raw, ctx) {
+  const out = [];
+  for (const m of raw.matchAll(/([^\s=]+)(?:=(?:"([^"]*)"|'([^']*)'|([^\s>]+)))?/g)) {
+    const name = m[1];
+    const val = m[2] ?? m[3] ?? m[4];
+    if (DROP_ATTRS.test(name)) continue;
+    let jn = ATTR_RENAME[name] ?? (/^(aria|data)-/.test(name) ? name : camel(name));
+    if (val === undefined) { out.push(jn); continue; }
+    if (name === 'style') {
+      const obj = val.split(';').map((d) => d.trim()).filter(Boolean).map((d) => {
+        const i = d.indexOf(':');
+        return `${camel(d.slice(0, i).trim())}: ${JSON.stringify(d.slice(i + 1).trim())}`;
+      });
+      out.push(`style={{ ${obj.join(', ')} }}`);
+      continue;
+    }
+    if (name === 'src' && val === 'assets/ana.jpg') { ctx.usesPhoto = true; out.push('src={ANA_PHOTO}'); continue; }
+    if (name === 'src' || name === 'href') {
+      if (/^assets\//.test(val)) fail(`unhandled local asset reference ${val} — extend extract.mjs`);
+    }
+    out.push(`${jn}=${JSON.stringify(val)}`);
+  }
+  return out.length ? ' ' + out.join(' ') : '';
+}
+function toJsx(block, ctx) {
+  let s = block.replace(/<!--[\s\S]*?-->/g, '');
+  // Text nodes: escape JSX braces.
+  s = s.replace(/>([^<]*)</g, (_, t) => '>' + t.replace(/[{}]/g, (c) => `{'${c}'}`) + '<');
+  s = s.replace(TAG_RX, (whole, close, tag, attrs, self) => {
+    if (close) return `</${tag}>`;
+    const selfClose = VOID.has(tag.toLowerCase()) || !!self;
+    return `<${tag}${jsxAttrs(attrs, ctx)}${selfClose ? ' />' : '>'}`;
+  });
+  // Whitespace fidelity: HTML renders a newline between inline text and a tag
+  // as one space; JSX drops it. Re-insert an explicit space there (leading /
+  // trailing spaces in a line box collapse in CSS, so this is never visible
+  // where HTML wouldn't show it).
+  s = s.replace(/([^\s>])[ \t]*\n(\s*)(<)/g, '$1{" "}\n$2$3');
+  s = s.replace(/(>)[ \t]*\n(\s*)([^\s<])/g, '$1\n$2{" "}$3');
+  // Steady-state classes the page's JS adds after load.
+  if (ctx.name === 'WhatsAppFloat') s = s.replace('className="wa-float"', 'className="wa-float show"');
+  return s;
+}
+const indent = (s, n) => s.split('\n').map((l) => (l.trim() ? ' '.repeat(n) + l : l)).join('\n');
+
+rmSync(SRC_DIR, { recursive: true, force: true });
+rmSync(DOCS_DIR, { recursive: true, force: true });
+mkdirSync(SRC_DIR, { recursive: true });
+mkdirSync(DOCS_DIR, { recursive: true });
+
+// Photo → data URI module.
+const photo = readFileSync(join(REPO, 'assets', 'ana.jpg'));
+writeFileSync(join(SRC_DIR, 'assets.js'),
+  `// GENERATED from assets/ana.jpg — the profile photo, inlined so designs need no asset pipeline.\nexport const ANA_PHOTO = ${JSON.stringify(`data:image/jpeg;base64,${photo.toString('base64')}`)};\n`);
+
+const jsxSources = {};
+for (const c of components) {
+  const ctx = { name: c.name, usesPhoto: false };
+  const jsx = toJsx(c.block, ctx);
+  jsxSources[c.name] = jsx;
+  const imports = [`import * as React from 'react';`, ...(ctx.usesPhoto ? [`import { ANA_PHOTO } from './assets.js';`] : [])];
+  writeFileSync(join(SRC_DIR, `${c.name}.jsx`), [
+    '// GENERATED by .design-sync/extract.mjs from index.html — edit index.html, not this file.',
+    ...imports, '',
+    `/** ${DESCRIPTION[c.name] ?? ''} Sem props: o conteúdo é o do site. */`,
+    `export function ${c.name}() {`, '  return (', indent(jsx, 4), '  );', '}', '',
+  ].join('\n'));
+}
+// HomePage composes the blocks in page order, keeping <main> around the sections.
+const order = components.map((c) => c.name);
+const mainIdx = components.map((c, i) => (c.inMain ? i : -1)).filter((i) => i >= 0);
+const homeLines = [];
+components.forEach((c, i) => {
+  if (c.inMain && i === mainIdx[0]) homeLines.push('      <main>');
+  homeLines.push(`${c.inMain ? '        ' : '      '}<${c.name} />`);
+  if (c.inMain && i === mainIdx[mainIdx.length - 1]) homeLines.push('      </main>');
+});
+writeFileSync(join(SRC_DIR, 'HomePage.jsx'), [
+  '// GENERATED by .design-sync/extract.mjs from index.html — edit index.html, not this file.',
+  `import * as React from 'react';`,
+  ...order.map((n) => `import { ${n} } from './${n}.jsx';`), '',
+  `/** ${DESCRIPTION.HomePage} Sem props. */`,
+  'export function HomePage() {', '  return (', '    <>', ...homeLines, '    </>', '  );', '}', '',
+].join('\n'));
+const all = [...order, 'HomePage'];
+writeFileSync(join(PKG, 'index.jsx'), [
+  '// GENERATED by .design-sync/extract.mjs — package entry.',
+  ...all.map((n) => `export { ${n} } from './src/${n}.jsx';`),
+  `export { ANA_PHOTO } from './src/assets.js';`, '',
+].join('\n'));
+writeFileSync(join(PKG, 'index.d.ts'), [
+  '// GENERATED by .design-sync/extract.mjs — type contract for the design agent.',
+  `import type * as React from 'react';`, '',
+  ...all.flatMap((n) => [
+    `/** ${DESCRIPTION[n] ?? ''} */`,
+    `export interface ${n}Props {}`,
+    `export declare const ${n}: React.FC<${n}Props>;`, '',
+  ]),
+  '/** A foto de perfil (assets/ana.jpg) como data URI — usada pelo Hero. */',
+  'export declare const ANA_PHOTO: string;', '',
+].join('\n'));
+// Docs: group + the JSX to fork when a design needs a variation of a block.
+for (const n of all) {
+  const src = n === 'HomePage'
+    ? readFileSync(join(SRC_DIR, 'HomePage.jsx'), 'utf8').split('\n').slice(3 + order.length).join('\n')
+    : jsxSources[n];
+  writeFileSync(join(DOCS_DIR, `${n}.md`), [
+    '---', 'category: Site', '---', '',
+    `# ${n}`, '', DESCRIPTION[n] ?? '', '',
+    'Bloco da home de anamoraisedu.github.io convertido 1:1 para JSX. **Não recebe props** — renderiza o conteúdo',
+    'real do site. Para uma variação (outro texto, outra ordem, menos cards), **copie o JSX abaixo e edite** —',
+    'é só marcação sobre as classes do design system (ver README: vocabulário de classes e tokens).', '',
+    '```jsx', n === 'HomePage' ? src.trim() : `<${n} />`, '```', '',
+    ...(n === 'HomePage' ? [] : ['## Fonte (para forkar)', '', '```jsx', src.trim(), '```', '']),
+  ].join('\n'));
+}
+console.error(`[extract] ${all.length} components → pkg/src/ (${order.join(', ')}, HomePage); docs/ + index.jsx + index.d.ts written`);

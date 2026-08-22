@@ -1,12 +1,20 @@
 # Ana Morais site styles — how to build with this design system
 
-This DS ships **no React components**: `window.AnaMoraisSiteStyles` is empty. Everything is plain
-HTML/JSX styled by `styles.css` (tokens + fonts + one class vocabulary extracted from the live site
-anamoraisedu.github.io, a Brazilian pedagogue's one-page site). Copy is **pt-BR**.
+The design system is the live site anamoraisedu.github.io (a Brazilian pedagogue's one-page site).
+It ships two things: **the page's blocks as React components** (`window.AnaMoraisSiteStyles.*`) and
+the **stylesheet + class vocabulary** they are built from. Copy is **pt-BR**.
+
+## Components (the page, block by block)
+`Nav`, `Hero`, `Stats`, `Sobre`, `Servicos`, `Metodo`, `Trajetoria`, `Contato`, `Footer`,
+`WhatsAppFloat`, and `HomePage` (all of them in page order). **None take props** — each renders the
+real site content. Use them to reproduce or rearrange the existing page; for a variation (new copy,
+fewer cards, another section) **fork the block's JSX from its `.prompt.md`** and edit it — it is plain
+markup on the classes below, nothing else. `ANA_PHOTO` (the profile photo as a data URI) is also
+exported for `<img src={ANA_PHOTO} />`.
 
 ## Setup
 - Link `styles.css` once. It pulls `fonts/fonts.css` (Fraunces + Nunito Sans, self-hosted) and
-  `_ds_bundle.css` (every rule below). No provider, no wrapper, no JS needed.
+  `_ds_bundle.css` (every rule below). No provider, no wrapper, no theme setup.
 - `body` already paints the warm paper background + grain overlay and sets Nunito Sans; `h1`–`h4`
   are Fraunces automatically. Don't set `font-family` yourself.
 - Breakpoints are baked in: grids collapse at 960px, cards/stats go single-column at 680px.
@@ -19,7 +27,7 @@ anamoraisedu.github.io, a Brazilian pedagogue's one-page site). Copy is **pt-BR*
 | Accents | `--clay`/`--clay-2` primary CTA · `--honey`/`--honey-2` highlight · `--sage`/`--sage-2` calm/success |
 | Shape/motion | `--radius` (26px cards), `--shadow`, `--shadow-sm`, `--maxw` (1180px), `--ease` |
 
-## Class vocabulary (the only legitimate class names)
+## Class vocabulary (the only legitimate class names — what the components are made of)
 - **Layout**: `.wrap` (centered max-width container — wrap every section's content), `.section`
   (vertical rhythm), `.section-head` (+ `.eyebrow`, `h2`, `.lead`), `.cards` (3-col grid),
   `.stats` > `.stats-grid` > `.stat` (`.num`, `.lbl`), `.sobre-grid`, `.metodo-grid`, `.hero` >

@@ -1,0 +1,9 @@
+{
+  "projectId": "fc87db2f-7aff-4b17-8492-82ac5e84166b",
+  "shape": "package",
+  "pkg": "ana-morais-site-styles",
+  "globalName": "AnaMoraisSiteStyles",
+  "entry": ".design-sync/pkg/index.js",
+  "buildCmd": "node .design-sync/extract.mjs",
+  "readmeHeader": ".design-sync/conventions.md"
+}

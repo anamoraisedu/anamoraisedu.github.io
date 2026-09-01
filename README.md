@@ -54,6 +54,11 @@ Tudo o que aparece na página está no `index.html`, em texto simples e em portu
 Substitua o arquivo `assets/ana.jpg` mantendo o mesmo nome (ideal: retrato, rosto na parte
 superior). Ajuste fino de enquadramento em `.photo-frame img { object-position: ... }`.
 
+### Mensagens do WhatsApp
+Os botões de WhatsApp abrem o app com o texto já preenchido, um por tipo de
+atendimento. Os textos e as respostas automáticas do WhatsApp Business estão
+documentados em [`WHATSAPP.md`](WHATSAPP.md).
+
 ### Dados de contato (já preenchidos)
 - WhatsApp/telefone: **(19) 99413-9785** → links `https://wa.me/5519994139785`
 - E-mail: **anamorais.educa@gmail.com**

@@ -56,7 +56,7 @@ superior). Ajuste fino de enquadramento em `.photo-frame img { object-position: 
 
 ### Dados de contato (já preenchidos)
 - WhatsApp/telefone: **(19) 99413-9785** → links `https://wa.me/5519994139785`
-- E-mail: **Anamoraisalves93@gmail.com**
+- E-mail: **anamorais.educa@gmail.com**
 - LinkedIn: `ana-claudia-moraisalves-420373364`
 
 ## Acessibilidade

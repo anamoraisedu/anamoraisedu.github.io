@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Ana Claudia Morais — Pedagoga | Atendimento online, reforço e acolhimento</title>
-<meta name="description" content="Ana Claudia Morais, pedagoga formada pela Unicamp em Itatiba–SP. Atendimento pedagógico online, aulas de reforço para Educação Infantil e Fundamental I e serviços de acolhimento com práticas inclusivas, metodologias ativas e Comunicação Não Violenta. Também roteirista, produtora e apresentadora de conteúdo educativo — do Radiocast Betinho ao podcast Histórias Negras.">
+<meta name="description" content="Ana Claudia Morais, pedagoga formada pela Unicamp em Itatiba–SP. Atendimento pedagógico online, aulas de reforço para Educação Infantil e Fundamental I e serviços de acolhimento com práticas inclusivas, metodologias ativas e Comunicação Não Violenta. Também roteirista, produtora e apresentadora de conteúdo educativo — do RádioCast Betinho ao podcast Histórias Negras.">
 <meta name="author" content="Ana Claudia Morais Alves">
 <link rel="canonical" href="https://anamoraisedu.github.io/">
 
@@ -255,18 +255,48 @@
   /* ---------- mídia / produção ---------- */
   .midia{background:var(--paper-2); border-block:1px solid var(--line)}
   .midia .card p + p{margin-top:.55rem}
+  .midia .sub{margin-top:-.55rem; font-size:.9rem; font-weight:700; color:var(--accent-ink)}
   .midia .roles{display:flex; flex-wrap:wrap; gap:.4rem; margin-top:.2rem}
   .midia .roles span{
     font-size:.78rem; font-weight:700; letter-spacing:.01em; padding:.3rem .65rem;
     border-radius:100px; background:color-mix(in srgb,var(--accent) 16%,#fff);
     color:var(--accent-ink); border:1px solid color-mix(in srgb,var(--accent) 30%,#fff);
   }
+  .midia .eps{display:flex; flex-direction:column; gap:.45rem; margin-top:auto; padding-top:.7rem}
+  .midia .eps a{
+    display:flex; align-items:center; gap:.5rem; padding:.55rem .8rem; border-radius:12px;
+    font-size:.87rem; font-weight:700; color:var(--ink); background:#fff;
+    border:1px solid var(--line); transition:transform .3s var(--ease), border-color .3s, background .3s;
+  }
+  .midia .eps a svg{width:17px;height:17px;flex:none;color:#1DB954}
+  .midia .eps a:hover{background:color-mix(in srgb,var(--accent) 10%,#fff); border-color:color-mix(in srgb,var(--accent) 45%,#fff); transform:translateX(3px)}
+  .midia .eps .show{font-size:.8rem; font-weight:700; color:var(--ink-soft); padding-left:.15rem}
+  .midia .eps .show a{display:inline; padding:0; border:0; background:none; color:var(--accent-ink); text-decoration:underline; text-underline-offset:3px}
   .midia .meta{
     display:flex; flex-wrap:wrap; gap:.4rem 1rem; margin-top:.1rem;
     font-size:.85rem; font-weight:700; color:var(--ink-soft);
   }
   .midia .meta span{display:inline-flex; align-items:center; gap:.35rem}
   .midia .meta svg{width:15px;height:15px;color:var(--accent-ink)}
+
+  .epslist{margin-top:clamp(2.2rem,4vw,3.2rem)}
+  .epslist > h3{font-family:"Fraunces"; font-weight:600; font-size:1.5rem; margin-bottom:.35rem}
+  .epslist > p{color:var(--ink-soft); font-size:.95rem; margin-bottom:1.4rem; max-width:60ch}
+  .epgrid{display:grid; grid-template-columns:1fr 1fr; gap:1.3rem}
+  .epgroup{
+    background:var(--card); border:1px solid var(--line); border-radius:20px;
+    padding:1.35rem 1.4rem; box-shadow:var(--shadow-sm);
+    display:flex; flex-direction:column; gap:.45rem;
+  }
+  .epgroup h4{font-family:"Nunito Sans"; font-weight:800; font-size:1.02rem}
+  .epgroup .src{color:var(--ink-soft); font-size:.85rem; margin-bottom:.5rem}
+  .epgroup a{
+    display:flex; align-items:center; gap:.5rem; padding:.55rem .8rem; border-radius:12px;
+    font-size:.87rem; font-weight:700; color:var(--ink); background:var(--paper);
+    border:1px solid var(--line); transition:transform .3s var(--ease), border-color .3s, background .3s;
+  }
+  .epgroup a svg{width:17px;height:17px;flex:none;color:#1DB954}
+  .epgroup a:hover{background:#fff; border-color:var(--honey); transform:translateX(3px)}
 
   /* ---------- trajetória ---------- */
   .traj{border-block:1px solid var(--line)}
@@ -335,6 +365,7 @@
 
   /* ---------- responsive ---------- */
   @media (max-width:960px){
+    .epgrid{grid-template-columns:1fr}
     .hero-grid{grid-template-columns:1fr; gap:2.5rem}
     .hero-figure{order:-1; width:min(78%,360px)}
     .hero .lead{max-width:52ch}
@@ -449,8 +480,9 @@
         <h2 data-reveal>Educar é acolher e caminhar<br>junto com cada estudante.</h2>
       </div>
       <p data-reveal>Sou pedagoga formada pela <strong>Universidade Estadual de Campinas (Unicamp)</strong>, com atuação na Educação Infantil, no Ensino Fundamental I e na formação de adolescentes e jovens aprendizes. Ao longo desses anos, construí práticas pedagógicas <strong>inclusivas</strong>, acompanhei a aprendizagem de perto e cuidei do relacionamento com as famílias.</p>
-      <p data-reveal>Também levo a educação para fora da sala de aula: sou <strong>roteirista, produtora, editora e apresentadora</strong> de conteúdo educativo — do rádio ao vivo ao podcast — e cuidei por anos da comunicação digital de um cursinho popular. É a mesma escuta da sala de aula, em outro formato.</p>
-      <p data-reveal>Atualmente curso pós-graduação em <strong>Psicopedagogia</strong> e em <strong>Gestão de Pessoas e Psicologia Organizacional</strong>. Acredito em uma educação acolhedora, inovadora e centrada no desenvolvimento integral — onde cada criança aprende no seu tempo, com confiança e protagonismo.</p>
+      <p data-reveal>Também levo a educação para fora da sala de aula. Sou <strong>roteirista, produtora, editora e apresentadora</strong> de conteúdo educativo — do rádio ao vivo ao podcast — e fui responsável pela <strong>comunicação digital dos cursinhos populares</strong> onde atuei. A escuta é a mesma da sala de aula, apenas em outro formato.</p>
+      <p data-reveal>Acredito que a <strong>foto e o vídeo eternizam momentos e histórias</strong>. Não por acaso a <strong>história oral</strong> vem ganhando força e espaço na sociedade e na comunidade acadêmica: dar registro a quem conta é, também, um jeito de ensinar.</p>
+      <p data-reveal>Atualmente curso pós-graduação em <strong>Psicopedagogia</strong> e em <strong>Gestão de Pessoas e Psicologia Organizacional</strong>. Defendo uma educação acolhedora, inovadora e centrada no desenvolvimento integral — onde cada criança aprende no seu tempo, com confiança e protagonismo.</p>
       <div class="chips" data-reveal>
         <span class="tag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Práticas inclusivas</span>
         <span class="tag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Escuta e acolhimento</span>
@@ -563,8 +595,11 @@
     <div class="cards" data-stagger>
       <article class="card s2" data-item>
         <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="2" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0"/><path d="M12 18v4"/><path d="M8 22h8"/></svg></div>
-        <h3>Radiocast Betinho</h3>
-        <p>Programa de rádio <strong>ao vivo</strong>, no ar duas vezes por semana, que coordenei e apresentei em parceria com os estudantes bolsistas da Unicamp no <strong>Cursinho Popular Herbert de Souza</strong>. Depois virou podcast — alguns episódios seguem disponíveis no Spotify.</p>
+        <h3>RádioCast Betinho</h3>
+        <p class="sub">Programa <em>Conexões</em> · Unicamp + Cursinho Popular Herbert de Souza</p>
+        <p>Projeto de rádio nascido da parceria entre a <strong>Unicamp</strong> e o <strong>Cursinho Popular Herbert de Souza</strong>, na Vila União, região sudoeste de Campinas — o nome é uma homenagem ao sociólogo <strong>Betinho</strong>, Herbert de Souza.</p>
+        <p>O programa <strong>Conexões</strong> ia ao ar <strong>ao vivo</strong>, duas vezes por semana, sob minha coordenação e apresentação, ao lado dos estudantes bolsistas. Depois virou podcast: agroecologia, iniciação científica, políticas ambientais, masculinidades negras e as vivências de quem faz o cursinho acontecer.</p>
+        <p>Fomos ao ar pela <strong>Rádio Tainã</strong>, da <strong>Casa de Cultura Tainã</strong>. O cursinho e a Tainã integram a <strong>Rede Mocambos</strong>, coletivo que constrói sabedoria digital em territórios periféricos, quilombolas e indígenas.</p>
         <div class="meta">
           <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 12h2M8 7v10M12 4v16M16 8v8M20 11h1"/></svg> 2× por semana, ao vivo</span>
           <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4.5" width="18" height="16" rx="3"/><path d="M8 2.5v4M16 2.5v4M3 10h18"/></svg> 8 meses no ar</span>
@@ -572,17 +607,22 @@
         <div class="roles">
           <span>Roteiro</span><span>Produção</span><span>Edição</span><span>Apresentação</span>
         </div>
-        <div class="who"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm4.6 14.44a.75.75 0 0 1-1.03.25c-2.82-1.72-6.37-2.11-10.55-1.15a.75.75 0 1 1-.33-1.46c4.57-1.05 8.5-.6 11.66 1.33.35.22.46.68.25 1.03zm1.23-2.75a.94.94 0 0 1-1.29.31c-3.23-1.98-8.15-2.56-11.97-1.4a.94.94 0 0 1-.55-1.79c4.37-1.33 9.79-.69 13.5 1.59.44.27.58.85.31 1.29zm.11-2.86C14.07 8.53 7.7 8.32 4.4 9.33a1.12 1.12 0 1 1-.65-2.15c3.79-1.15 10.82-.93 15.09 1.6a1.12 1.12 0 1 1-1.14 1.93z"/></svg> Episódios no Spotify</div>
+        <div class="eps">
+          <a href="https://open.spotify.com/show/7lwwgbuvd25rldKas5pXlI" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm4.6 14.44a.75.75 0 0 1-1.03.25c-2.82-1.72-6.37-2.11-10.55-1.15a.75.75 0 1 1-.33-1.46c4.57-1.05 8.5-.6 11.66 1.33.35.22.46.68.25 1.03zm1.23-2.75a.94.94 0 0 1-1.29.31c-3.23-1.98-8.15-2.56-11.97-1.4a.94.94 0 0 1-.55-1.79c4.37-1.33 9.79-.69 13.5 1.59.44.27.58.85.31 1.29zm.11-2.86C14.07 8.53 7.7 8.32 4.4 9.33a1.12 1.12 0 1 1-.65-2.15c3.79-1.15 10.82-.93 15.09 1.6a1.12 1.12 0 1 1-1.14 1.93z"/></svg> Ouvir <em>Conexões</em> no Spotify</a>
+        </div>
       </article>
 
       <article class="card s1" data-item>
         <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M4 14v-2a8 8 0 0 1 16 0v2"/><rect x="2.5" y="13.5" width="5" height="7" rx="2.5"/><rect x="16.5" y="13.5" width="5" height="7" rx="2.5"/></svg></div>
         <h3>Histórias Negras</h3>
-        <p>Podcast do <strong>Centro de Memória da Unicamp</strong>, nascido de pesquisa histórica e documental em projeto de extensão universitária. Da apuração nos acervos ao episódio publicado.</p>
+        <p>Como bolsista do projeto <em>Histórias negras: registros orais para a desinvisibilização da presença negra em Campinas (1930–1970)</em>, do Serviço de Difusão Cultural do <strong>Centro de Memória da Unicamp</strong>.</p>
+        <p>Produzi <strong>sete episódios</strong> em duas séries — os registros orais com moradores e a série <em>Voz negra e popular</em>, sobre <strong>Laudelina de Campos Melo</strong>, lançada na 9ª Semana Nacional de Arquivos. Da apuração nos acervos e da escuta dos entrevistados ao episódio publicado.</p>
         <div class="roles">
           <span>Pesquisa</span><span>Roteiro</span><span>Produção</span>
         </div>
-        <div class="who"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm4.6 14.44a.75.75 0 0 1-1.03.25c-2.82-1.72-6.37-2.11-10.55-1.15a.75.75 0 1 1-.33-1.46c4.57-1.05 8.5-.6 11.66 1.33.35.22.46.68.25 1.03zm1.23-2.75a.94.94 0 0 1-1.29.31c-3.23-1.98-8.15-2.56-11.97-1.4a.94.94 0 0 1-.55-1.79c4.37-1.33 9.79-.69 13.5 1.59.44.27.58.85.31 1.29zm.11-2.86C14.07 8.53 7.7 8.32 4.4 9.33a1.12 1.12 0 1 1-.65-2.15c3.79-1.15 10.82-.93 15.09 1.6a1.12 1.12 0 1 1-1.14 1.93z"/></svg> Disponível no Spotify</div>
+        <div class="eps">
+          <a href="https://open.spotify.com/show/40mk3cUsb3q3UKNzZt3Gvp" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm4.6 14.44a.75.75 0 0 1-1.03.25c-2.82-1.72-6.37-2.11-10.55-1.15a.75.75 0 1 1-.33-1.46c4.57-1.05 8.5-.6 11.66 1.33.35.22.46.68.25 1.03zm1.23-2.75a.94.94 0 0 1-1.29.31c-3.23-1.98-8.15-2.56-11.97-1.4a.94.94 0 0 1-.55-1.79c4.37-1.33 9.79-.69 13.5 1.59.44.27.58.85.31 1.29zm.11-2.86C14.07 8.53 7.7 8.32 4.4 9.33a1.12 1.12 0 1 1-.65-2.15c3.79-1.15 10.82-.93 15.09 1.6a1.12 1.12 0 1 1-1.14 1.93z"/></svg> Ouvir no CMUCast</a>
+        </div>
       </article>
 
       <article class="card s3" data-item>
@@ -594,6 +634,28 @@
         </div>
         <div class="who"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4.5" width="18" height="16" rx="3"/><path d="M8 2.5v4M16 2.5v4M3 10h18"/></svg> 2020 · 2023</div>
       </article>
+    </div>
+
+    <div class="epslist" data-reveal>
+      <h3>Episódios que produzi</h3>
+      <p>Sete episódios publicados no <strong>CMUCast</strong>, o podcast do Centro de Memória da Unicamp, dentro do especial <em>Histórias Negras</em>.</p>
+      <div class="epgrid" data-stagger>
+        <div class="epgroup" data-item>
+          <h4>Registros orais</h4>
+          <p class="src">Vozes negras de Campinas, 1930–1970</p>
+          <a href="https://open.spotify.com/episode/4N7Or6U1CVbKBPwV4qoGb3" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm4.6 14.44a.75.75 0 0 1-1.03.25c-2.82-1.72-6.37-2.11-10.55-1.15a.75.75 0 1 1-.33-1.46c4.57-1.05 8.5-.6 11.66 1.33.35.22.46.68.25 1.03zm1.23-2.75a.94.94 0 0 1-1.29.31c-3.23-1.98-8.15-2.56-11.97-1.4a.94.94 0 0 1-.55-1.79c4.37-1.33 9.79-.69 13.5 1.59.44.27.58.85.31 1.29zm.11-2.86C14.07 8.53 7.7 8.32 4.4 9.33a1.12 1.12 0 1 1-.65-2.15c3.79-1.15 10.82-.93 15.09 1.6a1.12 1.12 0 1 1-1.14 1.93z"/></svg> Ep. 1 · Celso Níger</a>
+          <a href="https://open.spotify.com/episode/7pkQ96S2y7Yx0kvRbaY4MZ" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm4.6 14.44a.75.75 0 0 1-1.03.25c-2.82-1.72-6.37-2.11-10.55-1.15a.75.75 0 1 1-.33-1.46c4.57-1.05 8.5-.6 11.66 1.33.35.22.46.68.25 1.03zm1.23-2.75a.94.94 0 0 1-1.29.31c-3.23-1.98-8.15-2.56-11.97-1.4a.94.94 0 0 1-.55-1.79c4.37-1.33 9.79-.69 13.5 1.59.44.27.58.85.31 1.29zm.11-2.86C14.07 8.53 7.7 8.32 4.4 9.33a1.12 1.12 0 1 1-.65-2.15c3.79-1.15 10.82-.93 15.09 1.6a1.12 1.12 0 1 1-1.14 1.93z"/></svg> Ep. 2 · Luciana Garcia</a>
+          <a href="https://open.spotify.com/episode/7u7yHzwFra8vtoDctbCLnn" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm4.6 14.44a.75.75 0 0 1-1.03.25c-2.82-1.72-6.37-2.11-10.55-1.15a.75.75 0 1 1-.33-1.46c4.57-1.05 8.5-.6 11.66 1.33.35.22.46.68.25 1.03zm1.23-2.75a.94.94 0 0 1-1.29.31c-3.23-1.98-8.15-2.56-11.97-1.4a.94.94 0 0 1-.55-1.79c4.37-1.33 9.79-.69 13.5 1.59.44.27.58.85.31 1.29zm.11-2.86C14.07 8.53 7.7 8.32 4.4 9.33a1.12 1.12 0 1 1-.65-2.15c3.79-1.15 10.82-.93 15.09 1.6a1.12 1.12 0 1 1-1.14 1.93z"/></svg> Ep. 3 · Airton Pereira Júnior</a>
+          <a href="https://open.spotify.com/episode/0zguK1w8XIAPgZ63CQ7ECw" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm4.6 14.44a.75.75 0 0 1-1.03.25c-2.82-1.72-6.37-2.11-10.55-1.15a.75.75 0 1 1-.33-1.46c4.57-1.05 8.5-.6 11.66 1.33.35.22.46.68.25 1.03zm1.23-2.75a.94.94 0 0 1-1.29.31c-3.23-1.98-8.15-2.56-11.97-1.4a.94.94 0 0 1-.55-1.79c4.37-1.33 9.79-.69 13.5 1.59.44.27.58.85.31 1.29zm.11-2.86C14.07 8.53 7.7 8.32 4.4 9.33a1.12 1.12 0 1 1-.65-2.15c3.79-1.15 10.82-.93 15.09 1.6a1.12 1.12 0 1 1-1.14 1.93z"/></svg> Ep. 4 · Marcelo Lima</a>
+        </div>
+        <div class="epgroup" data-item>
+          <h4>Série “Voz negra e popular”</h4>
+          <p class="src">Laudelina de Campos Melo, que organizou as trabalhadoras domésticas e criou o Baile Pérola Negra</p>
+          <a href="https://open.spotify.com/episode/09A8q3ZEQdt9Ak8RJzECzP" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm4.6 14.44a.75.75 0 0 1-1.03.25c-2.82-1.72-6.37-2.11-10.55-1.15a.75.75 0 1 1-.33-1.46c4.57-1.05 8.5-.6 11.66 1.33.35.22.46.68.25 1.03zm1.23-2.75a.94.94 0 0 1-1.29.31c-3.23-1.98-8.15-2.56-11.97-1.4a.94.94 0 0 1-.55-1.79c4.37-1.33 9.79-.69 13.5 1.59.44.27.58.85.31 1.29zm.11-2.86C14.07 8.53 7.7 8.32 4.4 9.33a1.12 1.12 0 1 1-.65-2.15c3.79-1.15 10.82-.93 15.09 1.6a1.12 1.12 0 1 1-1.14 1.93z"/></svg> Ep. 1 · Laudelina de Campos Melo</a>
+          <a href="https://open.spotify.com/episode/3Hoiwlv2kPHGJyMzPhN5VE" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm4.6 14.44a.75.75 0 0 1-1.03.25c-2.82-1.72-6.37-2.11-10.55-1.15a.75.75 0 1 1-.33-1.46c4.57-1.05 8.5-.6 11.66 1.33.35.22.46.68.25 1.03zm1.23-2.75a.94.94 0 0 1-1.29.31c-3.23-1.98-8.15-2.56-11.97-1.4a.94.94 0 0 1-.55-1.79c4.37-1.33 9.79-.69 13.5 1.59.44.27.58.85.31 1.29zm.11-2.86C14.07 8.53 7.7 8.32 4.4 9.33a1.12 1.12 0 1 1-.65-2.15c3.79-1.15 10.82-.93 15.09 1.6a1.12 1.12 0 1 1-1.14 1.93z"/></svg> Ep. 2 · Laudelina de Campos Melo</a>
+          <a href="https://open.spotify.com/episode/18pKGgNqcy62q16gmn7f6m" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm4.6 14.44a.75.75 0 0 1-1.03.25c-2.82-1.72-6.37-2.11-10.55-1.15a.75.75 0 1 1-.33-1.46c4.57-1.05 8.5-.6 11.66 1.33.35.22.46.68.25 1.03zm1.23-2.75a.94.94 0 0 1-1.29.31c-3.23-1.98-8.15-2.56-11.97-1.4a.94.94 0 0 1-.55-1.79c4.37-1.33 9.79-.69 13.5 1.59.44.27.58.85.31 1.29zm.11-2.86C14.07 8.53 7.7 8.32 4.4 9.33a1.12 1.12 0 1 1-.65-2.15c3.79-1.15 10.82-.93 15.09 1.6a1.12 1.12 0 1 1-1.14 1.93z"/></svg> Ep. 3 · Laudelina de Campos Melo</a>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -652,7 +714,7 @@
         <div>
           <h4>Coordenadora de Extensão</h4>
           <div class="org">Cursinho Popular Herbert de Souza</div>
-          <p>Coordenação de professores e bolsistas da Unicamp, gestão de projetos de extensão e parcerias comunitárias, e implantação de cursinho popular no Assentamento Marielle Vive. Também criei e apresentei o <a href="#midia">Radiocast Betinho</a> e cuidei das redes do cursinho entre 2020 e 2023.</p>
+          <p>Coordenação de professores e bolsistas da Unicamp, gestão de projetos de extensão e parcerias comunitárias, e implantação de cursinho popular no Assentamento Marielle Vive. Também coordenei e apresentei o programa <em>Conexões</em>, do <a href="#midia">RádioCast Betinho</a>, e cuidei das redes do cursinho entre 2020 e 2023.</p>
         </div>
       </div>
     </div>

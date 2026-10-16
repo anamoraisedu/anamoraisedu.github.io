@@ -442,7 +442,7 @@
 
   <div class="montanha">
     <div class="legenda-alt">
-      <span>3.500 m</span><span>2.000 m</span><span>1.000 m</span><span>0 m</span>
+      <span id="alt1">3.500 m</span><span id="alt2">2.000 m</span><span id="alt3">1.000 m</span><span>0 m</span>
     </div>
     <svg id="mapa" viewBox="0 0 1200 660" role="img"
          aria-label="Corte da cordilheira do Chile, do oceano Pacífico aos 3.330 metros, com as sete aulas da trilha">
@@ -456,6 +456,10 @@
         </linearGradient>
         <linearGradient id="longe" x1="0" y1="0" x2="0" y2="1">
           <stop offset="0" stop-color="#B99BD6"/><stop offset="1" stop-color="#8B6FB0"/>
+        </linearGradient>
+        <linearGradient id="terraAR" x1="0" y1="0" x2="1" y2="0">
+          <stop offset="0" stop-color="#B9A8D2"/><stop offset=".2" stop-color="#C9B49B"/>
+          <stop offset=".45" stop-color="#A9D978"/><stop offset="1" stop-color="#8FD96F"/>
         </linearGradient>
       </defs>
 
@@ -512,43 +516,87 @@
 
       <!-- ===== cenário Argentina + Uruguai ===== -->
       <g id="cenaAR" style="display:none">
-        <circle cx="160" cy="92" r="38" fill="#FFC233" opacity=".9"/>
-        <path d="M0 470 L60 170 L120 300 L180 110 L250 330 L330 250 L400 420 L470 404 L470 660 L0 660 Z" fill="#9C8FB8"/>
-        <path d="M180 110 L234 178 L126 178 Z M60 170 L106 226 L14 226 Z" fill="#FFFFFF" opacity=".92"/>
-        <path d="M400 420 C 520 438, 640 448, 760 454 C 850 458, 920 462, 966 470 L966 660 L400 660 Z" fill="#8FD96F"/>
-        <path d="M400 420 C 520 438, 640 448, 760 454 C 850 458, 920 462, 966 470" fill="none" stroke="#6BB84F" stroke-width="4"/>
-        <g fill="#6BB84F" opacity=".5">
-          <ellipse cx="540" cy="522" rx="74" ry="12"/><ellipse cx="730" cy="566" rx="92" ry="14"/>
-          <ellipse cx="900" cy="534" rx="70" ry="12"/><ellipse cx="640" cy="614" rx="104" ry="15"/>
+        <!-- sol -->
+        <circle cx="1080" cy="104" r="40" fill="#FFC233" opacity=".9"/>
+        <g stroke="#FFC233" stroke-width="6" stroke-linecap="round" opacity=".7">
+          <path d="M1080 38 v-16"/><path d="M1080 186 v16"/><path d="M1014 104 h-16"/><path d="M1146 104 h16"/>
+          <path d="M1034 58 l-11-11"/><path d="M1126 150 l11 11"/><path d="M1126 58 l11-11"/><path d="M1034 150 l-11 11"/>
+        </g>
+        <!-- nuvens -->
+        <g opacity=".85" fill="#fff">
+          <ellipse cx="420" cy="140" rx="44" ry="22"/><ellipse cx="462" cy="148" rx="30" ry="17"/>
+          <ellipse cx="760" cy="196" rx="38" ry="19"/><ellipse cx="798" cy="202" rx="26" ry="14"/>
+        </g>
+
+        <!-- cordilheira ao fundo -->
+        <path d="M0 330 L70 190 L140 270 L210 150 L280 300 L360 250 L430 340 L430 660 L0 660 Z" fill="#A99BC4" opacity=".55"/>
+
+        <!-- o corte do terreno: Aconcágua → pampa → rio -->
+        <path id="soloAR"
+              d="M0 420 C 30 380, 64 352, 92 342 C 140 300, 172 170, 210 122
+                 C 258 190, 300 380, 352 470 C 410 496, 456 502, 502 506
+                 C 560 510, 606 512, 640 512 L 800 514 L 800 660 L 0 660 Z"
+              fill="url(#terraAR)"/>
+        <path d="M210 122 C 226 144, 240 190, 250 220 C 230 210, 196 210, 176 220 C 188 182, 199 146, 210 122 Z" fill="#FFFFFF" opacity=".95"/>
+        <path d="M92 342 C 102 352, 112 370, 118 384 C 104 378, 82 378, 68 386 C 76 368, 84 352, 92 342 Z" fill="#FFFFFF" opacity=".9"/>
+        <path d="M140 270 L168 306 L112 306 Z" fill="#FFFFFF" opacity=".5"/>
+
+        <!-- delta: ilhas formando-se -->
+        <g fill="#8FD96F">
+          <ellipse cx="716" cy="540" rx="34" ry="11"/><ellipse cx="762" cy="560" rx="28" ry="9"/>
+          <ellipse cx="700" cy="578" rx="24" ry="8"/>
+        </g>
+        <g fill="#6BB84F" opacity=".7">
+          <ellipse cx="716" cy="536" rx="22" ry="7"/><ellipse cx="762" cy="556" rx="18" ry="6"/>
+        </g>
+
+        <!-- o rio -->
+        <path d="M800 514 L800 660 L978 660 L978 516 Z" fill="#B08A5E"/>
+        <path d="M800 514 L978 516" stroke="#C9A376" stroke-width="5" fill="none"/>
+        <g stroke="#CDB08A" stroke-width="4" fill="none" opacity=".7" stroke-linecap="round">
+          <path d="M826 566 q16-9 32 0 q16 9 32 0"/><path d="M856 616 q16-9 32 0 q16 9 32 0"/>
+        </g>
+
+        <!-- margem uruguaia -->
+        <path d="M978 516 L1200 512 L1200 660 L978 660 Z" fill="#7FCF63"/>
+        <path d="M978 516 L1200 512" stroke="#5EA846" stroke-width="4" fill="none"/>
+        <g fill="#5EA846" opacity=".45"><ellipse cx="1060" cy="560" rx="46" ry="10"/><ellipse cx="1150" cy="588" rx="38" ry="9"/></g>
+
+        <!-- vegetação da pampa -->
+        <g fill="#4EA336">
+          <ellipse cx="470" cy="516" rx="13" ry="7"/><ellipse cx="540" cy="520" rx="15" ry="8"/>
+          <ellipse cx="640" cy="528" rx="13" ry="7"/>
         </g>
         <g fill="#6B4A33">
-          <ellipse cx="480" cy="548" rx="13" ry="8"/><rect x="472" y="553" width="3" height="9"/><rect x="485" y="553" width="3" height="9"/>
-          <ellipse cx="800" cy="594" rx="13" ry="8"/><rect x="792" y="599" width="3" height="9"/><rect x="805" y="599" width="3" height="9"/>
+          <ellipse cx="500" cy="548" rx="12" ry="7"/><rect x="493" y="553" width="3" height="8"/><rect x="505" y="553" width="3" height="8"/>
+          <ellipse cx="596" cy="572" rx="12" ry="7"/><rect x="589" y="577" width="3" height="8"/><rect x="601" y="577" width="3" height="8"/>
         </g>
-        <path d="M966 470 C 968 426, 992 402, 1026 394 L1106 380 L1106 660 L966 660 Z" fill="#B08A5E"/>
-        <path d="M966 470 C 968 426, 992 402, 1026 394 L1106 380" fill="none" stroke="#C9A376" stroke-width="5"/>
-        <g stroke="#CDB08A" stroke-width="4" fill="none" opacity=".75" stroke-linecap="round">
-          <path d="M1046 508 q16-9 32 0 q16 9 32 0"/><path d="M1100 566 q16-9 32 0 q16 9 32 0"/><path d="M1038 618 q16-9 32 0 q16 9 32 0"/>
+
+        <!-- legendas do terreno -->
+        <g font-family="Fredoka, sans-serif" font-weight="600" opacity=".68">
+          <text x="180" y="628" text-anchor="middle" font-size="18" fill="#6B5A88">ANDES</text>
+          <text x="500" y="628" text-anchor="middle" font-size="19" fill="#3F7D2C">PAMPA</text>
+          <text x="736" y="612" text-anchor="middle" font-size="14" fill="#3F7D2C">DELTA</text>
+          <text x="889" y="420" text-anchor="middle" font-size="14" fill="#8A6A44">RÍO DE LA PLATA</text>
+          <text x="889" y="440" text-anchor="middle" font-size="11.5" fill="#8A6A44">o rio mais largo do mundo</text>
+          <text x="1090" y="630" text-anchor="middle" font-size="18" fill="#2F6B22">URUGUAI</text>
         </g>
-        <path d="M1106 400 C 1130 384, 1160 376, 1200 370 L1200 660 L1106 660 Z" fill="#7FCF63"/>
-        <g fill="#5EA846" opacity=".45"><ellipse cx="1176" cy="480" rx="44" ry="10"/><ellipse cx="1180" cy="548" rx="36" ry="9"/></g>
-        <g font-family="Fredoka, sans-serif" font-weight="600" opacity=".7">
-          <text x="1155" y="634" text-anchor="middle" font-size="18" fill="#2F6B22">URUGUAI</text>
-          <text x="620" y="640" text-anchor="middle" font-size="21" fill="#3F7D2C">PAMPA</text>
-          <text x="150" y="626" text-anchor="middle" font-size="19" fill="#6B5A88">ANDES</text>
-          <text x="1030" y="340" text-anchor="middle" font-size="15" fill="#8A6A44">RÍO DE LA PLATA</text>
-          <text x="1030" y="358" text-anchor="middle" font-size="12" fill="#8A6A44">o rio mais largo do mundo</text>
-        </g>
-        <path id="trilhaAR" d="M112 158 C 170 240, 220 330, 285 394 C 360 450, 450 480, 530 494
-                                C 620 506, 700 490, 762 480 C 820 470, 858 462, 890 456
-                                C 940 448, 980 442, 1004 438 C 1060 428, 1104 414, 1162 414"
+
+        <!-- a trilha: desce e depois corre plana -->
+        <path id="trilhaAR"
+              d="M92 354 C 140 312, 172 182, 210 134 C 258 200, 300 388, 352 478
+                 C 410 504, 456 510, 502 514 C 560 518, 606 520, 640 520
+                 L 752 520 L 874 520 L 1002 520 L 1122 520"
               fill="none" stroke="#FFFFFF" stroke-width="9" stroke-linecap="round" stroke-dasharray="2 22" opacity=".95"/>
+
+        <!-- o ferry -->
         <g id="ferry">
           <path d="M-24 0 L24 0 L18 14 L-18 14 Z" fill="#F2682A"/>
           <rect x="-14" y="-12" width="28" height="12" rx="3" fill="#FFFDF7"/>
           <rect x="-9" y="-9" width="6" height="6" fill="#9FC6E0"/><rect x="3" y="-9" width="6" height="6" fill="#9FC6E0"/>
           <path d="M0 -12 L0 -22" stroke="#3B3B3B" stroke-width="2.4"/>
         </g>
+
         <g id="pontosAR"></g>
         <g id="estacoesAR"></g>
       </g>
@@ -1049,7 +1097,48 @@ var AR_CONTEXTO = [
 ];
 
 var AR_TRILHA = [
-{ id:'a7', planejada:true, n:'01', alt:'6.961 m', altn:'o teto da América', cor:'var(--andino-2)', ico:'neve', x:110, y:150,
+{ id:'a0', n:'01', alt:'3.025 m', altn:'onde paramos', cor:'var(--andino-2)', ico:'neve', x:92, y:342, filma:true,
+  h:'O que há do outro lado da montanha?', local:'Valle Nevado · a mesma cordilheira do Chile',
+  res:'A temporada do Chile terminou aqui ao lado, em El Colorado. Valle Nevado fica no mesmo cordão de montanhas — e é daqui que a gente atravessa para o outro lado e começa a descer.',
+  pontos:[
+  { k:'geo', t:'A mesma montanha, dois países',
+    r:'El Colorado, Farellones e Valle Nevado dividem o mesmo vale.',
+    d:'São três centros vizinhos, a poucos quilômetros uns dos outros, na mesma bacia. Dali a cordilheira segue para leste e vira fronteira. O que separa Chile e Argentina não é um acidente geográfico isolado: é a linha das cumeeiras mais altas, acordada entre os dois países no século XIX.',
+    q:'Como Chile e Argentina decidiram onde ficaria a fronteira?',
+    a:'Seguindo a linha das cumeeiras mais altas da cordilheira',
+    b:'Dividindo o território ao meio em linha reta',
+    ok:'a',
+    porque:'O critério foi o divisor de águas: de que lado a água escorre. É um limite que a própria montanha desenha — e que gerou disputas justamente onde a cumeeira e o divisor não coincidem.',
+    quase:'Linhas retas existem em outras fronteiras da América, mas aqui o critério foi o relevo — o que torna a montanha, literalmente, o documento.' },
+  { k:'cul', t:'Neve como economia',
+    r:'Três estações numa bacia só, dependentes do mesmo inverno.',
+    d:'A temporada de esqui move hotéis, escolas, transporte e milhares de empregos sazonais. Em 2026 a seca deixou 90% das pistas fechadas até julho, e a chegada de dois sistemas frontais mudou a temporada em dias. Depender da neve é depender de um ano que nem sempre vem.',
+    q:'Por que uma seca na cordilheira afeta muito mais do que o esqui?',
+    a:'Porque a mesma neve abastece cidades e lavouras dos dois lados',
+    b:'Porque só reduz o número de turistas',
+    ok:'a',
+    porque:'A neve é o reservatório do ano seguinte. Sem ela, falta água em Santiago, nas parreiras do Maipo e — do outro lado — nos canais de Mendoza. A montanha é a caixa d\u2019água de dois países.',
+    quase:'O turismo sente primeiro e de forma visível, mas o efeito maior é hídrico: milhões de pessoas e a agricultura de dois países dependem desse degelo.' },
+  { k:'ori', t:'A travessia é antiga',
+    r:'Os passos dos Andes eram rota conhecida muito antes da fronteira existir.',
+    d:'Povos dos dois lados cruzavam para trocar, negociar e casar, e a rede de caminhos incas chegava até aqui. A fronteira entre Chile e Argentina é do século XIX; a travessia é milenar. Fazer esse caminho hoje é repetir um trajeto que já era rotina.',
+    q:'A cordilheira separava os povos originários?',
+    a:'Não: havia passos conhecidos e rotas de troca regulares',
+    b:'Sim: era intransponível antes da estrada',
+    ok:'a',
+    porque:'A montanha ligava. É a mesma conclusão da aula do Cajón del Maipo — e os laços de parentesco entre comunidades dos dois lados seguem reconhecidos hoje.',
+    quase:'Atravessar era difícil e sazonal, mas rotineiro. Havia passos mapeados e um calendário para usá-los.' },
+  { k:'lin', t:'Do outro lado, a mesma língua',
+    r:'Cruzar a fronteira não muda o idioma — muda o sotaque.',
+    d:'Espanhol dos dois lados, com diferenças de entonação e vocabulário. Mas há uma mudança concreta: aqui começa o voseo generalizado, que a Argentina e o Uruguai usam no dia a dia e o Chile reserva para registros informais. A língua se transforma por gradiente, não por salto.',
+    q:'O que acontece com a língua ao se cruzar a cordilheira?',
+    a:'Muda gradualmente, em sotaque e vocabulário',
+    b:'Muda completamente, de um idioma para outro',
+    ok:'a',
+    porque:'Fronteiras políticas são linhas; fronteiras linguísticas são faixas. O espanhol vai mudando aos poucos, e o viajante percebe antes pelo ouvido do que pela placa.',
+    quase:'Os dois países falam espanhol. O que muda é o modo — pronúncia, tratamento, gíria — e isso muda aos poucos.' }]},
+
+{ id:'a7', planejada:true, n:'02', alt:'6.961 m', altn:'o teto da América', cor:'var(--andino-2)', ico:'neve', x:210, y:122,
   h:'O que há no ponto mais alto fora da Ásia?', local:'Aconcágua · travessia de volta ao Chile',
   res:'6.961 metros. Mais do que o dobro de El Colorado, onde a temporada do Chile terminou. É por esta passagem que a série fecha o círculo e volta.',
   pontos:[
@@ -1090,7 +1179,7 @@ var AR_TRILHA = [
     porque:'Os acidentes maiores do continente já tinham nome. É a mesma lição de Huelén, no Chile: o mapa europeu foi desenhado sobre uma toponímia que já existia.',
     quase:'Os alpinistas registraram e difundiram o nome, mas não o criaram — ele é anterior e de origem indígena.' }]},
 
-{ id:'a6', planejada:true, n:'02', alt:'750 m', altn:'o oásis', cor:'var(--cobre)', ico:'uva', x:285, y:392,
+{ id:'a6', planejada:true, n:'03', alt:'750 m', altn:'o oásis', cor:'var(--cobre)', ico:'uva', x:352, y:470,
   h:'Como se planta num deserto?', local:'Mendoza · pé dos Andes',
   res:'Mendoza chove menos de 250 mm por ano — menos que muitos desertos. E é a maior região vinícola da América do Sul, graças a um sistema de canais herdado dos huarpe.',
   pontos:[
@@ -1131,7 +1220,7 @@ var AR_TRILHA = [
     porque:'Um nome de lugar é a palavra mais repetida de um território. Ele atravessa a troca de idioma porque é mais prático manter do que rebatizar — e por isso vira arquivo.',
     quase:'Proteção legal existe em alguns casos, mas a sobrevivência vem do uso cotidiano, não da norma.' }]},
 
-{ id:'a8', planejada:true, n:'03', alt:'~100 m', altn:'a planície', cor:'var(--valle-2)', ico:'uva', x:530, y:492,
+{ id:'a8', planejada:true, n:'04', alt:'~100 m', altn:'a planície', cor:'var(--valle-2)', ico:'uva', x:502, y:504,
   h:'O que uma planície sem fim faz com um povo?', local:'A pampa · interior argentino',
   res:'Centenas de quilômetros sem um morro. A terra mais fértil do continente produziu riqueza, um tipo humano — o gaucho — e um país que depende do que planta.',
   pontos:[
@@ -1172,7 +1261,7 @@ var AR_TRILHA = [
     porque:'A região que simboliza a Argentina leva um nome indígena — mesmo padrão da chupalla chilena. O símbolo nacional é mestiço desde o vocabulário.',
     quase:'O espanhol adotou a palavra, mas a origem é quíchua — língua andina, anterior à chegada europeia.' }]},
 
-{ id:'a1', filma:true, n:'04', alt:'0 m', altn:'o porto', cor:'var(--pacifico)', ico:'onda', x:762, y:478,
+{ id:'a1', filma:true, n:'05', alt:'0 m', altn:'o porto', cor:'var(--pacifico)', ico:'onda', x:640, y:512,
   h:'Como um porto vira um país?', local:'Buenos Aires · Río de la Plata',
   res:'Entre 1870 e 1930 a Argentina recebeu milhões de imigrantes. Quase todos entraram por aqui — e a cidade, a comida e o jeito de falar nunca mais foram os mesmos.',
   pontos:[
@@ -1213,7 +1302,7 @@ var AR_TRILHA = [
     porque:'A fertilidade está na pampa, no interior. O que a capital tem é a porta: o porto por onde tudo o que a terra produz atravessa para o mundo.',
     quase:'A terra mais fértil fica a centenas de quilômetros daqui. A cidade é a saída, não a origem.' }]},
 
-{ id:'a5', filma:true, n:'05', alt:'0 m', altn:'o delta', cor:'var(--valle)', ico:'agua', x:890, y:452, filma:true,
+{ id:'a5', filma:true, n:'06', alt:'0 m', altn:'o delta', cor:'var(--valle)', ico:'agua', x:752, y:512, filma:true,
   h:'Onde um rio constrói terra nova?', local:'Tigre · delta do Paraná',
   res:'O Paraná chega carregando a terra que arrancou de milhares de quilômetros acima. Aqui ele a deposita — e fabrica ilhas. O delta cresce alguns metros por ano, e há gente morando nessa terra em formação.',
   pontos:[
@@ -1254,7 +1343,7 @@ var AR_TRILHA = [
     porque:'Quem chega nomeia com as palavras que trouxe. Faltando termo para a onça, usaram o do animal mais parecido que conheciam — e o engano virou nome oficial.',
     quase:'Nunca houve tigres asiáticos soltos aqui. O que havia era onça-pintada, abundante na região.' }]},
 
-{ id:'a2', filma:true, n:'06', alt:'travessia', altn:'o ferry', cor:'var(--sol)', ico:'onda', x:1004, y:436, ferry:true,
+{ id:'a2', filma:true, n:'07', alt:'travessia', altn:'o ferry', cor:'var(--sol)', ico:'onda', x:874, y:512, ferry:true,
   h:'Como se atravessa um rio que parece mar?', local:'Río de la Plata · ferry para o Uruguai',
   res:'Uma hora e pouco de barco, e muda o país. Mas a paisagem que se vê da popa é a mesma — porque a fronteira é política, não geográfica.',
   pontos:[
@@ -1295,7 +1384,7 @@ var AR_TRILHA = [
     porque:'As duas margens formavam uma região só antes de serem dois países. A língua guardou a unidade que a política dividiu.',
     quase:'Não é cópia: é origem comum. Os dois falares vêm do mesmo caldo rio-platense, anterior às independências.' }]},
 
-{ id:'a3', filma:true, n:'07', alt:'0 m', altn:'a outra margem', cor:'var(--valle)', ico:'camada', x:1124, y:404, uy:true,
+{ id:'a3', filma:true, n:'08', alt:'0 m', altn:'a outra margem', cor:'var(--valle)', ico:'camada', x:1002, y:512, uy:true,
   h:'Por que uma cidade pequena foi disputada por dois impérios?', local:'Colonia del Sacramento · Uruguai',
   res:'Fundada pelos portugueses em 1680, em frente a Buenos Aires. Trocou de mãos oito vezes entre Portugal e Espanha — e o calçamento ainda mostra de quem era cada rua.',
   pontos:[
@@ -1336,7 +1425,7 @@ var AR_TRILHA = [
     porque:'Tratados entre impérios dividiram terras habitadas sem consultar quem as habitava. As missões guarani foram desfeitas exatamente por esse acerto.',
     quase:'Os impérios trocaram territórios entre si e saíram com ganhos e perdas — mas quem perdeu a terra foram os povos que viviam nela.' }]},
 
-{ id:'a4', planejada:true, n:'08', alt:'0 m', altn:'a capital', cor:'var(--pacifico-2)', ico:'fala', x:1162, y:534, uy:true,
+{ id:'a4', planejada:true, n:'09', alt:'0 m', altn:'a capital', cor:'var(--pacifico-2)', ico:'fala', x:1122, y:512, uy:true,
   h:'Como um país pequeno constrói identidade própria?', local:'Montevidéu · Uruguai',
   res:'Entre dois gigantes, o Uruguai construiu identidade pela diferença: educação pública, laicidade antes de quase todo mundo, e um futebol que virou símbolo nacional.',
   pontos:[
@@ -1379,13 +1468,13 @@ var AR_TRILHA = [
 ];
 
 var AR_CURIOS = [
- {ar:1, ic:'onda',   x:1090, y:530, c:'#B08A5E', q:'220 km de largura', t:'O Río de la Plata é o rio mais largo do mundo. De uma margem não se vê a outra — por isso a travessia é de barco, não de ponte.'},
+ {ar:1, ic:'onda',   x:880, y:580, c:'#B08A5E', q:'220 km de largura', t:'O Río de la Plata é o rio mais largo do mundo. De uma margem não se vê a outra — por isso a travessia é de barco, não de ponte.'},
  {ar:1, ic:'gente',  x:620,  y:390, c:'#3C7FBF', q:'Um país refeito',  t:'Entre 1870 e 1930 a Argentina recebeu milhões de imigrantes. Buenos Aires virou uma cidade onde a maioria havia nascido em outro lugar.'},
  {ar:1, ic:'fala',   x:880,  y:560, c:'#F2682A', q:'Laburar',          t:'Trabalhar, em gíria portenha, vem do italiano lavorare. O lunfardo entrou pelo porto e ficou.'},
  {ar:1, ic:'batata', x:430,  y:560, c:'#4EA336', q:'Pampa',            t:'A palavra que nomeia a região mais argentina de todas é quíchua: significa planície.'},
- {ar:1, ic:'rolo',   x:1150, y:470, c:'#2F6B22', q:'Oito donos',       t:'Colonia del Sacramento trocou de mãos oito vezes entre Portugal e Espanha. O calçamento ainda mostra quem pavimentou cada rua.'},
+ {ar:1, ic:'rolo',   x:1100, y:470, c:'#2F6B22', q:'Oito donos',       t:'Colonia del Sacramento trocou de mãos oito vezes entre Portugal e Espanha. O calçamento ainda mostra quem pavimentou cada rua.'},
  {ar:1, ic:'morro',  x:200,  y:290, c:'#6B2F93', q:'6.961 metros',     t:'O Aconcágua é o pico mais alto fora da Ásia — o dobro de El Colorado, onde a temporada do Chile terminou.'},
- {ar:1, ic:'condor', x:1010, y:250, c:'#8A6A44', q:'Aqui ele não vem', t:'Não há condores no Uruguai: sem cordilheira, falta a corrente de ar que a ave precisa para planar. A fauna segue o relevo, não a fronteira.'},
+ {ar:1, ic:'condor', x:1000, y:300, c:'#8A6A44', q:'Aqui ele não vem', t:'Não há condores no Uruguai: sem cordilheira, falta a corrente de ar que a ave precisa para planar. A fauna segue o relevo, não a fronteira.'},
  {ar:1, ic:'barra',  x:330,  y:500, c:'#C94A12', q:'Água é lei',       t:'Mendoza chove menos de 250 mm por ano. A irrigação vem de canais huarpe, anteriores à chegada espanhola.'}
 ];
 
@@ -1842,9 +1931,11 @@ var AR_CURIOS = [
   /* ---------------- troca de temporada ---------------- */
   var CENA = {
     cl: {cena:'#cenaCL', base:CONTEXTO, trilha:TRILHA, tb:'🎒 Antes de subir', tt:'⛰️ A escalada',
-         rod:'Toque nos <strong>ícones espalhados pela paisagem</strong> e descubra mais sobre o Chile!'},
-    ar: {cena:'#cenaAR', base:AR_CONTEXTO, trilha:AR_TRILHA, tb:'🎒 Antes de atravessar', tt:'⛵ A travessia',
-         rod:'A descida: do Aconcágua ao Río de la Plata. As paradas <strong>pontilhadas</strong> ainda não foram gravadas — o roteiro delas já está escrito.'}
+         rod:'Toque nos <strong>ícones espalhados pela paisagem</strong> e descubra mais sobre o Chile!',
+         eixo:['3.500 m','2.000 m','1.000 m']},
+    ar: {cena:'#cenaAR', base:AR_CONTEXTO, trilha:AR_TRILHA, tb:'🎒 Antes de descer', tt:'⛷️ A descida',
+         rod:'A descida começa em <strong>Valle Nevado</strong>, ao lado de onde o Chile terminou, e vai até o Río de la Plata. As paradas <strong>pontilhadas</strong> ainda não foram gravadas — o roteiro delas já está escrito.',
+         eixo:['7.000 m','4.500 m','2.000 m']}
   };
   function trocar(t){
     if (t === TEMPORADA) return;
@@ -1855,6 +1946,7 @@ var AR_CURIOS = [
     $('#tit-base').textContent = c.tb;
     $('#tit-trilha').textContent = c.tt;
     $('#rodape').innerHTML = c.rod;
+    if (c.eixo){ $('#alt1').textContent=c.eixo[0]; $('#alt2').textContent=c.eixo[1]; $('#alt3').textContent=c.eixo[2]; }
     desenhaBase(c.base);
     TUDO = c.base.concat(c.trilha);
     pintarContador();
@@ -1884,7 +1976,7 @@ var AR_CURIOS = [
     setInterval(function(){
       t += 0.009;
       var u = (Math.sin(t) + 1) / 2;
-      var x = 972 + u * 120, y = 450 - u * 30 + Math.sin(t*9) * 3;
+      var x = 812 + u * 152, y = 538 + Math.sin(t*9) * 3 + Math.sin(t*9) * 3;
       f.setAttribute('transform','translate('+x.toFixed(1)+','+y.toFixed(1)+') scale('+(f.dataset.e||1)+')');
     }, 40);
   })();

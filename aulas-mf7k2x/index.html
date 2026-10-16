@@ -427,7 +427,11 @@
     </button>
     <button class="tmp" data-t="ar" role="tab" aria-selected="false" type="button" style="--tc:#3C7FBF">
       <span class="bandeira" aria-hidden="true"><svg viewBox="0 0 30 20"><rect width="30" height="20" fill="#74ACDF"/><rect y="6.7" width="30" height="6.6" fill="#fff"/><circle cx="15" cy="10" r="2.4" fill="#F6B40E"/></svg></span>
-      Argentina + Uruguai <span class="tag-prep">em preparação</span>
+      Argentina <span class="tag-prep">em preparação</span>
+    </button>
+    <button class="tmp" data-t="uy" role="tab" aria-selected="false" type="button" style="--tc:#0A8A91">
+      <span class="bandeira" aria-hidden="true"><svg viewBox="0 0 30 20"><rect width="30" height="20" fill="#fff"/><g fill="#0038A8"><rect y="2.2" width="30" height="2.2"/><rect y="6.6" width="30" height="2.2"/><rect y="11" width="30" height="2.2"/><rect y="15.4" width="30" height="2.2"/></g><rect width="11" height="11" fill="#fff"/><circle cx="5.5" cy="5.5" r="2.6" fill="#F6B40E"/></svg></span>
+      Uruguai <span class="tag-prep">em preparação</span>
     </button>
   </div>
 
@@ -460,6 +464,10 @@
         <linearGradient id="terraAR" x1="0" y1="0" x2="1" y2="0">
           <stop offset="0" stop-color="#B9A8D2"/><stop offset=".2" stop-color="#C9B49B"/>
           <stop offset=".45" stop-color="#A9D978"/><stop offset="1" stop-color="#8FD96F"/>
+        </linearGradient>
+        <linearGradient id="aguaUY" x1="0" y1="0" x2="1" y2="0">
+          <stop offset="0" stop-color="#B08A5E"/><stop offset=".42" stop-color="#9AA07A"/>
+          <stop offset=".72" stop-color="#4F9FA8"/><stop offset="1" stop-color="#0FB5BD"/>
         </linearGradient>
       </defs>
 
@@ -520,7 +528,73 @@
       <g id="estacoes"></g>
       </g>
 
-      <!-- ===== cenário Argentina + Uruguai ===== -->
+
+      <!-- ===== cenário Uruguai ===== -->
+      <g id="cenaUY" style="display:none">
+        <circle cx="1090" cy="100" r="40" fill="#FFC233" opacity=".9"/>
+        <g opacity=".8" fill="#fff">
+          <ellipse cx="340" cy="130" rx="46" ry="22"/><ellipse cx="386" cy="138" rx="30" ry="16"/>
+          <ellipse cx="820" cy="178" rx="38" ry="19"/><ellipse cx="856" cy="184" rx="26" ry="14"/>
+        </g>
+
+        <!-- coxilhas: o relevo suave do país -->
+        <path d="M0 330 C 120 300, 200 336, 320 316 C 440 296, 520 334, 640 318
+                 C 760 302, 860 332, 980 320 C 1100 308, 1160 330, 1200 322
+                 L1200 420 L0 420 Z" fill="#A9C98F"/>
+        <path d="M0 360 C 140 340, 240 372, 380 356 C 520 340, 620 374, 760 360
+                 C 900 346, 1020 372, 1200 358 L1200 430 L0 430 Z" fill="#8FBE74"/>
+        <g fill="#6E9E55" opacity=".5">
+          <ellipse cx="200" cy="300" rx="34" ry="14"/><ellipse cx="620" cy="302" rx="40" ry="15"/>
+          <ellipse cx="980" cy="306" rx="30" ry="13"/>
+        </g>
+        <!-- morros isolados, os marcos da costa -->
+        <path d="M770 356 L812 300 L854 356 Z" fill="#7FA862"/>
+        <path d="M812 300 L828 322 L796 322 Z" fill="#C8DCB4"/>
+        <path d="M884 362 L914 326 L944 362 Z" fill="#7FA862"/>
+
+        <!-- a terra, descendo até a água -->
+        <path d="M0 420 C 200 428, 400 440, 600 452 C 780 464, 920 476, 1040 486
+                 C 1100 492, 1150 498, 1200 506 L1200 530 L0 530 Z" fill="#D9CDA6"/>
+
+        <!-- a água: barro a oeste, azul a leste -->
+        <path d="M0 470 C 200 478, 400 490, 600 502 C 780 514, 920 526, 1040 536
+                 C 1100 542, 1150 548, 1200 556 L1200 660 L0 660 Z" fill="url(#aguaUY)"/>
+        <g stroke="#FFFFFF" stroke-width="4" fill="none" opacity=".4" stroke-linecap="round">
+          <path d="M120 540 q18-10 36 0 q18 10 36 0"/>
+          <path d="M520 580 q18-10 36 0 q18 10 36 0"/>
+          <path d="M980 624 q18-10 36 0 q18 10 36 0"/>
+        </g>
+
+        <!-- a península de Punta del Este -->
+        <path d="M1062 490 C 1092 492, 1116 506, 1124 536 C 1116 560, 1092 572, 1062 568
+                 C 1040 556, 1036 506, 1062 490 Z" fill="#D9CDA6"/>
+        <text x="1082" y="614" text-anchor="middle" font-family="Fredoka, sans-serif" font-size="12.5" font-weight="500" fill="#0A6E76">Brava →</text>
+        <text x="1000" y="614" text-anchor="middle" font-family="Fredoka, sans-serif" font-size="12.5" font-weight="500" fill="#8A6A44">← Mansa</text>
+
+        <g font-family="Fredoka, sans-serif" font-weight="600" opacity=".7">
+          <text x="150" y="250" text-anchor="middle" font-size="18" fill="#4F7A3A">URUGUAI</text>
+          <text x="230" y="640" text-anchor="middle" font-size="14" fill="#8A6A44">água de rio</text>
+          <text x="960" y="660" text-anchor="middle" font-size="14" fill="#0A6E76">água de mar</text>
+          <text x="600" y="652" text-anchor="middle" font-size="13" fill="#5E7E6E">a cor muda no caminho</text>
+        </g>
+
+        <!-- a trilha pela costa -->
+        <path id="trilhaUY"
+              d="M140 442 C 260 450, 360 456, 480 464 C 600 472, 700 478, 790 482
+                 C 900 488, 1010 492, 1090 500"
+              fill="none" stroke="#FFFFFF" stroke-width="9" stroke-linecap="round" stroke-dasharray="2 22" opacity=".95"/>
+
+        <!-- um barco a vela, no lado do mar -->
+        <g id="veleiro">
+          <path d="M-16 0 L16 0 L11 10 L-11 10 Z" fill="#FFFDF7"/>
+          <path d="M0 0 L0 -26 L16 0 Z" fill="#F2682A"/>
+        </g>
+
+        <g id="pontosUY"></g>
+        <g id="estacoesUY"></g>
+      </g>
+
+      <!-- ===== cenário Argentina ===== -->
       <g id="cenaAR" style="display:none">
         <!-- sol -->
         <circle cx="1080" cy="104" r="40" fill="#FFC233" opacity=".9"/>
@@ -1053,6 +1127,234 @@ var TRILHA = [
    Status: em preparação — gravações previstas.
    ────────────────────────────────────────────────────────────── */
 
+/* ──────────────────────────────────────────────────────────────
+   MAPA FALADO · Temporada 3 — Uruguai
+   Espinha: ONDE O RIO VIRA MAR. A costa corre de oeste a leste e
+   a água muda de cor no caminho — barro do Paraná em Colonia,
+   azul do Atlântico em Punta del Este, onde a linha é oficial.
+   ────────────────────────────────────────────────────────────── */
+
+var UY_CONTEXTO = [
+{ id:'u-c1', tag:'Antes da chegada dos europeus', cor:'var(--andino)', ico:'bussola',
+  h:'Como um país nasce de uma disputa entre dois impérios?',
+  sub:'A Banda Oriental',
+  res:'O Uruguai não existia como projeto: era a margem oriental do rio, disputada por Portugal e Espanha, depois pelo Brasil e pela Argentina. Virou país porque convinha a todos que não fosse de ninguém.',
+  pontos:[
+  { k:'ori', t:'Os charrua',
+    r:'O povo que ocupava a margem oriental antes de qualquer bandeira.',
+    d:'Caçadores e coletores que percorriam a planície e a costa, junto a guarani e outros grupos. Foram dizimados no século XIX, já sob o Estado uruguaio independente — episódio hoje reconhecido oficialmente como massacre. O padrão é o mesmo da Araucanía chilena e da Campanha do Deserto argentina: a eliminação vem depois da independência, não antes.',
+    q:'Quando os charrua foram dizimados?',
+    a:'Já sob o Estado uruguaio independente, no século XIX',
+    b:'Durante a colonização espanhola, no século XVI',
+    ok:'a',
+    porque:'É a terceira vez que a série encontra esse padrão: Chile em 1883, Argentina na mesma década, Uruguai em 1831. Três repúblicas jovens concluindo o que a colônia não concluiu.',
+    quase:'A colonização reduziu drasticamente a população, mas o episódio que o país reconhece como massacre é posterior à independência.' },
+  { k:'cul', t:'Terra de ninguém, por acordo',
+    r:'Portugal e Espanha disputaram a margem por mais de um século.',
+    d:'Colonia foi fundada por Portugal em 1680 de frente para a Buenos Aires espanhola. A disputa atravessou tratados e guerras, depois virou briga entre Brasil e Argentina. Em 1828, com mediação britânica, os dois aceitaram criar um Estado independente entre eles — um país-tampão.',
+    q:'Por que Brasil e Argentina aceitaram a independência uruguaia?',
+    a:'Porque um Estado neutro entre os dois convinha mais que a vitória de um deles',
+    b:'Porque reconheceram o direito à autodeterminação',
+    ok:'a',
+    porque:'Foi geopolítica, não princípio: nenhum dos dois queria o outro controlando a entrada do estuário. O Uruguai nasce como solução de equilíbrio — e precisa construir identidade própria depois disso.',
+    quase:'Autodeterminação virou argumento, mas o que destravou o acordo foi o interesse de Brasil, Argentina e Reino Unido em manter o estuário livre.' },
+  { k:'geo', t:'Um país sem montanha',
+    r:'O ponto mais alto do Uruguai tem pouco mais de 500 metros.',
+    d:'Depois de duas temporadas de cordilheira, o contraste é didático: não há degelo, não há isoterma, não há passo fechado por neve. A água vem da chuva e dos rios. O relevo é de coxilhas — ondulações suaves que não barram nada, nem o vento, nem os exércitos.',
+    q:'O que a ausência de montanhas significou para a história uruguaia?',
+    a:'Um território sem barreira natural, fácil de atravessar e difícil de defender',
+    b:'Nada: relevo não influi em história',
+    ok:'a',
+    porque:'Sem obstáculo natural, a Banda Oriental foi atravessada por exércitos portugueses, espanhóis, brasileiros e argentinos. A geografia que facilita o gado também facilita a invasão.',
+    quase:'É justamente a tese da série: o relevo condiciona a história. Compare com o Biobío chileno, onde um rio segurou um império por dois séculos.' },
+  { k:'lin', t:'Banda Oriental',
+    r:'O nome antigo do país descreve uma posição, não uma identidade.',
+    d:'"Banda Oriental" significa simplesmente a margem leste — do rio Uruguai. Era assim que a região era chamada quando ainda não era país: pelo lado em que ficava. Um nome que define o lugar pela relação com outro lugar.',
+    q:'O que o nome "Banda Oriental" revela?',
+    a:'Que a região era definida pela posição em relação ao rio, não por si mesma',
+    b:'Que havia uma banda musical famosa na região',
+    ok:'a',
+    porque:'É a margem leste de um rio cuja outra margem já tinha dono. Construir identidade própria, depois de ser nomeado como "o outro lado", é o projeto que o país leva adiante no século XIX.',
+    quase:'"Banda" aqui significa lado, margem — uso antigo do espanhol, sem relação com música.' }]}
+];
+
+var UY_TRILHA = [
+{ id:'u1', n:'01', alt:'rio', altn:'água de barro', cor:'var(--cobre)', ico:'camada', x:140, y:430, filma:true,
+  h:'Por que Portugal construiu uma cidade de frente para a Espanha?', local:'Colonia del Sacramento',
+  res:'Fundada em 1680 bem diante de Buenos Aires: contrabando à vista do rival. Trocou de mãos oito vezes, e o calçamento ainda mostra de quem era cada rua.',
+  pontos:[
+  { k:'cul', t:'Oito trocas de dono',
+    r:'Um entreposto português plantado em frente ao porto espanhol.',
+    d:'Quem controla as duas margens controla a entrada do continente. Colonia nasceu para disputar isso, e passou de mão em mão até os tratados do fim do século XVIII. O centro histórico é Patrimônio Mundial e guarda as duas arquiteturas rua a rua.',
+    q:'Por que Portugal escolheu exatamente este ponto?',
+    a:'Para controlar o comércio e o contrabando na entrada do estuário',
+    b:'Por ser o único trecho habitável da margem',
+    ok:'a',
+    porque:'A proximidade com Buenos Aires não era descuido: era a razão de ser da cidade. Um porto português a poucas horas de barco do porto espanhol significava mercadoria entrando sem passar pela alfândega da Coroa rival.',
+    quase:'Toda a margem oriental é habitável. A escolha do ponto exato foi estratégica.' },
+  { k:'geo', t:'Ler a rua',
+    r:'O calçamento português e o espanhol se distinguem a olho nu.',
+    d:'As ruas portuguesas escoam a água pelo centro; as espanholas, pelas laterais. Caminhar por Colonia é ler qual império pavimentou cada trecho. É história registrada no chão, sem placa nenhuma — e um ótimo exercício de observação para um estudante.',
+    q:'Como se reconhece uma rua portuguesa em Colonia?',
+    a:'A água escoa por uma canaleta no meio da rua',
+    b:'As pedras são de outra cor',
+    ok:'a',
+    porque:'São soluções de drenagem diferentes para o mesmo problema. A cidade guarda a disputa no próprio calçamento — um documento que se pisa.',
+    quase:'A pedra é local nos dois casos. O que muda é o desenho do escoamento.' },
+  { k:'ori', t:'Antes dos dois impérios',
+    r:'A margem era território charrua e guarani muito antes de 1680.',
+    d:'A disputa entre Portugal e Espanha se deu sobre terra ocupada. Mais ao norte, as missões jesuíticas guarani também entraram na negociação entre as coroas — e foram desfeitas quando os dois impérios acertaram suas fronteiras no Tratado de Madri.',
+    q:'Quem perdeu quando os dois impérios acertaram as fronteiras?',
+    a:'Os povos que viviam no território negociado',
+    b:'Nenhum dos dois impérios',
+    ok:'a',
+    porque:'Tratados dividiram terras habitadas sem consultar quem as habitava. As missões guarani foram desmanteladas exatamente por esse acerto, e seus moradores, dispersados.',
+    quase:'Os impérios trocaram territórios e saíram com ganhos e perdas — mas quem perdeu a terra foram os povos que viviam nela.' },
+  { k:'lin', t:'A água ainda é barro',
+    r:'Aqui o Río de la Plata ainda é cor de terra.',
+    d:'O sedimento que o Paraná carrega de milhares de quilômetros acima chega até esta margem. A água é marrom, doce e calma. Guarde a cor: ela vai mudar ao longo desta temporada, e a última parada é exatamente onde a mudança termina.',
+    q:'Por que a água em Colonia é marrom?',
+    a:'Por sedimento trazido pelo rio de milhares de quilômetros acima',
+    b:'Por poluição da cidade',
+    ok:'a',
+    porque:'É terra em suspensão, não sujeira. O mesmo material que forma as ilhas do delta de Tigre, na temporada da Argentina, chega dissolvido até aqui.',
+    quase:'Há poluição, como em qualquer estuário urbano, mas a cor vem do sedimento natural do Paraná.' }]},
+
+{ id:'u2', n:'02', alt:'rio', altn:'a capital', cor:'var(--pacifico-2)', ico:'fala', x:480, y:452, planejada:true,
+  h:'Como um país pequeno constrói identidade própria?', local:'Montevidéu',
+  res:'Entre dois gigantes, o Uruguai se afirmou pela diferença: Estado laico desde 1917, educação pública forte, políticas sociais pioneiras. Quando não dá para competir em tamanho, compete-se em instituição.',
+  pontos:[
+  { k:'cul', t:'Diferença como projeto',
+    r:'Laicidade, educação pública e políticas sociais antes de quase todo mundo.',
+    d:'O Uruguai separou Igreja e Estado em 1917, construiu uma rede escolar pública de referência e foi pioneiro em direitos sociais na região. Identidade, aqui, não foi folclore: foi instituição — uma escolha deliberada de um país de 3,4 milhões cercado por dois de dezenas de milhões.',
+    q:'Como o Uruguai se diferenciou dos vizinhos?',
+    a:'Construindo instituições próprias e distintas',
+    b:'Isolando-se economicamente dos dois',
+    ok:'a',
+    porque:'Laicidade precoce e educação pública marcaram a diferença. Um país pequeno que não pode competir em escala escolheu competir em organização.',
+    quase:'Isolamento não houve: o Uruguai sempre foi profundamente integrado aos vizinhos, na economia e na cultura.' },
+  { k:'ori', t:'Candombe',
+    r:'O tambor africano que virou patrimônio da humanidade.',
+    d:'Trazido por africanos escravizados, o candombe sobreviveu nos bairros negros de Montevidéu e hoje é reconhecido pela Unesco. A presença africana no Uruguai foi por muito tempo minimizada no relato nacional — e o tambor é parte de como ela se manteve audível apesar disso.',
+    q:'O que o candombe representa na história uruguaia?',
+    a:'A permanência da cultura africana apesar da invisibilização',
+    b:'Uma tradição trazida da Europa no século XX',
+    ok:'a',
+    porque:'É herança direta das comunidades negras de Montevidéu, mantida por gerações. Reconhecer o candombe é reconhecer uma presença que o país demorou a assumir.',
+    quase:'A origem é africana e local, preservada por comunidades do próprio país ao longo de séculos.' },
+  { k:'lin', t:'A mesma língua das duas margens',
+    r:'Espanhol rio-platense, com voseo — igual ao de Buenos Aires.',
+    d:'Montevidéu e Buenos Aires compartilham o mesmo caldo linguístico, com diferenças finas de entonação. É o melhor exemplo da série sobre como a língua ignora fronteiras: separam-se os Estados, não os falares. E no norte, junto ao Brasil, o contato secular com o português produziu variedades próprias de fronteira.',
+    q:'Por que as duas margens falam tão parecido?',
+    a:'Porque formavam uma mesma região antes de serem dois países',
+    b:'Porque a televisão uniformizou a fala no século XX',
+    ok:'a',
+    porque:'O espanhol rio-platense se formou nas duas margens ao mesmo tempo, com a mesma imigração e o mesmo porto. A divisão política veio depois da língua.',
+    quase:'A mídia reforça, mas não cria: a semelhança é mais de um século anterior ao rádio.' },
+  { k:'geo', t:'Onde o estuário se abre',
+    r:'Aqui o rio já é tão largo que a outra margem sumiu.',
+    d:'Em Colonia ainda se percebe Buenos Aires do outro lado. Em Montevidéu, não: o estuário alargou e o horizonte é só água. A cidade cresceu de frente para essa imensidão, com uma rambla de mais de vinte quilômetros acompanhando a curva da costa.',
+    q:'O que muda entre Colonia e Montevidéu?',
+    a:'O estuário se alarga e a margem oposta deixa de ser visível',
+    b:'A água já se torna salgada',
+    ok:'a',
+    porque:'A largura aumenta rumo ao leste. A transição para água salgada ainda não aconteceu — ela se completa na última parada desta temporada.',
+    quase:'A salinidade aumenta aos poucos, mas o limite oficial entre rio e oceano está mais a leste, em Punta del Este.' }]},
+
+{ id:'u3', n:'03', alt:'costa', altn:'a cidade inventada', cor:'var(--sol)', ico:'camada', x:790, y:470, planejada:true,
+  h:'Como se constrói uma cidade do zero para veranear?', local:'Piriápolis',
+  res:'No fim do século XIX, um empresário comprou a terra, plantou um bosque inteiro, construiu um hotel e inventou a primeira cidade balneária do país — antes de existir estrada para chegar até ela.',
+  pontos:[
+  { k:'cul', t:'Uma cidade de autor',
+    r:'Francisco Piria comprou o terreno e desenhou tudo.',
+    d:'Piria era empresário, rematador e ocultista. Comprou as terras em 1890, plantou milhões de árvores num solo que era pedra e pasto, construiu o castelo onde morou e depois um grande hotel. A cidade leva o nome dele e seguiu o traçado que ele imaginou.',
+    q:'O que torna Piriápolis incomum entre as cidades da região?',
+    a:'Foi projetada inteira por uma pessoa, antes de haver moradores',
+    b:'Nasceu de um povoado indígena ampliado',
+    ok:'a',
+    porque:'A maioria das cidades cresce por acúmulo, em torno de um porto, uma igreja ou uma estrada. Esta foi desenhada como projeto privado, com a paisagem construída antes da população.',
+    quase:'Não há povoado anterior na origem: a cidade começa como empreendimento, com a terra comprada e arborizada de propósito.' },
+  { k:'geo', t:'Paisagem plantada',
+    r:'O bosque que cerca a cidade foi plantado, não encontrado.',
+    d:'A região era de coxilhas e rocha, com pouca árvore. Piria plantou espécies trazidas de fora para criar sombra e fixar o solo. A paisagem que hoje parece natural é obra humana — um bom exercício para a pergunta: o que, numa paisagem, é mesmo natural?',
+    q:'A mata de Piriápolis é nativa?',
+    a:'Não: foi plantada de propósito, com espécies trazidas de fora',
+    b:'Sim: é vegetação original preservada',
+    ok:'a',
+    porque:'É um caso claro de paisagem construída. Ensina a desconfiar da aparência de natural — como os canais huarpe em Mendoza, que parecem rio e são engenharia.',
+    quase:'A vegetação original da região é de campo e coxilha, com poucas árvores. O bosque é introduzido.' },
+  { k:'lin', t:'Nome de dono',
+    r:'Piriápolis = Piria + pólis, a cidade de Piria.',
+    d:'O grego <em>pólis</em> colado a um sobrenome. É o oposto de Huelén ou Paraná, que descrevem o lugar: aqui o nome registra quem comprou a terra. Topônimos contam quem teve o poder de nomear, e neste caso foi um só homem.',
+    q:'O que o nome Piriápolis registra?',
+    a:'O proprietário que fundou a cidade',
+    b:'Uma característica da paisagem',
+    ok:'a',
+    porque:'Compare com os nomes indígenas da série: Huelén descreve um sentimento, Paraná descreve a largura do rio. Piriápolis descreve um dono — e essa diferença diz muito sobre cada época.',
+    quase:'Nada na paisagem está no nome: ele é formado pelo sobrenome do fundador mais o sufixo grego para cidade.' },
+  { k:'ori', t:'O cerro e o que veio antes',
+    r:'Os morros da região eram marcos de orientação muito antes do balneário.',
+    d:'As elevações da costa — Pan de Azúcar e San Antonio entre elas — servem de referência visual a quem navega e a quem anda por terra. Eram pontos conhecidos pelos povos que percorriam a costa, e continuaram sendo depois, por marinheiros e viajantes.',
+    q:'Por que morros isolados têm importância numa costa plana?',
+    a:'Servem de referência para orientação, por serem visíveis de longe',
+    b:'Porque protegem a cidade do vento',
+    ok:'a',
+    porque:'Num relevo de coxilhas suaves, qualquer elevação vira marco. Antes de mapa e bússola de uso comum, navegar e caminhar dependia de reconhecer formas no horizonte.',
+    quase:'A proteção contra o vento é limitada; o valor histórico desses morros é como ponto de referência visível a quilômetros.' }]},
+
+{ id:'u4', n:'04', alt:'mar', altn:'rio vira mar', cor:'var(--pacifico)', ico:'onda', x:1090, y:490, filma:true,
+  h:'Onde exatamente o rio vira mar?', local:'Punta del Este',
+  res:'Numa península estreita que avança para o sul. De um lado, a Playa Mansa, de água calma e cor de rio. Do outro, a Playa Brava, de onda e água do Atlântico. A linha entre os dois é oficial — e dá para atravessá-la a pé.',
+  pontos:[
+  { k:'geo', t:'Duas praias, dois corpos de água',
+    r:'Mansa de um lado, Brava do outro — na mesma língua de terra.',
+    d:'A península separa o estuário do oceano aberto. Na face oeste, a água do Río de la Plata chega mansa, mais quente e turva. Na face leste, o Atlântico bate com onda, mais frio e mais claro. Os nomes das praias não são poéticos: são descritivos, e qualquer pessoa sente a diferença entrando na água.',
+    q:'Por que duas praias tão próximas são tão diferentes?',
+    a:'Porque uma dá para o estuário e a outra para o oceano aberto',
+    b:'Porque uma é natural e a outra foi construída',
+    ok:'a',
+    porque:'É a conclusão de toda a temporada: a água que a gente acompanhou desde Colonia termina aqui e dá lugar ao Atlântico. A península é o divisor, e os dois lados são dois mundos físicos distintos.',
+    quase:'As duas são naturais. O que as separa é a massa de água que cada uma recebe.' },
+  { k:'cul', t:'A linha oficial',
+    r:'Existe um marco que define onde termina o rio e começa o oceano.',
+    d:'A divisa entre o Río de la Plata e o Atlântico foi estabelecida por acordo, com um ponto de referência na costa uruguaia. Dizer onde um corpo d\\u2019água termina e outro começa não é uma evidência da natureza: é uma decisão — jurídica, com consequências sobre pesca, navegação e jurisdição.',
+    q:'Como se decide onde termina um rio e começa o oceano?',
+    a:'Por acordo entre países, com um marco definido',
+    b:'Pela cor da água, que muda visivelmente',
+    ok:'a',
+    porque:'A natureza faz uma transição gradual; a lei precisa de uma linha. É o mesmo mecanismo da fronteira Chile-Argentina pelo divisor de águas: a geografia sugere, mas quem traça é o acordo.',
+    quase:'A cor muda aos poucos, ao longo de dezenas de quilômetros — justamente por isso foi preciso definir um ponto.' },
+  { k:'ori', t:'A costa antes do balneário',
+    r:'A faixa litorânea era percorrida por povos que viviam do mar.',
+    d:'Antes dos edifícios, a costa leste era rota e fonte de alimento para grupos que pescavam e coletavam moluscos. Restam sambaquis — montes de conchas acumulados ao longo de séculos — que funcionam como arquivo do que se comia e quando.',
+    q:'O que um sambaqui registra?',
+    a:'Séculos de alimentação e ocupação de um lugar',
+    b:'Um acidente geológico natural',
+    ok:'a',
+    porque:'São depósitos formados por gerações de moradores. Para a arqueologia, cada camada é um registro datável — o lixo de ontem é o documento de hoje.',
+    quase:'A formação é humana, não geológica: são restos acumulados de alimentação ao longo de muito tempo.' },
+  { k:'lin', t:'Mansa e Brava',
+    r:'Os nomes descrevem a experiência de entrar na água.',
+    d:'Nenhum homenageado, nenhum fundador: só a diferença sentida no corpo. É o tipo de topônimo que a série vem rastreando desde o Chile — nomes que descrevem, em contraste com nomes que inventam, como Isla Negra, ou que registram donos, como Piriápolis.',
+    q:'Que tipo de topônimo são "Mansa" e "Brava"?',
+    a:'Descritivos: nomeiam o que se sente no lugar',
+    b:'Comemorativos: homenageiam pessoas',
+    ok:'a',
+    porque:'A temporada inteira pode ser relida por este critério. Huelén descreve um sentimento, Paraná descreve a largura, Mansa e Brava descrevem a onda — e Piriápolis descreve um proprietário.',
+    quase:'Não há pessoa homenageada: os nomes vêm direto do comportamento da água em cada face da península.' }]}
+];
+
+var UY_CURIOS = [
+ {uy:1, ic:'onda',   x:1010, y:330, c:'#0FB5BD', q:'A pé entre dois mundos', t:'Em Punta del Este dá para atravessar a pé da água do rio para a água do oceano: são cerca de mil metros entre a Playa Mansa e a Playa Brava.'},
+ {uy:1, ic:'rolo',   x:230,  y:330, c:'#C94A12', q:'Oito donos',             t:'Colonia del Sacramento trocou de mãos oito vezes entre Portugal e Espanha. O calçamento ainda mostra quem pavimentou cada rua.'},
+ {uy:1, ic:'gente',  x:560,  y:350, c:'#6B2F93', q:'Tambor que resistiu',    t:'O candombe, trazido por africanos escravizados, sobreviveu nos bairros negros de Montevidéu e hoje é patrimônio da humanidade pela Unesco.'},
+ {uy:1, ic:'morro',  x:850,  y:360, c:'#E09A00', q:'500 metros e só',        t:'O ponto mais alto do Uruguai tem pouco mais de 500 metros. Depois de duas temporadas de cordilheira, é um país sem montanha.'},
+ {uy:1, ic:'condor', x:700,  y:250, c:'#4A6886', q:'Aqui ele não vem',       t:'Não há condores no Uruguai: sem cordilheira, falta a corrente de ar que a ave precisa para planar. A fauna segue o relevo, não a fronteira.'},
+ {uy:1, ic:'batata', x:390,  y:400, c:'#4EA336', q:'Mais vacas que gente',   t:'O Uruguai tem cerca de três cabeças de gado para cada habitante. A pampa continua do outro lado do rio — e a economia, também.'},
+ {uy:1, ic:'fala',   x:930,  y:420, c:'#0A8A91', q:'Portunhol de fronteira', t:'No norte, junto ao Brasil, séculos de contato produziram variedades de contato entre português e espanhol, faladas por comunidades inteiras.'},
+ {uy:1, ic:'barra',  x:1150, y:380, c:'#8B4FB5', q:'Banda Oriental',         t:'O nome antigo do país quer dizer apenas "a margem leste" — do rio Uruguai. Um lugar definido pelo lado em que ficava.'}
+];
+
 var AR_CONTEXTO = [
 { id:'a-c1', tag:'Antes da chegada dos europeus', cor:'var(--andino)', ico:'bussola',
   h:'Por que o rio se chama Prata se não tem prata?',
@@ -1344,7 +1646,7 @@ var AR_TRILHA = [
     porque:'Quem chega nomeia com as palavras que trouxe. Faltando termo para a onça, usaram o do animal mais parecido que conheciam — e o engano virou nome oficial.',
     quase:'Nunca houve tigres asiáticos soltos aqui. O que havia era onça-pintada, abundante na região.' }]},
 
-{ id:'a2', filma:true, n:'07', alt:'travessia', altn:'o ferry', cor:'var(--sol)', ico:'onda', x:874, y:512, ferry:true,
+{ id:'a2', filma:true, n:'07', alt:'travessia', altn:'o ferry · fim da temporada', cor:'var(--sol)', ico:'onda', x:874, y:512, ferry:true,
   h:'Como se atravessa um rio que parece mar?', local:'Río de la Plata · ferry para o Uruguai',
   res:'Uma hora e pouco de barco, e muda o país. Mas a paisagem que se vê da popa é a mesma — porque a fronteira é política, não geográfica.',
   pontos:[
@@ -1383,89 +1685,7 @@ var AR_TRILHA = [
     b:'Que o Uruguai copiou o modo de falar argentino',
     ok:'a',
     porque:'As duas margens formavam uma região só antes de serem dois países. A língua guardou a unidade que a política dividiu.',
-    quase:'Não é cópia: é origem comum. Os dois falares vêm do mesmo caldo rio-platense, anterior às independências.' }]},
-
-{ id:'a3', filma:true, n:'08', alt:'0 m', altn:'a outra margem', cor:'var(--valle)', ico:'camada', x:1002, y:512, uy:true,
-  h:'Por que uma cidade pequena foi disputada por dois impérios?', local:'Colonia del Sacramento · Uruguai',
-  res:'Fundada pelos portugueses em 1680, em frente a Buenos Aires. Trocou de mãos oito vezes entre Portugal e Espanha — e o calçamento ainda mostra de quem era cada rua.',
-  pontos:[
-  { k:'cul', t:'Oito trocas de dono',
-    r:'Portugal e Espanha disputaram a cidade por mais de um século.',
-    d:'Colonia foi fundada como entreposto português bem em frente à Buenos Aires espanhola — contrabando à vista do rival. A cidade passou de mão em mão até o Tratado de Santo Ildefonso. O centro histórico é Patrimônio Mundial e mistura as duas arquiteturas rua a rua.',
-    q:'Por que Portugal fundou uma cidade bem em frente a Buenos Aires?',
-    a:'Para controlar o comércio e o contrabando no estuário',
-    b:'Por ser o único lugar habitável da margem',
-    ok:'a',
-    porque:'Era posição estratégica: quem controla as duas margens controla a entrada do continente. A proximidade não era descuido — era a razão de ser da cidade.',
-    quase:'Toda a margem oriental é habitável. A escolha do ponto exato foi estratégica, não geográfica.' },
-  { k:'geo', t:'Ler a rua',
-    r:'O calçamento português e o espanhol se distinguem a olho nu.',
-    d:'As ruas portuguesas drenam a água pelo centro; as espanholas, pelas laterais. Caminhar por Colonia é ler qual império pavimentou cada trecho — história registrada no chão, sem placa nenhuma.',
-    q:'Como se identifica uma rua portuguesa em Colonia?',
-    a:'Pela água que escoa pelo centro da rua',
-    b:'Pela cor das pedras',
-    ok:'a',
-    porque:'São soluções de drenagem diferentes. A cidade guarda a disputa no próprio calçamento — um documento que se pisa.',
-    quase:'A pedra é local nos dois casos. O que diferencia é o desenho do escoamento.' },
-  { k:'lin', t:'Portunhol',
-    r:'Na fronteira com o Brasil, o Uruguai fala uma língua de mistura.',
-    d:'No norte do país, o contato secular com o português gerou variedades conhecidas como portunhol ou DPU. Não é erro nem improviso: é uma fala estabelecida, com regras próprias, falada por comunidades inteiras.',
-    q:'O portunhol uruguaio é:',
-    a:'Espanhol mal falado',
-    b:'Uma variedade de contato, com estrutura própria',
-    ok:'b',
-    porque:'Línguas de contato surgem onde duas comunidades convivem por gerações. Chamar de erro é aplicar a régua de um idioma a algo que é outro fenômeno.',
-    quase:'Avaliar como "mal falado" é julgar pela norma de fora. Linguisticamente, é uma variedade com padrões consistentes.' },
-  { k:'ori', t:'Antes dos impérios',
-    r:'A margem oriental era território charrua e guarani.',
-    d:'Antes de ser disputada por Portugal e Espanha, a região era ocupada e percorrida. As missões jesuíticas guarani, mais ao norte, também fizeram parte dessa disputa — e foram desmanteladas quando os dois impérios acertaram suas fronteiras.',
-    q:'Quem perdeu quando Portugal e Espanha acertaram as fronteiras?',
-    a:'Os povos que viviam no território negociado',
-    b:'Nenhum dos dois impérios',
-    ok:'a',
-    porque:'Tratados entre impérios dividiram terras habitadas sem consultar quem as habitava. As missões guarani foram desfeitas exatamente por esse acerto.',
-    quase:'Os impérios trocaram territórios entre si e saíram com ganhos e perdas — mas quem perdeu a terra foram os povos que viviam nela.' }]},
-
-{ id:'a4', planejada:true, n:'09', alt:'0 m', altn:'a capital', cor:'var(--pacifico-2)', ico:'fala', x:1122, y:512, uy:true,
-  h:'Como um país pequeno constrói identidade própria?', local:'Montevidéu · Uruguai',
-  res:'Entre dois gigantes, o Uruguai construiu identidade pela diferença: educação pública, laicidade antes de quase todo mundo, e um futebol que virou símbolo nacional.',
-  pontos:[
-  { k:'cul', t:'Pequeno por escolha de leitura',
-    r:'Um país de 3,4 milhões entre Brasil e Argentina.',
-    d:'A identidade uruguaia se afirma por contraste: Estado laico desde 1917, educação pública forte, políticas sociais pioneiras. Quando um país não pode competir em tamanho, ele compete em instituição.',
-    q:'Como o Uruguai construiu identidade entre dois vizinhos maiores?',
-    a:'Afirmando instituições próprias e distintas',
-    b:'Isolando-se dos dois',
-    ok:'a',
-    porque:'Laicidade precoce, educação pública e políticas sociais marcaram a diferença. Identidade, aqui, foi projeto institucional — não isolamento.',
-    quase:'Isolamento não houve: o Uruguai sempre foi profundamente integrado aos vizinhos, inclusive na cultura e na economia.' },
-  { k:'ori', t:'Candombe',
-    r:'O tambor africano que virou patrimônio da humanidade.',
-    d:'Trazido por africanos escravizados, o candombe sobreviveu nos bairros negros de Montevidéu e hoje é reconhecido pela Unesco. A presença africana no Uruguai foi por muito tempo invisibilizada — e o tambor é parte de como ela se manteve audível.',
-    q:'O que o candombe representa na história uruguaia?',
-    a:'A permanência da cultura africana apesar da invisibilização',
-    b:'Uma tradição importada recentemente da Europa',
-    ok:'a',
-    porque:'É herança direta das comunidades negras de Montevidéu. Reconhecer o candombe é reconhecer uma presença que o relato nacional minimizou por décadas.',
-    quase:'A origem é africana e local, mantida por comunidades do próprio país ao longo de séculos.' },
-  { k:'geo', t:'Sem montanha',
-    r:'O ponto mais alto do Uruguai tem pouco mais de 500 metros.',
-    d:'Depois de uma temporada inteira subindo os Andes, o contraste é didático: aqui não há cordilheira, não há degelo, não há isoterma. A água vem da chuva e dos rios, e a paisagem é de ondulação suave. O condor não chega aqui — e a ausência dele é conteúdo.',
-    q:'Por que não há condores no Uruguai?',
-    a:'Porque não há cordilheira: é uma ave de alta montanha',
-    b:'Porque foram extintos pela caça',
-    ok:'a',
-    porque:'O condor depende das correntes de ar das grandes altitudes para planar. Sem Andes, não há como ele viver — a fauna segue o relevo, não a fronteira.',
-    quase:'A caça ameaçou a espécie em várias regiões, mas o Uruguai nunca teve o relevo que ela exige.' },
-  { k:'lin', t:'A mesma língua, outro sotaque',
-    r:'Espanhol rio-platense, com voseo e marcas próprias.',
-    d:'Montevidéu e Buenos Aires compartilham o mesmo caldo linguístico, com diferenças finas de entonação e vocabulário. É o melhor exemplo da série sobre como a língua ignora fronteiras: separam-se os Estados, não os falares.',
-    q:'Por que Montevidéu e Buenos Aires falam tão parecido?',
-    a:'Porque formavam uma mesma região antes de serem países',
-    b:'Porque a televisão uniformizou a fala',
-    ok:'a',
-    porque:'O espanhol rio-platense se formou nas duas margens ao mesmo tempo, com a mesma imigração e o mesmo porto. A divisão política veio depois da língua.',
-    quase:'A mídia reforça, mas não cria: a semelhança é anterior ao rádio e à televisão em mais de um século.' }]}
+    quase:'Não é cópia: é origem comum. Os dois falares vêm do mesmo caldo rio-platense, anterior às independências.' }]}
 ];
 
 var AR_CURIOS = [
@@ -1583,9 +1803,9 @@ var AR_CURIOS = [
   /* ---------------- pontos de curiosidade ---------------- */
   (function(){
     var g = $('#pontos');
-    CURIOS.concat(AR_CURIOS).forEach(function(c,i){
+    CURIOS.concat(AR_CURIOS, UY_CURIOS).forEach(function(c,i){
       var a = el('g',{class:'curio', tabindex:'0', role:'button',
-                      'aria-label':'Descubra: '+c.q}, c.ar ? $('#pontosAR') : g);
+                      'aria-label':'Descubra: '+c.q}, c.uy ? $('#pontosUY') : (c.ar ? $('#pontosAR') : g));
       el('circle',{cx:c.x,cy:c.y,r:21,fill:c.c,stroke:'#fff','stroke-width':5},a);
       var gi = el('g',{transform:'translate('+c.x+','+c.y+')', fill:'none', stroke:'#fff',
                       'stroke-width':'2.4','stroke-linecap':'round','stroke-linejoin':'round',
@@ -1629,6 +1849,7 @@ var AR_CURIOS = [
   }
   desenhaEstacoes(TRILHA, '#estacoes');
   desenhaEstacoes(AR_TRILHA, '#estacoesAR');
+  desenhaEstacoes(UY_TRILHA, '#estacoesUY');
 
   /* ---------------- nuvens ---------------- */
   function nuvem(c, alvo){
@@ -1938,7 +2159,10 @@ var AR_CURIOS = [
          eixo:['3.500 m','2.000 m','1.000 m']},
     ar: {cena:'#cenaAR', base:AR_CONTEXTO, trilha:AR_TRILHA, tb:'🎒 Antes de descer', tt:'⛷️ A descida',
          rod:'A descida começa em <strong>Valle Nevado</strong>, ao lado de onde o Chile terminou, e vai até o Río de la Plata. As paradas <strong>pontilhadas</strong> ainda não foram gravadas — o roteiro delas já está escrito.',
-         eixo:['7.000 m','4.500 m','2.000 m']}
+         eixo:['7.000 m','4.500 m','2.000 m']},
+    uy: {cena:'#cenaUY', base:UY_CONTEXTO, trilha:UY_TRILHA, tb:'🎒 Antes da costa', tt:'🌊 Onde o rio vira mar',
+         rod:'A costa corre de oeste a leste e a <strong>água muda de cor</strong> no caminho: barro de rio em Colonia, azul de oceano em Punta del Este. Toque nos ícones para descobrir mais.',
+         eixo:['costa','coxilhas','rio','mar']}
   };
   function trocar(t){
     if (t === TEMPORADA) return;
@@ -1946,10 +2170,16 @@ var AR_CURIOS = [
     var c = CENA[t];
     $('#cenaCL').style.display = t === 'cl' ? '' : 'none';
     $('#cenaAR').style.display = t === 'ar' ? '' : 'none';
+    $('#cenaUY').style.display = t === 'uy' ? '' : 'none';
     $('#tit-base').textContent = c.tb;
     $('#tit-trilha').textContent = c.tt;
     $('#rodape').innerHTML = c.rod;
-    if (c.eixo){ $('#alt1').textContent=c.eixo[0]; $('#alt2').textContent=c.eixo[1]; $('#alt3').textContent=c.eixo[2]; }
+    var leg = document.querySelector('.legenda-alt');
+    if (t === 'uy'){ leg.style.display = 'none'; }
+    else {
+      leg.style.display = '';
+      if (c.eixo){ $('#alt1').textContent=c.eixo[0]; $('#alt2').textContent=c.eixo[1]; $('#alt3').textContent=c.eixo[2]; }
+    }
     desenhaBase(c.base);
     TUDO = c.base.concat(c.trilha);
     pintarContador();
@@ -1970,6 +2200,19 @@ var AR_CURIOS = [
   [].forEach.call(document.querySelectorAll('.tmp'), function(b){
     b.addEventListener('click', function(){ trocar(b.dataset.t); });
   });
+
+  /* o veleiro na costa uruguaia */
+  (function(){
+    var v = document.getElementById('veleiro');
+    if (!v || matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    var t = 0;
+    setInterval(function(){
+      t += 0.006;
+      var u = (Math.sin(t) + 1) / 2;
+      var x = 300 + u * 680, y = 560 + u * 54 + Math.sin(t*11) * 3;
+      v.setAttribute('transform','translate('+x.toFixed(1)+','+y.toFixed(1)+')');
+    }, 40);
+  })();
 
   /* o ferry atravessando o rio, devagar */
   (function(){

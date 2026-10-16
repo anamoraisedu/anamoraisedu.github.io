@@ -299,6 +299,37 @@
   .epgroup a svg{width:17px;height:17px;flex:none;color:#1DB954}
   .epgroup a:hover{background:#fff; border-color:var(--honey); transform:translateX(3px)}
 
+
+  /* ---------- mapa falado ---------- */
+  .mf{background:linear-gradient(170deg,#12304B,#0B1F33); color:#EAF4FB; border-block:1px solid #1D405E; position:relative; overflow:hidden}
+  .mf::before{content:""; position:absolute; inset:0; opacity:.5; pointer-events:none;
+    background-image:radial-gradient(circle at 1px 1px, rgba(255,255,255,.07) 1px, transparent 0); background-size:24px 24px}
+  .mf .wrap{position:relative}
+  .mf .eyebrow{color:#FFC233}
+  .mf h2{color:#FFFFFF}
+  .mf .lead{color:#B8D2E6}
+  .mf-grid{display:grid; grid-template-columns:1.15fr .85fr; gap:clamp(1.4rem,3vw,2.6rem); align-items:center}
+  @media (max-width:860px){ .mf-grid{grid-template-columns:1fr} }
+  .mf-texto p{color:#B8D2E6; margin-bottom:.9rem; max-width:60ch}
+  .mf-texto p strong{color:#FFFFFF}
+  .mf-selos{display:flex; flex-wrap:wrap; gap:.5rem; margin:1.3rem 0 1.6rem}
+  .mf-selos span{font-size:.84rem; font-weight:800; padding:.42rem .9rem; border-radius:100px;
+    background:rgba(255,255,255,.08); border:1px solid rgba(255,255,255,.16); color:#DCEBF6}
+  .mf-cta{display:inline-flex; align-items:center; gap:.6rem; font-weight:800; font-size:1rem;
+    padding:.85rem 1.5rem; border-radius:100px; background:#F2682A; color:#fff;
+    box-shadow:0 12px 30px -12px rgba(242,104,42,.8); transition:transform .2s, filter .2s}
+  .mf-cta:hover{filter:brightness(1.08); transform:translateY(-2px)}
+  .mf-cta svg{width:19px;height:19px}
+  .mf-nota{display:block; margin-top:.7rem; font-size:.82rem; color:#7FA3BF; font-weight:700}
+  .mf-mapa{background:rgba(255,255,255,.05); border:1px solid rgba(255,255,255,.14); border-radius:26px; padding:1.3rem 1.4rem}
+  .mf-mapa h3{font-size:1.05rem; color:#fff; margin-bottom:.1rem}
+  .mf-mapa > p{font-size:.86rem; color:#8FB2CB; font-weight:700; margin-bottom:1rem}
+  .mf-lista{display:grid; gap:.55rem}
+  .mf-item{display:flex; align-items:center; gap:.75rem; font-size:.9rem; color:#CFE3F1; font-weight:700}
+  .mf-item b{flex:none; width:58px; text-align:right; font-family:"Fraunces",Georgia,serif; font-weight:600; color:#FFC233; font-size:.92rem}
+  .mf-item i{flex:none; width:10px;height:10px;border-radius:50%; background:var(--pt)}
+  .mf-item span{min-width:0}
+
   /* ---------- trajetória ---------- */
   .traj{border-block:1px solid var(--line)}
   .timeline{display:grid; gap:1.1rem; position:relative}
@@ -411,6 +442,7 @@
       <a href="#servicos">Serviços</a>
       <a href="#metodo">Como trabalho</a>
       <a href="#midia">Produção</a>
+      <a href="#mapafalado">Mapa Falado</a>
       <a href="#trajetoria">Trajetória</a>
       <a href="#contato">Contato</a>
     </nav>
@@ -664,6 +696,51 @@
   </div>
 </section>
 
+<!-- ============ MAPA FALADO ============ -->
+<section class="section mf" id="mapafalado">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow" data-reveal>Mapa Falado</span>
+      <h2 data-reveal>Faço a mala, gravo,<br>e volto com aula.</h2>
+      <p class="lead" data-reveal>Projeto autoral de educação em viagem: percorro a América do Sul e transformo o que vejo em material didático sobre geografia, cultura e língua — em vídeo, texto e podcast.</p>
+    </div>
+
+    <div class="mf-grid">
+      <div class="mf-texto" data-reveal>
+        <p>A primeira temporada é o <strong>Chile</strong>, e ela tem uma espinha: a <strong>altitude</strong>. Começa no nível do mar, em Isla Negra, e sobe até os <strong>3.330 metros</strong> de El Colorado. A cada degrau muda a paisagem, muda o que se come e muda o modo de falar.</p>
+        <p>Cada parada é lida em quatro camadas — <strong>geografia, cultura, língua e povos originários</strong> — porque nenhuma delas se explica sozinha. A língua guarda a história: o morro no centro de Santiago se chama <em>Huelén</em> em mapudungun, que quer dizer tristeza.</p>
+        <p>O material é feito para <strong>adolescentes e jovens estudantes</strong>, com uma versão infantil em seguida. História real, com fonte na tela — valorizando quem já estava aqui antes da chegada dos europeus e mostrando como esse encontro produziu o país que o Chile é hoje.</p>
+
+        <div class="mf-selos">
+          <span>Roteiro</span><span>Pesquisa</span><span>Gravação</span><span>Edição</span><span>Apresentação</span>
+        </div>
+
+        <a class="mf-cta" href="/aulas-mf7k2x/">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 19 L9 8 L13 14 L16 9 L21 19 Z"/></svg>
+          Entrar na trilha
+        </a>
+        <span class="mf-nota">Protótipo interativo · fotos provisórias até os vídeos ficarem prontos</span>
+      </div>
+
+      <aside class="mf-mapa" data-reveal aria-label="As paradas da primeira temporada">
+        <h3>Temporada 1 · Chile</h3>
+        <p>dez aulas, ordenadas pela subida</p>
+        <div class="mf-lista">
+          <div class="mf-item" style="--pt:#8B4FB5"><b>contexto</b><i></i><span>Antes da chegada dos europeus</span></div>
+          <div class="mf-item" style="--pt:#F2682A"><b>contexto</b><i></i><span>A colonização, em 342 anos</span></div>
+          <div class="mf-item" style="--pt:#6BCB4F"><b>contexto</b><i></i><span>O que sobrou de cada lado</span></div>
+          <div class="mf-item" style="--pt:#0FB5BD"><b>0 m</b><i></i><span>Isla Negra · por que o mar é frio</span></div>
+          <div class="mf-item" style="--pt:#6BCB4F"><b>350 m</b><i></i><span>Valle del Maipo · o clima do vinho</span></div>
+          <div class="mf-item" style="--pt:#FFC233"><b>550 m</b><i></i><span>Lastarria · palavras escondidas</span></div>
+          <div class="mf-item" style="--pt:#F2682A"><b>629 m</b><i></i><span>Santa Lucía · o morro de dois nomes</span></div>
+          <div class="mf-item" style="--pt:#0A8A91"><b>2.500 m</b><i></i><span>Cajón del Maipo · de onde vem a água</span></div>
+          <div class="mf-item" style="--pt:#6B2F93"><b>3.330 m</b><i></i><span>El Colorado · a cada mil metros</span></div>
+        </div>
+      </aside>
+    </div>
+  </div>
+</section>
+
 <!-- ============ TRAJETÓRIA ============ -->
 <section class="section traj" id="trajetoria">
   <div class="wrap">
@@ -792,6 +869,7 @@
       <a href="#sobre">Sobre</a>
       <a href="#servicos">Serviços</a>
       <a href="#midia">Produção</a>
+      <a href="#mapafalado">Mapa Falado</a>
       <a href="#trajetoria">Trajetória</a>
       <a href="#contato">Contato</a>
     </nav>

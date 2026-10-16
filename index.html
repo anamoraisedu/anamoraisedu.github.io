@@ -216,6 +216,10 @@
 
   /* ---------- serviços ---------- */
   .servicos{background:var(--paper-2); border-block:1px solid var(--line)}
+  .midia .cards{grid-template-columns:1fr 1fr}
+  @media (max-width:760px){ .midia .cards{grid-template-columns:1fr} }
+  .card.s4{--accent:#12304B; --accent-ink:#12304B}
+  .card.s4 .ico{background:color-mix(in srgb,#12304B 12%,#fff); color:#12304B}
   .cards{display:grid; grid-template-columns:repeat(3,1fr); gap:1.5rem}
   .card{
     background:var(--card); border:1px solid var(--line); border-radius:var(--radius);
@@ -622,37 +626,30 @@
     <div class="section-head">
       <span class="eyebrow" data-reveal>Voz e produção</span>
       <h2 data-reveal>Educação que também<br>se escuta.</h2>
-      <p class="lead" data-reveal>Antes de se tornar podcast, foi rádio ao vivo. Há anos produzo conteúdo educativo de ponta a ponta — roteiro, gravação, edição e apresentação — para levar conhecimento a quem dificilmente chegaria até ele por outros caminhos.</p>
+      <p class="lead" data-reveal>A era digital barateou o estúdio. Com isso, quem antes era <em>assunto</em> passou a ter microfone. Produzo conteúdo educativo de ponta a ponta — roteiro, gravação, edição e apresentação — em projetos que dão voz a quem a comunicação de massa costuma deixar de fora.</p>
     </div>
 
     <div class="cards" data-stagger>
+
       <article class="card s2" data-item>
         <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="2" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0"/><path d="M12 18v4"/><path d="M8 22h8"/></svg></div>
         <h3>RádioCast Betinho</h3>
-        <p class="sub">Programa <em>Conexões</em> · Unicamp + Cursinho Popular Herbert de Souza</p>
-        <p>Projeto de rádio nascido da parceria entre a <strong>Unicamp</strong> e o <strong>Cursinho Popular Herbert de Souza</strong>, na Vila União, região sudoeste de Campinas — o nome é uma homenagem ao sociólogo <strong>Betinho</strong>, Herbert de Souza.</p>
-        <p>O programa <strong>Conexões</strong> ia ao ar <strong>ao vivo</strong>, duas vezes por semana, sob minha coordenação e apresentação, ao lado dos estudantes bolsistas. Depois se tornou podcast: agroecologia, iniciação científica, políticas ambientais, masculinidades negras e as vivências de quem sustenta o cursinho.</p>
-        <p>Fomos ao ar pela <strong>Rádio Tainã</strong>, da <strong>Casa de Cultura Tainã</strong>. O cursinho e a Tainã integram a <strong>Rede Mocambos</strong>, coletivo que constrói sabedoria digital em territórios periféricos, quilombolas e indígenas.</p>
-        <div class="meta">
-          <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 12h2M8 7v10M12 4v16M16 8v8M20 11h1"/></svg> 2× por semana, ao vivo</span>
-          <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4.5" width="18" height="16" rx="3"/><path d="M8 2.5v4M16 2.5v4M3 10h18"/></svg> 8 meses no ar</span>
-        </div>
-        <div class="roles">
-          <span>Roteiro</span><span>Produção</span><span>Edição</span><span>Apresentação</span>
-        </div>
+        <p class="sub">Programa <em>Conexões</em> · coordenação e apresentação</p>
+        <p>Rádio ao vivo duas vezes por semana, feita com os estudantes bolsistas do <strong>Cursinho Popular Herbert de Souza</strong>, na periferia de Campinas. Fomos ao ar pela <strong>Rádio Tainã</strong>, rádio comunitária da <strong>Rede Mocambos</strong> — coletivo que leva tecnologia e sabedoria digital a territórios periféricos, quilombolas e indígenas.</p>
+        <p>Agroecologia, iniciação científica, políticas ambientais e masculinidades negras, pautadas por quem vive esses temas.</p>
+        <div class="roles"><span>Roteiro</span><span>Produção</span><span>Edição</span><span>Apresentação</span></div>
         <div class="eps">
-          <a href="https://open.spotify.com/show/7lwwgbuvd25rldKas5pXlI" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm4.6 14.44a.75.75 0 0 1-1.03.25c-2.82-1.72-6.37-2.11-10.55-1.15a.75.75 0 1 1-.33-1.46c4.57-1.05 8.5-.6 11.66 1.33.35.22.46.68.25 1.03zm1.23-2.75a.94.94 0 0 1-1.29.31c-3.23-1.98-8.15-2.56-11.97-1.4a.94.94 0 0 1-.55-1.79c4.37-1.33 9.79-.69 13.5 1.59.44.27.58.85.31 1.29zm.11-2.86C14.07 8.53 7.7 8.32 4.4 9.33a1.12 1.12 0 1 1-.65-2.15c3.79-1.15 10.82-.93 15.09 1.6a1.12 1.12 0 1 1-1.14 1.93z"/></svg> Ouvir <em>Conexões</em> no Spotify</a>
+          <a href="https://open.spotify.com/show/7lwwgbuvd25rldKas5pXlI" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm4.6 14.44a.75.75 0 0 1-1.03.25c-2.82-1.72-6.37-2.11-10.55-1.15a.75.75 0 1 1-.33-1.46c4.57-1.05 8.5-.6 11.66 1.33.35.22.46.68.25 1.03zm1.23-2.75a.94.94 0 0 1-1.29.31c-3.23-1.98-8.15-2.56-11.97-1.4a.94.94 0 0 1-.55-1.79c4.37-1.33 9.79-.69 13.5 1.59.44.27.58.85.31 1.29zm.11-2.86C14.07 8.53 7.7 8.32 4.4 9.33a1.12 1.12 0 1 1-.65-2.15c3.79-1.15 10.82-.93 15.09 1.6a1.12 1.12 0 1 1-1.14 1.93z"/></svg> Ouvir <em>Conexões</em></a>
         </div>
       </article>
 
       <article class="card s1" data-item>
         <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M4 14v-2a8 8 0 0 1 16 0v2"/><rect x="2.5" y="13.5" width="5" height="7" rx="2.5"/><rect x="16.5" y="13.5" width="5" height="7" rx="2.5"/></svg></div>
         <h3>Histórias Negras</h3>
-        <p>Como bolsista do projeto <em>Histórias negras: registros orais para a desinvisibilização da presença negra em Campinas (1930–1970)</em>, do Serviço de Difusão Cultural do <strong>Centro de Memória da Unicamp</strong>, o arquivo de fotografias e objetos da Universidade Estadual de Campinas.</p>
-        <p>Produzi <strong>sete episódios</strong> em duas séries — os registros orais com moradores e a série <em>Voz negra e popular</em>, sobre <strong>Laudelina de Campos Melo</strong>, lançada na 9ª Semana Nacional de Arquivos. Da apuração nos acervos e da escuta dos entrevistados ao episódio publicado.</p>
-        <div class="roles">
-          <span>Pesquisa</span><span>Roteiro</span><span>Produção</span>
-        </div>
+        <p class="sub">Centro de Memória da Unicamp · bolsista</p>
+        <p>Sete episódios de <strong>história oral</strong> pela desinvisibilização da presença negra em Campinas entre <strong>1930 e 1970</strong> — incluindo a série sobre <strong>Laudelina de Campos Melo</strong>, que organizou as trabalhadoras domésticas do Brasil.</p>
+        <p>Da escuta dos entrevistados à edição: documentar quem não entrou nos livros é trabalho de arquivo e de microfone.</p>
+        <div class="roles"><span>Pesquisa</span><span>Roteiro</span><span>Produção</span></div>
         <div class="eps">
           <a href="https://open.spotify.com/show/40mk3cUsb3q3UKNzZt3Gvp" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm4.6 14.44a.75.75 0 0 1-1.03.25c-2.82-1.72-6.37-2.11-10.55-1.15a.75.75 0 1 1-.33-1.46c4.57-1.05 8.5-.6 11.66 1.33.35.22.46.68.25 1.03zm1.23-2.75a.94.94 0 0 1-1.29.31c-3.23-1.98-8.15-2.56-11.97-1.4a.94.94 0 0 1-.55-1.79c4.37-1.33 9.79-.69 13.5 1.59.44.27.58.85.31 1.29zm.11-2.86C14.07 8.53 7.7 8.32 4.4 9.33a1.12 1.12 0 1 1-.65-2.15c3.79-1.15 10.82-.93 15.09 1.6a1.12 1.12 0 1 1-1.14 1.93z"/></svg> Ouvir no CMUCast</a>
         </div>
@@ -662,81 +659,26 @@
         <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="M8.6 13.5l6.8 4M15.4 6.5l-6.8 4"/></svg></div>
         <h3>Comunicação digital</h3>
         <div class="meta"><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4.5" width="18" height="16" rx="3"/><path d="M8 2.5v4M16 2.5v4M3 10h18"/></svg> 2020 · 2023</span></div>
-        <p>Entre <strong>2020 e 2023</strong>, respondi pelas páginas do Cursinho Popular Herbert de Souza no <strong>Instagram</strong> e no <strong>Facebook</strong>: linha editorial, divulgação dos processos seletivos e mobilização da comunidade em torno do cursinho — que hoje reúne mais de 4 mil seguidores.</p>
-        <div class="roles">
-          <span>Conteúdo</span><span>Redes sociais</span><span>Divulgação</span>
-        </div>
+        <p>Respondi pelas redes do <strong>Cursinho Popular Herbert de Souza</strong>: linha editorial, divulgação dos processos seletivos e mobilização da comunidade — hoje mais de 4 mil seguidores.</p>
+        <p>Alcance orgânico, sem verba de mídia: o digital como ferramenta de acesso, não de vitrine.</p>
+        <div class="roles"><span>Conteúdo</span><span>Redes sociais</span><span>Divulgação</span></div>
         <div class="eps">
           <a class="ig" href="https://www.instagram.com/cursinhoherbertdesouza/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.4" cy="6.6" r="1.1" fill="currentColor" stroke="none"/></svg> @cursinhoherbertdesouza</a>
         </div>
       </article>
-    </div>
 
-    <div class="epslist" data-reveal>
-      <h3>Episódios que produzi</h3>
-      <p>Sete episódios publicados no <strong>CMUCast</strong>, o podcast do Centro de Memória da Unicamp, dentro do especial <em>Histórias Negras</em>.</p>
-      <div class="epgrid" data-stagger>
-        <div class="epgroup" data-item>
-          <h4>Registros orais</h4>
-          <p class="src">Vozes negras de Campinas, 1930–1970</p>
-          <a href="https://open.spotify.com/episode/4N7Or6U1CVbKBPwV4qoGb3" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm4.6 14.44a.75.75 0 0 1-1.03.25c-2.82-1.72-6.37-2.11-10.55-1.15a.75.75 0 1 1-.33-1.46c4.57-1.05 8.5-.6 11.66 1.33.35.22.46.68.25 1.03zm1.23-2.75a.94.94 0 0 1-1.29.31c-3.23-1.98-8.15-2.56-11.97-1.4a.94.94 0 0 1-.55-1.79c4.37-1.33 9.79-.69 13.5 1.59.44.27.58.85.31 1.29zm.11-2.86C14.07 8.53 7.7 8.32 4.4 9.33a1.12 1.12 0 1 1-.65-2.15c3.79-1.15 10.82-.93 15.09 1.6a1.12 1.12 0 1 1-1.14 1.93z"/></svg> Ep. 1 · Celso Níger</a>
-          <a href="https://open.spotify.com/episode/7pkQ96S2y7Yx0kvRbaY4MZ" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm4.6 14.44a.75.75 0 0 1-1.03.25c-2.82-1.72-6.37-2.11-10.55-1.15a.75.75 0 1 1-.33-1.46c4.57-1.05 8.5-.6 11.66 1.33.35.22.46.68.25 1.03zm1.23-2.75a.94.94 0 0 1-1.29.31c-3.23-1.98-8.15-2.56-11.97-1.4a.94.94 0 0 1-.55-1.79c4.37-1.33 9.79-.69 13.5 1.59.44.27.58.85.31 1.29zm.11-2.86C14.07 8.53 7.7 8.32 4.4 9.33a1.12 1.12 0 1 1-.65-2.15c3.79-1.15 10.82-.93 15.09 1.6a1.12 1.12 0 1 1-1.14 1.93z"/></svg> Ep. 2 · Luciana Garcia</a>
-          <a href="https://open.spotify.com/episode/7u7yHzwFra8vtoDctbCLnn" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm4.6 14.44a.75.75 0 0 1-1.03.25c-2.82-1.72-6.37-2.11-10.55-1.15a.75.75 0 1 1-.33-1.46c4.57-1.05 8.5-.6 11.66 1.33.35.22.46.68.25 1.03zm1.23-2.75a.94.94 0 0 1-1.29.31c-3.23-1.98-8.15-2.56-11.97-1.4a.94.94 0 0 1-.55-1.79c4.37-1.33 9.79-.69 13.5 1.59.44.27.58.85.31 1.29zm.11-2.86C14.07 8.53 7.7 8.32 4.4 9.33a1.12 1.12 0 1 1-.65-2.15c3.79-1.15 10.82-.93 15.09 1.6a1.12 1.12 0 1 1-1.14 1.93z"/></svg> Ep. 3 · Airton Pereira Júnior</a>
-          <a href="https://open.spotify.com/episode/0zguK1w8XIAPgZ63CQ7ECw" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm4.6 14.44a.75.75 0 0 1-1.03.25c-2.82-1.72-6.37-2.11-10.55-1.15a.75.75 0 1 1-.33-1.46c4.57-1.05 8.5-.6 11.66 1.33.35.22.46.68.25 1.03zm1.23-2.75a.94.94 0 0 1-1.29.31c-3.23-1.98-8.15-2.56-11.97-1.4a.94.94 0 0 1-.55-1.79c4.37-1.33 9.79-.69 13.5 1.59.44.27.58.85.31 1.29zm.11-2.86C14.07 8.53 7.7 8.32 4.4 9.33a1.12 1.12 0 1 1-.65-2.15c3.79-1.15 10.82-.93 15.09 1.6a1.12 1.12 0 1 1-1.14 1.93z"/></svg> Ep. 4 · Marcelo Lima</a>
+      <article class="card s4" id="mapafalado" data-item>
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 19 L9 8 L13 14 L16 9 L21 19 Z"/><path d="M9 8 L11 11 L7 11 Z" fill="currentColor" stroke="none"/></svg></div>
+        <h3>Mapa Falado</h3>
+        <p class="sub">Projeto autoral · América do Sul</p>
+        <p>Faço a mala, gravo, e volto com aula. Percorro o continente e transformo o que vejo em material didático sobre <strong>geografia, cultura e língua</strong>, em vídeo, texto e podcast.</p>
+        <p>A temporada do Chile sobe do nível do mar aos <strong>3.330 metros</strong>. Cada parada é lida em quatro camadas — e uma delas é sempre <strong>povos originários</strong>, porque nenhuma história da América se conta sem quem já estava aqui.</p>
+        <div class="roles"><span>Roteiro</span><span>Pesquisa</span><span>Gravação</span><span>Edição</span><span>Apresentação</span></div>
+        <div class="eps">
+          <a href="/aulas-mf7k2x/"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 19 L9 8 L13 14 L16 9 L21 19 Z"/><path d="M9 8 L11 11 L7 11 Z" fill="currentColor" stroke="none"/></svg> Entrar na trilha</a>
         </div>
-        <div class="epgroup" data-item>
-          <h4>Série “Voz negra e popular”</h4>
-          <p class="src">Laudelina de Campos Melo, que organizou as trabalhadoras domésticas e criou o Baile Pérola Negra</p>
-          <a href="https://open.spotify.com/episode/09A8q3ZEQdt9Ak8RJzECzP" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm4.6 14.44a.75.75 0 0 1-1.03.25c-2.82-1.72-6.37-2.11-10.55-1.15a.75.75 0 1 1-.33-1.46c4.57-1.05 8.5-.6 11.66 1.33.35.22.46.68.25 1.03zm1.23-2.75a.94.94 0 0 1-1.29.31c-3.23-1.98-8.15-2.56-11.97-1.4a.94.94 0 0 1-.55-1.79c4.37-1.33 9.79-.69 13.5 1.59.44.27.58.85.31 1.29zm.11-2.86C14.07 8.53 7.7 8.32 4.4 9.33a1.12 1.12 0 1 1-.65-2.15c3.79-1.15 10.82-.93 15.09 1.6a1.12 1.12 0 1 1-1.14 1.93z"/></svg> Ep. 1 · Laudelina de Campos Melo</a>
-          <a href="https://open.spotify.com/episode/3Hoiwlv2kPHGJyMzPhN5VE" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm4.6 14.44a.75.75 0 0 1-1.03.25c-2.82-1.72-6.37-2.11-10.55-1.15a.75.75 0 1 1-.33-1.46c4.57-1.05 8.5-.6 11.66 1.33.35.22.46.68.25 1.03zm1.23-2.75a.94.94 0 0 1-1.29.31c-3.23-1.98-8.15-2.56-11.97-1.4a.94.94 0 0 1-.55-1.79c4.37-1.33 9.79-.69 13.5 1.59.44.27.58.85.31 1.29zm.11-2.86C14.07 8.53 7.7 8.32 4.4 9.33a1.12 1.12 0 1 1-.65-2.15c3.79-1.15 10.82-.93 15.09 1.6a1.12 1.12 0 1 1-1.14 1.93z"/></svg> Ep. 2 · Laudelina de Campos Melo</a>
-          <a href="https://open.spotify.com/episode/18pKGgNqcy62q16gmn7f6m" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm4.6 14.44a.75.75 0 0 1-1.03.25c-2.82-1.72-6.37-2.11-10.55-1.15a.75.75 0 1 1-.33-1.46c4.57-1.05 8.5-.6 11.66 1.33.35.22.46.68.25 1.03zm1.23-2.75a.94.94 0 0 1-1.29.31c-3.23-1.98-8.15-2.56-11.97-1.4a.94.94 0 0 1-.55-1.79c4.37-1.33 9.79-.69 13.5 1.59.44.27.58.85.31 1.29zm.11-2.86C14.07 8.53 7.7 8.32 4.4 9.33a1.12 1.12 0 1 1-.65-2.15c3.79-1.15 10.82-.93 15.09 1.6a1.12 1.12 0 1 1-1.14 1.93z"/></svg> Ep. 3 · Laudelina de Campos Melo</a>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
+      </article>
 
-<!-- ============ MAPA FALADO ============ -->
-<section class="section mf" id="mapafalado">
-  <div class="wrap">
-    <div class="section-head">
-      <span class="eyebrow" data-reveal>Mapa Falado</span>
-      <h2 data-reveal>Faço a mala, gravo,<br>e volto com aula.</h2>
-      <p class="lead" data-reveal>Projeto autoral de educação em viagem: percorro a América do Sul e transformo o que vejo em material didático sobre geografia, cultura e língua — em vídeo, texto e podcast.</p>
-    </div>
-
-    <div class="mf-grid">
-      <div class="mf-texto" data-reveal>
-        <p>A primeira temporada é o <strong>Chile</strong>, e ela tem uma espinha: a <strong>altitude</strong>. Começa no nível do mar, em Isla Negra, e sobe até os <strong>3.330 metros</strong> de El Colorado. A cada degrau muda a paisagem, muda o que se come e muda o modo de falar.</p>
-        <p>Cada parada é lida em quatro camadas — <strong>geografia, cultura, língua e povos originários</strong> — porque nenhuma delas se explica sozinha. A língua guarda a história: o morro no centro de Santiago se chama <em>Huelén</em> em mapudungun, que quer dizer tristeza.</p>
-        <p>O material é feito para <strong>adolescentes e jovens estudantes</strong>, com uma versão infantil em seguida. História real, com fonte na tela — valorizando quem já estava aqui antes da chegada dos europeus e mostrando como esse encontro produziu o país que o Chile é hoje.</p>
-
-        <div class="mf-selos">
-          <span>Roteiro</span><span>Pesquisa</span><span>Gravação</span><span>Edição</span><span>Apresentação</span>
-        </div>
-
-        <a class="mf-cta" href="/aulas-mf7k2x/">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 19 L9 8 L13 14 L16 9 L21 19 Z"/></svg>
-          Entrar na trilha
-        </a>
-        <span class="mf-nota">Protótipo interativo · fotos provisórias até os vídeos ficarem prontos</span>
-      </div>
-
-      <aside class="mf-mapa" data-reveal aria-label="As paradas da primeira temporada">
-        <h3>Temporada 1 · Chile</h3>
-        <p>dez aulas, ordenadas pela subida</p>
-        <div class="mf-lista">
-          <div class="mf-item" style="--pt:#8B4FB5"><b>contexto</b><i></i><span>Antes da chegada dos europeus</span></div>
-          <div class="mf-item" style="--pt:#F2682A"><b>contexto</b><i></i><span>A colonização, em 342 anos</span></div>
-          <div class="mf-item" style="--pt:#6BCB4F"><b>contexto</b><i></i><span>O que sobrou de cada lado</span></div>
-          <div class="mf-item" style="--pt:#0FB5BD"><b>0 m</b><i></i><span>Isla Negra · por que o mar é frio</span></div>
-          <div class="mf-item" style="--pt:#6BCB4F"><b>350 m</b><i></i><span>Valle del Maipo · o clima do vinho</span></div>
-          <div class="mf-item" style="--pt:#FFC233"><b>550 m</b><i></i><span>Lastarria · palavras escondidas</span></div>
-          <div class="mf-item" style="--pt:#F2682A"><b>629 m</b><i></i><span>Santa Lucía · o morro de dois nomes</span></div>
-          <div class="mf-item" style="--pt:#0A8A91"><b>2.500 m</b><i></i><span>Cajón del Maipo · de onde vem a água</span></div>
-          <div class="mf-item" style="--pt:#6B2F93"><b>3.330 m</b><i></i><span>El Colorado · a cada mil metros</span></div>
-        </div>
-      </aside>
     </div>
   </div>
 </section>

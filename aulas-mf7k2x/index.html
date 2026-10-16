@@ -1104,22 +1104,22 @@ var AR_TRILHA = [
   pontos:[
   { k:'geo', t:'A mesma montanha, dois países',
     r:'El Colorado, Farellones e Valle Nevado dividem o mesmo vale.',
-    d:'São três centros vizinhos, a poucos quilômetros uns dos outros, na mesma bacia. Dali a cordilheira segue para leste e vira fronteira. O que separa Chile e Argentina não é um acidente geográfico isolado: é a linha das cumeeiras mais altas, acordada entre os dois países no século XIX.',
+    d:'São três centros vizinhos, a poucos quilômetros uns dos outros, na mesma bacia. Dali a cordilheira segue para leste e vira fronteira: o critério acordado no século XIX foi o <strong>divisor de águas</strong> — de que lado a água escorre. E essa água é o que importa de verdade. A neve que cai aqui abastece Santiago e as parreiras do Maipo de um lado, e os canais de Mendoza do outro. A montanha é a caixa d\u2019água de dois países.',
     q:'Como Chile e Argentina decidiram onde ficaria a fronteira?',
     a:'Seguindo a linha das cumeeiras mais altas da cordilheira',
     b:'Dividindo o território ao meio em linha reta',
     ok:'a',
     porque:'O critério foi o divisor de águas: de que lado a água escorre. É um limite que a própria montanha desenha — e que gerou disputas justamente onde a cumeeira e o divisor não coincidem.',
     quase:'Linhas retas existem em outras fronteiras da América, mas aqui o critério foi o relevo — o que torna a montanha, literalmente, o documento.' },
-  { k:'cul', t:'Neve como economia',
-    r:'Três estações numa bacia só, dependentes do mesmo inverno.',
-    d:'A temporada de esqui move hotéis, escolas, transporte e milhares de empregos sazonais. Em 2026 a seca deixou 90% das pistas fechadas até julho, e a chegada de dois sistemas frontais mudou a temporada em dias. Depender da neve é depender de um ano que nem sempre vem.',
-    q:'Por que uma seca na cordilheira afeta muito mais do que o esqui?',
-    a:'Porque a mesma neve abastece cidades e lavouras dos dois lados',
-    b:'Porque só reduz o número de turistas',
+  { k:'cul', t:'A estrada manda',
+    r:'A G-21 é mão única por horário: sobe de manhã, desce de tarde.',
+    d:'A estrada que liga Santiago a Farellones, El Colorado e Valle Nevado tem dezenas de curvas numeradas e largura para um sentido só. Nos fins de semana de inverno, o Ministério dos Transportes inverte o fluxo por horário — subida das 8h às 13h, descida das 15h às 20h — e em alguns trechos exige corrente nos pneus. Do lado argentino a solução é outra: lá se exige <strong>portar</strong> correntes durante todo o inverno, mesmo sem neve, e a Gendarmería barra quem não tiver.',
+    q:'Por que dois países vizinhos resolvem o mesmo problema de formas diferentes?',
+    a:'Porque o Chile regula o horário e a Argentina regula o equipamento',
+    b:'Porque na Argentina não neva o bastante para haver regra',
     ok:'a',
-    porque:'A neve é o reservatório do ano seguinte. Sem ela, falta água em Santiago, nas parreiras do Maipo e — do outro lado — nos canais de Mendoza. A montanha é a caixa d\u2019água de dois países.',
-    quase:'O turismo sente primeiro e de forma visível, mas o efeito maior é hídrico: milhões de pessoas e a agricultura de dois países dependem desse degelo.' },
+    porque:'A mesma montanha impõe o mesmo risco, e cada país escolheu um instrumento: um organiza o tempo de uso da via, o outro obriga o motorista a carregar o equipamento. Comparar as duas soluções é um jeito de ver que a lei responde à geografia — mas não há uma resposta única.',
+    quase:'Neva muito do lado argentino, e as rotas chegam a ser fechadas por temporal. A diferença está no tipo de regra, não na quantidade de neve.' },
   { k:'ori', t:'A travessia é antiga',
     r:'Os passos dos Andes eram rota conhecida muito antes da fronteira existir.',
     d:'Povos dos dois lados cruzavam para trocar, negociar e casar, e a rede de caminhos incas chegava até aqui. A fronteira entre Chile e Argentina é do século XIX; a travessia é milenar. Fazer esse caminho hoje é repetir um trajeto que já era rotina.',
@@ -1469,6 +1469,7 @@ var AR_TRILHA = [
 ];
 
 var AR_CURIOS = [
+ {ar:1, ic:'rolo', x:186, y:430, c:'#6B2F93', q:'Corrente no porta-malas, por lei', t:'Do lado argentino a regra é outra: nas rotas de montanha é obrigatório <em>levar</em> correntes durante todo o inverno, mesmo sem neve no chão. A Gendarmería pode barrar quem não tiver. Dois países, a mesma cordilheira — o Chile regula o horário, a Argentina regula o equipamento.'},
  {ar:1, ic:'onda',   x:880, y:580, c:'#B08A5E', q:'220 km de largura', t:'O Río de la Plata é o rio mais largo do mundo. De uma margem não se vê a outra — por isso a travessia é de barco, não de ponte.'},
  {ar:1, ic:'gente',  x:620,  y:390, c:'#3C7FBF', q:'Um país refeito',  t:'Entre 1870 e 1930 a Argentina recebeu milhões de imigrantes. Buenos Aires virou uma cidade onde a maioria havia nascido em outro lugar.'},
  {ar:1, ic:'fala',   x:880,  y:560, c:'#F2682A', q:'Laburar',          t:'Trabalhar, em gíria portenha, vem do italiano lavorare. O lunfardo entrou pelo porto e ficou.'},
@@ -1506,6 +1507,7 @@ var AR_CURIOS = [
 
 
   var CURIOS = [
+ {ic:'rolo', x:880, y:146, c:'#AC4C2E', q:'Subir de manhã, descer de tarde', t:'A estrada G-21, que leva a Farellones, El Colorado e Valle Nevado, é estreita demais para dois sentidos. Nos fins de semana de inverno ela vira mão única por horário: sobe-se das 8h às 13h, desce-se das 15h às 20h. Quem perde a janela, espera.'},
     {ic:'onda', x:200, y:600, c:'var(--pacifico)', q:'Água gelada', t:'A corrente de Humboldt sobe do sul e deixa o mar do Chile frio mesmo no verão. É ela que seca o Atacama.'},
     {ic:'batata', x:430, y:500, c:'var(--valle)', q:'Daqui para o mundo', t:'A batata foi domesticada nos Andes. Hoje é o quarto alimento mais cultivado do planeta.'},
     {ic:'fala', x:640, y:430, c:'var(--sol)', q:'Palavra escondida', t:'"Pololo", namorado em chileno, vem do mapudungun — onde era o nome de um inseto que zumbe.'},

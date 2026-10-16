@@ -1,0 +1,1360 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>A Subida</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:wght@400;600;700;800&display=swap">
+
+<style>
+  :root{
+    /* ---- paisagem chilena ---- */
+    --pacifico:#0FB5BD;
+    --pacifico-2:#0A8A91;
+    --valle:#6BCB4F;
+    --valle-2:#4EA336;
+    --sol:#FFC233;
+    --sol-2:#E09A00;
+    --cobre:#F2682A;
+    --cobre-2:#C94A12;
+    --andino:#8B4FB5;
+    --andino-2:#6B2F93;
+    --nieve:#FFFFFF;
+    --cielo:#E6F4FF;
+    --cielo-2:#C9E8FB;
+
+    --ground:#F2FAFE;
+    --card:#FFFFFF;
+    --ink:#16304F;
+    --ink-2:#4A6886;
+    --ink-3:#7E97B0;
+    --line:#CDE4F2;
+    --sombra:0 2px 6px -2px rgba(22,48,79,.10), 0 14px 32px -14px rgba(22,48,79,.30), 0 30px 60px -36px rgba(22,48,79,.24);
+    --sombra-sm:0 1px 4px -1px rgba(22,48,79,.08), 0 8px 20px -10px rgba(22,48,79,.26);
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --ground:#0B1A2E;
+      --card:#13263E;
+      --ink:#E8F4FF;
+      --ink-2:#A6C2DC;
+      --ink-3:#6F8CA8;
+      --line:#214063;
+      --cielo:#122744;
+      --cielo-2:#0D1E36;
+      --nieve:#DCEEFB;
+      --sombra:0 2px 6px -2px rgba(0,0,0,.4), 0 14px 32px -14px rgba(0,0,0,.55), 0 30px 60px -36px rgba(0,0,0,.6);
+      --sombra-sm:0 1px 4px -1px rgba(0,0,0,.35), 0 8px 20px -10px rgba(0,0,0,.5);
+    }
+  }
+  :root[data-theme="dark"]{
+    --ground:#0B1A2E; --card:#13263E; --ink:#E8F4FF; --ink-2:#A6C2DC; --ink-3:#6F8CA8;
+    --line:#214063; --cielo:#122744; --cielo-2:#0D1E36; --nieve:#DCEEFB;
+    --sombra:0 2px 6px -2px rgba(0,0,0,.4), 0 14px 32px -14px rgba(0,0,0,.55), 0 30px 60px -36px rgba(0,0,0,.6);
+    --sombra-sm:0 1px 4px -1px rgba(0,0,0,.35), 0 8px 20px -10px rgba(0,0,0,.5);
+  }
+
+  /* textura discreta: grão suave sobre o fundo e sobre a paisagem */
+  body::before{
+    content:""; position:fixed; inset:0; z-index:0; pointer-events:none; opacity:.4;
+    background-image:radial-gradient(circle at 1px 1px, rgba(22,48,79,.055) 1px, transparent 0);
+    background-size:22px 22px;
+  }
+  :root:not([data-theme="light"]) body::before{background-image:radial-gradient(circle at 1px 1px, rgba(255,255,255,.05) 1px, transparent 0)}
+  .pagina,#nuvens,.cortina{position:relative; z-index:1}
+
+  *{box-sizing:border-box}
+  body{
+    background:var(--ground); color:var(--ink);
+    font-family:Nunito, system-ui, -apple-system, sans-serif;
+    font-size:16px; line-height:1.55; margin:0;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  h1,h2,h3,.fk{font-family:Fredoka, Nunito, sans-serif; font-weight:600; margin:0}
+  .pagina{max-width:1180px; margin:0 auto; padding:clamp(1.1rem,3vw,2.2rem) clamp(.9rem,3vw,2rem) 5rem}
+
+  /* ---------------- cabeçalho ---------------- */
+  .topo{display:flex; flex-wrap:wrap; align-items:center; gap:1rem 1.4rem; margin-bottom:1.6rem}
+  .marca{display:flex; align-items:center; gap:.85rem}
+  .marca .emblema{
+    width:62px; height:62px; border-radius:22px; flex:none;
+    background:linear-gradient(145deg,var(--sol),var(--cobre));
+    display:grid; place-items:center; box-shadow:var(--sombra-sm);
+  }
+  .marca .emblema svg{width:38px; height:38px}
+  .marca h1{font-size:clamp(1.6rem,1.2rem + 1.6vw,2.3rem); line-height:1; font-weight:700}
+  .marca p{margin:.15rem 0 0; color:var(--ink-2); font-weight:700; font-size:.92rem}
+  .contador{
+    margin-left:auto; display:flex; align-items:center; gap:.6rem;
+    background:var(--card); border:2px solid var(--line); border-radius:100px;
+    padding:.45rem .5rem .45rem 1rem; box-shadow:var(--sombra-sm); font-weight:800; font-size:.92rem;
+  }
+  .contador b{font-family:Fredoka; font-size:1.15rem; color:var(--cobre)}
+  .contador .pips{display:flex; gap:4px}
+  .contador .pip{width:11px; height:11px; border-radius:50%; background:var(--line)}
+  .contador .pip.on{background:var(--valle)}
+
+  /* ---------------- antes de subir ---------------- */
+  .faixa-titulo{display:flex; align-items:center; gap:.7rem; margin:2rem 0 .9rem}
+  .faixa-titulo h2{font-size:1.3rem; font-weight:700}
+  .faixa-titulo .risco{flex:1; height:5px; border-radius:3px; background:repeating-linear-gradient(90deg,var(--line) 0 14px,transparent 14px 24px)}
+
+  .base{display:grid; grid-template-columns:repeat(3,1fr); gap:1rem}
+  @media (max-width:760px){ .base{grid-template-columns:1fr} }
+  .mochila{
+    position:relative; text-align:left; cursor:pointer; font:inherit; color:inherit;
+    background:var(--card); border:2px solid var(--line); border-radius:30px;
+    padding:1.1rem 1.1rem 1.2rem; box-shadow:var(--sombra-sm);
+    transition:transform .18s cubic-bezier(.34,1.56,.64,1), border-color .18s, box-shadow .18s;
+  }
+  .mochila:hover,.mochila:focus-visible{transform:translateY(-6px); border-color:var(--c); box-shadow:var(--sombra); outline:none}
+  .mochila:active{transform:translateY(-1px)}
+  .mochila .selo{
+    width:52px; height:52px; border-radius:17px; display:grid; place-items:center;
+    background:var(--c); margin-bottom:.7rem; box-shadow:0 6px 16px -6px rgba(0,0,0,.3);
+  }
+  .mochila .selo svg{width:30px;height:30px;color:#fff}
+  .mochila .etq{font-family:Fredoka; font-size:.78rem; font-weight:600; letter-spacing:.09em; text-transform:uppercase; color:var(--c)}
+  .mochila h3{font-size:1.06rem; line-height:1.25; margin:.2rem 0 .35rem; font-weight:600}
+  .mochila p{margin:0; font-size:.88rem; color:var(--ink-2); font-weight:600}
+
+  /* ---------------- a montanha ---------------- */
+  .montanha{
+    position:relative; margin-top:.4rem;
+    background:linear-gradient(180deg,var(--cielo),var(--cielo-2));
+    border:2px solid var(--line); border-radius:40px; box-shadow:var(--sombra);
+    overflow:hidden;
+  }
+  .montanha svg{display:block; width:100%; height:auto}
+  .legenda-alt{
+    position:absolute; left:0; top:0; bottom:0; width:74px; pointer-events:none;
+    display:flex; flex-direction:column; justify-content:space-between; padding:1.1rem .6rem 2.6rem;
+    font-family:Fredoka; font-size:.76rem; font-weight:600; color:var(--ink-3);
+  }
+  @media (max-width:620px){ .legenda-alt{display:none} }
+
+  /* estações */
+  .estacao{cursor:pointer}
+  .estacao .halo{transform-box:fill-box; transform-origin:center; transition:transform .25s cubic-bezier(.34,1.56,.64,1), opacity .25s; opacity:0}
+  .estacao:hover .halo,.estacao:focus-visible .halo{opacity:.35; transform:scale(1.5)}
+  .estacao .bolha{transform-box:fill-box; transform-origin:center; transition:transform .22s cubic-bezier(.34,1.56,.64,1)}
+  .estacao:hover .bolha,.estacao:focus-visible .bolha{transform:scale(1.12)}
+  .estacao:focus-visible{outline:none}
+  .estacao:focus-visible .bolha{stroke:var(--ink); stroke-width:5}
+  .estacao .rot{font-family:Fredoka; font-weight:600; pointer-events:none}
+  .estacao .alt{font-family:Fredoka; font-weight:500; pointer-events:none}
+  .estacao.vista .bolha{filter:saturate(1)}
+
+  /* pontos de curiosidade */
+  .curio{cursor:pointer}
+  .curio circle{transition:transform .2s cubic-bezier(.34,1.56,.64,1); transform-box:fill-box; transform-origin:center}
+  .curio:hover circle,.curio:focus-visible circle{transform:scale(1.25)}
+  .curio:focus-visible{outline:none}
+  .curio text{font-family:Fredoka; font-weight:600; pointer-events:none}
+
+  /* ---------------- nuvens de curiosidade ---------------- */
+  #nuvens{position:fixed; inset:0; pointer-events:none; z-index:60}
+  .nuvem{
+    position:absolute; max-width:min(330px,78vw);
+    background:var(--card); color:var(--ink);
+    border:4px solid var(--c,var(--sol)); border-radius:34px;
+    padding:.95rem 1.2rem; font-weight:700; font-size:.95rem; line-height:1.4;
+    box-shadow:var(--sombra); transform:translate(-50%,0);
+    animation:sobe 5.4s cubic-bezier(.2,.7,.3,1) forwards;
+  }
+  .nuvem::before,.nuvem::after{
+    content:""; position:absolute; border-radius:50%;
+    background:var(--card); border:4px solid var(--c,var(--sol));
+  }
+  .nuvem::before{width:26px;height:26px; left:28px; bottom:-18px}
+  .nuvem::after{width:14px;height:14px; left:16px; bottom:-34px}
+  .nuvem .q{display:block; font-family:Fredoka; font-size:.76rem; font-weight:600;
+            letter-spacing:.1em; text-transform:uppercase; color:var(--c,var(--sol)); margin-bottom:.15rem}
+  @keyframes sobe{
+    0%{opacity:0; transform:translate(-50%,10px) scale(.7)}
+    12%{opacity:1; transform:translate(-50%,-6px) scale(1.04)}
+    18%{transform:translate(-50%,0) scale(1)}
+    78%{opacity:1; transform:translate(-50%,-78px) scale(1)}
+    100%{opacity:0; transform:translate(-50%,-128px) scale(.97)}
+  }
+  @media (prefers-reduced-motion:reduce){
+    .nuvem{animation:surge .3s ease-out forwards}
+    @keyframes surge{from{opacity:0}to{opacity:1}}
+    *{transition-duration:.01ms !important}
+  }
+
+  /* ---------------- painel da aula ---------------- */
+  .cortina{
+    position:fixed; inset:0; z-index:70; display:none;
+    background:rgba(11,26,46,.62); backdrop-filter:blur(4px);
+    padding:clamp(.8rem,3vw,2rem); overflow-y:auto;
+  }
+  .cortina.abre{display:grid; place-items:start center}
+  .aula{
+    width:min(880px,100%); background:var(--card);
+    border:0; border-radius:34px;
+    box-shadow:0 30px 70px -30px rgba(0,0,0,.7); overflow:hidden;
+    animation:entra .34s cubic-bezier(.34,1.4,.64,1);
+  }
+  @keyframes entra{from{opacity:0; transform:translateY(22px) scale(.97)} to{opacity:1; transform:none}}
+  .aula-topo{display:flex; align-items:flex-start; gap:1rem; padding:1.2rem 1.3rem .9rem; background:var(--c)}
+  .aula-topo .n{
+    width:66px;height:66px;flex:none;border-radius:22px;background:rgba(255,255,255,.26);
+    display:grid;place-items:center;font-family:Fredoka;font-weight:600;color:#fff;line-height:1;
+  }
+  .aula-topo .n b{display:block;font-size:1.5rem}
+  .aula-topo .n span{display:block;font-size:.66rem;letter-spacing:.06em}
+  .aula-topo h2{color:#fff; font-size:clamp(1.15rem,1rem + .9vw,1.6rem); line-height:1.2; font-weight:700}
+  .aula-topo .local{color:rgba(255,255,255,.92); font-weight:800; font-size:.84rem; margin:.25rem 0 0}
+  .fechar{
+    margin-left:auto; flex:none; width:44px;height:44px;border-radius:50%;
+    border:3px solid rgba(255,255,255,.55); background:rgba(255,255,255,.2); color:#fff;
+    font-size:1.3rem; cursor:pointer; line-height:1; display:grid; place-items:center;
+  }
+  .fechar:hover{background:rgba(255,255,255,.34)}
+  .fechar:focus-visible{outline:3px solid #fff; outline-offset:2px}
+
+  .tela{position:relative; aspect-ratio:16/9; background:#0B1A2E; display:grid; place-items:center}
+  .tela video,.tela iframe{width:100%;height:100%;display:block;border:0}
+  .vazio{text-align:center; color:#9FC0DC; padding:1.4rem}
+  .vazio .ico{width:72px;height:72px;margin:0 auto .6rem; border-radius:26px;
+    background:rgba(255,255,255,.08); display:grid; place-items:center}
+  .vazio .ico svg{width:38px;height:38px}
+  .vazio b{display:block; font-family:Fredoka; font-size:1.05rem; color:#CFE6F7; font-weight:600}
+  .vazio code{font-size:.82rem; background:rgba(255,255,255,.1); padding:.15rem .45rem; border-radius:6px}
+
+  .tela .foto{width:100%; height:100%; object-fit:cover; display:block}
+  .selo-prov{
+    position:absolute; left:14px; top:14px; display:flex; align-items:center; gap:.5rem;
+    background:rgba(11,26,46,.78); color:#EAF6FF; backdrop-filter:blur(6px);
+    padding:.4rem .85rem .4rem .7rem; border-radius:100px;
+    font-family:Fredoka; font-size:.78rem; font-weight:500;
+  }
+  .selo-prov .pulso{width:9px;height:9px;border-radius:50%;background:var(--sol);
+    box-shadow:0 0 0 0 rgba(255,194,51,.7); animation:bate 2s infinite}
+  @keyframes bate{70%{box-shadow:0 0 0 9px rgba(255,194,51,0)}100%{box-shadow:0 0 0 0 rgba(255,194,51,0)}}
+  .credito{
+    position:absolute; left:0; right:0; bottom:0; padding:.5rem .9rem;
+    background:linear-gradient(0deg,rgba(11,26,46,.85),transparent);
+    color:#C8DDEF; font-size:.68rem; font-weight:600; line-height:1.3;
+  }
+  @media (prefers-reduced-motion:reduce){ .selo-prov .pulso{animation:none} }
+
+
+  /* ---------- pontos da aula ---------- */
+  .passo{
+    border:2px solid var(--line); border-radius:24px; overflow:hidden;
+    background:var(--ground); transition:border-color .2s, box-shadow .2s;
+  }
+  .passo + .passo{margin-top:.7rem}
+  .passo.aberto{border-color:var(--pc); box-shadow:var(--sombra-sm)}
+  .passo.ok{border-color:var(--valle)}
+  .passo-cab{
+    width:100%; display:flex; align-items:center; gap:.8rem; text-align:left;
+    font:inherit; color:inherit; cursor:pointer; background:none; border:0;
+    padding:.9rem 1rem;
+  }
+  .passo-cab:focus-visible{outline:3px solid var(--pc); outline-offset:-3px; border-radius:22px}
+  .passo-cab .bolinha{
+    width:38px;height:38px;flex:none;border-radius:13px;background:var(--pc);
+    display:grid;place-items:center;color:#fff;
+  }
+  .passo-cab .bolinha svg{width:21px;height:21px}
+  .passo-cab .tx{flex:1; min-width:0}
+  .passo-cab .tt{font-family:Fredoka; font-weight:600; font-size:1rem; display:block; color:var(--pc)}
+  .passo-cab .rr{font-size:.88rem; color:var(--ink-2); font-weight:600; display:block; line-height:1.35}
+  .passo-cab .seta{flex:none; color:var(--ink-3); transition:transform .25s; font-size:1.1rem}
+  .passo.aberto .passo-cab .seta{transform:rotate(90deg)}
+  .passo-cab .tick{flex:none; width:26px;height:26px;border-radius:50%;background:var(--valle);
+    display:none; place-items:center; color:#fff; font-size:.85rem}
+  .passo.ok .passo-cab .tick{display:grid}
+  .passo.ok .passo-cab .seta{display:none}
+
+  .passo-corpo{display:none; padding:0 1rem 1.1rem; border-top:2px dashed var(--line); margin-top:-2px; padding-top:.9rem}
+  .passo.aberto .passo-corpo{display:block}
+  .passo-corpo .fundo{margin:0 0 1rem; font-size:.94rem; color:var(--ink-2); font-weight:600; line-height:1.55}
+
+  .desafio{background:var(--card); border:2px solid var(--line); border-radius:20px; padding:.9rem 1rem}
+  .desafio .pg{font-family:Fredoka; font-weight:600; font-size:1rem; margin:0 0 .7rem; color:var(--ink)}
+  .ops{display:grid; gap:.5rem}
+  @media (min-width:640px){ .ops{grid-template-columns:1fr 1fr} }
+  .op{
+    font:inherit; font-weight:700; font-size:.9rem; text-align:left; cursor:pointer;
+    background:var(--ground); color:var(--ink); border:2px solid var(--line);
+    border-radius:16px; padding:.7rem .85rem .7rem .75rem;
+    display:flex; gap:.6rem; align-items:flex-start;
+    transition:transform .14s, border-color .18s, background .18s;
+  }
+  .op .letra{
+    flex:none; width:24px;height:24px;border-radius:8px; background:var(--line); color:var(--ink-2);
+    display:grid;place-items:center; font-family:Fredoka; font-size:.82rem; font-weight:600;
+  }
+  .op:hover:not(:disabled){transform:translateY(-2px); border-color:var(--pc)}
+  .op:focus-visible{outline:3px solid var(--pc); outline-offset:2px}
+  .op:disabled{cursor:default}
+  .op.certa{border-color:var(--valle); background:color-mix(in srgb,var(--valle) 14%, var(--card))}
+  .op.certa .letra{background:var(--valle); color:#fff}
+  .op.errada{border-color:var(--sol-2); background:color-mix(in srgb,var(--sol) 16%, var(--card)); opacity:.9}
+  .op.errada .letra{background:var(--sol-2); color:#fff}
+
+  .devolutiva{
+    margin-top:.75rem; border-radius:16px; padding:.8rem .95rem;
+    font-size:.9rem; font-weight:600; line-height:1.5; display:none;
+  }
+  .devolutiva.mostra{display:block; animation:brota .3s ease-out}
+  @keyframes brota{from{opacity:0; transform:translateY(-6px)} to{opacity:1; transform:none}}
+  .devolutiva.boa{background:color-mix(in srgb,var(--valle) 15%, var(--card)); color:var(--ink);
+    border:2px solid color-mix(in srgb,var(--valle) 45%, var(--card))}
+  .devolutiva.quase{background:color-mix(in srgb,var(--sol) 18%, var(--card)); color:var(--ink);
+    border:2px solid color-mix(in srgb,var(--sol) 55%, var(--card))}
+  .devolutiva b{font-family:Fredoka; font-weight:600; display:block; margin-bottom:.15rem}
+
+  .acoes{display:flex; flex-wrap:wrap; gap:.5rem; margin-top:.75rem}
+  .bt{
+    font:inherit; font-family:Fredoka; font-weight:600; font-size:.92rem; cursor:pointer;
+    border:0; border-radius:100px; padding:.6rem 1.15rem; color:#fff; background:var(--pc);
+    box-shadow:0 6px 16px -6px rgba(0,0,0,.35); transition:transform .14s, filter .14s;
+  }
+  .bt:hover{filter:brightness(1.08)} .bt:active{transform:translateY(2px)}
+  .bt:focus-visible{outline:3px solid var(--ink); outline-offset:3px}
+  .bt.vazado{background:transparent; color:var(--ink-2); border:2px solid var(--line); box-shadow:none}
+  .bt.vazado:hover{border-color:var(--pc); color:var(--pc)}
+  .bt.verde{background:var(--valle)}
+
+  /* ---------- barra de progresso da aula ---------- */
+  .barra-aula{display:flex; align-items:center; gap:.55rem; margin:1.1rem 0 .2rem}
+  .barra-aula .t{font-family:Fredoka; font-size:.82rem; color:var(--ink-3); font-weight:600}
+  .barra-aula .q{display:flex; gap:5px}
+  .barra-aula .q i{width:30px;height:7px;border-radius:4px;background:var(--line);
+    transition:background .3s, transform .3s}
+  .barra-aula .q i.on{background:var(--valle); transform:scaleY(1.3)}
+
+  /* ---------- recompensa ---------- */
+  .premio{
+    display:none; margin-top:1.1rem; text-align:center;
+    border:2px solid var(--valle); border-radius:24px; padding:1.2rem 1.1rem;
+    background:color-mix(in srgb,var(--valle) 10%, var(--card));
+  }
+  .premio.mostra{display:block; animation:chega .5s cubic-bezier(.34,1.5,.64,1)}
+  @keyframes chega{from{opacity:0; transform:scale(.9)} to{opacity:1; transform:none}}
+  .premio .medalha{
+    width:68px;height:68px;margin:0 auto .5rem;border-radius:50%;
+    background:linear-gradient(145deg,var(--sol),var(--cobre));
+    display:grid;place-items:center;color:#fff;font-size:1.9rem;
+    box-shadow:0 10px 24px -10px rgba(0,0,0,.45);
+    animation:carimbo .55s cubic-bezier(.3,1.7,.5,1);
+  }
+  @keyframes carimbo{0%{transform:scale(2.2); opacity:0} 55%{transform:scale(.92); opacity:1} 100%{transform:scale(1)}}
+  .premio h4{font-family:Fredoka; font-size:1.2rem; font-weight:600; margin:0 0 .2rem}
+  .premio p{margin:0 0 .9rem; font-size:.9rem; color:var(--ink-2); font-weight:600}
+  @media (prefers-reduced-motion:reduce){
+    .premio .medalha,.premio.mostra,.devolutiva.mostra{animation:none}
+  }
+
+  /* faíscas da recompensa */
+  .faisca{position:fixed; width:9px;height:9px;border-radius:2px; pointer-events:none; z-index:90}
+
+  .aula-corpo{padding:1.2rem 1.3rem 1.5rem}
+  .aula-corpo > p{margin:0 0 1rem; color:var(--ink-2); font-weight:600; max-width:62ch}
+  .camadas{display:grid; gap:.7rem}
+  @media (min-width:700px){ .camadas{grid-template-columns:1fr 1fr} }
+  .camada{border:2px solid var(--line); border-radius:22px; padding:.85rem 1rem; background:var(--ground)}
+  .camada h4{
+    font-family:Fredoka; font-size:.76rem; font-weight:600; letter-spacing:.09em;
+    text-transform:uppercase; margin:0 0 .25rem; display:flex; align-items:center; gap:.4rem;
+  }
+  .camada h4 i{width:10px;height:10px;border-radius:50%;background:currentColor;flex:none;font-style:normal}
+  .camada p{margin:0; font-size:.9rem; color:var(--ink-2); font-weight:600}
+  .c-geo h4{color:var(--valle-2)} .c-cul h4{color:var(--cobre-2)}
+  .c-lin h4{color:var(--pacifico-2)} .c-ori h4{color:var(--andino-2)}
+
+  .marcar{
+    margin-top:1.1rem; width:100%; font:inherit; font-family:Fredoka; font-weight:600; font-size:1.02rem;
+    cursor:pointer; padding:.85rem 1rem; border-radius:20px; color:#fff; border:0;
+    background:var(--c); box-shadow:0 8px 20px -8px rgba(0,0,0,.35); transition:transform .14s, filter .14s, box-shadow .14s;
+  }
+  .marcar:hover{filter:brightness(1.07); box-shadow:0 12px 26px -8px rgba(0,0,0,.4)}
+  .marcar:active{transform:translateY(2px); box-shadow:0 4px 12px -6px rgba(0,0,0,.3)}
+  .marcar:focus-visible{outline:3px solid var(--ink); outline-offset:3px}
+  .marcar.feito{background:var(--valle)}
+
+  .rodape{margin-top:2.2rem; color:var(--ink-3); font-size:.85rem; font-weight:700; text-align:center}
+</style>
+
+<div class="pagina">
+
+  <header class="topo">
+    <div class="marca">
+      <span class="emblema">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M3 19 L9 8 L13 14 L16 9 L21 19 Z"/><path d="M9 8 L11 11 L7 11 Z" fill="#fff" stroke="none"/>
+        </svg>
+      </span>
+      <div>
+        <h1>A Subida</h1>
+        <p>Mapa Falado · Chile · do mar aos 3.330 m</p>
+      </div>
+    </div>
+    <div class="contador">
+      <span>Trilha</span><b id="feitos">0</b><span>/10</span>
+      <span class="pips" id="pips"></span>
+    </div>
+  </header>
+
+  <div class="faixa-titulo">
+    <h2>🎒 Antes de subir</h2><span class="risco"></span>
+  </div>
+  <div class="base" id="base"></div>
+
+  <div class="faixa-titulo">
+    <h2>⛰️ A escalada</h2><span class="risco"></span>
+  </div>
+
+  <div class="montanha">
+    <div class="legenda-alt">
+      <span>3.500 m</span><span>2.000 m</span><span>1.000 m</span><span>0 m</span>
+    </div>
+    <svg id="mapa" viewBox="0 0 1200 660" role="img"
+         aria-label="Corte da cordilheira do Chile, do oceano Pacífico aos 3.330 metros, com as sete aulas da trilha">
+      <defs>
+        <linearGradient id="mar" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stop-color="#2BD3DB"/><stop offset="1" stop-color="#0A8A91"/>
+        </linearGradient>
+        <linearGradient id="terra" x1="0" y1="0" x2="1" y2="0">
+          <stop offset="0" stop-color="#8FD96F"/><stop offset=".42" stop-color="#C9D46A"/>
+          <stop offset=".72" stop-color="#E9A961"/><stop offset="1" stop-color="#C98157"/>
+        </linearGradient>
+        <linearGradient id="longe" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stop-color="#B99BD6"/><stop offset="1" stop-color="#8B6FB0"/>
+        </linearGradient>
+      </defs>
+
+      <!-- nuvens passando -->
+      <g id="ceu" opacity=".85">
+        <g class="nuvemceu" data-v="34">
+          <ellipse cx="240" cy="110" rx="46" ry="26" fill="#fff"/>
+          <ellipse cx="290" cy="118" rx="34" ry="20" fill="#fff"/>
+          <ellipse cx="200" cy="122" rx="30" ry="18" fill="#fff"/>
+        </g>
+        <g class="nuvemceu" data-v="58" opacity=".7">
+          <ellipse cx="620" cy="76" rx="38" ry="21" fill="#fff"/>
+          <ellipse cx="662" cy="83" rx="27" ry="16" fill="#fff"/>
+        </g>
+        <g class="nuvemceu" data-v="22" opacity=".55">
+          <ellipse cx="900" cy="150" rx="52" ry="24" fill="#fff"/>
+          <ellipse cx="948" cy="157" rx="32" ry="17" fill="#fff"/>
+        </g>
+      </g>
+
+      <!-- sol -->
+      <circle cx="1070" cy="96" r="44" fill="#FFC233" opacity=".9"/>
+      <g stroke="#FFC233" stroke-width="7" stroke-linecap="round" opacity=".75">
+        <path d="M1070 20 v-18"/><path d="M1070 190 v18"/><path d="M994 96 h-18"/><path d="M1146 96 h18"/>
+        <path d="M1016 42 l-13 -13"/><path d="M1124 150 l13 13"/><path d="M1124 42 l13 -13"/><path d="M1016 150 l-13 13"/>
+      </g>
+
+      <!-- cordilheira ao fundo -->
+      <path d="M0 400 L130 300 L230 350 L360 230 L470 320 L600 180 L720 290 L850 140 L980 250 L1090 120 L1200 230 L1200 660 L0 660 Z" fill="url(#longe)" opacity=".5"/>
+      <path d="M360 230 L404 268 L316 268 Z M600 180 L650 222 L550 222 Z M850 140 L900 184 L800 184 Z M1090 120 L1138 162 L1042 162 Z" fill="#fff" opacity=".85"/>
+
+      <!-- oceano -->
+      <path d="M0 470 L170 470 L170 660 L0 660 Z" fill="url(#mar)"/>
+      <g stroke="#CFF6F8" stroke-width="5" stroke-linecap="round" opacity=".75">
+        <path d="M24 512 q20 -11 40 0 q20 11 40 0"/>
+        <path d="M44 560 q20 -11 40 0 q20 11 40 0"/>
+        <path d="M18 606 q20 -11 40 0 q20 11 40 0"/>
+      </g>
+
+      <!-- terreno da subida -->
+      <path id="solo" d="M170 470 C 240 462, 300 448, 370 428 C 450 404, 520 384, 600 360
+                         C 700 328, 790 280, 880 214 C 960 156, 1030 118, 1110 92
+                         L1200 76 L1200 660 L170 660 Z" fill="url(#terra)"/>
+      <path d="M1110 92 L1200 76 L1200 150 C 1160 140, 1120 136, 1086 140 Z" fill="#fff" opacity=".9"/>
+      <path d="M880 214 C 930 190, 980 164, 1030 140 C 1000 168, 950 198, 900 224 Z" fill="#fff" opacity=".55"/>
+
+      <!-- trilha -->
+      <path id="trilha" d="M110 548 C 200 520, 270 500, 340 470 C 420 436, 480 414, 560 392
+                           C 660 362, 740 318, 820 258 C 900 200, 960 160, 1040 128"
+            fill="none" stroke="#FFFFFF" stroke-width="9" stroke-linecap="round"
+            stroke-dasharray="2 22" opacity=".95"/>
+
+      <!-- vegetação e bichos -->
+      <g id="enfeites"></g>
+      <g id="pontos"></g>
+      <g id="estacoes"></g>
+    </svg>
+  </div>
+
+  <p class="rodape">Toque nas bolinhas <strong>?</strong> espalhadas pela paisagem — cada uma solta uma curiosidade.</p>
+</div>
+
+<div id="nuvens"></div>
+
+<div class="cortina" id="cortina" role="dialog" aria-modal="true" aria-labelledby="aula-titulo">
+  <div class="aula" id="aula"></div>
+</div>
+
+<script>
+/* ──────────────────────────────────────────────────────────────
+   MAPA FALADO · conteúdo das aulas
+   Cada aula tem 4 pontos. Cada ponto tem: resumo, aprofundamento
+   e uma escolha entre A e B, com explicação do acerto e do erro.
+   Tudo aqui é história verificada — ver pendências no roteiro.
+   ────────────────────────────────────────────────────────────── */
+
+var CONTEXTO = [
+{ id:'c1', tag:'Antes de tudo', cor:'var(--andino)', ico:'bussola',
+  h:'Como se conquista um povo que não tem capital?',
+  sub:'O Chile antes de 1541',
+  res:'Os mapuche não tinham capital, rei nem Estado central. Parece um detalhe de antropologia — e foi o que tornou impossível vencê-los do jeito que a Espanha vencera astecas e incas.',
+  pontos:[
+  { k:'ori', t:'Quem vivia aqui',
+    r:'Nove povos, do altiplano ao fim do mundo, cada um com o modo de vida que o seu clima permitia.',
+    d:'Aymara e likan antai no deserto do norte. Diaguitas nos vales. Changos pescando no litoral. Picunche no vale central, onde hoje é Santiago. Mapuche e huilliche no centro-sul. Chonos e kawésqar navegando os canais. Selk’nam, yagán e aónikenk no frio do extremo sul. E os rapa nui, a 3.700 km da costa, no meio do Pacífico.',
+    q:'Por que povos tão diferentes dividiam um país só?',
+    a:'Porque vieram de lugares diferentes do mundo',
+    b:'Porque o Chile tem climas muito diferentes entre si',
+    ok:'b',
+    porque:'O Chile tem 4.300 km de norte a sul. Quem vive no deserto mais seco do mundo desenvolve um modo de vida; quem vive entre geleiras, outro. A geografia não é o cenário da história — é uma das personagens.',
+    quase:'Não vieram de lugares diferentes: são povos aparentados, que se diferenciaram aqui. O que os separou foi o clima — são 4.300 km entre o deserto e o gelo.' },
+  { k:'cul', t:'A organização',
+    r:'A unidade era o lof, uma comunidade de famílias. Não havia pirâmide para derrubar.',
+    d:'Cada lof tinha um lonko à frente. Em tempo de guerra, as comunidades escolhiam um toqui, chefe militar — e ele comandava só aquela guerra. Terminado o conflito, o poder voltava para os lof. Era uma estrutura horizontal, pensada para não depender de um centro.',
+    q:'A Espanha derrubou astecas e incas tomando a capital e capturando o imperador. Por que isso não funcionou aqui?',
+    a:'Porque não havia capital nem imperador para tomar',
+    b:'Porque os mapuche tinham armas melhores',
+    ok:'a',
+    porque:'Sem centro, não há golpe decisivo. Cada lof decidia por si — derrotar um não derrotava os outros. A estratégia que derrubou dois impérios em poucos anos aqui simplesmente não tinha alvo.',
+    quase:'As armas eram muito inferiores às espanholas no começo: sem cavalo, sem ferro, sem pólvora. A vantagem era organizacional, não tecnológica.' },
+  { k:'lin', t:'A fala da terra',
+    r:'Mapudungun = mapu (terra) + dungun (fala). Mapuche = gente da terra.',
+    d:'O nome do povo e o nome da língua carregam a mesma raiz do chão onde vivem. Não é coincidência poética: é como eles se definem. Guarde a palavra — daqui a duas aulas ela reaparece dentro do espanhol que qualquer chileno fala hoje, sem perceber.',
+    q:'O que "mapuche" quer dizer?',
+    a:'Gente da terra',
+    b:'Guerreiros do sul',
+    ok:'a',
+    porque:'Mapu é terra, che é gente. Um povo que se nomeia pela relação com o território — o que ajuda a entender por que a disputa por terra ainda é central para eles hoje.',
+    quase:'"Guerreiros" foi como os espanhóis passaram a descrevê-los, não como eles se nomeiam. O nome próprio fala de terra, não de guerra.' },
+  { k:'geo', t:'O limite do maior império',
+    r:'O império inca chegou ao vale central vindo do norte — e parou.',
+    d:'O Tawantinsuyu foi o maior império da América, com estradas que cruzavam milhares de quilômetros. Alcançou o Chile central com presença administrativa e caminho. Mais ao sul, não passou. Santiago não foi a primeira cidade projetada nesta bacia.',
+    q:'O que o avanço inca mostra sobre a resistência que os espanhóis encontrariam?',
+    a:'Que ela já havia travado um império antes',
+    b:'Que os incas eram aliados dos mapuche',
+    ok:'a',
+    porque:'A fronteira que os espanhóis não conseguiram atravessar já tinha detido alguém. Não era despreparo europeu: era a força de quem defendia aquele território.',
+    quase:'Não eram aliados — os incas tentaram avançar e foram contidos. Foi confronto, não aliança.' }]},
+
+{ id:'c2', tag:'A colonização', cor:'var(--cobre)', ico:'espada',
+  h:'Por que a conquista do Chile levou 342 anos?',
+  sub:'De 1541 a 1883',
+  res:'Mais tempo do que separa o Brasil da sua independência. E quem fechou a conta no fim não foi a Espanha.',
+  pontos:[
+  { k:'cul', t:'Duas datas em 1541',
+    r:'Santiago é fundada em fevereiro e queimada em setembro.',
+    d:'Pedro de Valdivia funda a cidade em 12 de fevereiro de 1541. Em 11 de setembro do mesmo ano — cinco meses depois — o toqui Michimalonco reúne os povos do Aconcágua, do Mapocho e do Cachapoal e queima Santiago inteira. A cidade é reconstruída do zero.',
+    q:'Por que a segunda data quase nunca aparece nos livros?',
+    a:'Porque foi um episódio pequeno, sem importância',
+    b:'Porque fundações são contadas como começos, não como disputas',
+    ok:'b',
+    porque:'Contar só fevereiro faz a cidade parecer um presente da civilização a uma terra vazia. Contar setembro junto mostra o que de fato foi: uma invasão que encontrou resistência organizada e quase não vingou.',
+    quase:'Pequeno não foi: a cidade foi destruída quase por completo e teve que ser erguida outra vez. O que o apaga não é o tamanho, é o incômodo.' },
+  { k:'ori', t:'Lautaro',
+    r:'Serviu no acampamento espanhol, aprendeu o cavalo, e em 1553 ajudou a derrotar Valdivia em Tucapel.',
+    d:'O cavalo não existia na América antes dos europeus, e era a maior vantagem militar espanhola. Lautaro viu de perto como o animal funcionava e como lutava quem o montava. Levou esse conhecimento de volta. Na batalha de Tucapel, em 1553, Pedro de Valdivia é morto.',
+    q:'O que a história de Lautaro mostra sobre a resistência mapuche?',
+    a:'Que foi coragem, mas sem estratégia',
+    b:'Que foi também aprendizado técnico, usado contra quem ensinou',
+    ok:'b',
+    porque:'Resistir não foi só enfrentar: foi estudar o adversário e virar a vantagem dele do avesso. O conquistador foi derrotado com o conhecimento que ele mesmo trouxe.',
+    quase:'Houve estratégia, e sofisticada: adaptação de táticas, uso do terreno e do próprio cavalo europeu. Reduzir a bravura é apagar a inteligência.' },
+  { k:'geo', t:'A fronteira do Biobío',
+    r:'Em 1641 a Espanha assina um tratado: ao sul do rio, ela não manda.',
+    d:'Depois de quase cem anos de Guerra de Arauco, espanhóis e mapuche se encontram à beira do rio Quillén, em 6 de janeiro de 1641. É o Parlamento de Quilín. A Coroa reconhece a liberdade mapuche em seu território e o Biobío vira fronteira. A linha atravessa o resto do período colonial.',
+    q:'O que aconteceu com essa fronteira quando o Chile ficou independente, em 1818?',
+    a:'Continuou exatamente onde estava',
+    b:'Foi desfeita no mesmo ano',
+    ok:'a',
+    porque:'A república nasceu e a linha permaneceu. Por quase três séculos — colônia e império espanhol inteiros — aquele território nunca foi conquistado.',
+    quase:'Não foi desfeita em 1818. Ela só cai entre 1861 e 1883, mais de quarenta anos depois da independência — e não pelas mãos da Espanha.' },
+  { k:'lin', t:'A palavra escolhida',
+    r:'1861–1883: o Chile independente ocupa o território. Chamaram de "Pacificação".',
+    d:'Campanhas militares, uma linha de fortes avançando, e a transferência forçada das comunidades para áreas pequenas chamadas reduções. Trezentos anos de fronteira reconhecida terminam em pouco mais de vinte anos. O nome oficial do processo entrou para a história como "Pacificação da Araucanía".',
+    q:'O que a palavra "pacificação" faz com a história?',
+    a:'Descreve o que aconteceu com precisão',
+    b:'Sugere que havia desordem e que alguém trouxe a paz',
+    ok:'b',
+    porque:'Pacificar pressupõe uma guerra em curso que precisava ser encerrada — e coloca quem invade no papel de quem resolve. Quem escolhe a palavra escolhe quem é o agressor. Isso vale muito além do Chile.',
+    quase:'Precisão não há: foi ocupação militar de um território reconhecido por tratado. "Pacificação" é a versão de quem avançou.' }]},
+
+{ id:'c3', tag:'O resultado', cor:'var(--valle)', ico:'mesa',
+  h:'O que sobrou de cada lado dentro do Chile?',
+  sub:'Língua, costume, mesa e gente',
+  res:'Não existe um Chile indígena e um Chile espanhol. Existe o resultado do encontro entre os dois — e é ele que está na boca, na mesa e no chapéu de quem mora lá hoje.',
+  pontos:[
+  { k:'lin', t:'Cahuín',
+    r:'Era a reunião da comunidade em mapudungun. No espanhol chileno, virou "fofoca".',
+    d:'Kawiñ, em mapudungun, era o encontro de todo mundo: a festa coletiva, a assembleia. A palavra atravessou para o espanhol chileno e hoje significa intriga, mexerico. Quem gosta de falar da vida alheia é cahuinero.',
+    q:'O que essa mudança de sentido revela?',
+    a:'Que a palavra simplesmente mudou com o tempo, por acaso',
+    b:'Que uma língua também pode ser colonizada por dentro',
+    ok:'b',
+    porque:'O que uma cultura chamava de "encontro", a outra passou a chamar de "mexerico". A palavra sobreviveu, mas foi rebaixada. Apagar não é a única forma de dominar uma língua: ressignificar também é.',
+    quase:'Palavras mudam com o tempo, é verdade — mas aqui a direção não é neutra. O sentido coletivo virou pejorativo, e isso tem a ver com quem passou a ter o poder de nomear.' },
+  { k:'cul', t:'A chupalla',
+    r:'O chapéu do huaso, símbolo da chilenidade, tem nome mapudungun.',
+    d:'Procure "Chile" numa imagem e você vai achar um huaso: o homem do campo das festas nacionais, da cueca, do rodeio. O chapéu dele se chama chupalla, do mapudungun achupalla — o nome da planta com que era trançado. E o huaso não surgiu do nada: é o que sobrou da hacienda e do inquilinaje, o trabalhador que morava na terra do patrão e pagava com trabalho.',
+    q:'O que a chupalla ensina sobre símbolos nacionais?',
+    a:'Que o emblema do país é mestiço até no nome do chapéu',
+    b:'Que o huaso é de origem puramente espanhola',
+    ok:'a',
+    porque:'O símbolo mais "chileno" que existe carrega uma palavra indígena na cabeça — literalmente. Separar o Chile em dois é impossível: ele já nasceu misturado, inclusive no que considera mais seu.',
+    quase:'De puramente espanhol não tem nada: o nome do chapéu é mapudungun e a planta é daqui. É justamente a mistura que faz o símbolo funcionar.' },
+  { k:'geo', t:'A mesa',
+    r:'Batata, milho e feijão daqui. Trigo, uva e porco de lá. A empanada é a soma literal.',
+    d:'A batata foi domesticada nos Andes e hoje é um dos alimentos mais cultivados do planeta — saiu daqui para o mundo. Milho, feijão, merkén, curanto e pebre também são daqui. Trigo, uva, vinho e porco vieram com os espanhóis. E o prato mais chileno de todos junta os dois num bocado: massa europeia, recheio americano.',
+    q:'Qual é o jeito mais rápido de explicar mestiçagem a alguém?',
+    a:'Mostrar uma empanada e dizer de onde vem cada parte',
+    b:'Listar as datas da colonização',
+    ok:'a',
+    porque:'A comida torna visível o que a data esconde: o resultado. Datas contam o processo; o prato mostra que o encontro produziu algo que não existia antes em nenhum dos dois lados.',
+    quase:'As datas importam e estão nas outras aulas — mas elas explicam o processo, não o resultado. Para ver o resultado, olhe o prato.' },
+  { k:'ori', t:'Os dois 8,8%',
+    r:'Mapuche: 1,6 milhão. Imigrantes: 1,6 milhão. Os dois são o Chile.',
+    d:'O Censo de 2024 contou 18.480.432 habitantes. Um milhão e seiscentas mil pessoas se declaram mapuche — 8,8%. E há um milhão e seiscentas mil pessoas imigrantes — também 8,8%, número que dobrou em sete anos, com venezuelanos à frente. Antes deles vieram alemães ao sul, croatas a Magallanes e cerca de meio milhão de palestinos: a maior comunidade palestina fora do Oriente Médio.',
+    q:'O que a coincidência entre os dois números mostra?',
+    a:'Que quem chegou primeiro e quem chegou ontem pesam igual na conta',
+    b:'Que os imigrantes estão substituindo a população originária',
+    ok:'a',
+    porque:'Um país não é feito só de quem estava aqui nem só de quem chegou. É feito dos dois, somados, e a aritmética torna isso difícil de ignorar.',
+    quase:'Substituição não há: são grupos distintos, e a população mapuche cresceu nos últimos censos. O que os números mostram é soma, não troca.' }]}
+];
+
+var TRILHA = [
+{ id:'e1', n:'01', alt:'0 m', altn:'nível do mar', cor:'var(--pacifico)', ico:'onda', x:110, y:548,
+  h:'Por que o mar do Chile é frio?', local:'Isla Negra · litoral de Valparaíso',
+  res:'A corrente de Humboldt sobe do sul carregando água gelada. É ela que explica a neblina da costa, a fartura de peixe e, mais ao norte, o deserto mais seco do mundo.',
+  pontos:[
+  { k:'geo', t:'A corrente que vem do sul',
+    r:'Uma corrente fria numa latitude que deveria ser quente.',
+    d:'A corrente de Humboldt sobe da Antártida pela costa oeste da América do Sul. A água fria esfria o ar que passa sobre ela, e ar frio não sobe nem forma chuva — ele vira neblina. Compare com o litoral brasileiro na mesma altura do mapa: mesma latitude, mares completamente diferentes.',
+    q:'O Chile e o Brasil estão em latitudes parecidas. Por que o mar daqui é gelado?',
+    a:'Porque o Chile é mais perto da Antártida',
+    b:'Porque uma corrente fria sobe pela costa do Pacífico',
+    ok:'b',
+    porque:'A latitude é parecida — quem muda tudo é a corrente. Ela traz água polar para uma região de clima ameno, e por isso o mar é gelado mesmo no verão.',
+    quase:'Distância não explica: Santiago e São Paulo estão quase na mesma latitude. O que separa os dois mares é a corrente que passa em cada um.' },
+  { k:'ori', t:'Quem pescava aqui',
+    r:'A costa central era território picunche — "gente do norte", ramo setentrional dos mapuche.',
+    d:'Pescavam e cultivavam neste litoral muito antes de existir casa de poeta. O nome picunche vem de pikun (norte) e che (gente): é como os mapuche do sul chamavam seus parentes do norte. Mapuche não é uma tribo — é um povo grande, com nomes diferentes conforme onde vive.',
+    q:'O que o nome "picunche" ensina?',
+    a:'Que era um povo inimigo dos mapuche',
+    b:'Que mapuche é um povo grande, com nomes por região',
+    ok:'b',
+    porque:'Picunche quer dizer "gente do norte". Huilliche, "gente do sul". São todos mapuche — a divisão é geográfica, não de inimizade. A língua organiza o mundo pelo lugar.',
+    quase:'Inimigos não eram: picun-che significa literalmente "gente do norte", um nome de posição dentro do mesmo povo.' },
+  { k:'cul', t:'A casa de Neruda',
+    r:'Pablo Neruda e Matilde Urrutia estão enterrados aqui, de frente para o mar.',
+    d:'A casa é um inventário do que o oceano traz: mascarões de proa, conchas, garrafas, mapas. Um poeta que colecionava os objetos que o mar deixava — e que escolheu ser enterrado olhando para ele.',
+    q:'Por que a casa de um poeta entra numa aula de geografia?',
+    a:'Porque mostra como as pessoas respondem ao lugar onde vivem',
+    b:'Por curiosidade turística, sem relação com o tema',
+    ok:'a',
+    porque:'Cultura é o que um lugar faz com quem mora nele. Um poeta que coleciona o que o mar traz está respondendo à mesma geografia que explica a neblina e o peixe.',
+    quase:'A relação existe e é direta: a coleção dele é feita do que aquele oceano específico traz até a praia.' },
+  { k:'lin', t:'Uma ilha que não é ilha',
+    r:'Isla Negra não é ilha e não é negra.',
+    d:'Nomes de lugar fazem três coisas: descrevem, inventam e erram. Alguns contam a paisagem com precisão, outros contam a expectativa de quem chegou, e outros simplesmente pegaram e ficaram. O nome de um lugar é um documento de quem o nomeou.',
+    q:'O que nomes como "Isla Negra" revelam?',
+    a:'A história de quem chegou e nomeou o lugar',
+    b:'Apenas um erro de tradução',
+    ok:'a',
+    porque:'Topônimos são camadas de história: cada nome registra alguém que passou, viu e decidiu chamar assim. A aula 4 mostra o caso extremo disso — um morro com dois nomes e duas visões de mundo.',
+    quase:'Não é erro de tradução — é escolha de nomeação, e escolhas assim guardam a visão de quem as fez.' }]},
+
+{ id:'e2', n:'02', alt:'350 m', altn:'vale central', cor:'var(--valle)', ico:'uva', x:340, y:470,
+  h:'Por que Chile, Itália e Califórnia plantam a mesma coisa?', local:'Valle del Maipo · Talagante',
+  res:'Só existem cinco regiões de clima mediterrâneo no planeta inteiro. Esta é uma delas — e a água que rega a parreira começou como neve na cordilheira.',
+  pontos:[
+  { k:'geo', t:'Cinco lugares no mundo',
+    r:'Inverno chuvoso, verão seco. Bacia do Mediterrâneo, Califórnia, Cabo, sul da Austrália e Chile central.',
+    d:'São os únicos cinco lugares do planeta com esse padrão. Por isso os cinco plantam as mesmas coisas: uva, azeitona, trigo. Não é coincidência cultural nem imitação — é o clima permitindo as mesmas culturas em continentes diferentes.',
+    q:'Por que esses cinco lugares plantam as mesmas coisas?',
+    a:'Porque trocaram sementes entre si ao longo da história',
+    b:'Porque têm o mesmo tipo de clima',
+    ok:'b',
+    porque:'O clima mediterrâneo ocorre em faixas específicas, sempre no lado oeste dos continentes, em latitudes médias. Onde ele aparece, as mesmas plantas prosperam — mesmo sem ninguém combinar.',
+    quase:'Houve troca de sementes, sim — mas elas só vingaram onde o clima deixou. A Califórnia recebeu videira europeia; o deserto ao lado, não.' },
+  { k:'ori', t:'A água já era domada',
+    r:'Antes das parreiras, o vale já tinha canais de irrigação.',
+    d:'Os povos do vale central plantavam milho, feijão e batata usando canais puxados dos rios do degelo. É a mesma engenharia que a vinha usa hoje, com outro dono. A irrigação do Maipo não foi inventada no século XIX — ela foi herdada e ampliada.',
+    q:'Quem primeiro irrigou o vale central?',
+    a:'Os povos originários, antes da chegada espanhola',
+    b:'Os imigrantes franceses, no século XIX',
+    ok:'a',
+    porque:'A rede de canais já existia. Os europeus encontraram um vale cultivado, não um vazio a ser domado — e aproveitaram a infraestrutura que ali estava.',
+    quase:'Os franceses trouxeram cepas e técnicas de vinificação no século XIX, mas chegaram a um vale que já era irrigado havia séculos.' },
+  { k:'cul', t:'A vinha e o calendário',
+    r:'A videira chega com os espanhóis e se refina com a imigração francesa do século XIX.',
+    d:'O ano do campo tem ritmo próprio: poda no inverno, brotação na primavera, vindima no fim do verão, e a festa que a encerra. É um calendário que organiza a vida das famílias do vale há gerações — e que define quem trabalha a terra e quem aparece no rótulo.',
+    q:'O que a vinha chilena mostra sobre a colonização?',
+    a:'Que ela trouxe plantas novas que se somaram às daqui',
+    b:'Que substituiu completamente a agricultura anterior',
+    ok:'a',
+    porque:'A uva veio de fora e vingou aqui por causa do clima. Mas milho, feijão e batata continuaram. O vale de hoje planta as duas heranças, lado a lado.',
+    quase:'Substituição completa não houve: os cultivos originários seguem na mesa chilena. O que houve foi soma, ainda que desigual.' },
+  { k:'lin', t:'As palavras do vinho',
+    r:'Cepa, vendimia, bodega, viña — um vocabulário inteiro que veio junto com a planta.',
+    d:'Quando uma técnica atravessa o oceano, as palavras dela vêm junto. E o espanhol do campo chileno tem som próprio: terminações comidas, o voseo, um ritmo que dá ao chileno a fama de ser o mais difícil de entender entre os hispanofalantes.',
+    q:'Por que palavras novas chegam junto com técnicas novas?',
+    a:'Porque a língua antiga não tinha nome para o que era novo',
+    b:'Porque é proibido traduzir termos técnicos',
+    ok:'a',
+    porque:'Toda coisa nova precisa de nome. Quando a videira chega, chegam vindima, cepa e bodega — porque não havia palavra local para processos que não existiam.',
+    quase:'Proibição não existe — muitos termos foram traduzidos. Os que ficaram no original ficaram por falta de equivalente.' }]},
+
+{ id:'e3', n:'03', alt:'550 m', altn:'Santiago', cor:'var(--sol)', ico:'fala', x:560, y:392,
+  h:'De onde vêm as palavras que a gente nem percebe?', local:'Barrio Lastarria · Santiago',
+  res:'Guata, pololo, quiltro, choclo. Um chileno pode nunca ter estudado mapudungun e usar dez palavras dele antes do almoço.',
+  pontos:[
+  { k:'lin', t:'Pololo',
+    r:'Namorado, em chileno. Vem do mapudungun, onde era o nome de um inseto que zumbe.',
+    d:'A palavra é tão corrente que virou verbo: pololear. Ninguém pensa na origem ao usá-la. E não está sozinha: guata é barriga, quiltro é vira-lata, pichintún é um pouquinho, choclo é milho. Poncho, laucha, pucho, ruca, curanto — todas mapudungun.',
+    q:'O que significa o fato de essas palavras serem usadas sem que ninguém saiba de onde vêm?',
+    a:'Que a língua indígena vive dentro do espanhol chileno',
+    b:'Que são palavras antigas, já sem uso',
+    ok:'a',
+    porque:'Uma língua ameaçada sobrevive dentro da fala cotidiana de todo mundo — inclusive de quem nunca ouviu falar dela. Isso é presença, não passado.',
+    quase:'Sem uso elas não estão: são das palavras mais usadas do dia a dia chileno. O que se perdeu foi a consciência da origem, não a palavra.' },
+  { k:'ori', t:'Uma língua em risco',
+    r:'Só 14% dos mapuche entrevistados falam mapudungun com fluência. A média de idade de quem fala é 64 anos.',
+    d:'Esses dois números juntos descrevem uma língua que pode desaparecer em uma geração. Dizer que "pololo" vem do mapudungun é bonito; dizer que a língua de onde ele veio corre risco é o que torna a informação séria.',
+    q:'Por que a média de idade dos falantes importa tanto?',
+    a:'Porque mostra que a língua pode se perder em uma geração',
+    b:'Porque pessoas mais velhas falam melhor',
+    ok:'a',
+    porque:'Se quem fala tem 64 anos em média e os jovens não aprendem, a transmissão está interrompida. Uma língua não morre de uma vez — ela deixa de ser passada adiante.',
+    quase:'Não se trata de falar melhor ou pior: trata-se de quem ainda aprendeu em casa. A idade dos falantes é um sinal de transmissão interrompida.' },
+  { k:'geo', t:'A cidade na bacia',
+    r:'Santiago fica numa bacia fechada entre duas cordilheiras.',
+    d:'Isso dá à cidade a vista das montanhas de qualquer esquina — e também o problema do ar parado no inverno, quando a poluição não encontra para onde ir. A mesma geografia que emoldura é a que sufoca.',
+    q:'Por que Santiago tem problema de poluição no inverno?',
+    a:'Porque tem mais indústrias que outras cidades',
+    b:'Porque as montanhas prendem o ar dentro da bacia',
+    ok:'b',
+    porque:'A bacia fechada e o ar frio do inverno formam uma tampa: o ar não circula e o que é emitido fica. A geografia que dá a vista bonita é a que segura a fumaça.',
+    quase:'A quantidade de emissão importa, mas a diferença está na dispersão: outras cidades emitem e o vento leva. Aqui as montanhas seguram.' },
+  { k:'cul', t:'Um bairro com nome de gente',
+    r:'Lastarria leva o nome de José Victorino Lastarria, escritor e político do século XIX.',
+    d:'Hoje é o quarteirão dos livros, do cinema e dos cafés — um bairro que mudou completamente de função sem mudar de nome. Boa parte de Santiago é batizada assim: com nomes de homens do século XIX, numa cidade cujo chão tem nomes muito mais antigos.',
+    q:'O que os nomes das ruas de uma cidade revelam?',
+    a:'Quem teve o poder de nomear, e quando',
+    b:'A ordem em que as ruas foram construídas',
+    ok:'a',
+    porque:'Nomear é um ato de poder. As camadas de nomes de uma cidade mostram quem mandava em cada época — e o que foi substituído no caminho.',
+    quase:'A ordem de construção quase nunca aparece nos nomes. O que aparece é quem era importante para quem batizou.' }]},
+
+{ id:'e4', n:'04', alt:'629 m', altn:'cume do cerro', cor:'var(--cobre)', ico:'morro', x:700, y:330,
+  h:'Por que este morro tem dois nomes?', local:'Cerro Santa Lucía · Santiago',
+  res:'Os mapuche o chamam de Huelén: tristeza. Os espanhóis rebatizaram com o nome de uma santa. Dois nomes, duas visões de mundo, a mesma pedra.',
+  pontos:[
+  { k:'lin', t:'Huelén',
+    r:'Em mapudungun quer dizer melancolia, tristeza, dor.',
+    d:'Os espanhóis rebatizaram o morro de Santa Lucía. Os dois nomes continuam existindo: um nos documentos oficiais, outro na memória e no uso. Nenhum episódio da série explica melhor o que é o Mapa Falado — porque o nome de um lugar é a forma mais curta de uma visão de mundo.',
+    q:'O que acontece quando um lugar tem dois nomes?',
+    a:'Um deles é o verdadeiro e o outro é errado',
+    b:'Os dois são verdadeiros, e alguém escolheu qual fica no mapa',
+    ok:'b',
+    porque:'Todo mapa é uma escolha. O nome que ficou registrado não é mais correto — é o de quem teve o poder de registrar. O outro continua ali, embaixo.',
+    quase:'Não há nome errado: há dois nomes de duas culturas. O que existe é uma decisão sobre qual deles aparece nos documentos.' },
+  { k:'geo', t:'Um cerro-ilha',
+    r:'A rocha dura que sobrou quando a água levou a terra mole do vale.',
+    d:'O vale central é sedimentar: terra trazida e depositada pela água ao longo de milhões de anos. Onde havia rocha mais resistente, a erosão não levou — e sobrou um morro isolado no meio da planície. É por existir esta pedra que Santiago existe onde existe.',
+    q:'Por que sobra uma pedra no meio de um vale plano?',
+    a:'Porque alguém a construiu ali',
+    b:'Porque é mais dura que o terreno em volta e resistiu à erosão',
+    ok:'b',
+    porque:'A água levou o que era mole e deixou o que era duro. Um cerro-ilha é literalmente o que sobrou — e aqui esse resto virou o ponto alto que decidiu onde a cidade nasceria.',
+    quase:'Construída não foi: é formação natural. O que a erosão não conseguiu levar ficou de pé.' },
+  { k:'ori', t:'Cinco meses depois',
+    r:'Michimalonco queimou Santiago inteira em 11 de setembro de 1541.',
+    d:'A cidade tinha sido fundada aos pés deste morro em fevereiro. Em setembro, os povos do Aconcágua, do Mapocho e do Cachapoal se uniram e a destruíram. Ela foi reconstruída do zero. A fundação que os livros contam com uma data teve, na verdade, duas.',
+    q:'Por que Pedro de Valdivia escolheu este lugar para fundar a cidade?',
+    a:'Porque era ponto alto, defensável e ficava junto a um rio',
+    b:'Porque era um lugar vazio, sem ninguém por perto',
+    ok:'a',
+    porque:'Altura, defesa e água: os três critérios de quem funda uma cidade para ser atacada. O próprio local escolhido admite que havia com quem lutar.',
+    quase:'Vazio não era. O vale era habitado e cultivado — tanto que cinco meses depois a cidade foi destruída por quem já morava ali.' },
+  { k:'cul', t:'De lixão a jardim',
+    r:'Pedreira, lixão, cemitério — e, em 1872, jardim público.',
+    d:'A cidade deu as costas ao morro por séculos: dele se tirou pedra, nele se jogou lixo, nele se enterrou quem não era católico. Em 1872 o intendente Benjamín Vicuña Mackenna transformou tudo em passeio público, com escadarias, terraços, a Fonte de Netuno e uma ermida de pedra que virou o jazigo da própria família.',
+    q:'O que a sequência de usos do morro mostra?',
+    a:'Que a cidade mudou de ideia sobre o que fazer com seu passado',
+    b:'Que o morro sempre foi um lugar valorizado',
+    ok:'a',
+    porque:'O mesmo lugar foi sagrado, fortaleza, pedreira, lixão, cemitério e jardim. Cada uso é uma decisão de uma época sobre o que merece cuidado — e todas estão empilhadas ali.',
+    quase:'Valorizado nem sempre foi: por muito tempo o morro foi exatamente onde a cidade punha o que não queria ver.' }]},
+
+{ id:'e42', n:'4.2', alt:'629 m', altn:'mesma pedra', cor:'var(--andino)', ico:'camada', x:800, y:276,
+  h:'Quem estava aqui antes de Santiago?', local:'Cerro Santa Lucía · a história longa',
+  res:'Mesmo lugar, outra escala de tempo: os 342 anos entre a fundação da cidade e o fim da autonomia mapuche.',
+  pontos:[
+  { k:'ori', t:'O vale já era mundo',
+    r:'Terra cultivada, com irrigação, e um império que chegou e parou.',
+    d:'Não era paisagem esperando gente: havia milho, feijão, batata e canais puxados dos rios do degelo. E o Tawantinsuyu inca, o maior império da América, alcançou o Chile central e não passou daqui. A resistência que travaria os espanhóis já havia travado alguém antes.',
+    q:'O que significa dizer que o vale era "paisagem trabalhada"?',
+    a:'Que era natureza intocada, sem presença humana',
+    b:'Que já havia agricultura, irrigação e organização do território',
+    ok:'b',
+    porque:'Paisagem trabalhada é terra modificada por quem vive nela. Chamar de "vazio" o que era cultivado foi a forma mais eficiente de justificar a tomada.',
+    quase:'Intocada não era: havia canais, plantações e povoados. A ideia de vazio é uma construção posterior, não uma descrição.' },
+  { k:'cul', t:'A virada de 1641',
+    r:'Quilín: o Biobío vira fronteira reconhecida e dura até depois da independência.',
+    d:'Em 6 de janeiro de 1641, depois de quase um século de guerra, espanhóis e mapuche assinam o primeiro tratado de paz. A Coroa reconhece a liberdade mapuche em seu território. Um império europeu, no auge, assinando acordo de fronteira com um povo indígena na América.',
+    q:'Por que esse tratado é tão incomum?',
+    a:'Porque um império europeu reconheceu a soberania de um povo indígena',
+    b:'Porque foi o primeiro tratado da história da América',
+    ok:'a',
+    porque:'O padrão colonial era a submissão, não o acordo entre iguais. Quilín é exceção — e por isso quase não é ensinado: ele contraria a história de conquista inevitável.',
+    quase:'Primeiro da história não foi — houve outros acordos antes. O que torna Quilín notável é o que ele reconhece: uma fronteira que a Coroa não podia cruzar.' },
+  { k:'lin', t:'A frase que não se sustenta',
+    r:'"Os europeus chegaram e conquistaram tudo" — aqui, não conquistaram.',
+    d:'Por quase três séculos o território ao sul do Biobío permaneceu fora do domínio espanhol. Quem o tomou foi o Estado chileno já independente, entre 1861 e 1883. Isso muda a natureza do que se aprende: colonização não é um evento distante, é um processo com datas recentes e consequências vivas.',
+    q:'Quem concluiu a tomada do território mapuche?',
+    a:'A Coroa espanhola, durante o período colonial',
+    b:'O Estado chileno, décadas depois da independência',
+    ok:'b',
+    porque:'Entre 1861 e 1883, a república já independente ocupou militarmente o território e transferiu as comunidades para reduções. A conta foi fechada por um país que já se dizia livre.',
+    quase:'A Espanha nunca conquistou aquele território — ela assinou um tratado reconhecendo que não mandava ali.' },
+  { k:'geo', t:'Um mapa que muda quatro vezes',
+    r:'A linha do Biobío acende em 1641, fica, e some em 1883.',
+    d:'É a forma mais econômica de contar a história inteira: um mapa só, com uma linha. Ela aparece com o tratado, atravessa dois séculos imóvel, sobrevive à independência de 1818 e desaparece entre 1861 e 1883. No fim, acendem os pontos das comunidades de hoje.',
+    q:'Por que mostrar isso num mapa em vez de contar com datas?',
+    a:'Porque a geografia torna visível o que a lista de datas esconde',
+    b:'Porque mapas são mais bonitos que textos',
+    ok:'a',
+    porque:'Uma linha que permanece dois séculos e some em vinte anos conta a desproporção de um jeito que nenhuma lista consegue. A forma do território é argumento.',
+    quase:'Beleza não é o critério: o mapa é escolhido porque mostra duração e ruptura ao mesmo tempo, coisa que uma lista de datas não faz.' }]},
+
+{ id:'e5', n:'05', alt:'2.500 m', altn:'cânion andino', cor:'var(--pacifico-2)', ico:'agua', x:900, y:190,
+  h:'De onde vem a água de Santiago?', local:'Cajón del Maipo · alta cordilheira',
+  res:'Um vale em V escavado pelo rio Maipo. A neve que cai aqui no inverno é a água que sai da torneira da cidade na primavera.',
+  pontos:[
+  { k:'geo', t:'Uma bacia inteira',
+    r:'Neve, degelo, rio, represa, cidade, parreira — o circuito completo.',
+    d:'O rio Maipo nasce do degelo da alta cordilheira e abastece a área metropolitana de Santiago. É a mesma água que, mais abaixo, rega as parreiras do vale. Este episódio e o da vinha contam o mesmo ciclo, de pontas opostas.',
+    q:'De onde vem a água que abastece uma cidade de sete milhões de pessoas?',
+    a:'Da neve que derrete na cordilheira',
+    b:'De poços profundos sob a cidade',
+    ok:'a',
+    porque:'A cordilheira funciona como reservatório: acumula neve no inverno e libera água no degelo. Um inverno sem neve é um ano sem água — e é isso que torna a aula 6 urgente.',
+    quase:'Há água subterrânea, mas o volume vem do degelo andino. Por isso a quantidade de neve no inverno é notícia de primeira página no Chile.' },
+  { k:'lin', t:'Cajón',
+    r:'Quer dizer caixa, gaveta. No Chile virou termo geográfico.',
+    d:'Um vale estreito de paredes altas é, literalmente, uma caixa. A palavra doméstica subiu a montanha e virou acidente de relevo. É o movimento inverso do pololo, na aula 3: lá uma palavra indígena virou cotidiano; aqui uma palavra cotidiana virou geografia.',
+    q:'O que acontece com a palavra "cajón" no Chile?',
+    a:'Uma palavra de casa passa a nomear uma forma do relevo',
+    b:'Perde o sentido original e passa a significar só vale',
+    ok:'a',
+    porque:'Ela mantém o sentido de caixa e ganha outro, geográfico. As línguas aproveitam o que já têm para nomear o que encontram — e a forma do vale realmente lembra uma gaveta aberta.',
+    quase:'O sentido original continua vivo: cajón ainda é gaveta em espanhol. O que houve foi acréscimo, não troca.' },
+  { k:'ori', t:'A montanha ligava',
+    r:'Maipo e Mapocho são nomes mapudungun. As passagens eram caminho, não barreira.',
+    d:'Muito antes de existir estrada, as passagens da cordilheira eram rotas de troca. Povos dos dois lados dos Andes cruzavam para negociar, trocar e casar — e seguem se reconhecendo como parentes hoje, apesar da fronteira entre Chile e Argentina.',
+    q:'O que a cordilheira representava para os povos originários?',
+    a:'Uma barreira intransponível que separava os povos',
+    b:'Um caminho com passagens conhecidas, usado para troca',
+    ok:'b',
+    porque:'Fronteiras nacionais são recentes. Para quem vivia ali, a montanha era território conhecido e atravessável — e os laços de parentesco entre os dois lados continuam existindo.',
+    quase:'Intransponível não era: havia passos conhecidos e rotas de troca estabelecidas há séculos. A ideia de barreira é dos mapas nacionais, não de quem morava lá.' },
+  { k:'cul', t:'A disputa pela água',
+    r:'Quem usa, quem represa, quem fica sem.',
+    d:'Povoados de montanha a duas horas da capital e a séculos de distância dela. Represas, mineração e agricultura disputam o mesmo rio que abastece a cidade. A pergunta do episódio não tem resposta pronta — e é melhor que não tenha.',
+    q:'Por que a água do Maipo é objeto de disputa?',
+    a:'Porque o mesmo rio serve cidade, agricultura e mineração',
+    b:'Porque há água demais e ninguém sabe o que fazer com ela',
+    ok:'a',
+    porque:'Um recurso finito com vários usuários é a definição de conflito. E o volume depende da neve do inverno — que, como mostra a aula 6, nem sempre vem.',
+    quase:'Demais não há: o Chile central enfrenta seca há anos. É a escassez que acirra a disputa.' }]},
+
+{ id:'e6', n:'06', alt:'3.330 m', altn:'alta montanha', cor:'var(--andino-2)', ico:'neve', x:1040, y:128,
+  h:'O que muda a cada mil metros de subida?', local:'El Colorado · Farellones',
+  res:'Em 9 de julho de 2026, 90% das pistas estavam fechadas por falta de neve. Em 20 de julho chegaram dois sistemas frontais. A Ana subiu no dia 22.',
+  pontos:[
+  { k:'geo', t:'A seca que quebrou numa semana',
+    r:'De 90% das pistas fechadas a dois sistemas frontais em onze dias.',
+    d:'A associação dos centros de esqui reportava, no início de julho de 2026, que quase tudo estava inabilitado por falta de precipitação — o pouco que havia era neve artificial, dentro de uma seca de anos. Em 20 de julho chegaram dois sistemas frontais previstos como os mais intensos do ano, com a isoterma zero descendo a 1.600 metros.',
+    q:'Por que a quantidade de neve de um inverno importa para quem mora na cidade?',
+    a:'Porque a neve é o reservatório de água do ano seguinte',
+    b:'Porque afeta apenas o turismo de esqui',
+    ok:'a',
+    porque:'A neve que cai na cordilheira derrete na primavera e vira a água de Santiago e das plantações do vale. Um inverno seco é um ano de escassez — a montanha é a caixa d’água do país.',
+    quase:'O esqui sente primeiro, mas o efeito é muito maior: a mesma neve abastece sete milhões de pessoas e a agricultura do vale central.' },
+  { k:'ori', t:'Mañke',
+    r:'Condor, em mapudungun. O Andino carrega um nome que a língua tem.',
+    d:'Na cordilheira ele nunca foi só um bicho: aparece na cosmologia mapuche como aquele que vê de cima e atravessa. O condor também é símbolo pátrio do Chile desde 1834 — mas não é só chileno: está nos escudos da Colômbia e do Equador, e é símbolo na Bolívia, no Peru e na Argentina. Ele é da cordilheira, não de um país.',
+    q:'Por que o condor serve de personagem para uma série sobre a América do Sul?',
+    a:'Porque é exclusivo do Chile',
+    b:'Porque pertence à cordilheira inteira, que atravessa vários países',
+    ok:'b',
+    porque:'Um personagem exclusivo de um país teria que ser aposentado no fim da temporada. O condor acompanha a série até a Argentina — e no Uruguai, onde não há Andes, a ausência dele vira conteúdo.',
+    quase:'Exclusivo não é: aparece nos escudos de três países e é símbolo em vários outros. É um animal andino, não nacional.' },
+  { k:'lin', t:'Palavras de altitude',
+    r:'A montanha tem vocabulário que o vale não precisa ter.',
+    d:'Quem vive em altitude nomeia o que encontra: tipos de neve, de vento, de frio, de perigo. São distinções que não existem no vocabulário de quem mora a 500 metros, porque lá elas não fazem diferença. A língua detalha o que importa para a sobrevivência.',
+    q:'Por que a montanha tem palavras que o vale não tem?',
+    a:'Porque quem vive lá precisa distinguir coisas que no vale não importam',
+    b:'Porque é uma língua diferente',
+    ok:'a',
+    porque:'Toda comunidade cria vocabulário fino para o que precisa decidir todo dia. Tipos de neve importam para quem anda nela — e não para quem nunca a viu.',
+    quase:'É a mesma língua: o que muda é o vocabulário específico que cada ambiente exige de quem vive nele.' },
+  { k:'cul', t:'Quem vive em 3.330 m',
+    r:'Quem trabalha na montanha fora da temporada, e como se chegava antes da estrada.',
+    d:'A estrada para Farellones sobe em dezenas de curvas numeradas. Antes dela, chegar ali era expedição. Hoje há quem more na montanha o ano inteiro, com um calendário de trabalho que depende inteiramente de quanto nevou no inverno.',
+    q:'O que a subida a El Colorado mostra sobre altitude?',
+    a:'Que vegetação, temperatura e modo de vida mudam a cada mil metros',
+    b:'Que a paisagem é igual até o topo',
+    ok:'a',
+    porque:'Subir mil metros equivale, em termos de clima, a avançar centenas de quilômetros em direção aos polos. A vegetação some, a temperatura cai, o ar rarefaz — e o modo de vida acompanha.',
+    quase:'Igual não fica: entre Santiago e El Colorado a vegetação desaparece e a temperatura cai vários graus, em menos de 40 km de estrada.' }]}
+];
+
+</script>
+<script>
+(function(){
+  var FOTOS = {"c1": {"b64": "img/c1.jpg", "lic": "CC BY-SA 3.0", "aut": "Stefan Bauer", "file": "Demonstration-mapuche.jpg"}, "c2": {"b64": "img/c2.jpg", "lic": "CC BY-SA 2.0", "aut": "Dennis G. Jarvis", "file": "Chile-03799 - Lautaro (49039222081).jpg"}, "c3": {"b64": "img/c3.jpg", "lic": "CC BY-SA 4.0", "aut": "Museo Histórico Nacional", "file": "Chupalla.jpg"}, "e1": {"b64": "img/e1.jpg", "lic": "CC BY-SA 3.0", "aut": "Molinarts", "file": "Ancla, casa de pablo neruda , isla negra.JPG"}, "e2": {"b64": "img/e2.jpg", "lic": "CC BY 2.0", "aut": "Winniepix", "file": "Cockerel in daisies among the vines at Matetic wines, Casablanca Valley (38439422615).jpg"}, "e3": {"b64": "img/e3.jpg", "lic": "CC BY-SA 4.0", "aut": "Tommy Boy", "file": "Barrio Lastarria 101.jpg"}, "e4": {"b64": "img/e4.jpg", "lic": "CC BY-SA 4.0", "aut": "Bernard Gagnon", "file": "Cannon at the Cerro Santa Lucia, Santiago de Chile.jpg"}, "e42": {"b64": "img/e42.jpg", "lic": "Public domain", "aut": "Unknown authorUnknown author", "file": "Chile Araucania Map 1610.jpg"}, "e5": {"b64": "img/e5.jpg", "lic": "CC0", "aut": "FLACCY", "file": "CONDOR, MIRADOR DE LOS CONDORES, CAJON DEL MAIPO.jpg"}, "e6": {"b64": "img/e6.jpg", "lic": "CC BY-SA 4.0", "aut": "Nbendersky", "file": "Camino a Farellones nevado - Snowed Road to Farellones.jpg"}};
+
+  var $ = function(s,r){ return (r||document).querySelector(s); };
+  var ns = 'http://www.w3.org/2000/svg';
+  function el(t,a,p){ var e=document.createElementNS(ns,t); for(var k in a) e.setAttribute(k,a[k]); if(p) p.appendChild(e); return e; }
+
+  /* ---------------- ícones ---------------- */
+  var ICO = {
+    bussola:'<circle cx="12" cy="12" r="9"/><path d="M15.5 8.5 L13 13 L8.5 15.5 L11 11 Z" fill="currentColor"/>',
+    espada:'<path d="M14.5 4.5 L19.5 4.5 L19.5 9.5 L10 19 L5 14 Z"/><path d="M5 19 L8 16"/>',
+    mesa:'<path d="M4 10 h16"/><path d="M6 10 v8"/><path d="M18 10 v8"/><path d="M12 4 v6"/><circle cx="12" cy="4.5" r="1.6"/>',
+    onda:'<path d="M3 13 q3-4 6 0 t6 0 t6 0"/><path d="M3 18 q3-4 6 0 t6 0 t6 0"/>',
+    uva:'<circle cx="12" cy="8" r="2.2"/><circle cx="9" cy="12" r="2.2"/><circle cx="15" cy="12" r="2.2"/><circle cx="12" cy="16" r="2.2"/><path d="M12 6 v-3"/>',
+    fala:'<path d="M20 15 a2 2 0 0 1-2 2H8l-4 4V6a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2z"/>',
+    morro:'<path d="M3 19 L9 8 L13 14 L16 9 L21 19 Z"/>',
+    camada:'<path d="M12 3 L21 8 L12 13 L3 8 Z"/><path d="M4 12 l8 4 8-4"/>',
+    agua:'<path d="M12 3 c4 5 6 7.5 6 10.5a6 6 0 0 1-12 0C6 10.5 8 8 12 3z"/>',
+    neve:'<path d="M12 3v18"/><path d="M4.5 7.5l15 9"/><path d="M19.5 7.5l-15 9"/>'
+  };
+  function svgIco(n,sw){ return '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="'+(sw||2.1)+'" stroke-linecap="round" stroke-linejoin="round">'+ICO[n]+'</svg>'; }
+
+  /* ---------------- conteúdo real ---------------- */
+
+
+  var CURIOS = [
+    {x:200, y:600, c:'var(--pacifico)', q:'Água gelada', t:'A corrente de Humboldt sobe do sul e deixa o mar do Chile frio mesmo no verão. É ela que seca o Atacama.'},
+    {x:430, y:500, c:'var(--valle)', q:'Daqui para o mundo', t:'A batata foi domesticada nos Andes. Hoje é o quarto alimento mais cultivado do planeta.'},
+    {x:640, y:430, c:'var(--sol)', q:'Palavra escondida', t:'"Pololo", namorado em chileno, vem do mapudungun — onde era o nome de um inseto que zumbe.'},
+    {x:470, y:330, c:'var(--cobre)', q:'Dois nomes', t:'O Cerro Santa Lucía se chamava Huelén: tristeza, em mapudungun. Os dois nomes ainda estão lá.'},
+    {x:880, y:380, c:'var(--andino)', q:'Um tratado', t:'Em 1641, no Parlamento de Quilín, a Espanha reconheceu o rio Biobío como fronteira. Ao sul dele, não mandava.'},
+    {x:1020, y:290, c:'var(--cobre-2)', q:'Ainda hoje', t:'O Chile é o maior produtor de cobre do mundo. "O que sai daqui" não é uma pergunta sobre o passado.'},
+    {x:1120, y:200, c:'var(--pacifico)', q:'O nome dele', t:'Condor, em mapudungun, é mañke. O Andino carrega um nome que a língua tem.'},
+    {x:300, y:410, c:'var(--andino-2)', q:'Muita gente', t:'A maior comunidade palestina fora do Oriente Médio está no Chile: cerca de meio milhão de pessoas.'}
+  ];
+
+  /* ---------------- progresso ---------------- */
+  var vistos = {};
+  try{ vistos = JSON.parse(localStorage.getItem('subida') || '{}') || {}; }catch(e){ vistos = {}; }
+  function salvar(){ try{ localStorage.setItem('subida', JSON.stringify(vistos)); }catch(e){} }
+
+  var TUDO = CONTEXTO.concat(TRILHA);
+  function pintarContador(){
+    var n = TUDO.filter(function(a){ return vistos[a.id]; }).length;
+    $('#feitos').textContent = n;
+    var p = $('#pips'); p.innerHTML = '';
+    TUDO.forEach(function(a){
+      var s = document.createElement('span');
+      s.className = 'pip' + (vistos[a.id] ? ' on' : '');
+      p.appendChild(s);
+    });
+  }
+
+  /* ---------------- antes de subir ---------------- */
+  var base = $('#base');
+  CONTEXTO.forEach(function(a){
+    var b = document.createElement('button');
+    b.className = 'mochila'; b.style.setProperty('--c', a.cor);
+    b.innerHTML = '<span class="selo">'+svgIco(a.ico)+'</span>'
+      + '<span class="etq">'+a.tag+'</span>'
+      + '<h3>'+a.h+'</h3><p>'+a.sub+'</p>';
+    b.addEventListener('click', function(){ abrir(a); });
+    base.appendChild(b);
+  });
+
+  /* ---------------- enfeites da paisagem ---------------- */
+  (function(){
+    var g = $('#enfeites');
+    // arbustos no vale
+    [[230,492],[300,474],[392,452],[470,430],[520,414]].forEach(function(p,i){
+      var k = el('g',{},g);
+      el('circle',{cx:p[0],cy:p[1],r:16,fill:'#4EA336',opacity:'.85'},k);
+      el('circle',{cx:p[0]+13,cy:p[1]+6,r:11,fill:'#6BCB4F',opacity:'.9'},k);
+      el('rect',{x:p[0]-3,y:p[1]+12,width:6,height:16,fill:'#8A5A3B',rx:3},k);
+    });
+    // cactos no trecho seco
+    [[660,360],[742,318]].forEach(function(p){
+      var k = el('g',{},g);
+      el('rect',{x:p[0]-7,y:p[1]-30,width:14,height:42,rx:7,fill:'#3E8E52'},k);
+      el('rect',{x:p[0]-22,y:p[1]-18,width:11,height:20,rx:5.5,fill:'#3E8E52'},k);
+      el('rect',{x:p[0]+11,y:p[1]-24,width:11,height:24,rx:5.5,fill:'#3E8E52'},k);
+    });
+    // condor voando
+    var c = el('g',{id:'condor'},g);
+    el('path',{d:'M740 120 q26 -20 52 0 q-26 -9 -52 0 Z',fill:'#2E3A46'},c);
+    el('path',{d:'M792 120 q26 -20 52 0 q-26 -9 -52 0 Z',fill:'#2E3A46'},c);
+    el('ellipse',{cx:792,cy:122,rx:9,ry:6,fill:'#2E3A46'},c);
+    // barquinho no mar
+    var b = el('g',{},g);
+    el('path',{d:'M44 556 l54 0 l-9 15 l-36 0 Z',fill:'#F2682A'},b);
+    el('path',{d:'M70 556 l0 -26 l20 26 Z',fill:'#FFFFFF'},b);
+  })();
+
+  /* ---------------- pontos de curiosidade ---------------- */
+  (function(){
+    var g = $('#pontos');
+    CURIOS.forEach(function(c,i){
+      var a = el('g',{class:'curio', tabindex:'0', role:'button',
+                      'aria-label':'Curiosidade: '+c.q}, g);
+      el('circle',{cx:c.x,cy:c.y,r:21,fill:c.c,stroke:'#fff','stroke-width':5},a);
+      var t = el('text',{x:c.x,y:c.y+9,'text-anchor':'middle','font-size':'26',fill:'#fff'},a);
+      t.textContent = '?';
+      function solta(ev){ ev.preventDefault(); nuvem(c, a); }
+      a.addEventListener('click', solta);
+      a.addEventListener('keydown', function(e){ if(e.key==='Enter'||e.key===' ') solta(e); });
+      // pulsa devagar, cada uma no seu tempo
+      var an = el('animate',{attributeName:'r', values:'21;24;21', dur:(2.6+i*0.3)+'s',
+                             repeatCount:'indefinite'}, a.firstChild);
+    });
+  })();
+
+  /* ---------------- estações da trilha ---------------- */
+  (function(){
+    var g = $('#estacoes');
+    TRILHA.forEach(function(a){
+      var k = el('g',{class:'estacao', tabindex:'0', role:'button',
+                      'aria-label':'Aula '+a.n+': '+a.h}, g);
+      el('circle',{class:'halo', cx:a.x, cy:a.y, r:40, fill:a.cor},k);
+      el('circle',{class:'bolha', cx:a.x, cy:a.y, r:34, fill:a.cor, stroke:'#fff','stroke-width':6},k);
+      // ícone dentro da bolha
+      var fo = el('g',{transform:'translate('+(a.x-15)+','+(a.y-15)+') scale(1.25)'},k);
+      fo.innerHTML = '<g fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">'+ICO[a.ico]+'</g>';
+      var r = el('text',{class:'rot', x:a.x, y:a.y+62,'text-anchor':'middle','font-size':'21',fill:'#16304F'},k);
+      r.textContent = a.n;
+      var al = el('text',{class:'alt', x:a.x, y:a.y+84,'text-anchor':'middle','font-size':'17',fill:'#4A6886'},k);
+      al.textContent = a.alt;
+      var ok = el('circle',{cx:a.x+26, cy:a.y-26, r:13, fill:'#6BCB4F', stroke:'#fff','stroke-width':4,
+                            opacity: vistos[a.id] ? 1 : 0, 'data-ok':a.id},k);
+      k.addEventListener('click', function(){ abrir(a); });
+      k.addEventListener('keydown', function(e){ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); abrir(a); } });
+    });
+  })();
+
+  /* ---------------- nuvens ---------------- */
+  function nuvem(c, alvo){
+    var r = alvo.getBoundingClientRect();
+    var d = document.createElement('div');
+    d.className = 'nuvem';
+    d.style.setProperty('--c', c.c);
+    d.style.left = Math.min(Math.max(r.left + r.width/2, 170), window.innerWidth-170) + 'px';
+    d.style.top  = Math.max(r.top - 30, 20) + 'px';
+    d.innerHTML = '<span class="q">'+c.q+'</span>'+c.t;
+    $('#nuvens').appendChild(d);
+    setTimeout(function(){ d.remove(); }, 5600);
+  }
+
+  /* ---------------- painel da aula ---------------- */
+  var cortina = $('#cortina'), caixa = $('#aula'), ultimoFoco = null;
+
+  var CORES = {geo:'var(--valle-2)', cul:'var(--cobre-2)', lin:'var(--pacifico-2)', ori:'var(--andino-2)'};
+  var ICOP  = {geo:'morro', cul:'mesa', lin:'fala', ori:'camada'};
+  var NOMES = {geo:'Geografia', cul:'Cultura', lin:'Língua', ori:'Povos originários'};
+
+  function abrir(a){
+    ultimoFoco = document.activeElement;
+    var f = FOTOS[a.id], tela;
+    if (a.video){
+      tela = a.video.indexOf('youtube') > -1
+        ? '<iframe src="'+a.video+'" title="Vídeo da aula" allowfullscreen></iframe>'
+        : '<video src="'+a.video+'" controls playsinline></video>';
+    } else if (f){
+      tela = '<img class="foto" src="'+f.b64+'" alt="">'
+           + '<div class="selo-prov"><span class="pulso"></span>Foto provisória · o vídeo entra aqui</div>'
+           + '<div class="credito">'+f.file.replace(/\.[a-z]+$/i,'')+' · '+f.aut+' · '+f.lic+' · Wikimedia Commons</div>';
+    } else {
+      tela = '<div class="vazio"><div class="ico">'+svgIco('morro',2)+'</div>'
+           + '<b>O vídeo entra aqui</b><br>coloque o arquivo em <code>videos/'+a.id+'.mp4</code></div>';
+    }
+
+    var passos = a.pontos.map(function(p,i){
+      return '<div class="passo" data-i="'+i+'" style="--pc:'+CORES[p.k]+'">'
+        + '<button class="passo-cab" type="button">'
+          + '<span class="bolinha">'+svgIco(ICOP[p.k],2.2)+'</span>'
+          + '<span class="tx"><span class="tt">'+NOMES[p.k]+' · '+p.t+'</span>'
+          + '<span class="rr">'+p.r+'</span></span>'
+          + '<span class="tick">✓</span><span class="seta">›</span>'
+        + '</button>'
+        + '<div class="passo-corpo">'
+          + '<p class="fundo">'+p.d+'</p>'
+          + '<div class="desafio">'
+            + '<p class="pg">'+p.q+'</p>'
+            + '<div class="ops">'
+              + '<button class="op" type="button" data-v="a"><span class="letra">A</span><span>'+p.a+'</span></button>'
+              + '<button class="op" type="button" data-v="b"><span class="letra">B</span><span>'+p.b+'</span></button>'
+            + '</div>'
+            + '<div class="devolutiva"></div>'
+            + '<div class="acoes"></div>'
+          + '</div>'
+        + '</div></div>';
+    }).join('');
+
+    caixa.style.setProperty('--c', a.cor);
+    caixa.innerHTML =
+        '<div class="aula-topo">'
+      +   '<span class="n"><b>'+(a.n||'•')+'</b><span>'+(a.altn||a.tag||'contexto')+'</span></span>'
+      +   '<div><h2 id="aula-titulo">'+a.h+'</h2><p class="local">'+(a.local||a.sub)+'</p></div>'
+      +   '<button class="fechar" id="x" type="button" aria-label="Voltar ao mapa">✕</button>'
+      + '</div>'
+      + '<div class="tela">'+tela+'</div>'
+      + '<div class="aula-corpo">'
+      +   '<p>'+a.res+'</p>'
+      +   '<div class="barra-aula"><span class="t">Nesta aula</span><span class="q" id="q"></span>'
+      +     '<span class="t" id="qn"></span></div>'
+      +   passos
+      +   '<div class="premio" id="premio">'
+      +     '<div class="medalha">⛰</div>'
+      +     '<h4>Etapa vencida!</h4>'
+      +     '<p id="premio-txt"></p>'
+      +     '<div class="acoes" style="justify-content:center" id="premio-acoes"></div>'
+      +   '</div>'
+      +   '<div class="acoes" style="margin-top:1rem">'
+      +     '<button class="bt vazado" id="voltar" type="button">← Voltar ao mapa</button>'
+      +   '</div>'
+      + '</div>';
+
+    cortina.classList.add('abre');
+    document.body.style.overflow = 'hidden';
+    caixa.scrollTop = 0;
+    $('#x').focus();
+
+    var feitos = {}, total = a.pontos.length;
+    function pintarPassos(){
+      var n = Object.keys(feitos).length;
+      var q = $('#q'); q.innerHTML = '';
+      for (var i=0;i<total;i++){
+        var b = document.createElement('i');
+        if (feitos[i]) b.className = 'on';
+        q.appendChild(b);
+      }
+      $('#qn').textContent = n + ' de ' + total;
+      if (n === total && !vistos[a.id]) concluir();
+    }
+
+    function concluir(){
+      vistos[a.id] = true; salvar(); pintarContador();
+      var o = document.querySelector('[data-ok="'+a.id+'"]');
+      if (o) o.setAttribute('opacity', 1);
+      var prox = proxima(a);
+      $('#premio-txt').textContent = prox
+        ? 'Você completou os quatro pontos. A próxima parada é ' + (prox.local || prox.sub) + '.'
+        : 'Você completou os quatro pontos desta aula.';
+      var ac = $('#premio-acoes'); ac.innerHTML = '';
+      if (prox){
+        var b1 = document.createElement('button');
+        b1.className = 'bt verde'; b1.type = 'button';
+        b1.textContent = 'Continuar →';
+        b1.addEventListener('click', function(){ fechar(); setTimeout(function(){ abrir(prox); }, 180); });
+        ac.appendChild(b1);
+      }
+      var b2 = document.createElement('button');
+      b2.className = 'bt vazado'; b2.type = 'button';
+      b2.textContent = 'Voltar ao mapa';
+      b2.addEventListener('click', fechar);
+      ac.appendChild(b2);
+      $('#premio').classList.add('mostra');
+      faiscas($('#premio'));
+      setTimeout(function(){ $('#premio').scrollIntoView({behavior:'smooth', block:'nearest'}); }, 120);
+    }
+
+    // cada ponto: abrir, responder, acertar ou tentar de novo
+    [].forEach.call(caixa.querySelectorAll('.passo'), function(passo, i){
+      var p = a.pontos[i];
+      var cab = passo.querySelector('.passo-cab');
+      var dev = passo.querySelector('.devolutiva');
+      var acoes = passo.querySelector('.acoes');
+      var ops = [].slice.call(passo.querySelectorAll('.op'));
+
+      cab.addEventListener('click', function(){ passo.classList.toggle('aberto'); });
+
+      function limpar(){
+        ops.forEach(function(o){ o.disabled = false; o.classList.remove('certa','errada'); });
+        dev.className = 'devolutiva'; dev.innerHTML = '';
+        acoes.innerHTML = '';
+      }
+
+      ops.forEach(function(op){
+        op.addEventListener('click', function(){
+          var certo = op.dataset.v === p.ok;
+          ops.forEach(function(o){ o.disabled = true; });
+          op.classList.add(certo ? 'certa' : 'errada');
+          if (certo) ops.forEach(function(o){ if (o.dataset.v === p.ok) o.classList.add('certa'); });
+          dev.className = 'devolutiva mostra ' + (certo ? 'boa' : 'quase');
+          dev.innerHTML = '<b>'+(certo ? '✓ Isso mesmo' : 'Quase lá')+'</b>' + (certo ? p.porque : p.quase);
+          acoes.innerHTML = '';
+          if (certo){
+            feitos[i] = true; pintarPassos(); passo.classList.add('ok');
+            faiscas(op);
+            var seg = a.pontos[i+1];
+            if (seg){
+              var c = document.createElement('button');
+              c.className = 'bt'; c.type = 'button'; c.textContent = 'Continuar →';
+              c.addEventListener('click', function(){
+                passo.classList.remove('aberto');
+                var pr = caixa.querySelectorAll('.passo')[i+1];
+                pr.classList.add('aberto');
+                pr.scrollIntoView({behavior:'smooth', block:'center'});
+              });
+              acoes.appendChild(c);
+            }
+          } else {
+            var t = document.createElement('button');
+            t.className = 'bt'; t.type = 'button'; t.textContent = '↻ Tentar novamente';
+            t.addEventListener('click', limpar);
+            acoes.appendChild(t);
+            var e = document.createElement('button');
+            e.className = 'bt vazado'; e.type = 'button'; e.textContent = 'Explorar de novo';
+            e.addEventListener('click', function(){
+              limpar();
+              passo.querySelector('.fundo').scrollIntoView({behavior:'smooth', block:'center'});
+            });
+            acoes.appendChild(e);
+          }
+        });
+      });
+    });
+
+    $('#x').addEventListener('click', fechar);
+    $('#voltar').addEventListener('click', fechar);
+    pintarPassos();
+    if (vistos[a.id]) $('#qn').textContent = 'já concluída — refaça quando quiser';
+  }
+
+  function proxima(a){
+    var i = TUDO.indexOf(a);
+    return (i > -1 && i+1 < TUDO.length) ? TUDO[i+1] : null;
+  }
+
+  /* recompensa: poucas faíscas, rápido */
+  function faiscas(alvo){
+    if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    var r = alvo.getBoundingClientRect();
+    var cores = ['#FFC233','#6BCB4F','#F2682A','#0FB5BD','#8B4FB5'];
+    for (var i=0;i<12;i++){
+      (function(i){
+        var d = document.createElement('span');
+        d.className = 'faisca';
+        d.style.background = cores[i % cores.length];
+        d.style.left = (r.left + r.width/2) + 'px';
+        d.style.top  = (r.top + r.height/2) + 'px';
+        document.body.appendChild(d);
+        var ang = (Math.PI * 2 * i) / 12 + Math.random()*.4;
+        var dist = 46 + Math.random()*54;
+        d.animate([
+          {transform:'translate(-50%,-50%) scale(1) rotate(0deg)', opacity:1},
+          {transform:'translate(calc(-50% + '+Math.cos(ang)*dist+'px), calc(-50% + '+Math.sin(ang)*dist+'px)) scale(.3) rotate(220deg)', opacity:0}
+        ], {duration: 620 + Math.random()*260, easing:'cubic-bezier(.2,.7,.3,1)'});
+        setTimeout(function(){ d.remove(); }, 920);
+      })(i);
+    }
+  }
+
+  function fechar(){
+    cortina.classList.remove('abre');
+    document.body.style.overflow = '';
+    caixa.innerHTML = '';
+    if (ultimoFoco) ultimoFoco.focus();
+  }
+  cortina.addEventListener('click', function(e){ if (e.target === cortina) fechar(); });
+  document.addEventListener('keydown', function(e){ if (e.key === 'Escape' && cortina.classList.contains('abre')) fechar(); });
+
+  /* condor cruzando o céu, devagar */
+  (function(){
+    var c = document.getElementById('condor'), t = 0;
+    if (!c || matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    setInterval(function(){
+      t += 0.012;
+      var x = Math.sin(t) * 260, y = Math.sin(t*1.7) * 26;
+      c.setAttribute('transform','translate('+x+','+y+')');
+    }, 40);
+  })();
+
+  /* ---------------- a aventura começa: tudo entra em cena ---------------- */
+  (function(){
+    var parado = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    // a trilha se desenha, como um caminho sendo traçado no mapa
+    var t = document.getElementById('trilha');
+    if (t && !parado){
+      var L = t.getTotalLength();
+      t.style.strokeDasharray = '2 22';
+      t.style.strokeDashoffset = L;
+      t.style.transition = 'stroke-dashoffset 2.6s cubic-bezier(.4,0,.2,1)';
+      requestAnimationFrame(function(){ requestAnimationFrame(function(){ t.style.strokeDashoffset = '0'; }); });
+    }
+
+    // as estações brotam uma a uma, subindo a montanha
+    document.querySelectorAll('.estacao').forEach(function(e,i){
+      if (parado) return;
+      e.style.opacity = '0';
+      e.style.transformBox = 'fill-box';
+      e.style.transformOrigin = 'center';
+      e.style.transform = 'scale(.4)';
+      setTimeout(function(){
+        e.style.transition = 'opacity .4s ease-out, transform .55s cubic-bezier(.34,1.6,.64,1)';
+        e.style.opacity = '1'; e.style.transform = 'none';
+      }, 420 + i*230);
+    });
+
+    // os pontos de curiosidade aparecem depois, já com a trilha pronta
+    document.querySelectorAll('.curio').forEach(function(e,i){
+      if (parado) return;
+      e.style.opacity = '0';
+      setTimeout(function(){
+        e.style.transition = 'opacity .5s ease-out';
+        e.style.opacity = '1';
+      }, 2200 + i*140);
+    });
+
+    // os cartões de contexto deslizam para cima
+    document.querySelectorAll('.mochila').forEach(function(e,i){
+      if (parado) return;
+      e.style.opacity = '0'; e.style.transform = 'translateY(16px)';
+      setTimeout(function(){
+        e.style.transition = 'opacity .5s ease-out, transform .5s cubic-bezier(.34,1.4,.64,1), border-color .18s, box-shadow .18s';
+        e.style.opacity = '1'; e.style.transform = 'none';
+      }, 120 + i*110);
+    });
+
+    // nuvens do céu atravessando devagar, cada uma na sua velocidade
+    if (!parado){
+      var nv = [].slice.call(document.querySelectorAll('.nuvemceu'));
+      var tt = 0;
+      setInterval(function(){
+        tt += 1;
+        nv.forEach(function(n,i){
+          var v = parseFloat(n.getAttribute('data-v'));
+          var x = ((tt * (v/34)) % 1500) - 250;
+          n.setAttribute('transform','translate('+x+',0)');
+        });
+      }, 60);
+    }
+  })();
+
+  pintarContador();
+})();
+</script>

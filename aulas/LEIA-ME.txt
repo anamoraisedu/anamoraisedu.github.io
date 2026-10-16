@@ -1,0 +1,5 @@
+Protótipo das videoaulas do Mapa Falado.
+Fotos provisórias do Wikimedia Commons, com licença livre e crédito na tela.
+Os arquivos originais e os créditos completos estão em img/creditos.json.
+Página marcada com noindex: não aparece em buscadores.
+Substituir as fotos pelos vídeos quando estiverem prontos.

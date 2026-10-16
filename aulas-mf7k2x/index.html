@@ -486,7 +486,7 @@
     </svg>
   </div>
 
-  <p class="rodape">Toque nas bolinhas <strong>?</strong> espalhadas pela paisagem — cada uma solta uma curiosidade.</p>
+  <p class="rodape">Toque nos <strong>ícones espalhados pela paisagem</strong> e descubra mais sobre o Chile!</p>
 </div>
 
 <div id="nuvens"></div>
@@ -1020,7 +1020,7 @@ var TRILHA = [
     var g = $('#pontos');
     CURIOS.forEach(function(c,i){
       var a = el('g',{class:'curio', tabindex:'0', role:'button',
-                      'aria-label':'Curiosidade: '+c.q}, g);
+                      'aria-label':'Descubra: '+c.q}, g);
       el('circle',{cx:c.x,cy:c.y,r:21,fill:c.c,stroke:'#fff','stroke-width':5},a);
       var t = el('text',{x:c.x,y:c.y+9,'text-anchor':'middle','font-size':'26',fill:'#fff'},a);
       t.textContent = '?';

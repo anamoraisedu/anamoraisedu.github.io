@@ -260,6 +260,60 @@
   @media (prefers-reduced-motion:reduce){ .selo-prov .pulso{animation:none} }
 
 
+
+  /* ---------- galeria do arquivo pessoal ---------- */
+  .arquivo{margin:0 0 1.1rem}
+  .arquivo-cab{display:flex; align-items:center; gap:.55rem; margin-bottom:.6rem}
+  .arquivo-cab .pt{width:9px;height:9px;border-radius:50%;background:var(--valle);flex:none;
+    box-shadow:0 0 0 0 rgba(107,203,79,.6); animation:pulsa 2.4s infinite}
+  @keyframes pulsa{70%{box-shadow:0 0 0 8px rgba(107,203,79,0)}100%{box-shadow:0 0 0 0 rgba(107,203,79,0)}}
+  .arquivo-cab b{font-family:Fredoka; font-weight:600; font-size:.9rem}
+  .arquivo-cab span{font-size:.8rem; color:var(--ink-3); font-weight:700}
+  .tiras{display:flex; gap:.6rem; overflow-x:auto; padding:.15rem .15rem .6rem; scroll-snap-type:x mandatory}
+  .tira{
+    flex:none; width:158px; scroll-snap-align:start; cursor:pointer; border:0; padding:0;
+    background:none; font:inherit; color:inherit; text-align:left;
+  }
+  .tira .moldura{
+    position:relative; width:158px; aspect-ratio:9/16; border-radius:18px; overflow:hidden;
+    background:#0B1A2E; box-shadow:var(--sombra-sm); transition:transform .2s cubic-bezier(.34,1.5,.64,1);
+  }
+  .tira:hover .moldura,.tira:focus-visible .moldura{transform:translateY(-4px) scale(1.02)}
+  .tira:focus-visible{outline:none}
+  .tira:focus-visible .moldura{box-shadow:0 0 0 3px var(--pc,var(--cobre))}
+  .tira video,.tira img{width:100%;height:100%;object-fit:cover;display:block}
+  .tira .play{
+    position:absolute; inset:0; display:grid; place-items:center; pointer-events:none;
+    background:linear-gradient(180deg,rgba(0,0,0,.08),rgba(0,0,0,.42));
+  }
+  .tira .play i{
+    width:40px;height:40px;border-radius:50%;background:rgba(255,255,255,.92);
+    display:grid;place-items:center; font-style:normal; color:#16304F; font-size:.95rem; padding-left:3px;
+  }
+  .tira.foto .play{background:none}
+  .tira.foto .play i{display:none}
+  .tira .selo{
+    position:absolute; left:8px; top:8px; font-family:Fredoka; font-size:.66rem; font-weight:600;
+    background:rgba(11,26,46,.72); color:#DCEEFB; padding:.18rem .5rem; border-radius:100px;
+  }
+  .tira p{margin:.4rem .15rem 0; font-size:.78rem; font-weight:700; color:var(--ink-2); line-height:1.3}
+
+  /* visor em tela cheia */
+  .visor{position:fixed; inset:0; z-index:95; display:none; background:rgba(8,18,32,.9);
+    backdrop-filter:blur(6px); place-items:center; padding:1.2rem}
+  .visor.abre{display:grid}
+  .visor-caixa{width:min(420px,92vw); max-height:92vh; display:flex; flex-direction:column; gap:.7rem}
+  .visor video,.visor img{width:100%; max-height:76vh; object-fit:contain; border-radius:20px; display:block; background:#000}
+  .visor .leg{color:#CFE3F1; font-size:.9rem; font-weight:700; text-align:center}
+  .visor .cred{color:#8FAFC8; font-size:.74rem; font-weight:700; text-align:center}
+  .visor .x{
+    position:absolute; right:1rem; top:1rem; width:44px;height:44px;border-radius:50%;
+    border:2px solid rgba(255,255,255,.4); background:rgba(255,255,255,.14); color:#fff;
+    font-size:1.3rem; cursor:pointer; display:grid; place-items:center;
+  }
+  .visor .x:hover{background:rgba(255,255,255,.26)}
+  @media (prefers-reduced-motion:reduce){ .arquivo-cab .pt{animation:none} }
+
   /* ---------- pontos da aula ---------- */
   .passo{
     border:2px solid var(--line); border-radius:24px; overflow:hidden;
@@ -688,6 +742,11 @@
 </div>
 
 <div id="nuvens"></div>
+
+<div class="visor" id="visor" role="dialog" aria-modal="true" aria-label="Mídia da aula">
+  <button class="x" id="visorX" type="button" aria-label="Fechar">✕</button>
+  <div class="visor-caixa" id="visorCaixa"></div>
+</div>
 
 <div class="cortina" id="cortina" role="dialog" aria-modal="true" aria-labelledby="aula-titulo">
   <div class="aula" id="aula"></div>
@@ -1871,6 +1930,8 @@ var AR_CURIOS = [
 (function(){
   var FOTOS = {"c1": {"b64": "img/c1.jpg", "lic": "CC BY-SA 3.0", "aut": "Stefan Bauer", "file": "Demonstration-mapuche.jpg"}, "c2": {"b64": "img/c2.jpg", "lic": "CC BY-SA 2.0", "aut": "Dennis G. Jarvis", "file": "Chile-03799 - Lautaro (49039222081).jpg"}, "c3": {"b64": "img/c3.jpg", "lic": "CC BY-SA 4.0", "aut": "Museo Histórico Nacional", "file": "Chupalla.jpg"}, "e1": {"b64": "img/e1.jpg", "lic": "CC BY-SA 3.0", "aut": "Molinarts", "file": "Ancla, casa de pablo neruda , isla negra.JPG"}, "e2": {"b64": "img/e2.jpg", "lic": "CC BY 2.0", "aut": "Winniepix", "file": "Cockerel in daisies among the vines at Matetic wines, Casablanca Valley (38439422615).jpg"}, "e3": {"b64": "img/e3.jpg", "lic": "CC BY-SA 4.0", "aut": "Tommy Boy", "file": "Barrio Lastarria 101.jpg"}, "e4": {"b64": "img/e4.jpg", "lic": "CC BY-SA 4.0", "aut": "Bernard Gagnon", "file": "Cannon at the Cerro Santa Lucia, Santiago de Chile.jpg"}, "e42": {"b64": "img/e42.jpg", "lic": "Public domain", "aut": "Unknown authorUnknown author", "file": "Chile Araucania Map 1610.jpg"}, "e5": {"b64": "img/e5.jpg", "lic": "CC0", "aut": "FLACCY", "file": "CONDOR, MIRADOR DE LOS CONDORES, CAJON DEL MAIPO.jpg"}, "e6": {"b64": "img/e6.jpg", "lic": "CC BY-SA 4.0", "aut": "Nbendersky", "file": "Camino a Farellones nevado - Snowed Road to Farellones.jpg"}, "a-c3": {"b64": "img/a-c3.jpg", "lic": "CC BY-SA 4.0", "aut": "Leandro Kibisz", "file": "Buenos Aires - Museo Hotel de Inmigrantes 01.JPG"}, "a0": {"b64": "img/a0.jpg", "lic": "CC BY-SA 4.0", "aut": "José Joaquín Cortes", "file": "Lo Barnechea -Valle Nevado - 2009 - 01.jpg"}, "a7": {"b64": "img/a7.jpg", "lic": "CC BY 4.0", "aut": "CARLOS TEIXIDOR CADENAS", "file": "2. El Aconcagua nevado desde un avión. Cordillera de los Andes. Argentina.jpg"}, "a6": {"b64": "img/a6.jpg", "lic": "CC BY-SA 4.0", "aut": "Smsuez", "file": "BODEGA SALENTEIN.jpg"}, "a1": {"b64": "img/a1.jpg", "lic": "CC BY-SA 3.0", "aut": "Martin St-Amant (S23678)", "file": "193 - Buenos Aires - Puerto Madero - Janvier 2010.jpg"}, "a5": {"b64": "img/a5.jpg", "lic": "CC BY-SA 3.0", "aut": "Adam Jones Adam63", "file": "Boat Trip on the Parana Delta - Near Tigre - Argentina.JPG"}, "a2": {"b64": "img/a2.jpg", "lic": "CC BY-SA 3.0", "aut": "Roxyuru", "file": "A boat to unite two countries.JPG"}, "u-c1": {"b64": "img/u-c1.jpg", "lic": "CC BY-SA 4.0", "aut": "Damiantorko", "file": "Blas Jaime en Salsipuedes Monumento.jpg"}, "u-c2": {"b64": "img/u-c2.jpg", "lic": "CC BY 2.0", "aut": "superturtle from (optional)", "file": "Calle en Colonia del Sacramento.jpg"}, "u-c3": {"b64": "img/u-c3.jpg", "lic": "CC BY-SA 4.0", "aut": "Felipe Restrepo Acosta", "file": "2016 Capitel con Cariátides del Palacio Legislativo Montevideo Uruguay.jpg"}, "u1": {"b64": "img/u1.jpg", "lic": "CC BY-SA 3.0", "aut": "Banfield", "file": "Calle De Los Suspiros, Colonia del Sacramento.jpg"}, "u2": {"b64": "img/u2.jpg", "lic": "CC BY-SA 4.0", "aut": "Felipe Restrepo Acosta", "file": "2016 Montevideo edificios en la rambla Gran Bretaña - Uruguay.jpg"}, "u3": {"b64": "img/u3.jpg", "lic": "CC BY-SA 3.0", "aut": "Andrés Franchi Ugart…", "file": "Argentino Hotel Piriapolis - panoramio.jpg"}, "u4": {"b64": "img/u4.jpg", "lic": "CC BY-SA 4.0", "aut": "NaBUru38", "file": "Anochecer en los Dedos de Punta del Este, abril de 2024 - 01.jpg"}, "a8": {"b64": "img/a8.jpg", "lic": "CC BY 2.0", "aut": "https://www.flickr.com/people/jmage/", "file": "Argentina Gaucho 01.jpg"}, "a-c1": {"b64": "img/a-c1.jpg", "lic": "Public domain", "aut": "Archivo General de la Nación Argentina", "file": "Argentina - Cacique tehuelche Sacamat.jpeg"}, "a-c2": {"b64": "img/a-c2.jpg", "lic": "CC BY 2.5", "aut": "autor não identificado", "file": "20060128 - Cabildo de Buenos Aires.jpg"}};
 
+  var MIDIA = {"a0": [["v", "vn-vista", "A vista do alto de Valle Nevado"], ["v", "vn-teleferico", "O teleférico subindo"], ["v", "vn-cavalos", "Cavalos na montanha"], ["v", "vn-rental", "O aluguel de equipamento"], ["f", "cord-rodovia", "A montanha vista da rodovia, perto de Las Condes"]], "e6": [["v", "ec-pista", "Vista de El Colorado, da pista"], ["v", "ec-restaurante", "Do restaurante do parque"], ["v", "fa-vista", "Farellones"], ["v", "barnechea-por-do-sol", "Pôr do sol em Lo Barnechea"], ["v", "cord-sem-neve", "A cordilheira sem neve"], ["f", "cord-deserto", "O contraste entre a parte nevada e a desértica"]], "e5": [["f", "cord-do-aviao", "A cordilheira dos Andes vista do avião"]], "e3": [["v", "stgo-mercado", "Mercado Municipal de Tobalaba, em Santiago"]]};
+  var CREDITO_PESSOAL = "Ana Claudia Morais Alves · arquivo pessoal";
   var ICO_CURIO = {"onda": "<path d=\"M-11 2 q5.5-6 11 0 t11 0\"/><path d=\"M-11 8 q5.5-6 11 0 t11 0\"/>", "batata": "<ellipse cx=\"0\" cy=\"2\" rx=\"10\" ry=\"7.5\" fill=\"currentColor\" stroke=\"none\"/><circle cx=\"-4\" cy=\"0\" r=\"1.5\" fill=\"#fff\" stroke=\"none\"/><circle cx=\"2\" cy=\"4\" r=\"1.3\" fill=\"#fff\" stroke=\"none\"/><circle cx=\"4\" cy=\"-2\" r=\"1.1\" fill=\"#fff\" stroke=\"none\"/><path d=\"M0 -6 q2-5 6-6\"/>", "fala": "<path d=\"M10 2 a2 2 0 0 1-2 2H-2l-5 4V-6a2 2 0 0 1 2-2h13a2 2 0 0 1 2 2z\"/>", "morro": "<path d=\"M-11 7 L-3 -6 L1 0 L4 -5 L11 7 Z\"/>", "rolo": "<rect x=\"-9\" y=\"-8\" width=\"18\" height=\"16\" rx=\"2.5\"/><path d=\"M-5 -3 h10M-5 1 h10M-5 5 h6\"/>", "barra": "<path d=\"M-10 4 L-6 -4 L6 -4 L10 4 Z\"/><path d=\"M-6 -4 L-3 -8 L9 -8 L6 -4\"/>", "condor": "<path d=\"M-11 0 q6-6 11 0 q-6-2.5-11 0 Z\" fill=\"currentColor\" stroke=\"none\"/><path d=\"M0 0 q6-6 11 0 q-6-2.5-11 0 Z\" fill=\"currentColor\" stroke=\"none\"/><ellipse cx=\"0\" cy=\"1\" rx=\"2.4\" ry=\"1.7\" fill=\"currentColor\" stroke=\"none\"/>", "gente": "<circle cx=\"-5\" cy=\"-4\" r=\"3\"/><circle cx=\"5\" cy=\"-4\" r=\"3\"/><path d=\"M-11 7 q0-5 6-5 t6 5\"/><path d=\"M1 7 q0-5 6-5 t6 5\"/>"};
   var $ = function(s,r){ return (r||document).querySelector(s); };
   var ns = 'http://www.w3.org/2000/svg';
@@ -2086,6 +2147,7 @@ var AR_CURIOS = [
       + '</div>'
       + '<div class="tela">'+tela+'</div>'
       + '<div class="aula-corpo">'
+      +   galeria(a.id)
       +   '<p>'+a.res+'</p>'
       +   '<div class="barra-aula"><span class="t">Nesta aula</span><span class="q" id="q"></span>'
       +     '<span class="t" id="qn"></span></div>'
@@ -2202,6 +2264,19 @@ var AR_CURIOS = [
       });
     });
 
+    var itens = MIDIA[a.id];
+    if (itens){
+      [].forEach.call(caixa.querySelectorAll('.tira'), function(t){
+        t.addEventListener('click', function(){ abrirVisor(itens[+t.dataset.m]); });
+        // a miniatura de vídeo mostra o primeiro quadro ao passar o mouse
+        var v = t.querySelector('video');
+        if (v){
+          t.addEventListener('mouseenter', function(){ v.play().catch(function(){}); });
+          t.addEventListener('mouseleave', function(){ v.pause(); v.currentTime = 0; });
+        }
+      });
+    }
+
     $('#x').addEventListener('click', fechar);
     $('#voltar').addEventListener('click', fechar);
     pintarPassos();
@@ -2236,6 +2311,49 @@ var AR_CURIOS = [
       })(i);
     }
   }
+
+
+  /* ---------------- arquivo pessoal: galeria da aula ---------------- */
+  function galeria(id){
+    var itens = MIDIA[id];
+    if (!itens || !itens.length) return '';
+    var tiras = itens.map(function(m, i){
+      var cam = m[0] === 'v'
+        ? '<video src="midia/'+m[1]+'.mp4" muted playsinline preload="metadata"></video>'
+          + '<span class="play"><i>▶</i></span><span class="selo">vídeo</span>'
+        : '<img src="midia/'+m[1]+'.jpg" alt="">'
+          + '<span class="play"></span><span class="selo">foto</span>';
+      return '<button class="tira'+(m[0]==='f'?' foto':'')+'" type="button" data-m="'+i+'">'
+           + '<span class="moldura">'+cam+'</span><p>'+m[2]+'</p></button>';
+    }).join('');
+    return '<div class="arquivo">'
+         + '<div class="arquivo-cab"><span class="pt"></span><b>Do arquivo da Ana</b>'
+         + '<span>· '+itens.length+' '+(itens.length>1?'registros':'registro')+' feitos no lugar</span></div>'
+         + '<div class="tiras" id="tiras">'+tiras+'</div></div>';
+  }
+
+  var visor = $('#visor'), visorCaixa = $('#visorCaixa'), focoVisor = null;
+  function abrirVisor(m){
+    focoVisor = document.activeElement;
+    var cam = m[0] === 'v'
+      ? '<video src="midia/'+m[1]+'.mp4" controls autoplay playsinline></video>'
+      : '<img src="midia/'+m[1]+'.jpg" alt="'+m[2].replace(/"/g,'')+'">';
+    visorCaixa.innerHTML = cam
+      + '<p class="leg">'+m[2]+'</p>'
+      + '<p class="cred">'+CREDITO_PESSOAL+'</p>';
+    visor.classList.add('abre');
+    $('#visorX').focus();
+  }
+  function fecharVisor(){
+    visor.classList.remove('abre');
+    visorCaixa.innerHTML = '';
+    if (focoVisor) focoVisor.focus();
+  }
+  $('#visorX').addEventListener('click', fecharVisor);
+  visor.addEventListener('click', function(e){ if (e.target === visor) fecharVisor(); });
+  document.addEventListener('keydown', function(e){
+    if (e.key === 'Escape' && visor.classList.contains('abre')){ e.stopPropagation(); fecharVisor(); }
+  }, true);
 
   function fechar(){
     cortina.classList.remove('abre');

@@ -40,12 +40,13 @@
   "kb": 303
  },
  "e3": {
-  "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/97/Barrio_Lastarria_101.jpg/960px-Barrio_Lastarria_101.jpg",
-  "lic": "CC BY-SA 4.0",
-  "aut": "Tommy Boy",
-  "file": "Barrio Lastarria 101.jpg",
-  "pag": "https://commons.wikimedia.org/wiki/File:Barrio_Lastarria_101.jpg",
-  "kb": 193
+  "url": "",
+  "lic": "arquivo pessoal",
+  "aut": "Ana Claudia Morais Alves",
+  "file": "Mercado Municipal de Tobalaba, Santiago",
+  "pag": "",
+  "kb": 0,
+  "pessoal": true
  },
  "e4": {
   "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b1/Cannon_at_the_Cerro_Santa_Lucia%2C_Santiago_de_Chile.jpg/960px-Cannon_at_the_Cerro_Santa_Lucia%2C_Santiago_de_Chile.jpg",
@@ -64,20 +65,22 @@
   "kb": 68
  },
  "e5": {
-  "url": "https://upload.wikimedia.org/wikipedia/commons/4/49/CONDOR%2C_MIRADOR_DE_LOS_CONDORES%2C_CAJON_DEL_MAIPO.jpg",
-  "lic": "CC0",
-  "aut": "FLACCY",
-  "file": "CONDOR, MIRADOR DE LOS CONDORES, CAJON DEL MAIPO.jpg",
-  "pag": "https://commons.wikimedia.org/wiki/File:CONDOR,_MIRADOR_DE_LOS_CONDORES,_CAJON_DEL_MAIPO.jpg",
-  "kb": 100
+  "url": "",
+  "lic": "arquivo pessoal",
+  "aut": "Ana Claudia Morais Alves",
+  "file": "A cordilheira: o contraste entre a neve e o deserto",
+  "pag": "",
+  "kb": 0,
+  "pessoal": true
  },
  "e6": {
-  "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a0/Camino_a_Farellones_nevado_-_Snowed_Road_to_Farellones.jpg/960px-Camino_a_Farellones_nevado_-_Snowed_Road_to_Farellones.jpg",
-  "lic": "CC BY-SA 4.0",
-  "aut": "Nbendersky",
-  "file": "Camino a Farellones nevado - Snowed Road to Farellones.jpg",
-  "pag": "https://commons.wikimedia.org/wiki/File:Camino_a_Farellones_nevado_-_Snowed_Road_to_Farellones.jpg",
-  "kb": 299
+  "url": "",
+  "lic": "arquivo pessoal",
+  "aut": "Ana Claudia Morais Alves",
+  "file": "El Colorado, da pista",
+  "pag": "",
+  "kb": 0,
+  "pessoal": true
  },
  "a-c3": {
   "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/3c/Buenos_Aires_-_Museo_Hotel_de_Inmigrantes_01.JPG/960px-Buenos_Aires_-_Museo_Hotel_de_Inmigrantes_01.JPG",
@@ -88,20 +91,22 @@
   "kb": 97
  },
  "a0": {
-  "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/fb/Lo_Barnechea_-Valle_Nevado_-_2009_-_01.jpg/960px-Lo_Barnechea_-Valle_Nevado_-_2009_-_01.jpg",
-  "lic": "CC BY-SA 4.0",
-  "aut": "José Joaquín Cortes",
-  "file": "Lo Barnechea -Valle Nevado - 2009 - 01.jpg",
-  "pag": "https://commons.wikimedia.org/wiki/File:Lo_Barnechea_-Valle_Nevado_-_2009_-_01.jpg",
-  "kb": 73
+  "url": "",
+  "lic": "arquivo pessoal",
+  "aut": "Ana Claudia Morais Alves",
+  "file": "Valle Nevado, visto do alto",
+  "pag": "",
+  "kb": 0,
+  "pessoal": true
  },
  "a7": {
-  "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/55/2._El_Aconcagua_nevado_desde_un_avi%C3%B3n._Cordillera_de_los_Andes._Argentina.jpg/960px-2._El_Aconcagua_nevado_desde_un_avi%C3%B3n._Cordillera_de_los_Andes._Argentina.jpg",
-  "lic": "CC BY 4.0",
-  "aut": "CARLOS TEIXIDOR CADENAS",
-  "file": "2. El Aconcagua nevado desde un avión. Cordillera de los Andes. Argentina.jpg",
-  "pag": "https://commons.wikimedia.org/wiki/File:2._El_Aconcagua_nevado_desde_un_avi%C3%B3n._Cordillera_de_los_Andes._Argentina.jpg",
-  "kb": 150
+  "url": "",
+  "lic": "arquivo pessoal",
+  "aut": "Ana Claudia Morais Alves",
+  "file": "A cordilheira dos Andes vista do avião",
+  "pag": "",
+  "kb": 0,
+  "pessoal": true
  },
  "a6": {
   "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/8a/BODEGA_SALENTEIN.jpg/960px-BODEGA_SALENTEIN.jpg",

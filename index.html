@@ -391,6 +391,46 @@
   .tl-mais[aria-expanded="true"] .n{display:none}
 
 
+  .como{margin-top:clamp(3rem,6vw,4.5rem); padding-top:clamp(2.4rem,5vw,3.4rem); border-top:1px solid var(--line)}
+  .como-cab{max-width:620px; margin-bottom:clamp(1.8rem,4vw,2.6rem)}
+  .como-cab .quote{margin-top:.9rem}
+
+  .numeros{display:grid; grid-template-columns:repeat(3,1fr); gap:1rem; margin:1.8rem 0 1.4rem;
+    padding:1.3rem 0; border-block:1px solid var(--line)}
+  .numeros .stat{text-align:left}
+  .numeros .num{display:block; font-family:"Fraunces"; font-weight:600; font-size:clamp(1.5rem,1.2rem+1vw,2rem); color:var(--honey-2); line-height:1}
+  .numeros .lbl{display:block; font-size:.82rem; color:var(--ink-soft); font-weight:700; margin-top:.25rem; line-height:1.3}
+  @media (max-width:560px){ .numeros{grid-template-columns:1fr; gap:.9rem} }
+
+  .chamada{display:flex; flex-wrap:wrap; align-items:center; gap:1rem;
+    margin-top:clamp(2.2rem,5vw,3.2rem); padding-top:clamp(1.6rem,4vw,2.2rem);
+    border-top:1px dashed var(--line)}
+  .chamada p{margin:0; font-weight:800; color:var(--ink); font-size:1.02rem}
+
+  /* ---------- perguntas ---------- */
+  .faq{background:var(--paper-2); border-block:1px solid var(--line)}
+  .faq-lista{display:grid; gap:.7rem; max-width:820px}
+  .faq-item{background:var(--card); border:1px solid var(--line); border-radius:20px; overflow:hidden;
+    transition:border-color .22s, box-shadow .22s}
+  .faq-item[open]{border-color:var(--honey); box-shadow:var(--shadow-sm)}
+  .faq-item summary{
+    cursor:pointer; list-style:none; padding:1.1rem 1.3rem; font-weight:800; font-size:1rem;
+    display:flex; align-items:center; justify-content:space-between; gap:1rem; color:var(--ink);
+  }
+  .faq-item summary::-webkit-details-marker{display:none}
+  .faq-item summary:hover{color:var(--honey-2)}
+  .faq-item summary:focus-visible{outline:2px solid var(--honey); outline-offset:-2px; border-radius:20px}
+  .faq-item .mais{flex:none; width:22px;height:22px; position:relative}
+  .faq-item .mais::before,.faq-item .mais::after{
+    content:""; position:absolute; left:50%; top:50%; background:var(--honey-2); border-radius:2px;
+    transform:translate(-50%,-50%); transition:transform .25s}
+  .faq-item .mais::before{width:14px;height:2px}
+  .faq-item .mais::after{width:2px;height:14px}
+  .faq-item[open] .mais::after{transform:translate(-50%,-50%) rotate(90deg); opacity:0}
+  .faq-item p{margin:0; padding:0 1.3rem 1.3rem; color:var(--ink-soft); line-height:1.65; max-width:68ch}
+  .faq-fim{display:flex; flex-wrap:wrap; align-items:center; gap:1rem; margin-top:2rem}
+  .faq-fim p{margin:0; font-weight:800; color:var(--ink)}
+
   /* ---------- trilhas ---------- */
   .trilhas{background:linear-gradient(170deg,#12304B,#0B1F33); color:#EAF4FB; border-block:1px solid #1D405E; position:relative; overflow:hidden}
   .trilhas::before{content:""; position:absolute; inset:0; opacity:.45; pointer-events:none;
@@ -542,6 +582,7 @@
       <a href="#trilhas">Trilhas</a>
       <a href="#mapafalado">Mapa Falado</a>
       <a href="#sobre">Sobre</a>
+      <a href="#perguntas">Perguntas</a>
       <a href="#contato">Contato</a>
     </nav>
     <div class="nav-cta">
@@ -593,15 +634,6 @@
   <div class="wrap"><div class="scrollcue" data-hero><span class="mouse"></span>Continue a leitura</div></div>
 </section>
 
-<!-- ============ STATS ============ -->
-<section class="stats" aria-label="Números">
-  <div class="wrap stats-grid">
-    <div class="stat" data-item><span class="num" data-count="140" data-suffix="+">140+</span><span class="lbl">jovens e crianças acompanhados</span></div>
-    <div class="stat" data-item><span class="num" data-count="8" data-suffix="+">8+</span><span class="lbl">anos dedicados à educação</span></div>
-    <div class="stat" data-item><span class="num" data-count="2" data-suffix="">2</span><span class="lbl">pós-graduações em andamento</span></div>
-  </div>
-</section>
-
 <!-- ============ SERVIÇOS ============ -->
 <section class="section servicos" id="servicos">
   <div class="wrap">
@@ -643,6 +675,36 @@
         <a class="more" href="https://wa.me/5519994139785?text=Ol%C3%A1%2C%20Ana%21%20Vim%20pelo%20seu%20site%20e%20tenho%20interesse%20nas%20trilhas%20interativas.%20%F0%9F%98%8A%0A%0A%E2%80%A2%20%C3%89%20para%20escola%20ou%20empresa%3A%20%0A%E2%80%A2%20Tema%20ou%20conte%C3%BAdo%20a%20ensinar%3A%20%0A%E2%80%A2%20Quantas%20pessoas%20v%C3%A3o%20usar%3A%20" target="_blank" rel="noopener">Quero saber mais →</a>
       </article>
 
+    </div>
+
+    <div class="como" id="metodo">
+      <div class="como-cab">
+        <span class="eyebrow" data-reveal>Como trabalho</span>
+        <p class="quote" data-reveal style="margin-top:1rem"><span class="mk">“</span>Ninguém aprende sob pressão. Primeiro vem a confiança; o conteúdo vem depois — e vem mais rápido.<span class="mk">”</span></p>
+      </div>
+      <div class="principles" data-stagger>
+      <div class="principle" data-item>
+        <span class="pn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-3.3 3.6-6 8-6s8 2.7 8 6"/></svg></span>
+        <div><h4>Observo antes de planejar</h4><p>Antes de ensinar, eu observo: como esse estudante lê, onde ele trava, o que já funciona. O plano vem depois do diagnóstico, nunca antes.</p></div>
+      </div>
+      <div class="principle" data-item>
+        <span class="pn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.4 8.4 0 0 1-8.5 8.5 8.9 8.9 0 0 1-4-1L3 20l1-5.5a8.4 8.4 0 0 1-1-4A8.4 8.4 0 0 1 11.5 2 8.5 8.5 0 0 1 21 11.5z"/></svg></span>
+        <div><h4>Pergunto antes de corrigir</h4><p>Quando algo não anda, pergunto em vez de corrigir. Entender o que atrapalha costuma resolver mais rápido do que repetir a explicação.</p></div>
+      </div>
+      <div class="principle" data-item>
+        <span class="pn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v4M5 5l2.5 2.5M2 12h4M19 5l-2.5 2.5M22 12h-4"/><circle cx="12" cy="15" r="5"/></svg></span>
+        <div><h4>Quem faz, aprende</h4><p>Quem faz aprende mais do que quem assiste. Troco a explicação pronta por uma pergunta que o estudante consiga investigar sozinho.</p></div>
+      </div>
+      <div class="principle" data-item>
+        <span class="pn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9.5" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13A4 4 0 0 1 16 11"/></svg></span>
+        <div><h4>A família sabe o que acontece</h4><p>A família recebe relatório e sabe o que está sendo trabalhado. Sem isso, cada um puxa para um lado e o estudante fica no meio.</p></div>
+      </div>
+    </div>
+
+      <div class="chamada" data-reveal>
+        <p>Quer conversar sobre o seu caso?</p>
+        <a class="btn" href="https://wa.me/5519994139785?text=Ol%C3%A1%2C%20Ana%21%20Vim%20pelo%20seu%20site%20e%20gostaria%20de%20conversar%20sobre%20o%20meu%20caso.%20%F0%9F%98%8A%0A%0A%E2%80%A2%20Servi%C3%A7o%20de%20interesse%3A%20%0A%E2%80%A2%20Estudante%20%28idade%20e%20ano%20escolar%29%3A%20%0A%E2%80%A2%20O%20que%20estamos%20buscando%3A%20" target="_blank" rel="noopener">Falar comigo</a>
+      </div>
     </div>
   </div>
 </section>
@@ -704,34 +766,6 @@
   </div>
 </section>
 
-<!-- ============ MÉTODO ============ -->
-<section class="section" id="metodo">
-  <div class="wrap metodo-grid">
-    <div>
-      <span class="eyebrow" data-reveal>Como trabalho</span>
-      <p class="quote" data-reveal style="margin-top:1rem"><span class="mk">“</span>Ninguém aprende sob pressão. Primeiro vem a confiança; o conteúdo vem depois — e vem mais rápido.<span class="mk">”</span></p>
-    </div>
-    <div class="principles" data-stagger>
-      <div class="principle" data-item>
-        <span class="pn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-3.3 3.6-6 8-6s8 2.7 8 6"/></svg></span>
-        <div><h4>Observo antes de planejar</h4><p>Antes de ensinar, eu observo: como esse estudante lê, onde ele trava, o que já funciona. O plano vem depois do diagnóstico, nunca antes.</p></div>
-      </div>
-      <div class="principle" data-item>
-        <span class="pn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.4 8.4 0 0 1-8.5 8.5 8.9 8.9 0 0 1-4-1L3 20l1-5.5a8.4 8.4 0 0 1-1-4A8.4 8.4 0 0 1 11.5 2 8.5 8.5 0 0 1 21 11.5z"/></svg></span>
-        <div><h4>Pergunto antes de corrigir</h4><p>Quando algo não anda, pergunto em vez de corrigir. Entender o que atrapalha costuma resolver mais rápido do que repetir a explicação.</p></div>
-      </div>
-      <div class="principle" data-item>
-        <span class="pn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v4M5 5l2.5 2.5M2 12h4M19 5l-2.5 2.5M22 12h-4"/><circle cx="12" cy="15" r="5"/></svg></span>
-        <div><h4>Quem faz, aprende</h4><p>Quem faz aprende mais do que quem assiste. Troco a explicação pronta por uma pergunta que o estudante consiga investigar sozinho.</p></div>
-      </div>
-      <div class="principle" data-item>
-        <span class="pn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9.5" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13A4 4 0 0 1 16 11"/></svg></span>
-        <div><h4>A família sabe o que acontece</h4><p>A família recebe relatório e sabe o que está sendo trabalhado. Sem isso, cada um puxa para um lado e o estudante fica no meio.</p></div>
-      </div>
-    </div>
-  </div>
-</section>
-
 <!-- ============ SOBRE ============ -->
 <section class="section" id="sobre">
   <div class="wrap sobre-grid">
@@ -746,6 +780,12 @@
       <p data-reveal>Atualmente curso pós-graduação em <strong>Psicopedagogia</strong> e em <strong>Gestão de Pessoas e Psicologia Organizacional</strong>. Estudo para entender melhor o que já vejo na prática: por que um estudante trava, o que destrava, e como uma instituição ajuda ou atrapalha nisso.</p>
       <div class="chips" data-reveal>
                 <span class="tag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Educação Infantil e Fundamental I</span>        <span class="tag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Jovens aprendizes</span>        <span class="tag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Escola pública e particular</span>        <span class="tag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Rádio, podcast e vídeo</span>        <span class="tag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Pesquisa e acervo</span>
+      </div>
+      
+      <div class="numeros" data-reveal aria-label="Números">
+        <div class="stat"><span class="num" data-count="140" data-suffix="+">140+</span><span class="lbl">jovens e crianças acompanhados</span></div>
+        <div class="stat"><span class="num" data-count="8" data-suffix="+">8+</span><span class="lbl">anos dedicados à educação</span></div>
+        <div class="stat"><span class="num" data-count="2" data-suffix="">2</span><span class="lbl">pós-graduações em andamento</span></div>
       </div>
       <p class="sig" data-reveal>— Ana Claudia Morais Alves</p>
     </div>
@@ -905,7 +945,61 @@
         <span>Ver trajetória completa</span>
         <span class="n">+4</span>
       </button>
+
+      <div class="chamada" data-reveal>
+        <p>Dá para colocar essa experiência a serviço do seu estudante.</p>
+        <a class="btn" href="https://wa.me/5519994139785?text=Ol%C3%A1%2C%20Ana%21%20Vim%20pelo%20seu%20site%20e%20gostaria%20de%20agendar%20uma%20conversa.%20%F0%9F%98%8A%0A%0A%E2%80%A2%20Servi%C3%A7o%20de%20interesse%3A%20%0A%E2%80%A2%20Estudante%20%28idade%20e%20ano%20escolar%29%3A%20%0A%E2%80%A2%20O%20que%20estamos%20buscando%3A%20" target="_blank" rel="noopener">Agendar uma conversa</a>
+      </div>
 </div>
+  </div>
+</section>
+
+<!-- ============ PERGUNTAS ============ -->
+<section class="section faq" id="perguntas">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow" data-reveal>Antes de perguntar</span>
+      <h2 data-reveal>O que as famílias<br>costumam querer saber.</h2>
+      <p class="lead" data-reveal>Se a sua dúvida não estiver aqui, me chame no WhatsApp — respondo pessoalmente.</p>
+    </div>
+    <div class="faq-lista">
+      <details class="faq-item" data-reveal>
+        <summary>Como funciona o atendimento online?<span class="mais" aria-hidden="true"></span></summary>
+        <p>Encontros individuais por vídeo, com plano combinado conforme o que o estudante precisa. Funciona para qualquer lugar do Brasil — só é preciso computador ou tablet com internet, e um adulto por perto no começo, no caso das crianças menores.</p>
+      </details>
+      <details class="faq-item" data-reveal>
+        <summary>Para que idades você atende?<span class="mais" aria-hidden="true"></span></summary>
+        <p>Da Educação Infantil ao 5º ano nas aulas de reforço. No acolhimento e na orientação a famílias, atendo também adolescentes. Já trabalhei com jovens aprendizes, então formação de adolescentes também está no repertório.</p>
+      </details>
+      <details class="faq-item" data-reveal>
+        <summary>Quanto tempo dura cada encontro?<span class="mais" aria-hidden="true"></span></summary>
+        <p>Em geral de 50 minutos a uma hora, conforme a idade e a concentração do estudante. Com crianças pequenas costumo encurtar e aumentar a frequência — rende mais do que um encontro longo.</p>
+      </details>
+      <details class="faq-item" data-reveal>
+        <summary>Atende estudantes com TEA ou dislexia?<span class="mais" aria-hidden="true"></span></summary>
+        <p>Sim. Tenho experiência de sala de aula com os dois, e adapto as estratégias caso a caso. O ponto de partida é sempre a observação: como esse estudante específico lê, onde trava e o que já funciona para ele.</p>
+      </details>
+      <details class="faq-item" data-reveal>
+        <summary>Como a família acompanha o processo?<span class="mais" aria-hidden="true"></span></summary>
+        <p>Com relatórios e conversas periódicas. A família sabe o que está sendo trabalhado e por quê. Sem isso, escola e casa puxam para lados diferentes, e quem fica no meio é o estudante.</p>
+      </details>
+      <details class="faq-item" data-reveal>
+        <summary>E os valores?<span class="mais" aria-hidden="true"></span></summary>
+        <p>Dependem da modalidade, da frequência e da duração. Prefiro conversar antes para entender o caso — não faço orçamento sem saber o que a criança precisa. A primeira conversa é sem compromisso.</p>
+      </details>
+      <details class="faq-item" data-reveal>
+        <summary>Como funciona uma trilha de aprendizagem?<span class="mais" aria-hidden="true"></span></summary>
+        <p>Você traz o conteúdo e eu desenho o percurso: mapa, paradas, desafios de escolha com devolutiva e progresso visível. Roda no navegador, sem instalar nada. Serve para matéria escolar e para treinamento, reciclagem e integração em empresas.</p>
+      </details>
+      <details class="faq-item" data-reveal>
+        <summary>Preciso de equipe de tecnologia para usar uma trilha?<span class="mais" aria-hidden="true"></span></summary>
+        <p>Não. A trilha é uma página que abre no navegador, no computador ou no celular. Pode ficar num endereço próprio ou dentro do ambiente que a escola ou a empresa já usa.</p>
+      </details>
+    </div>
+    <div class="faq-fim" data-reveal>
+      <p>Ficou alguma dúvida?</p>
+      <a class="btn" href="https://wa.me/5519994139785?text=Ol%C3%A1%2C%20Ana%21%20Vim%20pelo%20seu%20site%20e%20fiquei%20com%20uma%20d%C3%BAvida%3A%20" target="_blank" rel="noopener">Perguntar no WhatsApp</a>
+    </div>
   </div>
 </section>
 
@@ -962,6 +1056,7 @@
       <a href="#mapafalado">Mapa Falado</a>
       <a href="#sobre">Sobre</a>
       <a href="#trajetoria">Trajetória</a>
+      <a href="#perguntas">Perguntas</a>
       <a href="#contato">Contato</a>
     </nav>
     <p class="foot-note">© <span id="year">2026</span> Ana Claudia Morais Alves · Itatiba–SP</p>

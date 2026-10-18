@@ -564,3 +564,12 @@
   .cred-lista li:last-child{border-bottom:0}
   .cred-lista b{flex:none; width:38%; font-family:"Fraunces"; font-weight:600; font-size:1.02rem; color:var(--honey-2)}
   .cred-lista span{flex:1; font-size:.9rem; color:var(--ink-soft); font-weight:600; line-height:1.4}
+
+  .tr-demo .et{display:inline-flex; align-items:center; gap:.45rem}
+  .tr-demo .viva{width:7px;height:7px;border-radius:50%;background:#6BCB4F;flex:none;
+    box-shadow:0 0 0 0 rgba(107,203,79,.6); animation:viva 2.4s infinite}
+  @keyframes viva{70%{box-shadow:0 0 0 7px rgba(107,203,79,0)}100%{box-shadow:0 0 0 0 rgba(107,203,79,0)}}
+  @media (prefers-reduced-motion:reduce){ .tr-demo .viva{animation:none} }
+  .sub a.destaque{background:color-mix(in srgb,var(--honey) 12%,#fff)}
+  .sub a.destaque:hover{background:color-mix(in srgb,var(--honey) 20%,#fff)}
+  .sub a.destaque b{color:var(--honey-2)}

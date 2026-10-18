@@ -44,8 +44,8 @@
     --clay-2:#AC4C2E;
     --sage:#7C9A6E;
     --sage-2:#5E7B52;
-    --shadow: 0 18px 50px -24px rgba(74,52,20,.45);
-    --shadow-sm: 0 8px 24px -14px rgba(74,52,20,.35);
+    --shadow: 0 16px 44px -26px rgba(74,52,20,.32);
+    --shadow-sm: 0 8px 22px -16px rgba(74,52,20,.24);
     --radius: 26px;
     --maxw: 1180px;
     --ease: cubic-bezier(.22,.61,.36,1);
@@ -130,7 +130,7 @@
   .nav-links a{padding:.5rem .85rem; border-radius:100px; font-weight:600; font-size:.96rem; color:var(--ink-soft); transition:color .25s, background .25s}
   .nav-links a:hover{color:var(--ink); background:#fff}
   .nav-cta{display:flex; align-items:center; gap:.6rem}
-  .nav-toggle{display:none; background:none; border:1.5px solid var(--line); border-radius:12px; width:46px;height:44px; cursor:pointer; align-items:center; justify-content:center}
+  .nav-toggle{display:none; background:none; border:1px solid var(--line); border-radius:12px; width:46px;height:44px; cursor:pointer; align-items:center; justify-content:center}
   .nav-toggle span{display:block; width:20px; height:2px; background:var(--ink); position:relative}
   .nav-toggle span::before,.nav-toggle span::after{content:""; position:absolute; left:0; width:20px; height:2px; background:var(--ink)}
   .nav-toggle span::before{top:-6px} .nav-toggle span::after{top:6px}
@@ -191,8 +191,8 @@
 
   /* ---------- section scaffolding ---------- */
   section{position:relative}
-  .section{padding:clamp(3.4rem,7vw,6.5rem) 0}
-  .section-head{max-width:640px; margin-bottom:clamp(2rem,4vw,3rem)}
+  .section{padding:clamp(4.2rem,9vw,8rem) 0}
+  .section-head{max-width:620px; margin-bottom:clamp(2.6rem,5vw,4rem)}
   .section-head h2{font-size:clamp(2rem,1.6rem + 2.4vw,3.1rem); margin:.9rem 0 .8rem}
 
   /* ---------- sobre ---------- */
@@ -216,11 +216,13 @@
 
   /* ---------- serviços ---------- */
   .servicos{background:var(--paper-2); border-block:1px solid var(--line)}
+  .servicos .cards{grid-template-columns:1fr 1fr}
+  @media (max-width:760px){ .servicos .cards{grid-template-columns:1fr} }
   .midia .cards{grid-template-columns:1fr 1fr}
   @media (max-width:760px){ .midia .cards{grid-template-columns:1fr} }
   .card.s4{--accent:#12304B; --accent-ink:#12304B}
   .card.s4 .ico{background:color-mix(in srgb,#12304B 12%,#fff); color:#12304B}
-  .cards{display:grid; grid-template-columns:repeat(3,1fr); gap:1.5rem}
+  .cards{display:grid; grid-template-columns:repeat(3,1fr); gap:2rem}
   .card{
     background:var(--card); border:1px solid var(--line); border-radius:var(--radius);
     padding:clamp(1.6rem,3vw,2.1rem); display:flex; flex-direction:column; gap:.9rem;
@@ -236,7 +238,7 @@
   }
   .card .ico svg{width:30px;height:30px}
   .card h3{font-size:1.42rem}
-  .card p{color:var(--ink-soft)}
+  .card p{color:var(--ink-soft); line-height:1.65}
   .card .who{margin-top:auto; padding-top:.6rem; font-size:.86rem; font-weight:700; color:var(--ink); display:flex; align-items:center; gap:.45rem}
   .card .who svg{width:16px;height:16px;color:var(--accent-ink,var(--honey-2))}
   .card .more{font-weight:800; font-size:.92rem; color:var(--accent-ink,var(--honey-2)); display:inline-flex; align-items:center; gap:.4rem; transition:gap .3s}
@@ -260,7 +262,7 @@
   .midia{background:var(--paper-2); border-block:1px solid var(--line)}
   .midia .card p + p{margin-top:.55rem}
   .midia .sub{margin-top:-.55rem; font-size:.9rem; font-weight:700; color:var(--accent-ink)}
-  .midia .roles{display:flex; flex-wrap:wrap; gap:.4rem; margin-top:.2rem}
+  .midia .roles{display:flex; flex-wrap:wrap; gap:.35rem; margin-top:.4rem; opacity:.78}
   .midia .roles span{
     font-size:.78rem; font-weight:700; letter-spacing:.01em; padding:.3rem .65rem;
     border-radius:100px; background:color-mix(in srgb,var(--accent) 16%,#fff);
@@ -336,18 +338,32 @@
 
   /* ---------- trajetória ---------- */
   .traj{border-block:1px solid var(--line)}
-  .timeline{display:grid; gap:1.1rem; position:relative}
+  .timeline{display:grid; gap:1.4rem; position:relative}
   .tl-item{
     display:grid; grid-template-columns:7.5rem 1fr; gap:1.2rem;
     background:var(--card); border:1px solid var(--line); border-radius:20px;
-    padding:1.2rem 1.4rem; box-shadow:var(--shadow-sm);
+    padding:1.4rem 1.6rem; box-shadow:var(--shadow-sm);
   }
   .tl-item .when{font-family:"Fraunces"; font-weight:600; color:var(--clay); font-size:1rem; line-height:1.35; padding-top:.15rem}
   .tl-item h4{font-family:"Nunito Sans"; font-weight:800; font-size:1.12rem}
   .tl-item .org{color:var(--honey-2); font-weight:700; font-size:.92rem; margin:.1rem 0 .35rem}
-  .tl-item p{color:var(--ink-soft); font-size:.95rem; line-height:1.5}
+  .tl-item p{color:var(--ink-soft); font-size:.95rem; line-height:1.6}
   .tl-item p a{color:var(--honey-2); font-weight:700; text-decoration:underline; text-underline-offset:3px; text-decoration-thickness:1.5px; text-decoration-color:color-mix(in srgb,var(--honey) 55%,transparent)}
   .tl-item p a:hover{text-decoration-color:var(--honey-2)}
+
+  .tl-resto[hidden]{display:none}
+  .tl-resto{display:grid; gap:1.4rem}
+  .tl-mais{
+    font:inherit; font-family:"Nunito Sans",sans-serif; font-weight:800; font-size:.95rem;
+    cursor:pointer; display:flex; align-items:center; justify-content:center; gap:.6rem;
+    width:100%; padding:1rem; margin-top:.2rem; color:var(--ink-soft);
+    background:none; border:1.5px dashed var(--line); border-radius:20px;
+    transition:border-color .25s, color .25s, background .25s;
+  }
+  .tl-mais:hover{border-color:var(--honey); color:var(--ink); background:#fff}
+  .tl-mais:focus-visible{outline:2px solid var(--honey); outline-offset:3px}
+  .tl-mais .n{font-family:"Fraunces"; font-weight:600; color:var(--honey-2)}
+  .tl-mais[aria-expanded="true"] .n{display:none}
 
   /* ---------- contato ---------- */
   .contato{position:relative; overflow:hidden}
@@ -516,9 +532,9 @@
       <div class="section-head" style="margin-bottom:1.4rem">
         <h2 data-reveal>Educar é acolher e caminhar<br>junto com cada estudante.</h2>
       </div>
-      <p data-reveal>Sou pedagoga formada pela <strong>Universidade Estadual de Campinas (Unicamp)</strong>, com atuação na Educação Infantil, no Ensino Fundamental I e na formação de adolescentes e jovens aprendizes. Ao longo desses anos, construí práticas pedagógicas <strong>inclusivas</strong>, acompanhei a aprendizagem de perto e cuidei do relacionamento com as famílias.</p>
-      <p data-reveal>Também levo a educação para fora da sala de aula. Sou <strong>roteirista, produtora, editora e apresentadora</strong> de conteúdo educativo — do rádio ao vivo ao podcast — e fui responsável pela <strong>comunicação digital dos cursinhos populares</strong> onde atuei. A escuta é a mesma da sala de aula, apenas em outro formato.</p>
-      <p data-reveal>O <strong>registro oral e fotográfico</strong> faz parte da minha trajetória e do meu trabalho cotidiano — na documentação dos percursos de aprendizagem, nas entrevistas e nos materiais que produzo. A <strong>história oral</strong>, que vem ganhando espaço na sociedade e na comunidade acadêmica, é uma das bases dessa prática.</p>
+      <p data-reveal>Sou pedagoga formada pela <strong>Unicamp</strong>, com atuação na Educação Infantil, no Fundamental I e na formação de jovens aprendizes. Oito anos acompanhando a aprendizagem de perto e cuidando da relação com as famílias.</p>
+      <p data-reveal>Também levo a educação para fora da sala de aula: sou <strong>roteirista, produtora e apresentadora</strong> de conteúdo educativo, do rádio ao vivo ao podcast. A escuta é a mesma, apenas em outro formato.</p>
+      <p data-reveal>O <strong>registro oral e fotográfico</strong> atravessa o que faço — na documentação dos percursos de aprendizagem, nas entrevistas e nos materiais que produzo.</p>
       <p data-reveal>Atualmente curso pós-graduação em <strong>Psicopedagogia</strong> e em <strong>Gestão de Pessoas e Psicologia Organizacional</strong>. Estudo para entender melhor o que já vejo na prática: por que um estudante trava, o que destrava, e como uma instituição ajuda ou atrapalha nisso.</p>
       <div class="chips" data-reveal>
                 <span class="tag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Educação Infantil e Fundamental I</span>        <span class="tag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Jovens aprendizes</span>        <span class="tag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Escola pública e particular</span>        <span class="tag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Rádio, podcast e vídeo</span>        <span class="tag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Pesquisa e acervo</span>
@@ -558,7 +574,7 @@
     <div class="section-head">
       <span class="eyebrow" data-reveal>Como posso ajudar</span>
       <h2 data-reveal>Serviços pensados para cada momento da aprendizagem</h2>
-      <p class="lead" data-reveal>Atendimento individual e humano, presencial em Itatiba–SP ou online para todo o Brasil.</p>
+      <p class="lead" data-reveal>Atendimento individual e humano, presencial em Itatiba–SP ou online para todo o Brasil. E material de aprendizagem sob medida, para escolas e empresas.</p>
     </div>
     <div class="cards" data-stagger>
       <article class="card s1" data-item>
@@ -584,6 +600,15 @@
         <span class="who"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 2 8l10 5 10-5-10-5z"/></svg>Apoio a estudantes e famílias</span>
         <a class="more" href="https://wa.me/5519994139785?text=Ol%C3%A1%2C%20Ana%21%20Vim%20pelo%20seu%20site%20e%20gostaria%20de%20saber%20mais%20sobre%20os%20servi%C3%A7os%20de%20acolhimento.%20%F0%9F%98%8A%0A%0A%E2%80%A2%20Estudante%20%28idade%20e%20ano%20escolar%29%3A%20%0A%E2%80%A2%20O%20que%20temos%20percebido%3A%20%0A%E2%80%A2%20H%C3%A1%20acompanhamento%20ou%20diagn%C3%B3stico%3F%20" target="_blank" rel="noopener">Quero saber mais →</a>
       </article>
+
+      <article class="card s4" data-item>
+        <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 18 L8 9 L12 14 L15 7 L21 18"/><circle cx="8" cy="9" r="2.1" fill="currentColor" stroke="none"/><circle cx="15" cy="7" r="2.1" fill="currentColor" stroke="none"/><circle cx="21" cy="18" r="2.1" fill="currentColor" stroke="none"/></svg></span>
+        <h3>Trilhas interativas</h3>
+        <p>Transformo um conteúdo em percurso: um mapa, paradas, desafios de escolha com devolutiva e progresso visível. Serve para qualquer matéria da escola — e para <strong>empresas</strong>, em treinamento, reciclagem e integração de novas pessoas.</p>
+        <span class="who"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Escolas, cursos e empresas</span>
+        <a class="more" href="https://wa.me/5519994139785?text=Ol%C3%A1%2C%20Ana%21%20Vim%20pelo%20seu%20site%20e%20tenho%20interesse%20nas%20trilhas%20interativas.%20%F0%9F%98%8A%0A%0A%E2%80%A2%20%C3%89%20para%20escola%20ou%20empresa%3A%20%0A%E2%80%A2%20Tema%20ou%20conte%C3%BAdo%20a%20ensinar%3A%20%0A%E2%80%A2%20Quantas%20pessoas%20v%C3%A3o%20usar%3A%20" target="_blank" rel="noopener">Quero saber mais →</a>
+      </article>
+
     </div>
   </div>
 </section>
@@ -631,8 +656,7 @@
         <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="2" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0"/><path d="M12 18v4"/><path d="M8 22h8"/></svg></div>
         <h3>RádioCast Betinho</h3>
         <p class="sub">Programa <em>Conexões</em> · coordenação e apresentação</p>
-        <p>Rádio ao vivo duas vezes por semana, feita com os estudantes bolsistas do <strong>Cursinho Popular Herbert de Souza</strong>, na periferia de Campinas. Fomos ao ar pela <strong>Rádio Tainã</strong>, rádio comunitária da <strong>Rede Mocambos</strong> — coletivo que leva tecnologia e sabedoria digital a territórios periféricos, quilombolas e indígenas.</p>
-        <p>Agroecologia, iniciação científica, políticas ambientais e masculinidades negras, pautadas por quem vive esses temas.</p>
+        <p>Rádio ao vivo duas vezes por semana, com os bolsistas do <strong>Cursinho Popular Herbert de Souza</strong>. Fomos ao ar pela <strong>Rádio Tainã</strong>, rádio comunitária da <strong>Rede Mocambos</strong> — agroecologia, políticas ambientais e masculinidades negras, pautadas por quem vive esses temas.</p>
         <div class="roles"><span>Roteiro</span><span>Produção</span><span>Edição</span><span>Apresentação</span></div>
         <div class="eps">
           <a href="https://open.spotify.com/show/7lwwgbuvd25rldKas5pXlI" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm4.6 14.44a.75.75 0 0 1-1.03.25c-2.82-1.72-6.37-2.11-10.55-1.15a.75.75 0 1 1-.33-1.46c4.57-1.05 8.5-.6 11.66 1.33.35.22.46.68.25 1.03zm1.23-2.75a.94.94 0 0 1-1.29.31c-3.23-1.98-8.15-2.56-11.97-1.4a.94.94 0 0 1-.55-1.79c4.37-1.33 9.79-.69 13.5 1.59.44.27.58.85.31 1.29zm.11-2.86C14.07 8.53 7.7 8.32 4.4 9.33a1.12 1.12 0 1 1-.65-2.15c3.79-1.15 10.82-.93 15.09 1.6a1.12 1.12 0 1 1-1.14 1.93z"/></svg> Ouvir <em>Conexões</em></a>
@@ -643,8 +667,7 @@
         <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M4 14v-2a8 8 0 0 1 16 0v2"/><rect x="2.5" y="13.5" width="5" height="7" rx="2.5"/><rect x="16.5" y="13.5" width="5" height="7" rx="2.5"/></svg></div>
         <h3>Histórias Negras</h3>
         <p class="sub">Centro de Memória da Unicamp · bolsista</p>
-        <p>Sete episódios de <strong>história oral</strong> pela desinvisibilização da presença negra em Campinas entre <strong>1930 e 1970</strong> — incluindo a série sobre <strong>Laudelina de Campos Melo</strong>, que organizou as trabalhadoras domésticas do Brasil.</p>
-        <p>Da escuta dos entrevistados à edição: documentar quem não entrou nos livros é trabalho de arquivo e de microfone.</p>
+        <p>Sete episódios de <strong>história oral</strong> pela desinvisibilização da presença negra em Campinas, incluindo a série sobre <strong>Laudelina de Campos Melo</strong>. Documentar quem não entrou nos livros é trabalho de arquivo e de microfone.</p>
         <div class="roles"><span>Pesquisa</span><span>Roteiro</span><span>Produção</span></div>
         <div class="eps">
           <a href="https://open.spotify.com/show/40mk3cUsb3q3UKNzZt3Gvp" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm4.6 14.44a.75.75 0 0 1-1.03.25c-2.82-1.72-6.37-2.11-10.55-1.15a.75.75 0 1 1-.33-1.46c4.57-1.05 8.5-.6 11.66 1.33.35.22.46.68.25 1.03zm1.23-2.75a.94.94 0 0 1-1.29.31c-3.23-1.98-8.15-2.56-11.97-1.4a.94.94 0 0 1-.55-1.79c4.37-1.33 9.79-.69 13.5 1.59.44.27.58.85.31 1.29zm.11-2.86C14.07 8.53 7.7 8.32 4.4 9.33a1.12 1.12 0 1 1-.65-2.15c3.79-1.15 10.82-.93 15.09 1.6a1.12 1.12 0 1 1-1.14 1.93z"/></svg> Ouvir no CMUCast</a>
@@ -655,8 +678,7 @@
         <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="M8.6 13.5l6.8 4M15.4 6.5l-6.8 4"/></svg></div>
         <h3>Comunicação digital</h3>
         <div class="meta"><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4.5" width="18" height="16" rx="3"/><path d="M8 2.5v4M16 2.5v4M3 10h18"/></svg> 2020 · 2023</span></div>
-        <p>Respondi pelas redes do <strong>Cursinho Popular Herbert de Souza</strong>: linha editorial, divulgação dos processos seletivos e mobilização da comunidade — hoje mais de 4 mil seguidores.</p>
-        <p>Alcance orgânico, sem verba de mídia: o digital como ferramenta de acesso, não de vitrine.</p>
+        <p>Linha editorial, processos seletivos e mobilização da comunidade nas redes do <strong>Cursinho Herbert de Souza</strong> — hoje com mais de 4 mil seguidores, de alcance orgânico. O digital como ferramenta de acesso, não de vitrine.</p>
         <div class="roles"><span>Conteúdo</span><span>Redes sociais</span><span>Divulgação</span></div>
         <div class="eps">
           <a class="ig" href="https://www.instagram.com/cursinhoherbertdesouza/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.4" cy="6.6" r="1.1" fill="currentColor" stroke="none"/></svg> @cursinhoherbertdesouza</a>
@@ -667,8 +689,9 @@
         <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 19 L9 8 L13 14 L16 9 L21 19 Z"/><path d="M9 8 L11 11 L7 11 Z" fill="currentColor" stroke="none"/></svg></div>
         <h3>Mapa Falado</h3>
         <p class="sub">Projeto autoral · América do Sul</p>
-        <p>Faço a mala, gravo, e volto com aula. Percorro o continente e transformo o que vejo em material didático sobre <strong>geografia, cultura e língua</strong>, em vídeo, texto e podcast.</p>
-        <p>Cada temporada tem uma espinha geográfica própria: o <strong>Chile</strong> sobe do nível do mar aos 3.330 m; a <strong>Argentina</strong> desce da cordilheira ao Río de la Plata; o <strong>Uruguai</strong> corre pela costa até onde o rio vira mar. Cada parada é lida em quatro camadas — e uma delas é sempre <strong>povos originários</strong>, porque nenhuma história da América se conta sem quem já estava aqui.</p>
+        <p>Faço a mala, gravo, e volto com aula. Material didático sobre <strong>geografia, cultura e língua</strong> da América do Sul, em vídeo, texto e podcast.</p>
+        <p>Cada temporada tem uma espinha própria: o Chile sobe aos 3.330 m, a Argentina desce ao Río de la Plata, o Uruguai corre até onde o rio vira mar. E em cada parada entra uma camada de <strong>povos originários</strong> — nenhuma história da América se conta sem quem já estava aqui.</p>
+        <p>É também a vitrine do método que uso nas <a href="#servicos">trilhas interativas</a>: o mesmo formato se adapta a qualquer conteúdo, da sala de aula ao treinamento de equipe.</p>
         <div class="meta">
           <span>27 aulas</span><span>3 temporadas</span><span>material em produção</span>
         </div>
@@ -696,7 +719,7 @@
         <div>
           <h4>Mapa Falado</h4>
           <div class="org">Projeto autoral · geografia, cultura e língua da América do Sul</div>
-          <p>Produção independente. Primeiras gravações no Chile, em Santiago e El Colorado; Argentina e Uruguai em 2026.</p>
+          <p>Primeiras gravações no Chile. Argentina e Uruguai em 2026.</p>
         </div>
       </div>
       <div class="tl-item" data-item>
@@ -704,7 +727,7 @@
         <div>
           <h4>Instrutora de Aprendizagem</h4>
           <div class="org">CIEE — Centro de Integração Empresa-Escola</div>
-          <p>Formação teórica de aproximadamente 140 jovens aprendizes, com aulas de competências socioemocionais, ética profissional e projetos pedagógicos, além de relatórios e acompanhamento junto às famílias e empresas. Atuação encerrada em agosto de 2026.</p>
+          <p>Formação de cerca de 140 jovens aprendizes: competências socioemocionais, ética profissional e acompanhamento junto a famílias e empresas. Encerrada em agosto de 2026.</p>
         </div>
       </div>
       <div class="tl-item" data-item>
@@ -712,7 +735,7 @@
         <div>
           <h4>Bolsista em Pesquisa e Produção de Conteúdo Educativo</h4>
           <div class="org">Centro de Memória da Unicamp</div>
-          <p>Pesquisa histórica e documental, produção de materiais educativos e do podcast <em>Histórias Negras</em>, em projetos de extensão universitária.</p>
+          <p>Pesquisa documental e produção do podcast <em>Histórias Negras</em>, em extensão universitária.</p>
         </div>
       </div>
       <div class="tl-item" data-item>
@@ -720,15 +743,17 @@
         <div>
           <h4>Instrutora Pedagógica</h4>
           <div class="org">Colégio Renovatus — Rede Decisão</div>
-          <p>Turmas do 3º ao 5º ano no contraturno, aprendizagem colaborativa, metodologias ativas e acompanhamento de estudantes com TEA e dislexia.</p>
+          <p>Turmas do 3º ao 5º ano no contraturno, com acompanhamento de estudantes com TEA e dislexia.</p>
         </div>
       </div>
+
+      <div class="tl-resto" id="tlResto" hidden>
       <div class="tl-item" data-item>
         <span class="when">2024 · 2025</span>
         <div>
           <h4>Estágios obrigatórios da Licenciatura em Pedagogia</h4>
           <div class="org">Faculdade de Educação — Unicamp · escolas públicas municipais de Campinas</div>
-          <p>Estágios curriculares realizados em escolas públicas da periferia de Campinas, na região do San Martin: o <strong>CEMEI Professora Maria Célia Pereira</strong>, junto a uma turma de Educação Infantil (2 a 4 anos), e a <strong>EMEF Edson Luís de Lima Souto</strong>, junto a uma turma de 4º ano do Ensino Fundamental. Entre as atividades, a condução de visitas das duas turmas à biblioteca da Faculdade de Educação da Unicamp, com o objetivo de aproximar os estudantes do ambiente universitário e das práticas de leitura em espaço público.</p>
+          <p>Escolas públicas da periferia de Campinas: <strong>CEMEI Maria Célia Pereira</strong>, na Educação Infantil, e <strong>EMEF Edson Luís de Lima Souto</strong>, no 4º ano. Levei as duas turmas para conhecer a biblioteca da Faculdade de Educação.</p>
         </div>
       </div>
       <div class="tl-item" data-item>
@@ -736,7 +761,7 @@
         <div>
           <h4>Estágio em Educação Infantil</h4>
           <div class="org">Colégio Rio Branco</div>
-          <p>Turmas regulares e de contraturno (Infantil II ao IV), acompanhamento da rotina, do desenvolvimento da autonomia e apoio a projetos pedagógicos.</p>
+          <p>Infantil II ao IV, em turmas regulares e de contraturno.</p>
         </div>
       </div>
       <div class="tl-item" data-item>
@@ -744,7 +769,7 @@
         <div>
           <h4>Bolsista em Processamento de Acervo</h4>
           <div class="org">Centro de Memória da Unicamp</div>
-          <p>Processamento de dados, tratamento e descrição de fotografias para o repositório digital do Centro de Memória — o trabalho de documentação que torna o acervo pesquisável e acessível ao público.</p>
+          <p>Tratamento e descrição de fotografias para o repositório digital — o trabalho que torna um acervo pesquisável.</p>
         </div>
       </div>
       <div class="tl-item" data-item>
@@ -752,10 +777,16 @@
         <div>
           <h4>Coordenadora de Extensão</h4>
           <div class="org">Cursinho Popular Herbert de Souza</div>
-          <p>Coordenação de professores e bolsistas da Unicamp, gestão de projetos de extensão e parcerias comunitárias, e implantação de cursinho popular no Assentamento Marielle Vive. Daí saíram o <a href="#midia">RádioCast Betinho</a> e a comunicação digital do cursinho.</p>
+          <p>Coordenação de professores e bolsistas da Unicamp e implantação de um cursinho no Assentamento Marielle Vive. Daí saíram o <a href="#midia">RádioCast Betinho</a> e as redes do cursinho.</p>
         </div>
       </div>
-    </div>
+      </div>
+
+      <button class="tl-mais" id="tlMais" type="button" aria-expanded="false" aria-controls="tlResto">
+        <span>Ver trajetória completa</span>
+        <span class="n">+4</span>
+      </button>
+</div>
   </div>
 </section>
 
@@ -919,6 +950,20 @@
     });
 
     return function(){ /* matchMedia auto-reverts tweens & triggers */ };
+  });
+})();
+</script>
+
+<script>
+(function(){
+  var bt = document.getElementById('tlMais'), resto = document.getElementById('tlResto');
+  if (!bt || !resto) return;
+  bt.addEventListener('click', function(){
+    var aberto = bt.getAttribute('aria-expanded') === 'true';
+    resto.hidden = aberto;
+    bt.setAttribute('aria-expanded', String(!aberto));
+    bt.querySelector('span').textContent = aberto ? 'Ver trajetória completa' : 'Mostrar menos';
+    if (aberto) bt.scrollIntoView({behavior:'smooth', block:'center'});
   });
 })();
 </script>

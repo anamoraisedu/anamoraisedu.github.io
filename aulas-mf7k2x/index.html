@@ -185,6 +185,15 @@
   .curio:focus-visible{outline:none}
   .curio text{font-family:Fredoka; font-weight:600; pointer-events:none}
 
+
+  .nuvem.com-foto{width:270px; padding:0; overflow:hidden}
+  .nuvem.com-foto .nf{width:100%; height:150px; object-fit:cover; display:block}
+  .nuvem.com-foto .q{display:block; padding:.75rem .9rem .35rem}
+  .nuvem.com-foto{line-height:1.5}
+  .nuvem.com-foto{padding-bottom:.2rem}
+  .nuvem.com-foto .nc{display:block; padding:.5rem .9rem .8rem; font-size:.68rem;
+    color:var(--ink-3); font-weight:700; letter-spacing:.02em}
+
   /* ---------------- nuvens de curiosidade ---------------- */
   #nuvens{position:fixed; inset:0; pointer-events:none; z-index:60}
   .nuvem{
@@ -586,6 +595,81 @@
                          L1200 76 L1200 660 L170 660 Z" fill="url(#terra)"/>
       <path d="M1110 92 L1200 76 L1200 150 C 1160 140, 1120 136, 1086 140 Z" fill="#fff" opacity=".9"/>
       <path d="M880 214 C 930 190, 980 164, 1030 140 C 1000 168, 950 198, 900 224 Z" fill="#fff" opacity=".55"/>
+
+
+      <!-- Santiago: a cidade na altura do vale, entre 500 e 650 m -->
+      <g id="santiago">
+        <!-- a mancha urbana no sopé -->
+        <path d="M352 452 C 420 440, 500 424, 580 404 C 640 390, 690 376, 724 364
+                 L 740 470 L 352 470 Z" fill="#C9B79A" opacity=".55"/>
+
+        <!-- prédios altos, ao fundo -->
+        <g fill="#9FAEBE" opacity=".75">
+          <rect x="398" y="404" width="13" height="46" rx="1.5"/>
+          <rect x="416" y="392" width="11" height="58" rx="1.5"/>
+          <rect x="432" y="412" width="14" height="38" rx="1.5"/>
+          <rect x="452" y="386" width="10" height="62" rx="1.5"/>
+          <rect x="500" y="378" width="12" height="56" rx="1.5"/>
+          <rect x="518" y="366" width="15" height="68" rx="1.5"/>
+          <rect x="620" y="356" width="11" height="44" rx="1.5"/>
+          <rect x="636" y="346" width="13" height="54" rx="1.5"/>
+        </g>
+        <!-- o arranha-céu que marca a Providencia -->
+        <rect x="660" y="312" width="14" height="88" rx="2" fill="#8C9DB0" opacity=".8"/>
+        <path d="M667 312 L667 296" stroke="#8C9DB0" stroke-width="2.5" opacity=".8"/>
+
+        <!-- La Moneda: o bloco baixo com pátio -->
+        <g>
+          <rect x="462" y="424" width="52" height="20" rx="2" fill="#F4EFE4" stroke="#C3B9A6" stroke-width="1.5"/>
+          <path d="M462 424 L488 414 L514 424 Z" fill="#DCD2BF"/>
+          <g fill="#C3B9A6"><rect x="470" y="430" width="4" height="9"/><rect x="480" y="430" width="4" height="9"/>
+            <rect x="492" y="430" width="4" height="9"/><rect x="502" y="430" width="4" height="9"/></g>
+          <path d="M488 414 L488 404" stroke="#D44" stroke-width="1.6"/>
+          <path d="M488 404 l9 3 -9 3 Z" fill="#D44"/>
+        </g>
+
+        <!-- Belas Artes: a cúpula de ferro e vidro -->
+        <g>
+          <rect x="556" y="396" width="44" height="18" rx="2" fill="#F6EFDF" stroke="#C9BCA2" stroke-width="1.5"/>
+          <path d="M566 396 a12 9 0 0 1 24 0 Z" fill="#BFD8E4" stroke="#9BB6C6" stroke-width="1.4"/>
+          <path d="M578 387 L578 381" stroke="#9BB6C6" stroke-width="1.6"/>
+          <g stroke="#9BB6C6" stroke-width=".9"><path d="M570 394 L586 394"/><path d="M578 387 L578 396"/></g>
+          <g fill="#C9BCA2"><rect x="562" y="402" width="3.4" height="8"/><rect x="571" y="402" width="3.4" height="8"/>
+            <rect x="583" y="402" width="3.4" height="8"/><rect x="592" y="402" width="3.4" height="8"/></g>
+        </g>
+
+        <!-- a igreja de pedra, com campanário -->
+        <g>
+          <rect x="430" y="430" width="22" height="16" rx="1.5" fill="#E8DFCE" stroke="#BFB29B" stroke-width="1.3"/>
+          <rect x="434" y="414" width="8" height="18" rx="1" fill="#E8DFCE" stroke="#BFB29B" stroke-width="1.3"/>
+          <path d="M438 414 L438 407" stroke="#9A8C74" stroke-width="1.6"/>
+          <path d="M435 410 h6" stroke="#9A8C74" stroke-width="1.6"/>
+        </g>
+
+        <!-- Cerro Santa Lucía: o morro dentro da cidade -->
+        <g>
+          <path d="M676 364 C 690 330, 706 318, 718 320 C 732 322, 744 340, 752 366 Z" fill="#7E9A63"/>
+          <path d="M700 338 C 708 326, 716 322, 722 324 C 729 327, 735 340, 739 352 Z" fill="#94AE78" opacity=".8"/>
+          <!-- o castelete no topo -->
+          <rect x="710" y="314" width="14" height="9" rx="1" fill="#EBDFC6" stroke="#C0AF8D" stroke-width="1.2"/>
+          <g fill="#C0AF8D"><rect x="710" y="310" width="3" height="4"/><rect x="715.5" y="310" width="3" height="4"/>
+            <rect x="721" y="310" width="3" height="4"/></g>
+          <!-- a palmeira que marca o cerro -->
+          <path d="M688 360 L688 348" stroke="#6E5A3A" stroke-width="2"/>
+          <path d="M688 348 q-8-5-11-1 M688 348 q8-5 11-1 M688 348 q-4-8-1-10 M688 348 q4-8 1-10"
+                stroke="#4E7A42" stroke-width="2" fill="none" stroke-linecap="round"/>
+        </g>
+
+        <!-- a praça, com o ladrilho -->
+        <g opacity=".85">
+          <rect x="524" y="434" width="26" height="12" rx="1.5" fill="#D9CDB4"/>
+          <g stroke="#C2B49A" stroke-width=".8"><path d="M531 434 v12"/><path d="M538 434 v12"/><path d="M545 434 v12"/></g>
+          <circle cx="537" cy="440" r="2.6" fill="#9FC6D8"/>
+        </g>
+
+        <text x="470" y="462" font-family="Fredoka, sans-serif" font-size="12.5" font-weight="500"
+              fill="#7A6A52" opacity=".9">SANTIAGO · 550 m</text>
+      </g>
 
       <!-- trilha -->
       <path id="trilha" d="M110 548 C 200 520, 270 500, 340 470 C 420 436, 480 414, 560 392
@@ -1974,6 +2058,12 @@ var AR_CURIOS = [
 
 
   var CURIOS = [
+ {ic:'rolo',  x:578, y:372, c:'#8B4FB5', f:'cl-ba-cupula',     q:'Belas Artes',          t:'O Museu Nacional de Belas Artes, de 1910, com cúpula de ferro e vidro encomendada à Europa. O prédio é do Centenário: o país se mostrando moderno.'},
+ {ic:'barra', x:488, y:396, c:'#C94A12', f:'cl-moneda',        q:'Casa de Moeda',        t:'La Moneda nasceu para cunhar moeda colonial, em 1805. Virou sede do governo depois da independência — o prédio da Coroa passou a abrigar a república.'},
+ {ic:'morro', x:718, y:296, c:'#4E7A42', f:'cl-sl-terraco',    q:'Um morro dentro da cidade',  t:'O Santa Lucía tem 69 metros de altura e fica no meio de Santiago. Era pedra nua até 1872, quando viraram um jardim em terraços.'},
+ {ic:'gente', x:537, y:420, c:'#0A8A91', f:'cl-centro',        q:'O centro a pé',        t:'O centro histórico cabe numa caminhada: do Santa Lucía a La Moneda são vinte minutos, passando por praça, museu e mercado.'},
+ {ic:'fala',  x:438, y:398, c:'#B5892F', f:'cl-igreja-pedra',  q:'Igreja de pedra',      t:'Pedra aparente e teto trabalhado: a construção colonial usava o que a cordilheira dava. O terremoto é parte do projeto arquitetônico no Chile.'},
+
  {ic:'rolo', x:880, y:146, c:'#AC4C2E', q:'Subir de manhã, descer de tarde', t:'A estrada G-21, que leva a Farellones, El Colorado e Valle Nevado, é estreita demais para dois sentidos. Nos fins de semana de inverno ela vira mão única por horário: sobe-se das 8h às 13h, desce-se das 15h às 20h. Quem perde a janela, espera.'},
     {ic:'onda', x:200, y:600, c:'var(--pacifico)', q:'Água gelada', t:'A corrente de Humboldt sobe do sul e deixa o mar do Chile frio mesmo no verão. É ela que seca o Atacama.'},
     {ic:'batata', x:430, y:500, c:'var(--valle)', q:'Daqui para o mundo', t:'A batata foi domesticada nos Andes. Hoje é o quarto alimento mais cultivado do planeta.'},
@@ -2106,9 +2196,12 @@ var AR_CURIOS = [
     d.style.setProperty('--c', c.c);
     d.style.left = Math.min(Math.max(r.left + r.width/2, 170), window.innerWidth-170) + 'px';
     d.style.top  = Math.max(r.top - 30, 20) + 'px';
-    d.innerHTML = '<span class="q">'+c.q+'</span>'+c.t;
+    var foto = c.f ? '<img class="nf" src="midia/'+c.f+'.jpg" alt="" loading="lazy">' : '';
+    d.innerHTML = foto + '<span class="q">'+c.q+'</span>'+c.t
+                + (c.f ? '<span class="nc">Foto · Ana Claudia Morais Alves</span>' : '');
+    if (c.f) d.classList.add('com-foto');
     $('#nuvens').appendChild(d);
-    setTimeout(function(){ d.remove(); }, 5600);
+    setTimeout(function(){ d.remove(); }, c.f ? 9000 : 5600);
   }
 
   /* ---------------- painel da aula ---------------- */

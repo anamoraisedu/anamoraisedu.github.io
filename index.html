@@ -129,6 +129,30 @@
   .nav-links{display:flex; align-items:center; gap:.35rem}
   .nav-links a{padding:.5rem .85rem; border-radius:100px; font-weight:600; font-size:.96rem; color:var(--ink-soft); transition:color .25s, background .25s}
   .nav-links a:hover{color:var(--ink); background:#fff}
+  .tem-sub{position:relative}
+  .tem-sub .pai{display:inline-flex; align-items:center; gap:.3rem}
+  .tem-sub .ch{font-size:.7rem; opacity:.6; transition:transform .25s}
+  .tem-sub:hover .ch,.tem-sub:focus-within .ch{transform:rotate(180deg)}
+  .sub{
+    position:absolute; left:0; top:calc(100% + .5rem); min-width:270px; z-index:60;
+    background:var(--card); border:1px solid var(--line); border-radius:20px;
+    padding:.5rem; box-shadow:var(--shadow); display:grid; gap:.1rem;
+    opacity:0; visibility:hidden; transform:translateY(-6px);
+    transition:opacity .22s, transform .22s, visibility .22s;
+  }
+  .tem-sub:hover .sub,.tem-sub:focus-within .sub{opacity:1; visibility:visible; transform:none}
+  .sub a{display:block; padding:.6rem .8rem; border-radius:14px; transition:background .18s}
+  .sub a:hover{background:var(--paper-2)}
+  .sub b{display:block; font-size:.93rem; font-weight:800; color:var(--ink)}
+  .sub small{display:block; font-size:.8rem; color:var(--ink-soft); font-weight:600; margin-top:.05rem}
+  @media (max-width:960px){
+    .sub{position:static; opacity:1; visibility:visible; transform:none; box-shadow:none;
+         border:0; padding:0 0 0 .6rem; min-width:0; background:none}
+    .sub a{padding:.45rem .6rem}
+    .sub small{display:none}
+    .tem-sub .ch{display:none}
+  }
+
   .nav-cta{display:flex; align-items:center; gap:.6rem}
   .nav-toggle{display:none; background:none; border:1px solid var(--line); border-radius:12px; width:46px;height:44px; cursor:pointer; align-items:center; justify-content:center}
   .nav-toggle span{display:block; width:20px; height:2px; background:var(--ink); position:relative}
@@ -136,8 +160,8 @@
   .nav-toggle span::before{top:-6px} .nav-toggle span::after{top:6px}
 
   /* ---------- hero ---------- */
-  .hero{position:relative; padding:clamp(2rem,5vw,4.5rem) 0 clamp(3rem,6vw,5rem)}
-  .hero-grid{display:grid; grid-template-columns:1.08fr .92fr; gap:clamp(2rem,5vw,4rem); align-items:center}
+  .hero{position:relative; padding:clamp(2.4rem,6vw,5.5rem) 0 clamp(3.4rem,7vw,6rem)}
+  .hero-grid{display:grid; grid-template-columns:1.32fr .68fr; gap:clamp(2rem,5vw,4.5rem); align-items:center}
   /* Sized so each hardcoded line ("Uma educação que" = 7.27em, the widest)
      fits on one line at every width — incl. the tight 2-col band near 960px. */
   .hero-title{font-size:clamp(2rem, 1.14rem + 4.56vw, 4.25rem); margin:1.1rem 0 1.4rem}
@@ -218,7 +242,8 @@
   .servicos{background:var(--paper-2); border-block:1px solid var(--line)}
   .servicos .cards{grid-template-columns:1fr 1fr}
   @media (max-width:760px){ .servicos .cards{grid-template-columns:1fr} }
-  .midia .cards{grid-template-columns:1fr 1fr}
+  .midia .cards{grid-template-columns:repeat(3,1fr)}
+  @media (max-width:980px){ .midia .cards{grid-template-columns:1fr 1fr} }
   @media (max-width:760px){ .midia .cards{grid-template-columns:1fr} }
   .card.s4{--accent:#12304B; --accent-ink:#12304B}
   .card.s4 .ico{background:color-mix(in srgb,#12304B 12%,#fff); color:#12304B}
@@ -365,6 +390,53 @@
   .tl-mais .n{font-family:"Fraunces"; font-weight:600; color:var(--honey-2)}
   .tl-mais[aria-expanded="true"] .n{display:none}
 
+
+  /* ---------- trilhas ---------- */
+  .trilhas{background:linear-gradient(170deg,#12304B,#0B1F33); color:#EAF4FB; border-block:1px solid #1D405E; position:relative; overflow:hidden}
+  .trilhas::before{content:""; position:absolute; inset:0; opacity:.45; pointer-events:none;
+    background-image:radial-gradient(circle at 1px 1px, rgba(255,255,255,.07) 1px, transparent 0); background-size:24px 24px}
+  .trilhas .wrap{position:relative}
+  .trilhas .eyebrow{color:#FFC233}
+  .trilhas h2{color:#fff}
+  .trilhas .lead{color:#B8D2E6}
+  .tr-grid{display:grid; grid-template-columns:1.1fr .9fr; gap:clamp(1.6rem,4vw,3rem); align-items:center}
+  @media (max-width:860px){ .tr-grid{grid-template-columns:1fr} }
+  .tr-passos{display:grid; gap:.9rem; margin:0 0 1.8rem; padding:0; list-style:none}
+  .tr-passos li{display:flex; gap:.9rem; align-items:flex-start; color:#C6DCEC; font-weight:600; font-size:.97rem; line-height:1.55}
+  .tr-passos b{flex:none; width:30px;height:30px;border-radius:11px; background:rgba(255,255,255,.1);
+    color:#FFC233; display:grid;place-items:center; font-family:"Fraunces"; font-size:.92rem; font-weight:600}
+  .tr-passos strong{color:#fff; font-weight:800}
+  .tr-usos{display:flex; flex-wrap:wrap; gap:.5rem; margin-bottom:1.7rem}
+  .tr-usos span{font-size:.85rem; font-weight:800; padding:.45rem .95rem; border-radius:100px;
+    background:rgba(255,255,255,.08); border:1px solid rgba(255,255,255,.16); color:#DCEBF6}
+  .tr-demo{background:rgba(255,255,255,.055); border:1px solid rgba(255,255,255,.14); border-radius:26px; padding:1.5rem 1.6rem}
+  .tr-demo .et{font-size:.78rem; font-weight:800; letter-spacing:.1em; text-transform:uppercase; color:#FFC233}
+  .tr-demo h3{font-size:1.3rem; color:#fff; margin:.3rem 0 .5rem}
+  .tr-demo p{font-size:.93rem; color:#A8C6DC; margin-bottom:1.2rem}
+  .tr-nums{display:flex; gap:1.6rem; margin-bottom:1.3rem}
+  .tr-nums div b{display:block; font-family:"Fraunces"; font-weight:600; font-size:1.6rem; color:#FFC233; line-height:1}
+  .tr-nums div span{font-size:.8rem; color:#8FB2CB; font-weight:700}
+  .btn-sol{display:inline-flex; align-items:center; gap:.55rem; font-weight:800; font-size:.98rem;
+    padding:.85rem 1.5rem; border-radius:100px; background:#F2682A; color:#fff;
+    box-shadow:0 12px 30px -12px rgba(242,104,42,.8); transition:transform .2s, filter .2s}
+  .btn-sol:hover{filter:brightness(1.08); transform:translateY(-2px)}
+  .btn-sol svg{width:18px;height:18px}
+  .btn-claro{display:inline-flex; align-items:center; gap:.5rem; font-weight:800; font-size:.95rem;
+    padding:.8rem 1.4rem; border-radius:100px; border:1.5px solid rgba(255,255,255,.3); color:#EAF4FB;
+    transition:border-color .2s, background .2s}
+  .btn-claro:hover{border-color:#FFC233; background:rgba(255,255,255,.07)}
+
+  /* ---------- mapa falado ---------- */
+  .mf-sec .breve{display:inline-flex; align-items:center; gap:.5rem; font-size:.8rem; font-weight:800;
+    background:color-mix(in srgb,var(--honey) 18%,#fff); color:var(--honey-2);
+    padding:.35rem .9rem; border-radius:100px; margin-bottom:1rem}
+  .mf-sec .breve i{width:7px;height:7px;border-radius:50%;background:var(--honey-2);font-style:normal}
+  .mf-lista{display:grid; grid-template-columns:repeat(3,1fr); gap:1rem; margin-top:1.6rem}
+  @media (max-width:760px){ .mf-lista{grid-template-columns:1fr} }
+  .mf-item{background:var(--card); border:1px solid var(--line); border-radius:22px; padding:1.1rem 1.2rem}
+  .mf-item b{display:block; font-family:"Fraunces"; font-weight:600; font-size:1.02rem; margin-bottom:.2rem}
+  .mf-item p{margin:0; font-size:.88rem; color:var(--ink-soft)}
+
   /* ---------- contato ---------- */
   .contato{position:relative; overflow:hidden}
   .contato-card{
@@ -458,12 +530,18 @@
       <span>Ana Claudia Morais<small>Pedagoga · Unicamp</small></span>
     </a>
     <nav class="nav-links" id="menu" aria-label="Navegação principal">
+      <div class="tem-sub">
+        <a href="#servicos" class="pai" aria-haspopup="true" aria-expanded="false">Serviços <span class="ch">▾</span></a>
+        <div class="sub" role="menu">
+          <a href="#servicos" role="menuitem"><b>Atendimento online</b><small>crianças, adolescentes e famílias</small></a>
+          <a href="#servicos" role="menuitem"><b>Aulas de reforço</b><small>Educação Infantil ao 5º ano</small></a>
+          <a href="#servicos" role="menuitem"><b>Acolhimento</b><small>TEA, dislexia e escuta</small></a>
+          <a href="#trilhas" role="menuitem"><b>Trilhas de Aprendizagem</b><small>escolas e empresas</small></a>
+        </div>
+      </div>
+      <a href="#trilhas">Trilhas</a>
+      <a href="#mapafalado">Mapa Falado</a>
       <a href="#sobre">Sobre</a>
-      <a href="#servicos">Serviços</a>
-      <a href="#metodo">Como trabalho</a>
-      <a href="#midia">Produção</a>
-      <a href="#mapafalado">Trilhas</a>
-      <a href="#trajetoria">Trajetória</a>
       <a href="#contato">Contato</a>
     </nav>
     <div class="nav-cta">
@@ -487,13 +565,13 @@
         <span class="line-mask"><span class="line"><em>acolhe</em>, ensina e</span></span>
         <span class="line-mask"><span class="line"><span class="u-word">transforma<svg viewBox="0 0 300 20" preserveAspectRatio="none" aria-hidden="true"><path pathLength="1" d="M3 13 C 60 5, 110 5, 150 10 S 250 16, 297 7"/></svg></span>.</span></span>
       </h1>
-      <p class="lead" data-hero>Atendimento pedagógico online, aulas de reforço e serviços de acolhimento para crianças, adolescentes e famílias — com práticas inclusivas, metodologias ativas e escuta centrada no desenvolvimento integral de cada estudante.</p>
+      <p class="lead" data-hero>Acompanhamento pedagógico, aulas de reforço e acolhimento para crianças e adolescentes — em Itatiba ou online. E <strong>trilhas de aprendizagem</strong> sob medida, para escolas e empresas.</p>
       <div class="hero-actions" data-hero>
         <a class="btn" href="https://wa.me/5519994139785?text=Ol%C3%A1%2C%20Ana%21%20Vim%20pelo%20seu%20site%20e%20gostaria%20de%20saber%20mais%20sobre%20seus%20atendimentos.%20%F0%9F%98%8A%0A%0A%E2%80%A2%20Servi%C3%A7o%20de%20interesse%3A%20%0A%E2%80%A2%20Estudante%20%28idade%20e%20ano%20escolar%29%3A%20%0A%E2%80%A2%20O%20que%20estamos%20buscando%3A%20" target="_blank" rel="noopener">
           <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C6.48 2 2 6.48 2 12c0 1.77.46 3.43 1.27 4.88L2 22l5.25-1.38A9.94 9.94 0 0 0 12 22c5.52 0 10-4.48 10-10S17.52 2 12 2zm0 18.2c-1.6 0-3.1-.43-4.38-1.18l-.31-.18-3.12.82.83-3.04-.2-.32A8.16 8.16 0 0 1 3.8 12 8.2 8.2 0 1 1 12 20.2zm5.5-5.8c-.3-.15-1.7-.84-1.96-.94-.26-.1-.45-.15-.64.15-.19.29-.74.94-.9 1.13-.17.19-.33.22-.62.07-.29-.15-1.22-.45-2.33-1.43-.86-.77-1.44-1.72-1.6-2.01-.17-.29-.02-.45.13-.6.13-.13.29-.34.44-.51.15-.17.19-.29.29-.48.1-.19.05-.36-.02-.51-.07-.15-.64-1.55-.88-2.12-.23-.55-.47-.48-.64-.49h-.55c-.19 0-.5.07-.76.36-.26.29-1 .98-1 2.38s1.02 2.76 1.17 2.95c.15.19 2.02 3.08 4.9 4.32.68.29 1.22.47 1.63.6.69.22 1.31.19 1.8.11.55-.08 1.7-.69 1.94-1.36.24-.67.24-1.24.17-1.36-.07-.12-.26-.19-.55-.34z"/></svg>
           Agendar uma conversa
         </a>
-        <a class="btn ghost" href="#servicos">Conhecer os serviços</a>
+        <a class="btn ghost" href="#servicos">Ver os serviços</a>
       </div>
       <div class="trust" data-hero>
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3 2 8l10 5 10-5-10-5z"/><path d="M6 10v5c0 1 2.7 3 6 3s6-2 6-3v-5"/></svg>
@@ -521,50 +599,6 @@
     <div class="stat" data-item><span class="num" data-count="140" data-suffix="+">140+</span><span class="lbl">jovens e crianças acompanhados</span></div>
     <div class="stat" data-item><span class="num" data-count="8" data-suffix="+">8+</span><span class="lbl">anos dedicados à educação</span></div>
     <div class="stat" data-item><span class="num" data-count="2" data-suffix="">2</span><span class="lbl">pós-graduações em andamento</span></div>
-  </div>
-</section>
-
-<!-- ============ SOBRE ============ -->
-<section class="section" id="sobre">
-  <div class="wrap sobre-grid">
-    <div class="sobre-body">
-      <span class="eyebrow" data-reveal>Quem sou</span>
-      <div class="section-head" style="margin-bottom:1.4rem">
-        <h2 data-reveal>Educar é acolher e caminhar<br>junto com cada estudante.</h2>
-      </div>
-      <p data-reveal>Sou pedagoga formada pela <strong>Unicamp</strong>, com atuação na Educação Infantil, no Fundamental I e na formação de jovens aprendizes. Oito anos acompanhando a aprendizagem de perto e cuidando da relação com as famílias.</p>
-      <p data-reveal>Também levo a educação para fora da sala de aula: sou <strong>roteirista, produtora e apresentadora</strong> de conteúdo educativo, do rádio ao vivo ao podcast. A escuta é a mesma, apenas em outro formato.</p>
-      <p data-reveal>O <strong>registro oral e fotográfico</strong> atravessa o que faço — na documentação dos percursos de aprendizagem, nas entrevistas e nos materiais que produzo.</p>
-      <p data-reveal>Atualmente curso pós-graduação em <strong>Psicopedagogia</strong> e em <strong>Gestão de Pessoas e Psicologia Organizacional</strong>. Estudo para entender melhor o que já vejo na prática: por que um estudante trava, o que destrava, e como uma instituição ajuda ou atrapalha nisso.</p>
-      <div class="chips" data-reveal>
-                <span class="tag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Educação Infantil e Fundamental I</span>        <span class="tag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Jovens aprendizes</span>        <span class="tag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Escola pública e particular</span>        <span class="tag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Rádio, podcast e vídeo</span>        <span class="tag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Pesquisa e acervo</span>
-      </div>
-      <p class="sig" data-reveal>— Ana Claudia Morais Alves</p>
-    </div>
-
-    <aside class="facts" data-reveal aria-label="Formação e qualificações">
-      <h3>Formação</h3>
-      <div class="fact"><svg class="mk" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10 12 5 2 10l10 5 10-5z"/><path d="M6 12v5c0 1 2.7 3 6 3s6-2 6-3v-5"/></svg><div><span class="k">Licenciatura em Pedagogia</span><small>Universidade Estadual de Campinas — Unicamp</small></div></div>
-
-      <h3>Pós-graduação · em andamento</h3>
-      <ul>
-        <li>Psicopedagogia</li>
-        <li>Gestão de Pessoas e Psicologia Organizacional</li>
-      </ul>
-
-      <h3>Formação complementar</h3>
-      <ul>
-        <li>Pensamento Computacional para os Anos Iniciais (AVAMEC/MEC)</li>
-        <li>Ferramentas Digitais na Prática para Professores</li>
-        <li>Comunicação Não Violenta (CNV)</li>
-      </ul>
-
-      <h3>Idiomas</h3>
-      <ul>
-        <li>Português — nativo</li>
-        <li>Inglês — intermediário</li>
-      </ul>
-    </aside>
   </div>
 </section>
 
@@ -613,6 +647,63 @@
   </div>
 </section>
 
+<!-- ============ TRILHAS ============ -->
+<section class="section trilhas" id="trilhas">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow" data-reveal>Trilhas de Aprendizagem</span>
+      <h2 data-reveal>Conteúdo que se<br>percorre, não se assiste.</h2>
+      <p class="lead" data-reveal>Transformo qualquer matéria num percurso navegável — com mapa, paradas, desafios de escolha e progresso visível. Quem aprende decide o caminho, e descobre na hora por que acertou ou errou.</p>
+    </div>
+
+    <div class="tr-grid">
+      <div data-reveal>
+        <ul class="tr-passos">
+          <li><b>1</b><span>Você traz o conteúdo. <strong>Eu desenho o percurso</strong> — quantas paradas, em que ordem e por qual lógica se avança.</span></li>
+          <li><b>2</b><span>Cada parada vira <strong>aprofundamento mais desafio</strong>: duas respostas possíveis, e uma devolutiva que explica tanto o acerto quanto o erro.</span></li>
+          <li><b>3</b><span>O progresso fica visível, e o percurso roda no navegador — <strong>sem instalar nada</strong>, no computador ou no celular.</span></li>
+        </ul>
+        <div class="tr-usos">
+          <span>Escolas e cursos</span><span>Treinamento</span><span>Reciclagem</span><span>Integração de novas pessoas</span>
+        </div>
+        <a class="btn-sol" href="https://wa.me/5519994139785?text=Ol%C3%A1%2C%20Ana%21%20Vim%20pelo%20seu%20site%20e%20quero%20saber%20mais%20sobre%20as%20Trilhas%20de%20Aprendizagem.%20%F0%9F%98%8A%0A%0A%E2%80%A2%20%C3%89%20para%20escola%20ou%20empresa%3A%20%0A%E2%80%A2%20Tema%20ou%20conte%C3%BAdo%20a%20ensinar%3A%20%0A%E2%80%A2%20Quantas%20pessoas%20v%C3%A3o%20usar%3A%20" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C6.48 2 2 6.48 2 12c0 1.77.46 3.43 1.27 4.88L2 22l5.25-1.38A9.94 9.94 0 0 0 12 22c5.52 0 10-4.48 10-10S17.52 2 12 2z"/></svg>
+          Quero uma trilha
+        </a>
+      </div>
+
+      <aside class="tr-demo" data-reveal>
+        <span class="et">Demonstração aberta</span>
+        <h3>Trilha América do Sul</h3>
+        <p>Geografia, cultura e língua de Chile, Argentina e Uruguai — construída a partir de pesquisa e trabalho de campo.</p>
+        <div class="tr-nums">
+          <div><b>27</b><span>aulas</span></div>
+          <div><b>108</b><span>desafios</span></div>
+          <div><b>3</b><span>temporadas</span></div>
+        </div>
+        <a class="btn-claro" href="/aulas-mf7k2x/">Experimentar →</a>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<!-- ============ MAPA FALADO ============ -->
+<section class="section mf-sec" id="mapafalado">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="breve" data-reveal><i></i>Em produção</span>
+      <span class="eyebrow" data-reveal>Mapa Falado</span>
+      <h2 data-reveal>A série de videoaulas<br>sobre a América do Sul.</h2>
+      <p class="lead" data-reveal>Percorro o continente e transformo o que vejo em aula: geografia, cultura e língua de cada lugar, contadas no lugar. Roteiros escritos, gravações em andamento — as primeiras saem no YouTube.</p>
+    </div>
+    <div class="mf-lista" data-stagger>
+      <div class="mf-item" data-item><b>Chile</b><p>Do nível do mar em Isla Negra aos 3.330 m de El Colorado. Gravações feitas em Santiago e na cordilheira.</p></div>
+      <div class="mf-item" data-item><b>Argentina</b><p>A descida de Valle Nevado ao Río de la Plata, passando pela pampa e pelo delta do Paraná.</p></div>
+      <div class="mf-item" data-item><b>Uruguai</b><p>A costa de oeste a leste, de Colonia del Sacramento até onde o rio vira mar, em Punta del Este.</p></div>
+    </div>
+  </div>
+</section>
+
 <!-- ============ MÉTODO ============ -->
 <section class="section" id="metodo">
   <div class="wrap metodo-grid">
@@ -638,6 +729,50 @@
         <div><h4>A família sabe o que acontece</h4><p>A família recebe relatório e sabe o que está sendo trabalhado. Sem isso, cada um puxa para um lado e o estudante fica no meio.</p></div>
       </div>
     </div>
+  </div>
+</section>
+
+<!-- ============ SOBRE ============ -->
+<section class="section" id="sobre">
+  <div class="wrap sobre-grid">
+    <div class="sobre-body">
+      <span class="eyebrow" data-reveal>Quem sou</span>
+      <div class="section-head" style="margin-bottom:1.4rem">
+        <h2 data-reveal>Educar é acolher e caminhar<br>junto com cada estudante.</h2>
+      </div>
+      <p data-reveal>Sou pedagoga formada pela <strong>Unicamp</strong>, com atuação na Educação Infantil, no Fundamental I e na formação de jovens aprendizes. Oito anos acompanhando a aprendizagem de perto e cuidando da relação com as famílias.</p>
+      <p data-reveal>Também levo a educação para fora da sala de aula: sou <strong>roteirista, produtora e apresentadora</strong> de conteúdo educativo, do rádio ao vivo ao podcast. A escuta é a mesma, apenas em outro formato.</p>
+      <p data-reveal>O <strong>registro oral e fotográfico</strong> atravessa o que faço — na documentação dos percursos de aprendizagem, nas entrevistas e nos materiais que produzo.</p>
+      <p data-reveal>Atualmente curso pós-graduação em <strong>Psicopedagogia</strong> e em <strong>Gestão de Pessoas e Psicologia Organizacional</strong>. Estudo para entender melhor o que já vejo na prática: por que um estudante trava, o que destrava, e como uma instituição ajuda ou atrapalha nisso.</p>
+      <div class="chips" data-reveal>
+                <span class="tag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Educação Infantil e Fundamental I</span>        <span class="tag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Jovens aprendizes</span>        <span class="tag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Escola pública e particular</span>        <span class="tag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Rádio, podcast e vídeo</span>        <span class="tag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Pesquisa e acervo</span>
+      </div>
+      <p class="sig" data-reveal>— Ana Claudia Morais Alves</p>
+    </div>
+
+    <aside class="facts" data-reveal aria-label="Formação e qualificações">
+      <h3>Formação</h3>
+      <div class="fact"><svg class="mk" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10 12 5 2 10l10 5 10-5z"/><path d="M6 12v5c0 1 2.7 3 6 3s6-2 6-3v-5"/></svg><div><span class="k">Licenciatura em Pedagogia</span><small>Universidade Estadual de Campinas — Unicamp</small></div></div>
+
+      <h3>Pós-graduação · em andamento</h3>
+      <ul>
+        <li>Psicopedagogia</li>
+        <li>Gestão de Pessoas e Psicologia Organizacional</li>
+      </ul>
+
+      <h3>Formação complementar</h3>
+      <ul>
+        <li>Pensamento Computacional para os Anos Iniciais (AVAMEC/MEC)</li>
+        <li>Ferramentas Digitais na Prática para Professores</li>
+        <li>Comunicação Não Violenta (CNV)</li>
+      </ul>
+
+      <h3>Idiomas</h3>
+      <ul>
+        <li>Português — nativo</li>
+        <li>Inglês — intermediário</li>
+      </ul>
+    </aside>
   </div>
 </section>
 
@@ -685,23 +820,7 @@
         </div>
       </article>
 
-      <article class="card s4" id="mapafalado" data-item>
-        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 19 L9 8 L13 14 L16 9 L21 19 Z"/><path d="M9 8 L11 11 L7 11 Z" fill="currentColor" stroke="none"/></svg></div>
-        <h3>Trilha América do Sul</h3>
-        <p class="sub">A trilha que mostra o método funcionando</p>
-        <p>Faço a mala, pesquiso, e volto com trilha. Vinte e sete aulas sobre <strong>geografia, cultura e língua</strong> da América do Sul, com 108 desafios de escolha — construídas a partir do que vi em campo.</p>
-        <p>Cada temporada tem uma espinha própria: o Chile sobe aos 3.330 m, a Argentina desce ao Río de la Plata, o Uruguai corre até onde o rio vira mar. E em cada parada entra uma camada de <strong>povos originários</strong> — nenhuma história da América se conta sem quem já estava aqui.</p>
-        <p>É a demonstração aberta das <a href="#servicos">Trilhas de Aprendizagem</a>: o mesmo formato se adapta a qualquer conteúdo, da sala de aula ao treinamento de equipe.</p>
-        <div class="meta">
-          <span>27 aulas</span><span>108 desafios</span><span>Chile · Argentina · Uruguai</span>
-        </div>
-        <div class="roles"><span>Roteiro</span><span>Pesquisa</span><span>Gravação</span><span>Edição</span><span>Apresentação</span></div>
-        <div class="eps">
-          <a href="/aulas-mf7k2x/"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 19 L9 8 L13 14 L16 9 L21 19 Z"/><path d="M9 8 L11 11 L7 11 Z" fill="currentColor" stroke="none"/></svg> Entrar na trilha</a>
-        </div>
-      </article>
-
-    </div>
+</div>
   </div>
 </section>
 
@@ -838,10 +957,10 @@
       <span>Ana Claudia Morais<small>Pedagoga · Educação com acolhimento</small></span>
     </a>
     <nav class="foot-links" aria-label="Rodapé">
-      <a href="#sobre">Sobre</a>
       <a href="#servicos">Serviços</a>
-      <a href="#midia">Produção</a>
-      <a href="#mapafalado">Trilhas</a>
+      <a href="#trilhas">Trilhas</a>
+      <a href="#mapafalado">Mapa Falado</a>
+      <a href="#sobre">Sobre</a>
       <a href="#trajetoria">Trajetória</a>
       <a href="#contato">Contato</a>
     </nav>

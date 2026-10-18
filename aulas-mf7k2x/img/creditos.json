@@ -1,11 +1,12 @@
 {
  "c1": {
-  "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a1/Demonstration-mapuche.jpg/960px-Demonstration-mapuche.jpg",
-  "lic": "CC BY-SA 3.0",
-  "aut": "Stefan Bauer",
-  "file": "Demonstration-mapuche.jpg",
-  "pag": "https://commons.wikimedia.org/wiki/File:Demonstration-mapuche.jpg",
-  "kb": 203
+  "url": "",
+  "lic": "arquivo pessoal",
+  "aut": "Ana Claudia Morais Alves",
+  "file": "Retrato de mulheres mapuche, no Museu de Belas Artes",
+  "pag": "",
+  "kb": 0,
+  "pessoal": true
  },
  "c2": {
   "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/15/Chile-03799_-_Lautaro_%2849039222081%29.jpg/960px-Chile-03799_-_Lautaro_%2849039222081%29.jpg",
@@ -43,32 +44,34 @@
   "url": "",
   "lic": "arquivo pessoal",
   "aut": "Ana Claudia Morais Alves",
-  "file": "Mercado Municipal de Tobalaba, Santiago",
+  "file": "O salão central do Museu de Belas Artes",
   "pag": "",
   "kb": 0,
   "pessoal": true
  },
  "e4": {
-  "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b1/Cannon_at_the_Cerro_Santa_Lucia%2C_Santiago_de_Chile.jpg/960px-Cannon_at_the_Cerro_Santa_Lucia%2C_Santiago_de_Chile.jpg",
-  "lic": "CC BY-SA 4.0",
-  "aut": "Bernard Gagnon",
-  "file": "Cannon at the Cerro Santa Lucia, Santiago de Chile.jpg",
-  "pag": "https://commons.wikimedia.org/wiki/File:Cannon_at_the_Cerro_Santa_Lucia,_Santiago_de_Chile.jpg",
-  "kb": 235
+  "url": "",
+  "lic": "arquivo pessoal",
+  "aut": "Ana Claudia Morais Alves",
+  "file": "A Fonte de Netuno, no Cerro Santa Lucía",
+  "pag": "",
+  "kb": 0,
+  "pessoal": true
  },
  "e42": {
-  "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c5/Chile_Araucania_Map_1610.jpg/960px-Chile_Araucania_Map_1610.jpg",
-  "lic": "Public domain",
-  "aut": "Unknown authorUnknown author",
-  "file": "Chile Araucania Map 1610.jpg",
-  "pag": "https://commons.wikimedia.org/wiki/File:Chile_Araucania_Map_1610.jpg",
-  "kb": 68
+  "url": "",
+  "lic": "arquivo pessoal",
+  "aut": "Ana Claudia Morais Alves",
+  "file": "A cordilheira nevada, vista do Cerro Santa Lucía",
+  "pag": "",
+  "kb": 0,
+  "pessoal": true
  },
  "e5": {
   "url": "",
   "lic": "arquivo pessoal",
   "aut": "Ana Claudia Morais Alves",
-  "file": "A cordilheira: o contraste entre a neve e o deserto",
+  "file": "A cordilheira por cima de Santiago",
   "pag": "",
   "kb": 0,
   "pessoal": true
